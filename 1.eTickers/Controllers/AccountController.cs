@@ -1,4 +1,5 @@
 ﻿using _1.eTickers.Data;
+using _1.eTickers.Data.Static;
 using _1.eTickers.Data.ViewModels;
 using _1.eTickers.Models;
 using Microsoft.AspNetCore.Identity;
@@ -60,6 +61,34 @@ namespace _1.eTickers.Controllers
         }
 
         public IActionResult Register() => View(new RegisterVM());
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterVM registerVM)
+        {
+            if(!ModelState.IsValid) return View(registerVM);
+
+            var user = await _userManager.FindByEmailAsync(registerVM.Email);
+            if (user != null)
+            {
+                TempData["Error"] = "This email address is already in use";
+                return View(registerVM);
+            }
+
+            var newUser = new ApplicationUser()
+            {
+                FullName = registerVM.FullName,
+                Email = registerVM.Email,
+                UserName = registerVM.Email
+            };
+            var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
+
+            if (newUserResponse.Succeeded)
+                await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+
+            return View("RegisterCompleted");
+
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> Logout()
