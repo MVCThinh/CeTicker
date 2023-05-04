@@ -14,15 +14,15 @@ namespace _1.eTickers.Models
         public string ProfileURL { get; set; }
 
         [Display(Name = "Full Name")]
-        [Required(ErrorMessage = " is required")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = " must be between 3 and 50 chars")]
+        [Required(ErrorMessage = "{0} is required")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "{0} must be between 3 and 50 chars")]
         public string Name { get; set; }
 
         [Display(Name = "Biography")]
-        [Required(ErrorMessage = " is required")]
+        [Required(ErrorMessage = "{0} is required")]
         public string Bio { get; set; }
 
         // Relationships
-        public List<Actor_Movie>? Actors_Movies { get; set; }
+        public List<Actor_Movie> Actors_Movies { get; set; }
     }
 }
