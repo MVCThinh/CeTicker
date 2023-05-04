@@ -1,4 +1,5 @@
 ﻿using _1.eTickers.Data.Base;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.ComponentModel.DataAnnotations;
 
 namespace _1.eTickers.Models
@@ -22,6 +23,6 @@ namespace _1.eTickers.Models
         public string Bio { get; set; }
 
         // Relationships
-        public List<Actor_Movie> Actors_Movies { get; set; }
+        public List<Actor_Movie>? Actors_Movies { get; set; }
     }
 }

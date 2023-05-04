@@ -22,6 +22,6 @@ namespace _1.eTickers.Models
         public string Bio { get; set; }
 
         // Relationships
-        public List<Movie> Movies { get; set; }
+        public List<Movie>? Movies { get; set; }
     }
 }

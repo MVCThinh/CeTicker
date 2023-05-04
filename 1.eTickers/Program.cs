@@ -18,6 +18,8 @@ builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
 builder.Services.AddScoped<IMoviesService, MoviesService>();
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 
 
 //Authentication and authorization
@@ -60,10 +62,13 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseSession();
 
+
 //Authentication & Authorization
+app.UseAuthentication(); // Kiểm tra đăng nhập
+app.UseAuthorization(); // Kiểm tra quyền
 
 app.UseAuthorization();
-app.UseAuthentication();
+
 
 app.MapControllerRoute(
     name: "default",

@@ -1,6 +1,8 @@
 ﻿using _1.eTickers.Data;
 using _1.eTickers.Data.Services;
 using _1.eTickers.Data.Static;
+using _1.eTickers.Data.ViewModels;
+using _1.eTickers.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -51,7 +53,6 @@ namespace _1.eTickers.Controllers
         }
 
         // Get: Movies/Create
-        [AllowAnonymous]
         public async Task<IActionResult> Create()
         {
             var movieDropdownsData = await _services.GetNewMovieDropdownsValues();
@@ -63,6 +64,73 @@ namespace _1.eTickers.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create(NewMovieVM movie)
+        {
+            if (!ModelState.IsValid)
+            {
+                var movieDropdownsData = await _services.GetNewMovieDropdownsValues();
+
+                ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+                ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "Name");
+                ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "Name");
+
+                return View(movie);
+            }
+
+            await _services.AddNewMovieAsync(movie);
+            return RedirectToAction(nameof(Index));
+        }
+
+        // Get: Movies/Edit/1
+        public async Task<IActionResult> Edit(int id)
+        {
+            var movieDetails = await _services.GetMovieByIdAsync(id);
+            if (movieDetails == null) return View("Notfound");
+
+            var response = new NewMovieVM()
+            {
+                Id = movieDetails.Id,
+                Name = movieDetails.Name,
+                Description = movieDetails.Description,
+                Price = movieDetails.Price,
+                StartDate = movieDetails.StartDate,
+                EndDate = movieDetails.EndDate,
+                ImageURL = movieDetails.ImageURl,
+                MovieCategory = movieDetails.MovieCategory,
+                CinemaId = movieDetails.CinemaId,
+                ProducerId = movieDetails.ProducerId,
+                ActorIds = movieDetails.Actors_Movies.Select(n => n.ActorId).ToList(),
+            };
+
+            var movieDropdownsData = await _services.GetNewMovieDropdownsValues();
+
+            ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+            ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "Name");
+            ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "Name");
+
+            return View(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, NewMovieVM movie)
+        {
+            if (id != movie.Id) return View("NotFound");
+
+            if (!ModelState.IsValid)
+            {
+                var movieDropdownsData = await _services.GetNewMovieDropdownsValues();
+
+                ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+                ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "Name");
+                ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "Name");
+
+                return View(movie);
+            }
+
+            await _services.UpdateMovieAsync(movie);
+            return RedirectToAction(nameof(Index));
+        }
 
     }
 }

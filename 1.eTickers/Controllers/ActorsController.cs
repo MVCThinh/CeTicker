@@ -1,10 +1,15 @@
 ﻿using _1.eTickers.Data;
 using _1.eTickers.Data.Services;
+using _1.eTickers.Data.Static;
 using _1.eTickers.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
+using System.Diagnostics;
 
 namespace _1.eTickers.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class ActorsController : Controller
     {
         private readonly IActorsService _service;
@@ -14,6 +19,7 @@ namespace _1.eTickers.Controllers
             _service = service;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var data = await _service.GetAllAsync();
@@ -27,19 +33,30 @@ namespace _1.eTickers.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Name, ProfileURL, Bio")]Actor actor)
+        public async Task<IActionResult> Create([Bind(" Name, ProfileURL, Bio")]Actor actor)
         {
             if (!ModelState.IsValid)
             {
+                foreach (var key in ModelState.Keys)
+                {
+                    var state = ModelState[key];
+                    if (state.Errors.Any())
+                    {
+                        var errorMessage = state.Errors.First().ErrorMessage;
+                        // Do something with the error message
+                        Debug.WriteLine(errorMessage + "--------");
+                    }
+                }
                 return View(actor);
             }
             
             await _service.AddAsync(actor);
             return RedirectToAction(nameof(Index));
 
-        } 
+        }
 
         //Get: Actors/Details/1
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var actorDetails = await _service.GetByIdAsync(id);
