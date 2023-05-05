@@ -2,6 +2,7 @@
 using _1.eTickers.Data.Static;
 using _1.eTickers.Data.ViewModels;
 using _1.eTickers.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,7 @@ namespace _1.eTickers.Controllers
             _signManager = signManager;
             _context = context;
         }
-
+        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> Users()
         {
             var users = await _context.Users.ToListAsync();
@@ -95,6 +96,11 @@ namespace _1.eTickers.Controllers
         {
             await _signManager.SignOutAsync();
             return RedirectToAction("Index", "Movies");
+        }
+
+        public IActionResult AccessDenied(string ReturnUrl)
+        {
+            return View();
         }
     }
 }
