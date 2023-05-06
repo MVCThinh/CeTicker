@@ -1,5 +1,6 @@
 ﻿using _1.eTickers.Data.Cart;
 using _1.eTickers.Data.Services;
+using _1.eTickers.Data.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -30,5 +31,20 @@ namespace _1.eTickers.Controllers
             return View(orders);
 
         }
+        
+        public IActionResult ShoppingCart()
+        {
+            var items = _shoppingCart.GetShoppingCartItems();
+            _shoppingCart.ShoppingCartItems = items;
+
+            var response = new ShoppingCartVM()
+            {
+                ShoppingCart = _shoppingCart,
+                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
+            };
+
+            return View(response);
+        }
+
     }
 }

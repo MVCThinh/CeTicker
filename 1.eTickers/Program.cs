@@ -1,4 +1,5 @@
 ﻿using _1.eTickers.Data;
+using _1.eTickers.Data.Cart;
 using _1.eTickers.Data.Services;
 using _1.eTickers.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -17,8 +18,11 @@ builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
 builder.Services.AddScoped<IMoviesService, MoviesService>();
+builder.Services.AddScoped<IOrdersService, OrdersService>();
 
+// đăng ký dịch vụ HTTP khi khách hàng gửi yêu cầu request
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 
 
 
