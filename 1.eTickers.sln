@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant", "Restaurant\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamMultipleChoice", "ExamMultipleChoice\ExamMultipleChoice.csproj", "{CD8FFDF3-4D95-4616-AA75-F846B77DDD1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bending", "Bending\Bending.csproj", "{1037DE86-9BF7-43CC-BD22-EB9D945B1F4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CD8FFDF3-4D95-4616-AA75-F846B77DDD1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD8FFDF3-4D95-4616-AA75-F846B77DDD1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD8FFDF3-4D95-4616-AA75-F846B77DDD1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1037DE86-9BF7-43CC-BD22-EB9D945B1F4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1037DE86-9BF7-43CC-BD22-EB9D945B1F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1037DE86-9BF7-43CC-BD22-EB9D945B1F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1037DE86-9BF7-43CC-BD22-EB9D945B1F4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
