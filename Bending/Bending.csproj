@@ -167,7 +167,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Helpers\HelpMenu.cs" />
+    <Compile Include="Data\Static\Address.cs" />
+    <Compile Include="Data\Static\CalibControl.cs" />
+    <Compile Include="Data\Static\CONST.cs" />
+    <Compile Include="Data\Helpers\csConfig.cs" />
+    <Compile Include="Data\Helpers\csLog.cs" />
+    <Compile Include="Data\Static\DispChart.cs" />
+    <Compile Include="Data\Static\PanelID.cs" />
     <Compile Include="Foam\FrmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +247,9 @@
   <ItemGroup>
     <Content Include="Image\button.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Data\Enums\" />
+    <Folder Include="Data\Static - Copy - Copy\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
