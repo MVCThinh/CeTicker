@@ -16,7 +16,7 @@ class Program
 
     static void Main(string[] args)
     {
-        Console.WriteLine(DecryptPassword(""));
+        Console.WriteLine(DecryptPassword("cAB2AHEAcAB2AHEA"));
     }
 }
 
