@@ -1,0 +1,7 @@
+﻿body {
+}
+
+#tbl_employee_onleave th:nth-child(1),
+#tbl_employee_onleave th:nth-child(2){
+    width:1000px!important;
+}

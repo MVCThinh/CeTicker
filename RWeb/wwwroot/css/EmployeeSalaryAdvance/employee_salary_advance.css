@@ -1,0 +1,35 @@
+﻿body {
+}
+
+#tbl_employee_salary_advance th:nth-child(1),
+#tbl_employee_salary_advance th:nth-child(2),
+#tbl_employee_salary_advance th:nth-child(3) {
+    width: 70px !important;
+}
+
+#tbl_employee_salary_advance th:nth-child(4),
+#tbl_employee_salary_advance th:nth-child(5),
+#tbl_employee_salary_advance th:nth-child(6),
+#tbl_employee_salary_advance th:nth-child(7) {
+    width: 130px !important;
+}
+
+#tbl_employee_salary_advance th:nth-child(8),
+#tbl_employee_salary_advance th:nth-child(9),
+#tbl_employee_salary_advance th:nth-child(12) {
+    width: 100px !important;
+}
+
+#tbl_employee_salary_advance th:nth-child(10) {
+    width: 250px !important;
+}
+
+#tbl_employee_salary_advance th:nth-child(11) {
+    width: 90px !important;
+}
+
+#tbl_employee_salary_advance tr td{
+    overflow:auto;
+    text-overflow:ellipsis;
+    white-space:pre-wrap;
+}

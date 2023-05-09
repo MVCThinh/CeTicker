@@ -1,0 +1,178 @@
+﻿.hide_menu {
+    display: none !important;
+}
+
+.hide_menu_sale {
+    display: none !important;
+}
+
+
+#btn-hide {
+    display: none;
+}
+
+#txt_message {
+    border-radius: 5px;
+    width: 300px;
+    padding: 10px;
+}
+
+#txt-title:hover {
+    color: blue !important;
+}
+
+#btn-leave-half-day {
+    margin: 10px;
+}
+
+#btn-leave-one-day {
+    margin: 10px;
+}
+
+#btn-add-index-style {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#content-report-technical {
+    width: 100%;
+    max-height: 450px;
+    min-height: 450px;
+    border: 1px solid #ff0000;
+    border-radius: .25em;
+    padding: 10px;
+}
+
+#content_register_ol {
+    width: 100%;
+    max-height: 350px;
+    min-height: 450px;
+    border: 1px solid #ff0000;
+    border-radius: .25em;
+    padding: 10px;
+    font-size: 24px;
+}
+
+#note,
+#content-technical,
+#result-technical,
+#backlog-technical,
+#problem-technical,
+#problem_solve-technical,
+#plan_next-technical,
+#content-sale,
+#result-sale,
+#backlog-sale,
+#problem-sale,
+#plan_next-sale {
+    white-space: pre-line !important;
+    text-align: left;
+}
+
+.table-contact,
+.table-end-user {
+    width: 100%;
+    color: #000;
+    background-color: #cdcdcd;
+    table-layout: fixed;
+}
+
+    .table-contact th,
+    .table-end-user th {
+        color: white !important;
+        border: 1px solid #fff;
+    }
+
+    .table-contact tr td,
+    .table-end-user tr td {
+        border: 1px solid #fff;
+    }
+
+    .table-contact td,
+    .table-end-user td {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+        .table-contact td:hover,
+        .table-end-user td:hover {
+            overflow: auto;
+            white-space: normal;
+        }
+
+#type_customer_chosen a {
+    height: 31px !important;
+}
+
+    #type_customer_chosen a span {
+        /*height: 31px !important;*/
+        line-height: 31px;
+    }
+
+    #type_customer_chosen a div {
+        margin-top: 0 !important;
+    }
+
+.disabled-role {
+    color: #cdcdcd;
+}
+
+.validation-feedback {
+    border: 1px solid #ff0000;
+}
+
+.status-project-item p {
+    line-height: 0 !important;
+    margin: 0 !important;
+}
+
+.form-control-text-area {
+    height: 48px !important;
+    /*min-height: 31px;
+    max-height:31px;*/
+    width: 100%;
+    background-color: #fdfdff;
+    border-color: #e4e6fc;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    overflow-wrap: break-word;
+    display: block;
+}
+
+    .form-control-text-area:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #6777ef;
+        outline: 0;
+    }
+
+
+#tbl_chose_workplan {
+    font-size: 14px;
+    text-align: left;
+}
+
+    #tbl_chose_workplan th:nth-child(1) {
+        width: 1% !important;
+    }
+
+    #tbl_chose_workplan th:nth-child(2) {
+        width: 10% !important;
+        text-align: center !important;
+    }
+
+#tbl_compensatory_leave tbody tr td:hover {
+    background-color: deeppink;
+}
+
+.ntMonth {
+    color: #c8c6c4;
+    padding: 10px;
+}
+
+.dates tr td:hover {
+    background-color: #ff6a00;
+    color: #fff;
+    cursor: pointer;
+}

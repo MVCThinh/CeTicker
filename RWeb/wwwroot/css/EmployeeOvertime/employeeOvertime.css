@@ -1,0 +1,21 @@
+﻿body {
+
+}
+
+#tbl_employee_overtime th:nth-child(1) {
+    width: 90px !important;
+}
+
+#tbl_employee_overtime th:nth-child(2),
+#tbl_employee_overtime th:nth-child(3) {
+    width: 150px !important;
+}
+
+#tbl_employee_overtime th:nth-child(4) {
+    width: 90px !important;
+}
+
+#tbl_employee_overtime th:nth-child(8),
+#tbl_employee_overtime th:nth-child(9) {
+    width: 90px !important;
+}
