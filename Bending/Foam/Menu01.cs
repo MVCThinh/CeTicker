@@ -20,6 +20,15 @@ namespace Bending
         private static ComputerInfo computerInfo;
 
 
+        public static string PATH_BASE = @"C:\EQData";
+        public static string PATH_SYSTEM = "\\Calibration";
+        public static string PATH_DATA = "\\Data";
+        public static string PATH_DUMMY = "\\";
+        public static string FILE_CALIBRATION = "Calibration";
+        public static string Adjust_FILE_CALIBRATION = "Adjust";
+        public static string EXTENSION_DAT = ".dat";
+
+
 
 
         /// <summary>
@@ -64,7 +73,6 @@ namespace Bending
             lbRamP.Text = $"{ramUse:0.00} %";
             lbHddCP.Text = $"{cPercentUse:0.00} %";
             lbHDDDP.Text = $"{dPercentUse:0.00} %";
-
 
 
         }
