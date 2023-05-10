@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.pnTOP = new System.Windows.Forms.Panel();
             this.cbSimulation = new System.Windows.Forms.CheckBox();
@@ -68,6 +69,7 @@
             this.btnLogIn = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnMenu = new System.Windows.Forms.Panel();
+            this.timerMenu = new System.Windows.Forms.Timer(this.components);
             this.pnTOP.SuspendLayout();
             this.lbBottom.SuspendLayout();
             this.SuspendLayout();
@@ -626,6 +628,12 @@
             this.pnMenu.Size = new System.Drawing.Size(1886, 827);
             this.pnMenu.TabIndex = 56;
             // 
+            // timerMenu
+            // 
+            this.timerMenu.Enabled = true;
+            this.timerMenu.Interval = 500;
+            this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -686,6 +694,7 @@
         private System.Windows.Forms.Button btnLogIn;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel pnMenu;
+        private System.Windows.Forms.Timer timerMenu;
     }
 }
 

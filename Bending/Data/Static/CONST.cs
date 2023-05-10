@@ -9,8 +9,8 @@ namespace Bending.Data.Enums
 {
     public static class CONST
     {
-        public static double rad = Math.PI / 180;
-        public static double rad90 = Math.PI / 2;
+        public const double rad = Math.PI / 180;
+        public const double rad90 = Math.PI / 2;
         public static bool plcAutomode = false;
         public static bool pcAutomode = false;
 
@@ -52,19 +52,7 @@ namespace Bending.Data.Enums
 
 
 
-        public static string EQTYPE;
-        public static string EQPID;
-        public static string UnitNo;
-        public static int PCNo;
-        public static string PCName;
-        public static int LogKeepDay = 30;
-        public static int CAMCnt = 8; //default
-        public static string PLCIP;
-        public static int StationNO;
-        public static int PLCType;
-        public static string PLCDeviceType;
-        public static string Folder;
-        public static string Folder2;
+        
 
         public static bool RunMode;
 

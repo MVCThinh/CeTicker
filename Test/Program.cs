@@ -1,5 +1,6 @@
 ﻿
 
+using System.Reflection;
 
 class Program
 {
@@ -14,9 +15,16 @@ class Program
         return originalPassword;
     }
 
+
     static void Main(string[] args)
     {
-        Console.WriteLine(DecryptPassword("cAB2AHEAcAB2AHEA"));
+        //Console.WriteLine(DecryptPassword("cAB2AHEAcAB2AHEA"));
+        //string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+
+        string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\"));
+
+        Console.WriteLine(path);
+        
     }
 }
 

@@ -137,6 +137,7 @@
     <Reference Include="log4net">
       <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="rs2DAlign">
       <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\rs2DAlign.dll</HintPath>
     </Reference>
@@ -167,7 +168,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Static\Address.cs" />
+    <Compile Include="Data\Enums\Modul1.cs" />
+    <Compile Include="Data\Helpers\csRecipe.cs" />
+    <Compile Include="Data\Models\FolderPath.cs" />
+    <Compile Include="Data\Models\Parameter.cs" />
+    <Compile Include="Data\StaticClass\Footer.cs" />
+    <Compile Include="Data\Models\Address.cs" />
     <Compile Include="Data\Static\CalibControl.cs" />
     <Compile Include="Data\Static\CONST.cs" />
     <Compile Include="Data\Helpers\csConfig.cs" />
@@ -231,6 +237,7 @@
     <EmbeddedResource Include="UC\ucSetting.resx">
       <DependentUpon>ucSetting.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="EQData\INI\Config.ini" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -248,8 +255,7 @@
     <Content Include="Image\button.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\Enums\" />
-    <Folder Include="Data\Static - Copy - Copy\" />
+    <Folder Include="Data\Static - Copy - Copy - Copy - Copy\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
