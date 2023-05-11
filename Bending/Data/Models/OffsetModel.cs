@@ -17,6 +17,5 @@ namespace Bending.Data.Models
         public string LengthOffset1 { get; set; }
         public string LengthOffset2 { get; set; }
 
-
     }
 }

@@ -12,65 +12,50 @@ using System.Threading.Tasks;
 
 namespace Bending.Data.Class
 {
-    public class csConfig
+    public class csConfig 
     {
-        #region DLL - Đọc_Ghi dữ liệu
-        [DllImport("kernel32")]
-        public static extern int GetPrivateProfileString(string lpAppName, string lpKeyName, string lpDefault, StringBuilder lpReturnedString, int nSize, string lpFileName);
 
-        [DllImport("kernel32")]
-        private static extern long WritePrivateProfileString(string strSection, string strKey, string strValue, string strFilePath);
+        private readonly CamSettingModel _camSetting;
+        private readonly LaserModel _laser;
+        private readonly OffsetModel _offset;
 
-        #endregion
-
-        // Đường dẫn
-
-        private readonly Parameter _paramConfig;
-        private readonly PLC _plcConfig;
-        private readonly PC _pcConfig;
-        private readonly FolderPath _folderPathConfig;
-
-        
-        
-
-
-        private string cINIPath = null;
-       // private string cRecipeName = null;
-
-        public csConfig( Parameter paramConfig, PLC plcConfig, PC pcConfig, FolderPath folderPathConfig)
+        public csConfig(CamSettingModel camSetting, LaserModel laser, OffsetModel offset)
         {
-            _paramConfig = paramConfig;
-            _plcConfig = plcConfig;
-            _pcConfig = pcConfig;
-            _folderPathConfig = folderPathConfig;
+            _camSetting = camSetting;
+            _laser = laser;
+            _offset = offset;
         }
 
-        private string INIFileRead(string Section, string Key, string sdefault = "")
+        public bool ReadParameterToFolder()
         {
+            RWFile.RWFilePath = @"C:\EQData1\Config\VisionConfig.ini";
+            
             try
             {
-                StringBuilder sb = new StringBuilder(500);
-                int Flag = GetPrivateProfileString(Section, Key, sdefault, sb, 500, cINIPath);
+                string Section = "CAMSETTING";
+                _camSetting.FOVX = RWFile.ReadFile(Section, "FOVX", "0");
+                _camSetting.FOVY = RWFile.ReadFile(Section, "FOVY", "0");
+                _camSetting.Resolution = RWFile.ReadFile(Section, "Resolution", "0");
+                _camSetting.Serial = RWFile.ReadFile(Section, "Serial", "0");
+                _camSetting.PatternSearchMode = RWFile.ReadFile(Section, "PatternSearchMode", "0");
+                _camSetting.PatternSearchTool = RWFile.ReadFile(Section, "PatternSearchTool", "0");
+                _camSetting.CalType = RWFile.ReadFile(Section, "CalType", "0");
+                _camSetting.LightType = RWFile.ReadFile(Section, "LightType", "0");
+                _camSetting.LighComport = RWFile.ReadFile(Section, "LighComport", "0");
+                _camSetting.LightChanel = RWFile.ReadFile(Section, "LightChanel", "0");
+                _camSetting.CameraReverse = RWFile.ReadFile(Section, "CameraReverse", "0");
+                _camSetting.ImageSaveType = RWFile.ReadFile(Section, "ImageSaveType", "0");
+                _camSetting.GrapDelay = RWFile.ReadFile(Section, "GrapDelay", "0");
+                _camSetting.LightDelay = RWFile.ReadFile(Section, "LightDelay", "0");
+                _camSetting.AlignLimitX = RWFile.ReadFile(Section, "AlignLimitX", "0");
+                _camSetting.AlignLimitY = RWFile.ReadFile(Section, "AlignLimitY", "0");
+                _camSetting.AlignLimitT = RWFile.ReadFile(Section, "AlignLimitT", "0");
+                _camSetting.RetryLimitCount = RWFile.ReadFile(Section, "RetryLimitCount", "0");
+                _camSetting.RetryCaptureCount = RWFile.ReadFile(Section, "RetryCaptureCount", "0");
+                _camSetting.ImageAutoDeleteDay = RWFile.ReadFile(Section, "ImageAutoDeleteDay", "0");
+                _camSetting.CenterAlign = RWFile.ReadFile(Section, "CenterAlign", "0");
 
-                return sb.ToString();
-            }
-            catch (Exception)
-            {
-                return sdefault;
-            }
-        }
 
-
-
-
-
-
-
-
-        public bool Initial()
-        {
-            try
-            {
 
 
                 return true;
