@@ -1,4 +1,5 @@
-﻿using Cognex.VisionPro.ID;
+﻿using Bending.Data.Helpers;
+using Cognex.VisionPro.ID;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,10 +16,34 @@ namespace Bending.UC
 {
     public partial class ucAutoMain : UserControl
     {
+        public csVision[] Visions { get; set; }
+
         public ucAutoMain()
         {
             InitializeComponent();
+            Visions = new csVision[4];
+            InitialVison();
         }
+
+
+
+        private void InitialVison()
+        {
+            try
+            {
+                for (int i = 0; i< Visions.Length; i++)
+                {
+                    Visions[i].bCamSerialCheck = false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
 
         public void CreateListParaDesgin()
         {

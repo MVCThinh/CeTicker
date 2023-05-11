@@ -46,12 +46,6 @@ namespace Bending
             lbProgramVer.Text = "Ver 08.05.2023";
             btnMenu = new Button[] { btnAutoMain, btnRecipe, btnSetting, btnHistory };
 
-
-            //pnMenu.Controls.Add(frmAutoMain);
-            //pnMenu.Controls.Add(frmRecipe);
-            //pnMenu.Controls.Add(frmHistory);
-            //pnMenu.Controls.Add(frmSetting);
-
             pnMenu.Controls.AddRange(new Control[] { frmAutoMain, frmHistory, frmRecipe, frmSetting });
 
 
