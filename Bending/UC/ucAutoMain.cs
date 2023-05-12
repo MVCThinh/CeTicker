@@ -22,7 +22,7 @@ namespace Bending.UC
         {
             InitializeComponent();
             Visions = new csVision[4];
-            InitialVison();
+          //  InitialVison();
         }
 
 

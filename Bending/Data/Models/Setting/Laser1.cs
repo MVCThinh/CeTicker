@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bending.Data.Models
+namespace Bending.Data.Models.Setting
 {
-    public class CamSettingModel
+    internal class Laser1
     {
         public string FOVX { get; set; }
         public string FOVY { get; set; }
@@ -30,5 +30,4 @@ namespace Bending.Data.Models
         public string ImageAutoDeleteDay { get; set; }
         public int CenterAlign { get; set; }
     }
-
 }

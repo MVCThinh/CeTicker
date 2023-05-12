@@ -4,8 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bending.Data.Enums
+namespace Bending
 {
+    
+    public enum eCamName
+    {
+        LoadingPre1 = 0,
+        LoadingPre2 = 1,
+        Laser1 = 3,
+        Laser2 = 4,
+    }
+
+
     public enum eBendMode
     {
         armXYT = 0,
@@ -282,8 +292,8 @@ namespace Bending.Data.Enums
         FFU_FAN_SPEED,
         LASER_POSITION_SPECX,
         LASER_POSITION_SPECY,
-        Reserve1,
-        Reserve2,
+        RESERVE1, 
+        RESERVE2,
         LASER_MARKING_OFFSET_X1,
         LASER_MARKING_OFFSET_Y1,
         LASER_MARKING_OFFSET_X2,
