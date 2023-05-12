@@ -22,8 +22,11 @@ class Program
         //string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
 
         string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\"));
-
-        Console.WriteLine(path);
+        string PathRoot = @"C:\EQData1\Config\";
+        string ConfigName = "\\VisionConfig.ini";
+        string ecamName = "LoadingPre1";
+        string path1 = Path.Combine(PathRoot,ecamName,ConfigName);
+        Console.WriteLine(path1);
         
     }
 }

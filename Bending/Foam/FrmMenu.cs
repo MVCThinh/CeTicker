@@ -52,11 +52,12 @@ namespace Bending
             GetPCStatus();
             DisplayChange(btnAutoMain.Name);
 
-
-            //for (int i = 0; i < btnMenu.Length; i++)
-            //{
-            //    btnMenu[i].Click += btnMenu_Click;
-            //}
+#if (noGPT)
+            for (int i = 0; i < btnMenu.Length; i++)
+            {
+                btnMenu[i].Click += btnMenu_Click;
+            }
+#endif
 
             Array.ForEach(btnMenu, btn => btn.Click += btnMenu_Click);
 
@@ -76,16 +77,18 @@ namespace Bending
         {
             string btnText = (sender as Button).Text;
 
-            //for (int i = 0; i < btnMenu.Length; i++)
-            //{
-            //    if (btnText == btnMenu[i].Text)
-            //    {
-            //        DisplayChange(btnMenu[i].Name);
-            //        btnMenu[i].ForeColor = Color.Yellow;
-            //    }
-            //    else
-            //        btnMenu[i].ForeColor = Color.White;
-            //}
+#if (noGPT)
+            for (int i = 0; i < btnMenu.Length; i++)
+            {
+                if (btnText == btnMenu[i].Text)
+                {
+                    DisplayChange(btnMenu[i].Name);
+                    btnMenu[i].ForeColor = Color.Yellow;
+                }
+                else
+                    btnMenu[i].ForeColor = Color.White;
+            }
+#endif
 
             foreach (Button btn in btnMenu)
             {
@@ -100,13 +103,16 @@ namespace Bending
 
         }
 
+
         private void DisplayChange(string btnName)
         {
-            //for (int i = 0; i < pnMenu.Controls.Count; i++)
-            //{
-            //    pnMenu.Controls[i].Visible = btnName.ToLower().Substring(3, btnName.Length - 3)
-            //        == pnMenu.Controls[i].Name.ToLower().Substring(2, pnMenu.Controls[i].Name.Length - 2) ? true : false;
-            //}
+#if (noGPT)
+            for (int i = 0; i < pnMenu.Controls.Count; i++)
+            {
+                pnMenu.Controls[i].Visible = btnName.ToLower().Substring(3, btnName.Length - 3)
+                    == pnMenu.Controls[i].Name.ToLower().Substring(2, pnMenu.Controls[i].Name.Length - 2) ? true : false;
+            }
+#endif
 
             pnMenu.Controls.Cast<Control>().ToList().ForEach(control =>
             {

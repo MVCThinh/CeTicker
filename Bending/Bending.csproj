@@ -135,20 +135,20 @@
       <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\Cognex.VisionPro3D.Graphic.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\log4net.dll</HintPath>
+      <HintPath>C:\Users\Acer\OneDrive\Desktop\VISION\ReferencedAssemblies\rsAlign\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="rs2DAlign">
-      <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\rs2DAlign.dll</HintPath>
+      <HintPath>C:\Users\Acer\OneDrive\Desktop\VISION\ReferencedAssemblies\rsAlign\rs2DAlign.dll</HintPath>
     </Reference>
     <Reference Include="rs2DCalibration">
-      <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\rs2DCalibration.dll</HintPath>
+      <HintPath>C:\Users\Acer\OneDrive\Desktop\VISION\ReferencedAssemblies\rsAlign\rs2DCalibration.dll</HintPath>
     </Reference>
     <Reference Include="rsDL">
-      <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\rsDL.dll</HintPath>
+      <HintPath>C:\Users\Acer\OneDrive\Desktop\VISION\ReferencedAssemblies\rsAlign\rsDL.dll</HintPath>
     </Reference>
     <Reference Include="rsLinearConvert">
-      <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\rsLinearConvert.dll</HintPath>
+      <HintPath>C:\Users\Acer\OneDrive\Desktop\VISION\ReferencedAssemblies\rsAlign\rsLinearConvert.dll</HintPath>
     </Reference>
     <Reference Include="stdole, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

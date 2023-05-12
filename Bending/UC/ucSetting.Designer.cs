@@ -34,14 +34,6 @@
             this.label131 = new System.Windows.Forms.Label();
             this.txtImgAutoDelDay = new System.Windows.Forms.TextBox();
             this.label129 = new System.Windows.Forms.Label();
-            this.label125 = new System.Windows.Forms.Label();
-            this.txtLight5VValue = new System.Windows.Forms.TextBox();
-            this.label126 = new System.Windows.Forms.Label();
-            this.txtLight5VComport = new System.Windows.Forms.TextBox();
-            this.label127 = new System.Windows.Forms.Label();
-            this.txtLight5VCH = new System.Windows.Forms.TextBox();
-            this.label114 = new System.Windows.Forms.Label();
-            this.txtGrabDelay2 = new System.Windows.Forms.TextBox();
             this.label62 = new System.Windows.Forms.Label();
             this.cbCenterAlign = new System.Windows.Forms.CheckBox();
             this.label61 = new System.Windows.Forms.Label();
@@ -79,14 +71,12 @@
             this.txtAlignLimitT = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.cbPatternFailManualInput = new System.Windows.Forms.CheckBox();
-            this.cbCalType = new System.Windows.Forms.ComboBox();
             this.label60 = new System.Windows.Forms.Label();
             this.lblAlignLimitT = new System.Windows.Forms.Label();
             this.cbImageSave = new System.Windows.Forms.CheckBox();
             this.txtLightDelay = new System.Windows.Forms.TextBox();
             this.cbPatternSearchMode = new System.Windows.Forms.ComboBox();
             this.txtAlignLimitY = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.lblGrabDelay = new System.Windows.Forms.Label();
             this.label76 = new System.Windows.Forms.Label();
             this.txtAlignLimitX = new System.Windows.Forms.TextBox();
@@ -188,14 +178,6 @@
             this.pnCamSet.Controls.Add(this.label131);
             this.pnCamSet.Controls.Add(this.txtImgAutoDelDay);
             this.pnCamSet.Controls.Add(this.label129);
-            this.pnCamSet.Controls.Add(this.label125);
-            this.pnCamSet.Controls.Add(this.txtLight5VValue);
-            this.pnCamSet.Controls.Add(this.label126);
-            this.pnCamSet.Controls.Add(this.txtLight5VComport);
-            this.pnCamSet.Controls.Add(this.label127);
-            this.pnCamSet.Controls.Add(this.txtLight5VCH);
-            this.pnCamSet.Controls.Add(this.label114);
-            this.pnCamSet.Controls.Add(this.txtGrabDelay2);
             this.pnCamSet.Controls.Add(this.label62);
             this.pnCamSet.Controls.Add(this.cbCenterAlign);
             this.pnCamSet.Controls.Add(this.label61);
@@ -233,14 +215,12 @@
             this.pnCamSet.Controls.Add(this.txtAlignLimitT);
             this.pnCamSet.Controls.Add(this.label38);
             this.pnCamSet.Controls.Add(this.cbPatternFailManualInput);
-            this.pnCamSet.Controls.Add(this.cbCalType);
             this.pnCamSet.Controls.Add(this.label60);
             this.pnCamSet.Controls.Add(this.lblAlignLimitT);
             this.pnCamSet.Controls.Add(this.cbImageSave);
             this.pnCamSet.Controls.Add(this.txtLightDelay);
             this.pnCamSet.Controls.Add(this.cbPatternSearchMode);
             this.pnCamSet.Controls.Add(this.txtAlignLimitY);
-            this.pnCamSet.Controls.Add(this.label22);
             this.pnCamSet.Controls.Add(this.lblGrabDelay);
             this.pnCamSet.Controls.Add(this.label76);
             this.pnCamSet.Controls.Add(this.txtAlignLimitX);
@@ -297,95 +277,6 @@
             this.label129.TabIndex = 619;
             this.label129.Text = "Img Auto Delete Day";
             this.label129.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label125
-            // 
-            this.label125.BackColor = System.Drawing.Color.Black;
-            this.label125.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label125.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label125.ForeColor = System.Drawing.Color.Linen;
-            this.label125.Location = new System.Drawing.Point(258, 285);
-            this.label125.Name = "label125";
-            this.label125.Size = new System.Drawing.Size(130, 21);
-            this.label125.TabIndex = 617;
-            this.label125.Text = "Light 5V Value";
-            this.label125.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtLight5VValue
-            // 
-            this.txtLight5VValue.BackColor = System.Drawing.Color.Linen;
-            this.txtLight5VValue.Location = new System.Drawing.Point(394, 285);
-            this.txtLight5VValue.Name = "txtLight5VValue";
-            this.txtLight5VValue.Size = new System.Drawing.Size(90, 20);
-            this.txtLight5VValue.TabIndex = 618;
-            this.txtLight5VValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label126
-            // 
-            this.label126.BackColor = System.Drawing.Color.Black;
-            this.label126.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label126.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label126.ForeColor = System.Drawing.Color.Linen;
-            this.label126.Location = new System.Drawing.Point(258, 233);
-            this.label126.Name = "label126";
-            this.label126.Size = new System.Drawing.Size(130, 21);
-            this.label126.TabIndex = 613;
-            this.label126.Text = "Light 5V Comport";
-            this.label126.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtLight5VComport
-            // 
-            this.txtLight5VComport.BackColor = System.Drawing.Color.Linen;
-            this.txtLight5VComport.Location = new System.Drawing.Point(394, 233);
-            this.txtLight5VComport.Name = "txtLight5VComport";
-            this.txtLight5VComport.Size = new System.Drawing.Size(90, 20);
-            this.txtLight5VComport.TabIndex = 614;
-            this.txtLight5VComport.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label127
-            // 
-            this.label127.BackColor = System.Drawing.Color.Black;
-            this.label127.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label127.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label127.ForeColor = System.Drawing.Color.Linen;
-            this.label127.Location = new System.Drawing.Point(258, 258);
-            this.label127.Name = "label127";
-            this.label127.Size = new System.Drawing.Size(130, 21);
-            this.label127.TabIndex = 615;
-            this.label127.Text = "Light 5V CH";
-            this.label127.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtLight5VCH
-            // 
-            this.txtLight5VCH.BackColor = System.Drawing.Color.Linen;
-            this.txtLight5VCH.Location = new System.Drawing.Point(394, 258);
-            this.txtLight5VCH.Name = "txtLight5VCH";
-            this.txtLight5VCH.Size = new System.Drawing.Size(90, 20);
-            this.txtLight5VCH.TabIndex = 616;
-            this.txtLight5VCH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label114
-            // 
-            this.label114.BackColor = System.Drawing.Color.Black;
-            this.label114.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label114.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label114.ForeColor = System.Drawing.Color.Linen;
-            this.label114.Location = new System.Drawing.Point(258, 108);
-            this.label114.Name = "label114";
-            this.label114.Size = new System.Drawing.Size(130, 21);
-            this.label114.TabIndex = 611;
-            this.label114.Text = "Grab Delay2(ms)";
-            this.label114.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtGrabDelay2
-            // 
-            this.txtGrabDelay2.BackColor = System.Drawing.Color.Linen;
-            this.txtGrabDelay2.Location = new System.Drawing.Point(394, 108);
-            this.txtGrabDelay2.Name = "txtGrabDelay2";
-            this.txtGrabDelay2.Size = new System.Drawing.Size(90, 20);
-            this.txtGrabDelay2.TabIndex = 612;
-            this.txtGrabDelay2.Text = "15";
-            this.txtGrabDelay2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label62
             // 
@@ -531,7 +422,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(130, 21);
             this.label2.TabIndex = 578;
-            this.label2.Text = "Ligth 12V Type";
+            this.label2.Text = "Ligth Type";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtRetryCnt
@@ -668,7 +559,7 @@
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(130, 21);
             this.label30.TabIndex = 324;
-            this.label30.Text = "Light 12V Comport";
+            this.label30.Text = "Light Comport";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtLight1Comport
@@ -756,7 +647,7 @@
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(130, 21);
             this.label31.TabIndex = 326;
-            this.label31.Text = "Light 12V CH";
+            this.label31.Text = "Light Chanel";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtLight1CH
@@ -774,7 +665,7 @@
             this.lblLightDelay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblLightDelay.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLightDelay.ForeColor = System.Drawing.Color.Linen;
-            this.lblLightDelay.Location = new System.Drawing.Point(258, 129);
+            this.lblLightDelay.Location = new System.Drawing.Point(258, 108);
             this.lblLightDelay.Name = "lblLightDelay";
             this.lblLightDelay.Size = new System.Drawing.Size(130, 21);
             this.lblLightDelay.TabIndex = 364;
@@ -826,21 +717,6 @@
             this.cbPatternFailManualInput.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbPatternFailManualInput.UseVisualStyleBackColor = true;
             // 
-            // cbCalType
-            // 
-            this.cbCalType.BackColor = System.Drawing.Color.Linen;
-            this.cbCalType.FormattingEnabled = true;
-            this.cbCalType.Items.AddRange(new object[] {
-            "Cam1Type",
-            "Cam2Type",
-            "Cam3Type",
-            "Cam4Type",
-            "Cam1Cal2"});
-            this.cbCalType.Location = new System.Drawing.Point(139, 182);
-            this.cbCalType.Name = "cbCalType";
-            this.cbCalType.Size = new System.Drawing.Size(90, 21);
-            this.cbCalType.TabIndex = 551;
-            // 
             // label60
             // 
             this.label60.BackColor = System.Drawing.Color.Black;
@@ -881,7 +757,7 @@
             // txtLightDelay
             // 
             this.txtLightDelay.BackColor = System.Drawing.Color.Linen;
-            this.txtLightDelay.Location = new System.Drawing.Point(394, 131);
+            this.txtLightDelay.Location = new System.Drawing.Point(394, 109);
             this.txtLightDelay.Name = "txtLightDelay";
             this.txtLightDelay.Size = new System.Drawing.Size(90, 20);
             this.txtLightDelay.TabIndex = 365;
@@ -908,19 +784,6 @@
             this.txtAlignLimitY.Size = new System.Drawing.Size(90, 20);
             this.txtAlignLimitY.TabIndex = 561;
             this.txtAlignLimitY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label22
-            // 
-            this.label22.BackColor = System.Drawing.Color.Black;
-            this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label22.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Linen;
-            this.label22.Location = new System.Drawing.Point(3, 182);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(130, 21);
-            this.label22.TabIndex = 550;
-            this.label22.Text = "Cal Type";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblGrabDelay
             // 
@@ -1820,10 +1683,6 @@
         private System.Windows.Forms.Panel pnCamSet;
         private System.Windows.Forms.Label label131;
         private System.Windows.Forms.Label label129;
-        private System.Windows.Forms.Label label125;
-        private System.Windows.Forms.Label label126;
-        private System.Windows.Forms.Label label127;
-        private System.Windows.Forms.Label label114;
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.Label label57;
@@ -1846,7 +1705,6 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label lblAlignLimitT;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label lblGrabDelay;
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.Label lblAlignLimitX;
@@ -1892,10 +1750,6 @@
         private System.Windows.Forms.Label label144;
         public System.Windows.Forms.CheckBox cbManualWindow;
         public System.Windows.Forms.TextBox txtImgAutoDelDay;
-        public System.Windows.Forms.TextBox txtLight5VValue;
-        public System.Windows.Forms.TextBox txtLight5VComport;
-        public System.Windows.Forms.TextBox txtLight5VCH;
-        public System.Windows.Forms.TextBox txtGrabDelay2;
         public System.Windows.Forms.CheckBox cbCenterAlign;
         public System.Windows.Forms.CheckBox cbSideImgSave;
         public System.Windows.Forms.CheckBox cbSideVision;
@@ -1913,7 +1767,6 @@
         public System.Windows.Forms.TextBox txtLight1CH;
         public System.Windows.Forms.TextBox txtAlignLimitT;
         public System.Windows.Forms.CheckBox cbPatternFailManualInput;
-        public System.Windows.Forms.ComboBox cbCalType;
         public System.Windows.Forms.CheckBox cbImageSave;
         public System.Windows.Forms.TextBox txtLightDelay;
         public System.Windows.Forms.ComboBox cbPatternSearchMode;

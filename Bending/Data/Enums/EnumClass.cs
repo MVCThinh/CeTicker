@@ -11,8 +11,8 @@ namespace Bending
     {
         LoadingPre1 = 0,
         LoadingPre2 = 1,
-        Laser1 = 3,
-        Laser2 = 4,
+        Laser1 = 2,
+        Laser2 = 3,
     }
 
 

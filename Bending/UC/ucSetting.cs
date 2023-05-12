@@ -1,11 +1,13 @@
 ﻿using Bending.Data.Class;
 using Bending.Data.Helpers;
 using Bending.Data.Models;
+using Bending.Data.Models.Setting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +19,17 @@ namespace Bending.UC
     public partial class ucSetting : UserControl
     {
 
+        public static LoadingPre1 LoadingPre1 = new LoadingPre1();
+        public static LoadingPre2 LoadingPre2 = new LoadingPre2();
+        public static Laser1 Laser1 = new Laser1();
+        public static Laser2 Laser2 = new Laser2();
+
+
         public static CamSettingModel _camSetting = new CamSettingModel();
         public static LaserModel _laser = new LaserModel();
-        public static  OffsetModel _offset = new OffsetModel();   
+        public static OffsetModel _offset = new OffsetModel();
 
-        public ucSetting( )
+        public ucSetting()
         {
             InitializeComponent();
 
@@ -164,7 +172,7 @@ namespace Bending.UC
 
             txtLengthOffset1.Text = _offset.LengthOffset1;
             txtLengthOffset2.Text = _offset.LengthOffset2;
-                
+
 
             //Laser
             txtMarkPosTorX.Text = _laser.MarkPositionTolX;
@@ -174,7 +182,7 @@ namespace Bending.UC
 
             cbRefsearch.SelectedIndex = _laser.AlignRefSearch;
             cbImageProcessing.Checked = Convert.ToBoolean(_laser.UseImageProcessing);
-                
+
             cbMassPosition.SelectedIndex = _laser.BlobSearchMaxPos;
             cbBlobBox.SelectedIndex = _laser.BlobBoxUsePoint;
             cbPolarity.SelectedIndex = _laser.BlobPolarity;
@@ -195,10 +203,21 @@ namespace Bending.UC
         /// <returns></returns>
         public bool ReadParameterFormFolder()
         {
-            RWFile.RWFilePath = @"C:\EQData1\Config\VisionConfig.ini";
+
+            string PathRoot = @"C:\EQData1\Config\";
+            string ConfigName = "\\VisionConfig.ini";
+           
 
             try
             {
+                foreach (string camName in Enum.GetNames(typeof(eCamName)))
+                {
+                    RWFile.RWFilePath = Path.Combine(PathRoot, camName, ConfigName);
+                }
+
+
+
+
                 string Section = "CAMSETTING";
 
                 _camSetting.FOVX = RWFile.ReadFile(Section, "FOVX", "0");
@@ -210,13 +229,13 @@ namespace Bending.UC
                 _camSetting.PatternSearchMode = int.Parse(RWFile.ReadFile(Section, "PatternSearchMode", "0"));
                 _camSetting.PatternSearchTool = int.Parse(RWFile.ReadFile(Section, "PatternSearchTool", "0"));
 
-                _camSetting.CalType = int.Parse(RWFile.ReadFile(Section, "CalType", "0"));
                 _camSetting.LightType = int.Parse(RWFile.ReadFile(Section, "LightType", "0"));
                 _camSetting.LighComport = RWFile.ReadFile(Section, "LighComport", "0");
                 _camSetting.LightChanel = RWFile.ReadFile(Section, "LightChanel", "0");
 
                 _camSetting.CameraReverse = int.Parse(RWFile.ReadFile(Section, "CameraReverse", "0"));
                 _camSetting.ImageSaveType = int.Parse(RWFile.ReadFile(Section, "ImageSaveType", "0"));
+
                 _camSetting.GrapDelay = RWFile.ReadFile(Section, "GrapDelay", "0");
                 _camSetting.LightDelay = RWFile.ReadFile(Section, "LightDelay", "0");
 
