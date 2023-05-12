@@ -13,16 +13,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static rs2DAlign.cs2DAlign;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Bending.UC
 {
     public partial class ucSetting : UserControl
     {
+        private CamSetting cam1 = new CamSetting();
+        private CamSetting cam2 = new CamSetting();
+        private CamSetting cam3 = new CamSetting();
+        private CamSetting cam4 = new CamSetting();
 
-        public static LoadingPre1 LoadingPre1 = new LoadingPre1();
-        public static LoadingPre2 LoadingPre2 = new LoadingPre2();
-        public static Laser1 Laser1 = new Laser1();
-        public static Laser2 Laser2 = new Laser2();
+
+
 
 
         public static CamSettingModel _camSetting = new CamSettingModel();
@@ -69,7 +72,6 @@ namespace Bending.UC
             _camSetting.PatternSearchMode = cbPatternSearchMode.SelectedIndex;
             _camSetting.PatternSearchTool = cbPatternSearchTool.SelectedIndex;
 
-            _camSetting.CalType = cbCalType.SelectedIndex;
             _camSetting.LightType = cbLightType.SelectedIndex;
             _camSetting.LighComport = txtLight1Comport.Text;
             _camSetting.LightChanel = txtLight1CH.Text;
@@ -140,7 +142,6 @@ namespace Bending.UC
             cbPatternSearchMode.SelectedIndex = _camSetting.PatternSearchMode;
             cbPatternSearchTool.SelectedIndex = _camSetting.PatternSearchTool;
 
-            cbCalType.SelectedIndex = _camSetting.CalType;
             cbLightType.SelectedIndex = _camSetting.LightType;
             txtLight1Comport.Text = _camSetting.LighComport;
             txtLight1CH.Text = _camSetting.LightChanel;
@@ -197,98 +198,201 @@ namespace Bending.UC
         }
 
 
+
+
+        string PathRoot = @"C:\EQData1\Config\";
+        string ConfigName = @"\VisionConfig.ini";
+
+        void ReadCamSetting(string camName, ref CamSetting camSetting)
+        {
+            string Section = "CAMSETTING";
+
+            camSetting.FOVX = RWFile.ReadFile(Section, "FOVX", "0");
+            camSetting.FOVY = RWFile.ReadFile(Section, "FOVY", "0");
+            camSetting.Resolution = RWFile.ReadFile(Section, "Resolution", "0");
+            camSetting.Serial = RWFile.ReadFile(Section, "Serial", "0");
+
+            camSetting.PatternSearchMode = int.Parse(RWFile.ReadFile(Section, "PatternSearchMode", "0"));
+            camSetting.PatternSearchTool = int.Parse(RWFile.ReadFile(Section, "PatternSearchTool", "0"));
+
+            camSetting.LightType = int.Parse(RWFile.ReadFile(Section, "LightType", "0"));
+            camSetting.LighComport = RWFile.ReadFile(Section, "LighComport", "0");
+            camSetting.LightChanel = RWFile.ReadFile(Section, "LightChanel", "0");
+
+            camSetting.CameraReverse = int.Parse(RWFile.ReadFile(Section, "CameraReverse", "0"));
+            camSetting.ImageSaveType = int.Parse(RWFile.ReadFile(Section, "ImageSaveType", "0"));
+
+            camSetting.GrapDelay = RWFile.ReadFile(Section, "GrapDelay", "0");
+            camSetting.LightDelay = RWFile.ReadFile(Section, "LightDelay", "0");
+
+            camSetting.AlignLimitX = RWFile.ReadFile(Section, "AlignLimitX", "0");
+            camSetting.AlignLimitY = RWFile.ReadFile(Section, "AlignLimitY", "0");
+            camSetting.AlignLimitT = RWFile.ReadFile(Section, "AlignLimitT", "0");
+
+            camSetting.RetryLimitCount = RWFile.ReadFile(Section, "RetryLimitCount", "0");
+            camSetting.RetryCaptureCount = RWFile.ReadFile(Section, "RetryCaptureCount", "0");
+            camSetting.ImageAutoDeleteDay = RWFile.ReadFile(Section, "ImageAutoDeleteDay", "0");
+
+            camSetting.CenterAlign = int.Parse(RWFile.ReadFile(Section, "CenterAlign", "0"));
+
+        }
+
+        void ReadCamOffset(string camName, ref CamSetting camSetting)
+        {
+            string Section = "OFFSET";
+
+            camSetting.AlignOffsetX = RWFile.ReadFile(Section, "AlignOffsetX", "0");
+            camSetting.AlignOffsetY = RWFile.ReadFile(Section, "AlignOffsetY", "0");
+            camSetting.AlignOffsetT = RWFile.ReadFile(Section, "AlignOffsetT", "0");
+
+            camSetting.CalOffsetX = RWFile.ReadFile(Section, "CalOffsetX", "0");
+            camSetting.CalOffsetY = RWFile.ReadFile(Section, "CalOffsetY", "0");
+            camSetting.CalOffsetT = RWFile.ReadFile(Section, "CalOffsetT", "0");
+
+            camSetting.LengthOffset1 = RWFile.ReadFile(Section, "LengthOffset1", "0");
+            camSetting.LengthOffset2 = RWFile.ReadFile(Section, "LengthOffset2", "0");
+        }
+
+        void ReadCamLaser(string camName, ref CamSetting camSetting)
+        {
+            string Section = "LASER";
+
+            camSetting.MarkPositionTolX = RWFile.ReadFile(Section, "MarkPositionTolX", "0");
+            camSetting.MarkPositionTolY = RWFile.ReadFile(Section, "MarkPositionTolY", "0");
+
+            camSetting.MaxSizeX = RWFile.ReadFile(Section, "MaxSizeX", "0");
+            camSetting.MaxSizeY = RWFile.ReadFile(Section, "MaxSizeY", "0");
+            camSetting.AlignRefSearch = int.Parse(RWFile.ReadFile(Section, "AlignRefSearch", "0"));
+            camSetting.UseImageProcessing = int.Parse(RWFile.ReadFile(Section, "UseImageProcessing", "0"));
+
+            camSetting.BlobSearchMaxPos = int.Parse(RWFile.ReadFile(Section, "BlobSearchMaxPos", "0"));
+            camSetting.BlobBoxUsePoint = int.Parse(RWFile.ReadFile(Section, "BlobBoxUsePoint", "0"));
+            camSetting.BlobPolarity = int.Parse(RWFile.ReadFile(Section, "BlobPolarity", "0"));
+            camSetting.ConnectivityMinPixels = RWFile.ReadFile(Section, "ConnectivityMinPixels", "0");
+
+            camSetting.MCRSearch = int.Parse(RWFile.ReadFile(Section, "MCRSearch", "0"));
+            camSetting.MCRRight = int.Parse(RWFile.ReadFile(Section, "MCRRight", "0"));
+            camSetting.MCRUp = int.Parse(RWFile.ReadFile(Section, "MCRUp", "0"));
+
+            camSetting.InspectDegreeKind = int.Parse(RWFile.ReadFile(Section, "InspectDegreeKind", "0"));
+            camSetting.LaserAlignRefPosTol = RWFile.ReadFile(Section, "LaserAlignRefPosTol", "0");
+        }
+
+
+
+
+
         /// <summary>
         /// Đẩy giá trị từ Folder vào Model
         /// </summary>
         /// <returns></returns>
-        public bool ReadParameterFormFolder()
+        public void ReadParameterFormFolder()
         {
-
-            string PathRoot = @"C:\EQData1\Config\";
-            string ConfigName = "\\VisionConfig.ini";
-           
-
             try
             {
                 foreach (string camName in Enum.GetNames(typeof(eCamName)))
                 {
                     RWFile.RWFilePath = Path.Combine(PathRoot, camName, ConfigName);
+
+                    switch (camName)
+                    {
+                        case "LoadingPre1":
+                            ReadCamSetting(camName, ref cam1);
+                            ReadCamOffset(camName, ref cam1);
+                            ReadCamLaser(camName, ref cam1);
+                            break;
+                        case "LoadingPre2":
+                            ReadCamSetting(camName, ref cam2);
+                            ReadCamOffset(camName, ref cam2);
+                            ReadCamLaser(camName, ref cam2);
+                            break;
+                        case "Laser1":
+                            ReadCamSetting(camName, ref cam3);
+                            ReadCamOffset(camName, ref cam3);
+                            ReadCamLaser(camName, ref cam3);
+                            break;
+                        case "Laser2":
+                            ReadCamSetting(camName, ref cam4);
+                            ReadCamOffset(camName, ref cam4);
+                            ReadCamLaser(camName, ref cam4);
+                            break;
+
+                        default: break;
+
+
+                    }
+
+#if (test)
+
+                    _camSetting.FOVX = RWFile.ReadFile(Section, "FOVX", "0");
+                    _camSetting.FOVY = RWFile.ReadFile(Section, "FOVY", "0");
+
+                    _camSetting.Resolution = RWFile.ReadFile(Section, "Resolution", "0");
+                    _camSetting.Serial = RWFile.ReadFile(Section, "Serial", "0");
+
+                    _camSetting.PatternSearchMode = int.Parse(RWFile.ReadFile(Section, "PatternSearchMode", "0"));
+                    _camSetting.PatternSearchTool = int.Parse(RWFile.ReadFile(Section, "PatternSearchTool", "0"));
+
+                    _camSetting.LightType = int.Parse(RWFile.ReadFile(Section, "LightType", "0"));
+                    _camSetting.LighComport = RWFile.ReadFile(Section, "LighComport", "0");
+                    _camSetting.LightChanel = RWFile.ReadFile(Section, "LightChanel", "0");
+
+                    _camSetting.CameraReverse = int.Parse(RWFile.ReadFile(Section, "CameraReverse", "0"));
+                    _camSetting.ImageSaveType = int.Parse(RWFile.ReadFile(Section, "ImageSaveType", "0"));
+
+                    _camSetting.GrapDelay = RWFile.ReadFile(Section, "GrapDelay", "0");
+                    _camSetting.LightDelay = RWFile.ReadFile(Section, "LightDelay", "0");
+
+                    _camSetting.AlignLimitX = RWFile.ReadFile(Section, "AlignLimitX", "0");
+                    _camSetting.AlignLimitY = RWFile.ReadFile(Section, "AlignLimitY", "0");
+                    _camSetting.AlignLimitT = RWFile.ReadFile(Section, "AlignLimitT", "0");
+
+                    _camSetting.RetryLimitCount = RWFile.ReadFile(Section, "RetryLimitCount", "0");
+                    _camSetting.RetryCaptureCount = RWFile.ReadFile(Section, "RetryCaptureCount", "0");
+                    _camSetting.ImageAutoDeleteDay = RWFile.ReadFile(Section, "ImageAutoDeleteDay", "0");
+
+                    _camSetting.CenterAlign = int.Parse(RWFile.ReadFile(Section, "CenterAlign", "0"));
+
+
+                    Section = "OFFSET";
+
+                    _offset.AlignOffsetX = RWFile.ReadFile(Section, "AlignOffsetX", "0");
+                    _offset.AlignOffsetY = RWFile.ReadFile(Section, "AlignOffsetY", "0");
+                    _offset.AlignOffsetT = RWFile.ReadFile(Section, "AlignOffsetT", "0");
+
+                    _offset.CalOffsetX = RWFile.ReadFile(Section, "CalOffsetX", "0");
+                    _offset.CalOffsetY = RWFile.ReadFile(Section, "CalOffsetY", "0");
+                    _offset.CalOffsetT = RWFile.ReadFile(Section, "CalOffsetT", "0");
+
+                    _offset.LengthOffset1 = RWFile.ReadFile(Section, "LengthOffset1", "0");
+                    _offset.LengthOffset2 = RWFile.ReadFile(Section, "LengthOffset2", "0");
+
+
+                    Section = "LASER";
+
+                    _laser.MarkPositionTolX = RWFile.ReadFile(Section, "MarkPositionTolX", "0");
+                    _laser.MarkPositionTolY = RWFile.ReadFile(Section, "MarkPositionTolY", "0");
+
+                    _laser.MaxSizeX = RWFile.ReadFile(Section, "MaxSizeX", "0");
+                    _laser.MaxSizeY = RWFile.ReadFile(Section, "MaxSizeY", "0");
+                    _laser.AlignRefSearch = int.Parse(RWFile.ReadFile(Section, "AlignRefSearch", "0"));
+                    _laser.UseImageProcessing = int.Parse(RWFile.ReadFile(Section, "UseImageProcessing", "0"));
+
+                    _laser.BlobSearchMaxPos = int.Parse(RWFile.ReadFile(Section, "BlobSearchMaxPos", "0"));
+                    _laser.BlobBoxUsePoint = int.Parse(RWFile.ReadFile(Section, "BlobBoxUsePoint", "0"));
+                    _laser.BlobPolarity = int.Parse(RWFile.ReadFile(Section, "BlobPolarity", "0"));
+                    _laser.ConnectivityMinPixels = RWFile.ReadFile(Section, "ConnectivityMinPixels", "0");
+
+                    _laser.MCRSearch = int.Parse(RWFile.ReadFile(Section, "MCRSearch", "0"));
+                    _laser.MCRRight = int.Parse(RWFile.ReadFile(Section, "MCRRight", "0"));
+                    _laser.MCRUp = int.Parse(RWFile.ReadFile(Section, "MCRUp", "0"));
+
+                    _laser.InspectDegreeKind = int.Parse(RWFile.ReadFile(Section, "InspectDegreeKind", "0"));
+                    _laser.LaserAlignRefPosTol = RWFile.ReadFile(Section, "LaserAlignRefPosTol", "0");
+
+#endif
                 }
 
-
-
-
-                string Section = "CAMSETTING";
-
-                _camSetting.FOVX = RWFile.ReadFile(Section, "FOVX", "0");
-                _camSetting.FOVY = RWFile.ReadFile(Section, "FOVY", "0");
-
-                _camSetting.Resolution = RWFile.ReadFile(Section, "Resolution", "0");
-                _camSetting.Serial = RWFile.ReadFile(Section, "Serial", "0");
-
-                _camSetting.PatternSearchMode = int.Parse(RWFile.ReadFile(Section, "PatternSearchMode", "0"));
-                _camSetting.PatternSearchTool = int.Parse(RWFile.ReadFile(Section, "PatternSearchTool", "0"));
-
-                _camSetting.LightType = int.Parse(RWFile.ReadFile(Section, "LightType", "0"));
-                _camSetting.LighComport = RWFile.ReadFile(Section, "LighComport", "0");
-                _camSetting.LightChanel = RWFile.ReadFile(Section, "LightChanel", "0");
-
-                _camSetting.CameraReverse = int.Parse(RWFile.ReadFile(Section, "CameraReverse", "0"));
-                _camSetting.ImageSaveType = int.Parse(RWFile.ReadFile(Section, "ImageSaveType", "0"));
-
-                _camSetting.GrapDelay = RWFile.ReadFile(Section, "GrapDelay", "0");
-                _camSetting.LightDelay = RWFile.ReadFile(Section, "LightDelay", "0");
-
-                _camSetting.AlignLimitX = RWFile.ReadFile(Section, "AlignLimitX", "0");
-                _camSetting.AlignLimitY = RWFile.ReadFile(Section, "AlignLimitY", "0");
-                _camSetting.AlignLimitT = RWFile.ReadFile(Section, "AlignLimitT", "0");
-
-                _camSetting.RetryLimitCount = RWFile.ReadFile(Section, "RetryLimitCount", "0");
-                _camSetting.RetryCaptureCount = RWFile.ReadFile(Section, "RetryCaptureCount", "0");
-                _camSetting.ImageAutoDeleteDay = RWFile.ReadFile(Section, "ImageAutoDeleteDay", "0");
-
-                _camSetting.CenterAlign = int.Parse(RWFile.ReadFile(Section, "CenterAlign", "0"));
-
-
-                Section = "OFFSET";
-
-                _offset.AlignOffsetX = RWFile.ReadFile(Section, "AlignOffsetX", "0");
-                _offset.AlignOffsetY = RWFile.ReadFile(Section, "AlignOffsetY", "0");
-                _offset.AlignOffsetT = RWFile.ReadFile(Section, "AlignOffsetT", "0");
-
-                _offset.CalOffsetX = RWFile.ReadFile(Section, "CalOffsetX", "0");
-                _offset.CalOffsetY = RWFile.ReadFile(Section, "CalOffsetY", "0");
-                _offset.CalOffsetT = RWFile.ReadFile(Section, "CalOffsetT", "0");
-
-                _offset.LengthOffset1 = RWFile.ReadFile(Section, "LengthOffset1", "0");
-                _offset.LengthOffset2 = RWFile.ReadFile(Section, "LengthOffset2", "0");
-
-
-                Section = "LASER";
-
-                _laser.MarkPositionTolX = RWFile.ReadFile(Section, "MarkPositionTolX", "0");
-                _laser.MarkPositionTolY = RWFile.ReadFile(Section, "MarkPositionTolY", "0");
-
-                _laser.MaxSizeX = RWFile.ReadFile(Section, "MaxSizeX", "0");
-                _laser.MaxSizeY = RWFile.ReadFile(Section, "MaxSizeY", "0");
-                _laser.AlignRefSearch = int.Parse(RWFile.ReadFile(Section, "AlignRefSearch", "0"));
-                _laser.UseImageProcessing = int.Parse(RWFile.ReadFile(Section, "UseImageProcessing", "0"));
-
-                _laser.BlobSearchMaxPos = int.Parse(RWFile.ReadFile(Section, "BlobSearchMaxPos", "0"));
-                _laser.BlobBoxUsePoint = int.Parse(RWFile.ReadFile(Section, "BlobBoxUsePoint", "0"));
-                _laser.BlobPolarity = int.Parse(RWFile.ReadFile(Section, "BlobPolarity", "0"));
-                _laser.ConnectivityMinPixels = RWFile.ReadFile(Section, "ConnectivityMinPixels", "0");
-
-                _laser.MCRSearch = int.Parse(RWFile.ReadFile(Section, "MCRSearch", "0"));
-                _laser.MCRRight = int.Parse(RWFile.ReadFile(Section, "MCRRight", "0"));
-                _laser.MCRUp = int.Parse(RWFile.ReadFile(Section, "MCRUp", "0"));
-
-                _laser.InspectDegreeKind = int.Parse(RWFile.ReadFile(Section, "InspectDegreeKind", "0"));
-                _laser.LaserAlignRefPosTol = RWFile.ReadFile(Section, "LaserAlignRefPosTol", "0");
-
-
-
-                return true;
             }
             catch (Exception)
             {
@@ -296,88 +400,105 @@ namespace Bending.UC
             }
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
         /// <summary>
         /// Viết giá trị từ Model vào Folder
         /// </summary>
         /// <returns></returns>
-        public bool WriteParameterToFolder()
+        public void WriteParameterToFolder()
         {
             try
             {
-                RWFile.RWFilePath = @"C:\EQData1\Config\VisionConfig.ini";
+                foreach (string camName in Enum.GetNames(typeof(eCamName)))
+                {
+                    RWFile.RWFilePath = Path.Combine(PathRoot, camName, ConfigName);
 
-                string Section = "CAMSETTING";
+                    RWFile.RWFilePath = @"C:\EQData1\Config\VisionConfig.ini";
 
-                RWFile.WriteFile(Section, "FOVX", _camSetting.FOVX);
-                RWFile.WriteFile(Section, "FOVY", _camSetting.FOVY);
+                    string Section = "CAMSETTING";
 
-                RWFile.WriteFile(Section, "Resolution", _camSetting.Resolution);
-                RWFile.WriteFile(Section, "Serial", _camSetting.Serial);
+                    RWFile.WriteFile(Section, "FOVX", _camSetting.FOVX);
+                    RWFile.WriteFile(Section, "FOVY", _camSetting.FOVY);
 
-                RWFile.WriteFile(Section, "PatternSearchMode", _camSetting.PatternSearchMode.ToString());
-                RWFile.WriteFile(Section, "PatternSearchTool", _camSetting.PatternSearchTool.ToString());
+                    RWFile.WriteFile(Section, "Resolution", _camSetting.Resolution);
+                    RWFile.WriteFile(Section, "Serial", _camSetting.Serial);
 
-                RWFile.WriteFile(Section, "CalType", _camSetting.CalType.ToString());
-                RWFile.WriteFile(Section, "LightType", _camSetting.LightType.ToString());
-                RWFile.WriteFile(Section, "LighComport", _camSetting.LighComport);
-                RWFile.WriteFile(Section, "LightChanel", _camSetting.LightChanel);
+                    RWFile.WriteFile(Section, "PatternSearchMode", _camSetting.PatternSearchMode.ToString());
+                    RWFile.WriteFile(Section, "PatternSearchTool", _camSetting.PatternSearchTool.ToString());
 
-                RWFile.WriteFile(Section, "CameraReverse", _camSetting.CameraReverse.ToString());
-                RWFile.WriteFile(Section, "ImageSaveType", _camSetting.ImageSaveType.ToString());
-                RWFile.WriteFile(Section, "GrapDelay", _camSetting.GrapDelay);
-                RWFile.WriteFile(Section, "LightDelay", _camSetting.LightDelay);
+                    RWFile.WriteFile(Section, "CalType", _camSetting.CalType.ToString());
+                    RWFile.WriteFile(Section, "LightType", _camSetting.LightType.ToString());
+                    RWFile.WriteFile(Section, "LighComport", _camSetting.LighComport);
+                    RWFile.WriteFile(Section, "LightChanel", _camSetting.LightChanel);
 
-                RWFile.WriteFile(Section, "AlignLimitX", _camSetting.AlignLimitX);
-                RWFile.WriteFile(Section, "AlignLimitY", _camSetting.AlignLimitY);
-                RWFile.WriteFile(Section, "AlignLimitT", _camSetting.AlignLimitT);
+                    RWFile.WriteFile(Section, "CameraReverse", _camSetting.CameraReverse.ToString());
+                    RWFile.WriteFile(Section, "ImageSaveType", _camSetting.ImageSaveType.ToString());
+                    RWFile.WriteFile(Section, "GrapDelay", _camSetting.GrapDelay);
+                    RWFile.WriteFile(Section, "LightDelay", _camSetting.LightDelay);
 
-                RWFile.WriteFile(Section, "RetryLimitCount", _camSetting.RetryLimitCount);
-                RWFile.WriteFile(Section, "RetryCaptureCount", _camSetting.RetryCaptureCount);
-                RWFile.WriteFile(Section, "ImageAutoDeleteDay", _camSetting.ImageAutoDeleteDay);
+                    RWFile.WriteFile(Section, "AlignLimitX", _camSetting.AlignLimitX);
+                    RWFile.WriteFile(Section, "AlignLimitY", _camSetting.AlignLimitY);
+                    RWFile.WriteFile(Section, "AlignLimitT", _camSetting.AlignLimitT);
 
-                RWFile.WriteFile(Section, "CenterAlign", _camSetting.CenterAlign.ToString());
+                    RWFile.WriteFile(Section, "RetryLimitCount", _camSetting.RetryLimitCount);
+                    RWFile.WriteFile(Section, "RetryCaptureCount", _camSetting.RetryCaptureCount);
+                    RWFile.WriteFile(Section, "ImageAutoDeleteDay", _camSetting.ImageAutoDeleteDay);
 
-
-                Section = "LASER";
-
-                RWFile.WriteFile(Section, "MarkPositionTolX", _laser.MarkPositionTolX);
-                RWFile.WriteFile(Section, "MarkPositionTolY", _laser.MarkPositionTolY);
-
-                RWFile.WriteFile(Section, "MaxSizeX", _laser.MaxSizeX);
-                RWFile.WriteFile(Section, "MaxSizeY", _laser.MaxSizeY);
-
-                RWFile.WriteFile(Section, "AlignRefSearch", _laser.AlignRefSearch.ToString());
-                RWFile.WriteFile(Section, "UseImageProcessing", _laser.UseImageProcessing.ToString());
-
-                RWFile.WriteFile(Section, "BlobSearchMaxPos", _laser.BlobSearchMaxPos.ToString());
-                RWFile.WriteFile(Section, "BlobBoxUsePoint", _laser.BlobBoxUsePoint.ToString());
-                RWFile.WriteFile(Section, "BlobPolarity", _laser.BlobPolarity.ToString());
-                RWFile.WriteFile(Section, "ConnectivityMinPixels", _laser.ConnectivityMinPixels);
-
-                RWFile.WriteFile(Section, "MCRSearch", _laser.MCRSearch.ToString());
-                RWFile.WriteFile(Section, "MCRRight", _laser.MCRRight.ToString());
-                RWFile.WriteFile(Section, "MCRUp", _laser.MCRUp.ToString());
-
-                RWFile.WriteFile(Section, "InspectDegreeKind", _laser.InspectDegreeKind.ToString());
-                RWFile.WriteFile(Section, "LaserAlignRefPosTol", _laser.LaserAlignRefPosTol);
+                    RWFile.WriteFile(Section, "CenterAlign", _camSetting.CenterAlign.ToString());
 
 
-                Section = "OFFSET";
+                    Section = "LASER";
 
-                RWFile.WriteFile(Section, "AlignOffsetX", _offset.AlignOffsetX);
-                RWFile.WriteFile(Section, "AlignOffsetY", _offset.AlignOffsetY);
-                RWFile.WriteFile(Section, "AlignOffsetT", _offset.AlignOffsetT);
+                    RWFile.WriteFile(Section, "MarkPositionTolX", _laser.MarkPositionTolX);
+                    RWFile.WriteFile(Section, "MarkPositionTolY", _laser.MarkPositionTolY);
 
-                RWFile.WriteFile(Section, "CalOffsetX", _offset.CalOffsetX);
-                RWFile.WriteFile(Section, "CalOffsetY", _offset.CalOffsetY);
-                RWFile.WriteFile(Section, "CalOffsetT", _offset.CalOffsetT);
+                    RWFile.WriteFile(Section, "MaxSizeX", _laser.MaxSizeX);
+                    RWFile.WriteFile(Section, "MaxSizeY", _laser.MaxSizeY);
 
-                RWFile.WriteFile(Section, "LengthOffset1", _offset.LengthOffset1);
-                RWFile.WriteFile(Section, "LengthOffset2", _offset.LengthOffset2);
+                    RWFile.WriteFile(Section, "AlignRefSearch", _laser.AlignRefSearch.ToString());
+                    RWFile.WriteFile(Section, "UseImageProcessing", _laser.UseImageProcessing.ToString());
+
+                    RWFile.WriteFile(Section, "BlobSearchMaxPos", _laser.BlobSearchMaxPos.ToString());
+                    RWFile.WriteFile(Section, "BlobBoxUsePoint", _laser.BlobBoxUsePoint.ToString());
+                    RWFile.WriteFile(Section, "BlobPolarity", _laser.BlobPolarity.ToString());
+                    RWFile.WriteFile(Section, "ConnectivityMinPixels", _laser.ConnectivityMinPixels);
+
+                    RWFile.WriteFile(Section, "MCRSearch", _laser.MCRSearch.ToString());
+                    RWFile.WriteFile(Section, "MCRRight", _laser.MCRRight.ToString());
+                    RWFile.WriteFile(Section, "MCRUp", _laser.MCRUp.ToString());
+
+                    RWFile.WriteFile(Section, "InspectDegreeKind", _laser.InspectDegreeKind.ToString());
+                    RWFile.WriteFile(Section, "LaserAlignRefPosTol", _laser.LaserAlignRefPosTol);
+
+
+                    Section = "OFFSET";
+
+                    RWFile.WriteFile(Section, "AlignOffsetX", _offset.AlignOffsetX);
+                    RWFile.WriteFile(Section, "AlignOffsetY", _offset.AlignOffsetY);
+                    RWFile.WriteFile(Section, "AlignOffsetT", _offset.AlignOffsetT);
+
+                    RWFile.WriteFile(Section, "CalOffsetX", _offset.CalOffsetX);
+                    RWFile.WriteFile(Section, "CalOffsetY", _offset.CalOffsetY);
+                    RWFile.WriteFile(Section, "CalOffsetT", _offset.CalOffsetT);
+
+                    RWFile.WriteFile(Section, "LengthOffset1", _offset.LengthOffset1);
+                    RWFile.WriteFile(Section, "LengthOffset2", _offset.LengthOffset2);
+                }
 
 
 
-                return true;
             }
             catch (Exception)
             {
