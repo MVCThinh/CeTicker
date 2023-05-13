@@ -1193,6 +1193,7 @@
             this.cboName.Name = "cboName";
             this.cboName.Size = new System.Drawing.Size(179, 21);
             this.cboName.TabIndex = 649;
+            this.cboName.SelectedIndexChanged += new System.EventHandler(this.cboName_SelectedIndexChanged);
             // 
             // label6
             // 

@@ -178,10 +178,6 @@
     <Compile Include="Data\Models\Parameter.cs" />
     <Compile Include="Data\Models\CamSettingModel.cs" />
     <Compile Include="Data\Models\Setting\CamSetting.cs" />
-    <Compile Include="Data\Models\Setting\Laser1.cs" />
-    <Compile Include="Data\Models\Setting\Laser2.cs" />
-    <Compile Include="Data\Models\Setting\LoadingPre1.cs" />
-    <Compile Include="Data\Models\Setting\LoadingPre2.cs" />
     <Compile Include="Data\StaticClass\Footer.cs" />
     <Compile Include="Data\Static\CalibControl.cs" />
     <Compile Include="Data\Static\CONST.cs" />
@@ -268,6 +264,11 @@
   <ItemGroup>
     <Folder Include="Data\Models\Recipe\" />
     <Folder Include="Data\Static - Copy - Copy - Copy - Copy\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Markdown">
+      <Version>2.2.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

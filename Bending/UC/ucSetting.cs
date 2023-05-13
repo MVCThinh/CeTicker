@@ -19,18 +19,10 @@ namespace Bending.UC
 {
     public partial class ucSetting : UserControl
     {
-        private CamSetting cam1 = new CamSetting();
-        private CamSetting cam2 = new CamSetting();
-        private CamSetting cam3 = new CamSetting();
-        private CamSetting cam4 = new CamSetting();
-
-
-
-
-
-        public static CamSettingModel _camSetting = new CamSettingModel();
-        public static LaserModel _laser = new LaserModel();
-        public static OffsetModel _offset = new OffsetModel();
+        public static CamSetting Laser1 = new CamSetting();
+        public static CamSetting Laser2 = new CamSetting();
+        public static CamSetting LoadingPre1 = new CamSetting();
+        public static CamSetting LoadingPre2 = new CamSetting();
 
         public ucSetting()
         {
@@ -54,156 +46,252 @@ namespace Bending.UC
             WriteParameterToFolder();
         }
 
+        private void cboName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            eCamName camName = (eCamName)cboName.SelectedItem;
+            if (camName == eCamName.LoadingPre1)
+            {
+                ReadCamSettingModelToView(LoadingPre1);
+                ReadCamOffsetModelToView(LoadingPre1);
+                ReadCamLaserModelToView(LoadingPre1);
+            }
+            if (camName == eCamName.LoadingPre2)
+            {
+                ReadCamSettingModelToView(LoadingPre2);
+                ReadCamOffsetModelToView(LoadingPre2);
+                ReadCamLaserModelToView(LoadingPre2);
+            }
+            if (camName == eCamName.Laser1)
+            {
+                ReadCamSettingModelToView(Laser1);
+                ReadCamOffsetModelToView(Laser1);
+                ReadCamLaserModelToView(Laser1);
+            }
+            if (camName == eCamName.Laser2)
+            {
+                ReadCamSettingModelToView(Laser2);
+                ReadCamOffsetModelToView(Laser2);
+                ReadCamLaserModelToView(Laser2);
+            }
+
+        }
+
+
+
 
         #region Đọc ghi dữ liệu từ Folder vào Setting
+
+        string PathRoot = @"C:\EQData1\Config\";
+        string ConfigName = "VisionConfig.ini";
+
+
+        void WriteCamSettingViewToModel(CamSetting camSetting)
+        {
+            camSetting.FOVX = txtFovX.Text;
+            camSetting.FOVY = txtFovY.Text;
+
+            camSetting.Resolution = txtResolution.Text;
+            camSetting.Serial = txtSerial.Text;
+
+            camSetting.PatternSearchMode = cbPatternSearchMode.SelectedIndex;
+            camSetting.PatternSearchTool = cbPatternSearchTool.SelectedIndex;
+
+            camSetting.LightType = cbLightType.SelectedIndex;
+            camSetting.LighComport = txtLight1Comport.Text;
+            camSetting.LightChanel = txtLight1CH.Text;
+
+            camSetting.CameraReverse = cbReverseMode.SelectedIndex;
+            camSetting.ImageSaveType = cbImageSaveType.SelectedIndex;
+
+            camSetting.GrapDelay = txtGrabDelay.Text;
+            camSetting.LightDelay = txtLightDelay.Text;
+
+            camSetting.AlignLimitX = txtAlignLimitX.Text;
+            camSetting.AlignLimitY = txtAlignLimitY.Text;
+            camSetting.AlignLimitT = txtAlignLimitT.Text;
+
+            camSetting.RetryLimitCount = txtAlignLimitCnt.Text;
+            camSetting.RetryCaptureCount = txtRetryCnt.Text;
+            camSetting.ImageAutoDeleteDay = txtImgAutoDelDay.Text;
+
+            camSetting.CenterAlign = Convert.ToInt32(cbCenterAlign.Checked);
+        }
+
+        void WriteCamOffsetViewToModel(CamSetting camSetting)
+        {
+            camSetting.AlignOffsetX = txtAlignXOffset1.Text;
+            camSetting.AlignOffsetY = txtAlignYOffset1.Text;
+            camSetting.AlignOffsetT = txtAlignTOffset1.Text;
+
+            camSetting.CalOffsetX = txtCalXOffset.Text;
+            camSetting.CalOffsetY = txtCalYOffset.Text;
+            camSetting.CalOffsetT = txtCalTOffset.Text;
+
+            camSetting.LengthOffset1 = txtLengthOffset1.Text;
+            camSetting.LengthOffset2 = txtLengthOffset2.Text;
+        }
+
+        void WriteCamLaserViewToModel(CamSetting camSetting)
+        {
+            camSetting.MarkPositionTolX = txtMarkPosTorX.Text;
+            camSetting.MarkPositionTolY = txtMarkPosTorY.Text;
+            camSetting.MaxSizeX = txtMarkSizeX.Text;
+            camSetting.MaxSizeY = txtMarkSizeY.Text;
+
+            camSetting.AlignRefSearch = cbRefsearch.SelectedIndex;
+            camSetting.UseImageProcessing = Convert.ToInt32(cbImageProcessing.Checked);
+
+            camSetting.BlobSearchMaxPos = cbMassPosition.SelectedIndex;
+            camSetting.BlobBoxUsePoint = cbBlobBox.SelectedIndex;
+            camSetting.BlobPolarity = cbPolarity.SelectedIndex;
+            camSetting.ConnectivityMinPixels = txtMinPixel.Text;
+
+            camSetting.MCRSearch = cbMCRSearch.SelectedIndex;
+            camSetting.MCRRight = Convert.ToInt32(cbMCRRight.Checked);
+            camSetting.MCRUp = Convert.ToInt32(cbMCRUp.Checked);
+
+            camSetting.InspectDegreeKind = cbInspKind.SelectedIndex;
+            camSetting.LaserAlignRefPosTol = txtLaserAlignTor.Text;
+        }
 
         /// <summary>
         /// Viết giá trị từ View vào Model
         /// </summary>
         public void WriteParameterViewToModel()
         {
-            // CamSetting
-            _camSetting.FOVX = txtFovX.Text;
-            _camSetting.FOVY = txtFovY.Text;
-
-            _camSetting.Resolution = txtResolution.Text;
-            _camSetting.Serial = txtSerial.Text;
-
-            _camSetting.PatternSearchMode = cbPatternSearchMode.SelectedIndex;
-            _camSetting.PatternSearchTool = cbPatternSearchTool.SelectedIndex;
-
-            _camSetting.LightType = cbLightType.SelectedIndex;
-            _camSetting.LighComport = txtLight1Comport.Text;
-            _camSetting.LightChanel = txtLight1CH.Text;
-
-            _camSetting.CameraReverse = cbReverseMode.SelectedIndex;
-            _camSetting.ImageSaveType = cbImageSaveType.SelectedIndex;
-
-            _camSetting.GrapDelay = txtGrabDelay.Text;
-            _camSetting.LightDelay = txtLightDelay.Text;
-
-            _camSetting.AlignLimitX = txtAlignLimitX.Text;
-            _camSetting.AlignLimitY = txtAlignLimitY.Text;
-            _camSetting.AlignLimitT = txtAlignLimitT.Text;
-
-            _camSetting.RetryLimitCount = txtAlignLimitCnt.Text;
-            _camSetting.RetryCaptureCount = txtRetryCnt.Text;
-            _camSetting.ImageAutoDeleteDay = txtImgAutoDelDay.Text;
-
-            _camSetting.CenterAlign = Convert.ToInt32(cbCenterAlign.Checked);
-
-            //Offset
-            _offset.AlignOffsetX = txtAlignXOffset1.Text;
-            _offset.AlignOffsetY = txtAlignYOffset1.Text;
-            _offset.AlignOffsetT = txtAlignTOffset1.Text;
-
-            _offset.CalOffsetX = txtCalXOffset.Text;
-            _offset.CalOffsetY = txtCalYOffset.Text;
-            _offset.CalOffsetT = txtCalTOffset.Text;
-
-            _offset.LengthOffset1 = txtLengthOffset1.Text;
-            _offset.LengthOffset2 = txtLengthOffset2.Text;
+            eCamName camName = (eCamName)cboName.SelectedItem;
+            if (camName == eCamName.LoadingPre1)
+            {
+                WriteCamSettingViewToModel(LoadingPre1);
+                WriteCamOffsetViewToModel(LoadingPre1);
+                WriteCamLaserViewToModel(LoadingPre1);
+            }
+            if (camName == eCamName.LoadingPre2)
+            {
+                WriteCamSettingViewToModel(LoadingPre2);
+                WriteCamOffsetViewToModel(LoadingPre2);
+                WriteCamLaserViewToModel(LoadingPre2);
+            }
+            if (camName == eCamName.Laser1)
+            {
+                WriteCamSettingViewToModel(Laser1);
+                WriteCamOffsetViewToModel(Laser1);
+                WriteCamLaserViewToModel(Laser1);
+            }
+            if (camName == eCamName.Laser2)
+            {
+                WriteCamSettingViewToModel(Laser2);
+                WriteCamOffsetViewToModel(Laser2);
+                WriteCamLaserViewToModel(Laser2);
+            }
 
 
-            //Laser
-            _laser.MarkPositionTolX = txtMarkPosTorX.Text;
-            _laser.MarkPositionTolY = txtMarkPosTorY.Text;
-            _laser.MaxSizeX = txtMarkSizeX.Text;
-            _laser.MaxSizeY = txtMarkSizeY.Text;
-
-            _laser.AlignRefSearch = cbRefsearch.SelectedIndex;
-            _laser.UseImageProcessing = Convert.ToInt32(cbImageProcessing.Checked);
-
-            _laser.BlobSearchMaxPos = cbMassPosition.SelectedIndex;
-            _laser.BlobBoxUsePoint = cbBlobBox.SelectedIndex;
-            _laser.BlobPolarity = cbPolarity.SelectedIndex;
-            _laser.ConnectivityMinPixels = txtMinPixel.Text;
-
-            _laser.MCRSearch = cbMCRSearch.SelectedIndex;
-            _laser.MCRRight = Convert.ToInt32(cbMCRRight.Checked);
-            _laser.MCRUp = Convert.ToInt32(cbMCRUp.Checked);
-
-            _laser.InspectDegreeKind = cbInspKind.SelectedIndex;
-            _laser.LaserAlignRefPosTol = txtLaserAlignTor.Text;
         }
+
+
+        void ReadCamSettingModelToView( CamSetting camSetting)
+        {
+            txtFovX.Text = camSetting.FOVX;
+            txtFovY.Text = camSetting.FOVY;
+
+            txtResolution.Text = camSetting.Resolution;
+            txtSerial.Text = camSetting.Serial;
+
+            cbPatternSearchMode.SelectedIndex = camSetting.PatternSearchMode;
+            cbPatternSearchTool.SelectedIndex = camSetting.PatternSearchTool;
+
+            cbLightType.SelectedIndex = camSetting.LightType;
+            txtLight1Comport.Text = camSetting.LighComport;
+            txtLight1CH.Text = camSetting.LightChanel;
+
+            cbReverseMode.SelectedIndex = camSetting.CameraReverse;
+            cbImageSaveType.SelectedIndex = camSetting.ImageSaveType;
+
+            txtGrabDelay.Text = camSetting.GrapDelay;
+            txtLightDelay.Text = camSetting.LightDelay;
+
+            txtAlignLimitX.Text = camSetting.AlignLimitX;
+            txtAlignLimitY.Text = camSetting.AlignLimitY;
+            txtAlignLimitT.Text = camSetting.AlignLimitT;
+
+            txtAlignLimitCnt.Text = camSetting.RetryLimitCount;
+            txtRetryCnt.Text = camSetting.RetryCaptureCount;
+            txtImgAutoDelDay.Text = camSetting.ImageAutoDeleteDay;
+
+            cbCenterAlign.Checked = Convert.ToBoolean(camSetting.CenterAlign);
+        }
+
+        void ReadCamOffsetModelToView (CamSetting camSetting)
+        {
+            txtAlignXOffset1.Text = camSetting.AlignOffsetX;
+            txtAlignYOffset1.Text = camSetting.AlignOffsetY;
+            txtAlignTOffset1.Text = camSetting.AlignOffsetT;
+
+            txtCalXOffset.Text = camSetting.CalOffsetX;
+            txtCalYOffset.Text = camSetting.CalOffsetY;
+            txtCalTOffset.Text = camSetting.CalOffsetT;
+
+            txtLengthOffset1.Text = camSetting.LengthOffset1;
+            txtLengthOffset2.Text = camSetting.LengthOffset2;
+        }
+
+        void ReadCamLaserModelToView(CamSetting camSetting)
+        {
+            txtMarkPosTorX.Text = camSetting.MarkPositionTolX;
+            txtMarkPosTorY.Text = camSetting.MarkPositionTolY;
+            txtMarkSizeX.Text = camSetting.MaxSizeX;
+            txtMarkSizeY.Text = camSetting.MaxSizeY;
+
+            cbRefsearch.SelectedIndex = camSetting.AlignRefSearch;
+            cbImageProcessing.Checked = Convert.ToBoolean(camSetting.UseImageProcessing);
+
+            cbMassPosition.SelectedIndex = camSetting.BlobSearchMaxPos;
+            cbBlobBox.SelectedIndex = camSetting.BlobBoxUsePoint;
+            cbPolarity.SelectedIndex = camSetting.BlobPolarity;
+            txtMinPixel.Text = camSetting.ConnectivityMinPixels;
+
+            cbMCRSearch.SelectedIndex = camSetting.MCRSearch;
+            cbMCRRight.Checked = Convert.ToBoolean(camSetting.MCRRight);
+            cbMCRUp.Checked = Convert.ToBoolean(camSetting.MCRUp);
+
+            cbInspKind.SelectedIndex = camSetting.InspectDegreeKind;
+            txtLaserAlignTor.Text = camSetting.LaserAlignRefPosTol;
+        }
+
 
         /// <summary>
         /// Đẩy giá trị từ Model tới View
         /// </summary>
         public void ReadParameterModelToView()
         {
-            // CamSetting
-            txtFovX.Text = _camSetting.FOVX;
-            txtFovY.Text = _camSetting.FOVY;
-
-            txtResolution.Text = _camSetting.Resolution;
-            txtSerial.Text = _camSetting.Serial;
-
-            cbPatternSearchMode.SelectedIndex = _camSetting.PatternSearchMode;
-            cbPatternSearchTool.SelectedIndex = _camSetting.PatternSearchTool;
-
-            cbLightType.SelectedIndex = _camSetting.LightType;
-            txtLight1Comport.Text = _camSetting.LighComport;
-            txtLight1CH.Text = _camSetting.LightChanel;
-
-            cbReverseMode.SelectedIndex = _camSetting.CameraReverse;
-            cbImageSaveType.SelectedIndex = _camSetting.ImageSaveType;
-
-            txtGrabDelay.Text = _camSetting.GrapDelay;
-            txtLightDelay.Text = _camSetting.LightDelay;
-
-            txtAlignLimitX.Text = _camSetting.AlignLimitX;
-            txtAlignLimitY.Text = _camSetting.AlignLimitY;
-            txtAlignLimitT.Text = _camSetting.AlignLimitT;
-
-            txtAlignLimitCnt.Text = _camSetting.RetryLimitCount;
-            txtRetryCnt.Text = _camSetting.RetryCaptureCount;
-            txtImgAutoDelDay.Text = _camSetting.ImageAutoDeleteDay;
-
-            cbCenterAlign.Checked = Convert.ToBoolean(_camSetting.CenterAlign);
-
-            //Offset
-            txtAlignXOffset1.Text = _offset.AlignOffsetX;
-            txtAlignYOffset1.Text = _offset.AlignOffsetY;
-            txtAlignTOffset1.Text = _offset.AlignOffsetT;
-
-            txtCalXOffset.Text = _offset.CalOffsetX;
-            txtCalYOffset.Text = _offset.CalOffsetY;
-            txtCalTOffset.Text = _offset.CalOffsetT;
-
-            txtLengthOffset1.Text = _offset.LengthOffset1;
-            txtLengthOffset2.Text = _offset.LengthOffset2;
-
-
-            //Laser
-            txtMarkPosTorX.Text = _laser.MarkPositionTolX;
-            txtMarkPosTorY.Text = _laser.MarkPositionTolY;
-            txtMarkSizeX.Text = _laser.MaxSizeX;
-            txtMarkSizeY.Text = _laser.MaxSizeY;
-
-            cbRefsearch.SelectedIndex = _laser.AlignRefSearch;
-            cbImageProcessing.Checked = Convert.ToBoolean(_laser.UseImageProcessing);
-
-            cbMassPosition.SelectedIndex = _laser.BlobSearchMaxPos;
-            cbBlobBox.SelectedIndex = _laser.BlobBoxUsePoint;
-            cbPolarity.SelectedIndex = _laser.BlobPolarity;
-            txtMinPixel.Text = _laser.ConnectivityMinPixels;
-
-            cbMCRSearch.SelectedIndex = _laser.MCRSearch;
-            cbMCRRight.Checked = Convert.ToBoolean(_laser.MCRRight);
-            cbMCRUp.Checked = Convert.ToBoolean(_laser.MCRUp);
-
-            cbInspKind.SelectedIndex = _laser.InspectDegreeKind;
-            txtLaserAlignTor.Text = _laser.LaserAlignRefPosTol;
+            eCamName camName = (eCamName)cboName.SelectedItem;
+            if (camName == eCamName.LoadingPre1)
+            {
+                ReadCamSettingModelToView(LoadingPre1);
+                ReadCamOffsetModelToView(LoadingPre1);
+                ReadCamLaserModelToView(LoadingPre1);
+            }
+            if (camName == eCamName.LoadingPre2)
+            {
+                ReadCamSettingModelToView(LoadingPre2);
+                ReadCamOffsetModelToView(LoadingPre2);
+                ReadCamLaserModelToView(LoadingPre2);
+            }
+            if (camName == eCamName.Laser1)
+            {
+                ReadCamSettingModelToView(Laser1);
+                ReadCamOffsetModelToView(Laser1);
+                ReadCamLaserModelToView(Laser1);
+            }
+            if (camName == eCamName.Laser2)
+            {
+                ReadCamSettingModelToView(Laser2);
+                ReadCamOffsetModelToView(Laser2);
+                ReadCamLaserModelToView(Laser2);
+            }
         }
 
-
-
-
-        string PathRoot = @"C:\EQData1\Config\";
-        string ConfigName = @"\VisionConfig.ini";
-
-        void ReadCamSetting(string camName, ref CamSetting camSetting)
+        void ReadCamSetting(  ref CamSetting camSetting)
         {
             string Section = "CAMSETTING";
 
@@ -236,8 +324,7 @@ namespace Bending.UC
             camSetting.CenterAlign = int.Parse(RWFile.ReadFile(Section, "CenterAlign", "0"));
 
         }
-
-        void ReadCamOffset(string camName, ref CamSetting camSetting)
+        void ReadCamOffset(ref CamSetting camSetting)
         {
             string Section = "OFFSET";
 
@@ -252,8 +339,7 @@ namespace Bending.UC
             camSetting.LengthOffset1 = RWFile.ReadFile(Section, "LengthOffset1", "0");
             camSetting.LengthOffset2 = RWFile.ReadFile(Section, "LengthOffset2", "0");
         }
-
-        void ReadCamLaser(string camName, ref CamSetting camSetting)
+        void ReadCamLaser( ref CamSetting camSetting)
         {
             string Section = "LASER";
 
@@ -278,10 +364,6 @@ namespace Bending.UC
             camSetting.LaserAlignRefPosTol = RWFile.ReadFile(Section, "LaserAlignRefPosTol", "0");
         }
 
-
-
-
-
         /// <summary>
         /// Đẩy giá trị từ Folder vào Model
         /// </summary>
@@ -297,28 +379,27 @@ namespace Bending.UC
                     switch (camName)
                     {
                         case "LoadingPre1":
-                            ReadCamSetting(camName, ref cam1);
-                            ReadCamOffset(camName, ref cam1);
-                            ReadCamLaser(camName, ref cam1);
+                            ReadCamSetting( ref LoadingPre1);
+                            ReadCamOffset( ref LoadingPre1);
+                            ReadCamLaser(ref LoadingPre1);
                             break;
                         case "LoadingPre2":
-                            ReadCamSetting(camName, ref cam2);
-                            ReadCamOffset(camName, ref cam2);
-                            ReadCamLaser(camName, ref cam2);
+                            ReadCamSetting( ref LoadingPre2);
+                            ReadCamOffset( ref LoadingPre2);
+                            ReadCamLaser( ref LoadingPre2);
                             break;
                         case "Laser1":
-                            ReadCamSetting(camName, ref cam3);
-                            ReadCamOffset(camName, ref cam3);
-                            ReadCamLaser(camName, ref cam3);
+                            ReadCamSetting(ref Laser1);
+                            ReadCamOffset( ref Laser1);
+                            ReadCamLaser(ref Laser1);
                             break;
                         case "Laser2":
-                            ReadCamSetting(camName, ref cam4);
-                            ReadCamOffset(camName, ref cam4);
-                            ReadCamLaser(camName, ref cam4);
+                            ReadCamSetting(ref Laser2);
+                            ReadCamOffset(ref Laser2);
+                            ReadCamLaser(ref Laser2);
                             break;
 
                         default: break;
-
 
                     }
 
@@ -401,17 +482,70 @@ namespace Bending.UC
         }
 
 
+        void WriteCamSetting(string camName, ref CamSetting camSetting)
+        {
+            string Section = "CAMSETTING";
 
+            RWFile.WriteFile(Section, "FOVX", camSetting.FOVX);
+            RWFile.WriteFile(Section, "FOVY", camSetting.FOVY);
 
+            RWFile.WriteFile(Section, "Resolution", camSetting.Resolution);
+            RWFile.WriteFile(Section, "Serial", camSetting.Serial);
 
+            RWFile.WriteFile(Section, "PatternSearchMode", camSetting.PatternSearchMode.ToString());
+            RWFile.WriteFile(Section, "PatternSearchTool", camSetting.PatternSearchTool.ToString());
 
+            RWFile.WriteFile(Section, "LightType", camSetting.LightType.ToString());
+            RWFile.WriteFile(Section, "LighComport", camSetting.LighComport);
+            RWFile.WriteFile(Section, "LightChanel", camSetting.LightChanel);
 
+            RWFile.WriteFile(Section, "CameraReverse", camSetting.CameraReverse.ToString());
+            RWFile.WriteFile(Section, "ImageSaveType", camSetting.ImageSaveType.ToString());
+            RWFile.WriteFile(Section, "GrapDelay", camSetting.GrapDelay);
+            RWFile.WriteFile(Section, "LightDelay", camSetting.LightDelay);
 
+            RWFile.WriteFile(Section, "AlignLimitX", camSetting.AlignLimitX);
+            RWFile.WriteFile(Section, "AlignLimitY", camSetting.AlignLimitY);
+            RWFile.WriteFile(Section, "AlignLimitT", camSetting.AlignLimitT);
 
+            RWFile.WriteFile(Section, "RetryLimitCount", camSetting.RetryLimitCount);
+            RWFile.WriteFile(Section, "RetryCaptureCount", camSetting.RetryCaptureCount);
+            RWFile.WriteFile(Section, "ImageAutoDeleteDay", camSetting.ImageAutoDeleteDay);
 
+            RWFile.WriteFile(Section, "CenterAlign", camSetting.CenterAlign.ToString());
+        }
 
+        void WriteCamOffset(string camName, ref CamSetting camSetting)
+        {
+            string Section = "OFFSET";
 
+            RWFile.WriteFile(Section, "AlignOffsetX", camSetting.AlignOffsetX);
+            RWFile.WriteFile(Section, "AlignOffsetY", camSetting.AlignOffsetY);
+            RWFile.WriteFile(Section, "AlignOffsetT", camSetting.AlignOffsetT);
 
+            RWFile.WriteFile(Section, "CalOffsetX", camSetting.CalOffsetX);
+            RWFile.WriteFile(Section, "CalOffsetY", camSetting.CalOffsetY);
+            RWFile.WriteFile(Section, "CalOffsetT", camSetting.CalOffsetT);
+
+            RWFile.WriteFile(Section, "LengthOffset1", camSetting.LengthOffset1);
+            RWFile.WriteFile(Section, "LengthOffset2", camSetting.LengthOffset2);
+        }
+
+        void WriteCamLaser(string camName, ref CamSetting camSetting)
+        {
+            string Section = "OFFSET";
+
+            RWFile.WriteFile(Section, "AlignOffsetX", camSetting.AlignOffsetX);
+            RWFile.WriteFile(Section, "AlignOffsetY", camSetting.AlignOffsetY);
+            RWFile.WriteFile(Section, "AlignOffsetT", camSetting.AlignOffsetT);
+
+            RWFile.WriteFile(Section, "CalOffsetX", camSetting.CalOffsetX);
+            RWFile.WriteFile(Section, "CalOffsetY", camSetting.CalOffsetY);
+            RWFile.WriteFile(Section, "CalOffsetT", camSetting.CalOffsetT);
+
+            RWFile.WriteFile(Section, "LengthOffset1", camSetting.LengthOffset1);
+            RWFile.WriteFile(Section, "LengthOffset2", camSetting.LengthOffset2);
+        }
 
         /// <summary>
         /// Viết giá trị từ Model vào Folder
@@ -425,80 +559,34 @@ namespace Bending.UC
                 {
                     RWFile.RWFilePath = Path.Combine(PathRoot, camName, ConfigName);
 
-                    RWFile.RWFilePath = @"C:\EQData1\Config\VisionConfig.ini";
+                    switch (camName)
+                    {
+                        case "LoadingPre1":
+                            WriteCamSetting(camName, ref LoadingPre1);
+                            WriteCamOffset(camName, ref LoadingPre1);
+                            WriteCamLaser(camName, ref LoadingPre1);
+                            break;
+                        case "LoadingPre2":
+                            WriteCamSetting(camName, ref LoadingPre2);
+                            WriteCamOffset(camName, ref LoadingPre2);
+                            WriteCamLaser(camName, ref LoadingPre2);
+                            break;
+                        case "Laser1":
+                            WriteCamSetting(camName, ref Laser1);
+                            WriteCamOffset(camName, ref Laser1);
+                            WriteCamLaser(camName, ref Laser1);
+                            break;
+                        case "Laser2":
+                            WriteCamSetting(camName, ref Laser2);
+                            WriteCamOffset(camName, ref Laser2);
+                            WriteCamLaser(camName, ref Laser2);
+                            break;
 
-                    string Section = "CAMSETTING";
+                        default: break;
 
-                    RWFile.WriteFile(Section, "FOVX", _camSetting.FOVX);
-                    RWFile.WriteFile(Section, "FOVY", _camSetting.FOVY);
+                    }
 
-                    RWFile.WriteFile(Section, "Resolution", _camSetting.Resolution);
-                    RWFile.WriteFile(Section, "Serial", _camSetting.Serial);
-
-                    RWFile.WriteFile(Section, "PatternSearchMode", _camSetting.PatternSearchMode.ToString());
-                    RWFile.WriteFile(Section, "PatternSearchTool", _camSetting.PatternSearchTool.ToString());
-
-                    RWFile.WriteFile(Section, "CalType", _camSetting.CalType.ToString());
-                    RWFile.WriteFile(Section, "LightType", _camSetting.LightType.ToString());
-                    RWFile.WriteFile(Section, "LighComport", _camSetting.LighComport);
-                    RWFile.WriteFile(Section, "LightChanel", _camSetting.LightChanel);
-
-                    RWFile.WriteFile(Section, "CameraReverse", _camSetting.CameraReverse.ToString());
-                    RWFile.WriteFile(Section, "ImageSaveType", _camSetting.ImageSaveType.ToString());
-                    RWFile.WriteFile(Section, "GrapDelay", _camSetting.GrapDelay);
-                    RWFile.WriteFile(Section, "LightDelay", _camSetting.LightDelay);
-
-                    RWFile.WriteFile(Section, "AlignLimitX", _camSetting.AlignLimitX);
-                    RWFile.WriteFile(Section, "AlignLimitY", _camSetting.AlignLimitY);
-                    RWFile.WriteFile(Section, "AlignLimitT", _camSetting.AlignLimitT);
-
-                    RWFile.WriteFile(Section, "RetryLimitCount", _camSetting.RetryLimitCount);
-                    RWFile.WriteFile(Section, "RetryCaptureCount", _camSetting.RetryCaptureCount);
-                    RWFile.WriteFile(Section, "ImageAutoDeleteDay", _camSetting.ImageAutoDeleteDay);
-
-                    RWFile.WriteFile(Section, "CenterAlign", _camSetting.CenterAlign.ToString());
-
-
-                    Section = "LASER";
-
-                    RWFile.WriteFile(Section, "MarkPositionTolX", _laser.MarkPositionTolX);
-                    RWFile.WriteFile(Section, "MarkPositionTolY", _laser.MarkPositionTolY);
-
-                    RWFile.WriteFile(Section, "MaxSizeX", _laser.MaxSizeX);
-                    RWFile.WriteFile(Section, "MaxSizeY", _laser.MaxSizeY);
-
-                    RWFile.WriteFile(Section, "AlignRefSearch", _laser.AlignRefSearch.ToString());
-                    RWFile.WriteFile(Section, "UseImageProcessing", _laser.UseImageProcessing.ToString());
-
-                    RWFile.WriteFile(Section, "BlobSearchMaxPos", _laser.BlobSearchMaxPos.ToString());
-                    RWFile.WriteFile(Section, "BlobBoxUsePoint", _laser.BlobBoxUsePoint.ToString());
-                    RWFile.WriteFile(Section, "BlobPolarity", _laser.BlobPolarity.ToString());
-                    RWFile.WriteFile(Section, "ConnectivityMinPixels", _laser.ConnectivityMinPixels);
-
-                    RWFile.WriteFile(Section, "MCRSearch", _laser.MCRSearch.ToString());
-                    RWFile.WriteFile(Section, "MCRRight", _laser.MCRRight.ToString());
-                    RWFile.WriteFile(Section, "MCRUp", _laser.MCRUp.ToString());
-
-                    RWFile.WriteFile(Section, "InspectDegreeKind", _laser.InspectDegreeKind.ToString());
-                    RWFile.WriteFile(Section, "LaserAlignRefPosTol", _laser.LaserAlignRefPosTol);
-
-
-                    Section = "OFFSET";
-
-                    RWFile.WriteFile(Section, "AlignOffsetX", _offset.AlignOffsetX);
-                    RWFile.WriteFile(Section, "AlignOffsetY", _offset.AlignOffsetY);
-                    RWFile.WriteFile(Section, "AlignOffsetT", _offset.AlignOffsetT);
-
-                    RWFile.WriteFile(Section, "CalOffsetX", _offset.CalOffsetX);
-                    RWFile.WriteFile(Section, "CalOffsetY", _offset.CalOffsetY);
-                    RWFile.WriteFile(Section, "CalOffsetT", _offset.CalOffsetT);
-
-                    RWFile.WriteFile(Section, "LengthOffset1", _offset.LengthOffset1);
-                    RWFile.WriteFile(Section, "LengthOffset2", _offset.LengthOffset2);
                 }
-
-
-
             }
             catch (Exception)
             {
@@ -506,7 +594,10 @@ namespace Bending.UC
             }
         }
 
-
         #endregion
+
+
     }
+
 }
+
