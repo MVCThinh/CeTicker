@@ -34,22 +34,25 @@ namespace Bending.Data.Helpers
             }
         }
 
+        private string GetFormattedLogEntry(string logString)
+        {
+            return $"{DateTime.Now:dd-MM-yyyy__HH:mm:ss}:{DateTime.Now.Millisecond}---{logString}";
+        }
         public void ExceptionLogSave(string logString)
         {
             try
             {
-                logString = DateTime.Now.ToString("dd-MM-yyyy__HH:mm:ss") + ":" + DateTime.Now.Millisecond.ToString() + "---" + logString;
-
                 string logDate = DateTime.Now.ToString("dd--MM-yyyy");
                 string logHour = DateTime.Now.Hour.ToString();
+                string logPath = Path.Combine(cExceptionLogPath, logDate);
 
-
-                string logPath = cExceptionLogPath + "/" + logDate;
                 CreateLogPath(logPath);
 
 
-                string logFolder = logPath + "/" + logDate + "-" + logHour;
-                WirteLogToFolder(logFolder, logString);
+                string logFolder = Path.Combine(logPath, logDate + "-" + logHour);
+                string logEntry = GetFormattedLogEntry(logString);
+
+                WirteLogToFolder(logFolder, logEntry);
 
             }
             catch (Exception)
@@ -67,14 +70,16 @@ namespace Bending.Data.Helpers
 
                 string logDate = DateTime.Now.ToString("dd--MM-yyyy");
                 string logHour = DateTime.Now.Hour.ToString();
+                string logPath = Path.Combine(cSystemLogPath, logDate);
 
 
-                string logPath = cSystemLogPath + "/" + logDate;
                 CreateLogPath(logPath);
 
 
-                string logFolder = logPath + "/" + logDate + "-" + logHour;
-                WirteLogToFolder(logFolder, logString);
+                string logFolder = Path.Combine(logPath, logDate + "-" + logHour);
+                string logEntry = GetFormattedLogEntry(logString);
+
+                WirteLogToFolder(logFolder, logEntry);
 
             }
             catch (Exception)
