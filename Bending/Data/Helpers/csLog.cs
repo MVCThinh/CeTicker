@@ -17,17 +17,17 @@ namespace Bending.Data.Helpers
         public static int LogKeepDay = 30;
 
 
+        // Tạo thẳng thư mục mà không cần kiểm tra
         private void CreateLogPath(string logPath)
         {
-            if (!Directory.Exists(logPath))
-            {
-                Directory.CreateDirectory(logPath);
-            }
+            Directory.CreateDirectory(logPath);
+
         }
 
+        // Nên sử dung FileMode.Append : true
         private void WirteLogToFolder(string logPath, string logString)
         {
-            using (var fileInfo = new StreamWriter(logPath, true))
+            using (var fileInfo = new StreamWriter(logPath, append: true))
             {
                 fileInfo.WriteLine(logString);
                 fileInfo.Flush();
@@ -49,7 +49,7 @@ namespace Bending.Data.Helpers
                 CreateLogPath(logPath);
 
 
-                string logFolder = Path.Combine(logPath, logDate + "-" + logHour);
+                string logFolder = Path.Combine(logPath, $"{logDate}-{logHour}");
                 string logEntry = GetFormattedLogEntry(logString);
 
                 WirteLogToFolder(logFolder, logEntry);
@@ -76,7 +76,7 @@ namespace Bending.Data.Helpers
                 CreateLogPath(logPath);
 
 
-                string logFolder = Path.Combine(logPath, logDate + "-" + logHour);
+                string logFolder = Path.Combine(logPath, $"{logDate}-{logHour}");
                 string logEntry = GetFormattedLogEntry(logString);
 
                 WirteLogToFolder(logFolder, logEntry);
