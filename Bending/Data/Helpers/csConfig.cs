@@ -16,22 +16,6 @@ namespace Bending.Data.Class
 {
     public class csConfig
     {
-        private readonly CamSettingModel _camSetting;
-        private readonly  LaserModel _laser; 
-        private readonly  OffsetModel _offset;
-
-        public csConfig()
-        {
-
-        }
-
-        public csConfig(CamSettingModel camSetting, LaserModel laser, OffsetModel offset)
-        {
-            _camSetting = camSetting;
-            _laser = laser;
-            _offset = offset;
-        }
-
 
 
 

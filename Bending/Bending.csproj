@@ -173,10 +173,7 @@
     <Compile Include="Data\Helpers\csVision.cs" />
     <Compile Include="Data\Helpers\RWFile.cs" />
     <Compile Include="Data\Models\FolderPath.cs" />
-    <Compile Include="Data\Models\LaserModel.cs" />
-    <Compile Include="Data\Models\OffsetModel.cs" />
     <Compile Include="Data\Models\Parameter.cs" />
-    <Compile Include="Data\Models\CamSettingModel.cs" />
     <Compile Include="Data\Models\Setting\CamSetting.cs" />
     <Compile Include="Data\StaticClass\Footer.cs" />
     <Compile Include="Data\Static\CalibControl.cs" />

@@ -29,8 +29,6 @@ namespace Bending.UC
             InitializeComponent();
 
             Initial();
-
-
         }
 
         private void Initial()
@@ -48,32 +46,7 @@ namespace Bending.UC
 
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            eCamName camName = (eCamName)cboName.SelectedItem;
-            if (camName == eCamName.LoadingPre1)
-            {
-                ReadCamSettingModelToView(LoadingPre1);
-                ReadCamOffsetModelToView(LoadingPre1);
-                ReadCamLaserModelToView(LoadingPre1);
-            }
-            if (camName == eCamName.LoadingPre2)
-            {
-                ReadCamSettingModelToView(LoadingPre2);
-                ReadCamOffsetModelToView(LoadingPre2);
-                ReadCamLaserModelToView(LoadingPre2);
-            }
-            if (camName == eCamName.Laser1)
-            {
-                ReadCamSettingModelToView(Laser1);
-                ReadCamOffsetModelToView(Laser1);
-                ReadCamLaserModelToView(Laser1);
-            }
-            if (camName == eCamName.Laser2)
-            {
-                ReadCamSettingModelToView(Laser2);
-                ReadCamOffsetModelToView(Laser2);
-                ReadCamLaserModelToView(Laser2);
-            }
-
+            ReadParameterModelToView();
         }
 
 
@@ -160,34 +133,15 @@ namespace Bending.UC
         public void WriteParameterViewToModel()
         {
             eCamName camName = (eCamName)cboName.SelectedItem;
-            if (camName == eCamName.LoadingPre1)
-            {
-                WriteCamSettingViewToModel(LoadingPre1);
-                WriteCamOffsetViewToModel(LoadingPre1);
-                WriteCamLaserViewToModel(LoadingPre1);
-            }
-            if (camName == eCamName.LoadingPre2)
-            {
-                WriteCamSettingViewToModel(LoadingPre2);
-                WriteCamOffsetViewToModel(LoadingPre2);
-                WriteCamLaserViewToModel(LoadingPre2);
-            }
-            if (camName == eCamName.Laser1)
-            {
-                WriteCamSettingViewToModel(Laser1);
-                WriteCamOffsetViewToModel(Laser1);
-                WriteCamLaserViewToModel(Laser1);
-            }
-            if (camName == eCamName.Laser2)
-            {
-                WriteCamSettingViewToModel(Laser2);
-                WriteCamOffsetViewToModel(Laser2);
-                WriteCamLaserViewToModel(Laser2);
-            }
+            CamSetting cam = GetCamSettingByCamName(camName);
 
-
+            if (cam != null)
+            {
+                WriteCamSettingViewToModel(cam);
+                WriteCamOffsetViewToModel(cam);
+                WriteCamLaserViewToModel(cam);
+            }
         }
-
 
         void ReadCamSettingModelToView( CamSetting camSetting)
         {
@@ -265,33 +219,35 @@ namespace Bending.UC
         public void ReadParameterModelToView()
         {
             eCamName camName = (eCamName)cboName.SelectedItem;
-            if (camName == eCamName.LoadingPre1)
+            CamSetting cam = GetCamSettingByCamName(camName);
+
+            if (cam != null)
             {
-                ReadCamSettingModelToView(LoadingPre1);
-                ReadCamOffsetModelToView(LoadingPre1);
-                ReadCamLaserModelToView(LoadingPre1);
-            }
-            if (camName == eCamName.LoadingPre2)
-            {
-                ReadCamSettingModelToView(LoadingPre2);
-                ReadCamOffsetModelToView(LoadingPre2);
-                ReadCamLaserModelToView(LoadingPre2);
-            }
-            if (camName == eCamName.Laser1)
-            {
-                ReadCamSettingModelToView(Laser1);
-                ReadCamOffsetModelToView(Laser1);
-                ReadCamLaserModelToView(Laser1);
-            }
-            if (camName == eCamName.Laser2)
-            {
-                ReadCamSettingModelToView(Laser2);
-                ReadCamOffsetModelToView(Laser2);
-                ReadCamLaserModelToView(Laser2);
+                ReadCamSettingModelToView(cam);
+                ReadCamOffsetModelToView(cam);
+                ReadCamLaserModelToView(cam);
             }
         }
 
-        void ReadCamSetting(  ref CamSetting camSetting)
+        private CamSetting GetCamSettingByCamName(eCamName camName)
+        {
+            switch (camName)
+            {
+                case eCamName.LoadingPre1:
+                    return LoadingPre1;
+                case eCamName.LoadingPre2:
+                    return LoadingPre2;
+                case eCamName.Laser1:
+                    return Laser1;
+                case eCamName.Laser2:
+                    return Laser2;
+                default:
+                    return null;
+            }
+        }
+
+
+        void ReadCamSetting(ref CamSetting camSetting)
         {
             string Section = "CAMSETTING";
 
@@ -372,106 +328,35 @@ namespace Bending.UC
         {
             try
             {
-                foreach (string camName in Enum.GetNames(typeof(eCamName)))
+                string[] camNames = Enum.GetNames(typeof(eCamName));
+
+                foreach (string camName in camNames)
                 {
                     RWFile.RWFilePath = Path.Combine(PathRoot, camName, ConfigName);
+
+                    CamSetting camSetting;
 
                     switch (camName)
                     {
                         case "LoadingPre1":
-                            ReadCamSetting( ref LoadingPre1);
-                            ReadCamOffset( ref LoadingPre1);
-                            ReadCamLaser(ref LoadingPre1);
+                            camSetting = LoadingPre1;
                             break;
                         case "LoadingPre2":
-                            ReadCamSetting( ref LoadingPre2);
-                            ReadCamOffset( ref LoadingPre2);
-                            ReadCamLaser( ref LoadingPre2);
+                            camSetting = LoadingPre2;
                             break;
                         case "Laser1":
-                            ReadCamSetting(ref Laser1);
-                            ReadCamOffset( ref Laser1);
-                            ReadCamLaser(ref Laser1);
+                            camSetting = Laser1;
                             break;
                         case "Laser2":
-                            ReadCamSetting(ref Laser2);
-                            ReadCamOffset(ref Laser2);
-                            ReadCamLaser(ref Laser2);
+                            camSetting = Laser2;
                             break;
-
-                        default: break;
-
+                        default:
+                            continue;
                     }
 
-#if (test)
-
-                    _camSetting.FOVX = RWFile.ReadFile(Section, "FOVX", "0");
-                    _camSetting.FOVY = RWFile.ReadFile(Section, "FOVY", "0");
-
-                    _camSetting.Resolution = RWFile.ReadFile(Section, "Resolution", "0");
-                    _camSetting.Serial = RWFile.ReadFile(Section, "Serial", "0");
-
-                    _camSetting.PatternSearchMode = int.Parse(RWFile.ReadFile(Section, "PatternSearchMode", "0"));
-                    _camSetting.PatternSearchTool = int.Parse(RWFile.ReadFile(Section, "PatternSearchTool", "0"));
-
-                    _camSetting.LightType = int.Parse(RWFile.ReadFile(Section, "LightType", "0"));
-                    _camSetting.LighComport = RWFile.ReadFile(Section, "LighComport", "0");
-                    _camSetting.LightChanel = RWFile.ReadFile(Section, "LightChanel", "0");
-
-                    _camSetting.CameraReverse = int.Parse(RWFile.ReadFile(Section, "CameraReverse", "0"));
-                    _camSetting.ImageSaveType = int.Parse(RWFile.ReadFile(Section, "ImageSaveType", "0"));
-
-                    _camSetting.GrapDelay = RWFile.ReadFile(Section, "GrapDelay", "0");
-                    _camSetting.LightDelay = RWFile.ReadFile(Section, "LightDelay", "0");
-
-                    _camSetting.AlignLimitX = RWFile.ReadFile(Section, "AlignLimitX", "0");
-                    _camSetting.AlignLimitY = RWFile.ReadFile(Section, "AlignLimitY", "0");
-                    _camSetting.AlignLimitT = RWFile.ReadFile(Section, "AlignLimitT", "0");
-
-                    _camSetting.RetryLimitCount = RWFile.ReadFile(Section, "RetryLimitCount", "0");
-                    _camSetting.RetryCaptureCount = RWFile.ReadFile(Section, "RetryCaptureCount", "0");
-                    _camSetting.ImageAutoDeleteDay = RWFile.ReadFile(Section, "ImageAutoDeleteDay", "0");
-
-                    _camSetting.CenterAlign = int.Parse(RWFile.ReadFile(Section, "CenterAlign", "0"));
-
-
-                    Section = "OFFSET";
-
-                    _offset.AlignOffsetX = RWFile.ReadFile(Section, "AlignOffsetX", "0");
-                    _offset.AlignOffsetY = RWFile.ReadFile(Section, "AlignOffsetY", "0");
-                    _offset.AlignOffsetT = RWFile.ReadFile(Section, "AlignOffsetT", "0");
-
-                    _offset.CalOffsetX = RWFile.ReadFile(Section, "CalOffsetX", "0");
-                    _offset.CalOffsetY = RWFile.ReadFile(Section, "CalOffsetY", "0");
-                    _offset.CalOffsetT = RWFile.ReadFile(Section, "CalOffsetT", "0");
-
-                    _offset.LengthOffset1 = RWFile.ReadFile(Section, "LengthOffset1", "0");
-                    _offset.LengthOffset2 = RWFile.ReadFile(Section, "LengthOffset2", "0");
-
-
-                    Section = "LASER";
-
-                    _laser.MarkPositionTolX = RWFile.ReadFile(Section, "MarkPositionTolX", "0");
-                    _laser.MarkPositionTolY = RWFile.ReadFile(Section, "MarkPositionTolY", "0");
-
-                    _laser.MaxSizeX = RWFile.ReadFile(Section, "MaxSizeX", "0");
-                    _laser.MaxSizeY = RWFile.ReadFile(Section, "MaxSizeY", "0");
-                    _laser.AlignRefSearch = int.Parse(RWFile.ReadFile(Section, "AlignRefSearch", "0"));
-                    _laser.UseImageProcessing = int.Parse(RWFile.ReadFile(Section, "UseImageProcessing", "0"));
-
-                    _laser.BlobSearchMaxPos = int.Parse(RWFile.ReadFile(Section, "BlobSearchMaxPos", "0"));
-                    _laser.BlobBoxUsePoint = int.Parse(RWFile.ReadFile(Section, "BlobBoxUsePoint", "0"));
-                    _laser.BlobPolarity = int.Parse(RWFile.ReadFile(Section, "BlobPolarity", "0"));
-                    _laser.ConnectivityMinPixels = RWFile.ReadFile(Section, "ConnectivityMinPixels", "0");
-
-                    _laser.MCRSearch = int.Parse(RWFile.ReadFile(Section, "MCRSearch", "0"));
-                    _laser.MCRRight = int.Parse(RWFile.ReadFile(Section, "MCRRight", "0"));
-                    _laser.MCRUp = int.Parse(RWFile.ReadFile(Section, "MCRUp", "0"));
-
-                    _laser.InspectDegreeKind = int.Parse(RWFile.ReadFile(Section, "InspectDegreeKind", "0"));
-                    _laser.LaserAlignRefPosTol = RWFile.ReadFile(Section, "LaserAlignRefPosTol", "0");
-
-#endif
+                    ReadCamSetting(ref camSetting);
+                    ReadCamOffset(ref camSetting);
+                    ReadCamLaser(ref camSetting);
                 }
 
             }
@@ -481,8 +366,7 @@ namespace Bending.UC
             }
         }
 
-
-        void WriteCamSetting(string camName, ref CamSetting camSetting)
+        void WriteCamSetting(ref CamSetting camSetting)
         {
             string Section = "CAMSETTING";
 
@@ -515,7 +399,7 @@ namespace Bending.UC
             RWFile.WriteFile(Section, "CenterAlign", camSetting.CenterAlign.ToString());
         }
 
-        void WriteCamOffset(string camName, ref CamSetting camSetting)
+        void WriteCamOffset(ref CamSetting camSetting)
         {
             string Section = "OFFSET";
 
@@ -531,7 +415,7 @@ namespace Bending.UC
             RWFile.WriteFile(Section, "LengthOffset2", camSetting.LengthOffset2);
         }
 
-        void WriteCamLaser(string camName, ref CamSetting camSetting)
+        void WriteCamLaser(ref CamSetting camSetting)
         {
             string Section = "OFFSET";
 
@@ -555,39 +439,38 @@ namespace Bending.UC
         {
             try
             {
-                foreach (string camName in Enum.GetNames(typeof(eCamName)))
+                string[] camNames = Enum.GetNames(typeof(eCamName));
+
+                foreach (string camName in camNames)
                 {
                     RWFile.RWFilePath = Path.Combine(PathRoot, camName, ConfigName);
+
+                    CamSetting camSetting;
 
                     switch (camName)
                     {
                         case "LoadingPre1":
-                            WriteCamSetting(camName, ref LoadingPre1);
-                            WriteCamOffset(camName, ref LoadingPre1);
-                            WriteCamLaser(camName, ref LoadingPre1);
+                            camSetting = LoadingPre1;
                             break;
                         case "LoadingPre2":
-                            WriteCamSetting(camName, ref LoadingPre2);
-                            WriteCamOffset(camName, ref LoadingPre2);
-                            WriteCamLaser(camName, ref LoadingPre2);
+                            camSetting = LoadingPre2;
                             break;
                         case "Laser1":
-                            WriteCamSetting(camName, ref Laser1);
-                            WriteCamOffset(camName, ref Laser1);
-                            WriteCamLaser(camName, ref Laser1);
+                            camSetting = Laser1;
                             break;
                         case "Laser2":
-                            WriteCamSetting(camName, ref Laser2);
-                            WriteCamOffset(camName, ref Laser2);
-                            WriteCamLaser(camName, ref Laser2);
+                            camSetting = Laser2;
                             break;
-
-                        default: break;
-
+                        default:
+                            continue;
                     }
 
+                    WriteCamSetting(ref camSetting);
+                    WriteCamOffset(ref camSetting);
+                    WriteCamLaser(ref camSetting);
                 }
-            }
+
+            }            
             catch (Exception)
             {
                 throw;
