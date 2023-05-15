@@ -22,18 +22,17 @@ namespace Bending
     public partial class Menu : Form
     {
 
+        private static PerformanceCounter cpuCounter;
+        private static PerformanceCounter ramCounter;
+        private static ComputerInfo computerInfo;
+
+
         public static ucAutoMain frmAutoMain = new ucAutoMain();
         public static ucHistory frmHistory = new ucHistory();
         public static ucRecipe frmRecipe = new ucRecipe();
         public static ucSetting frmSetting = new ucSetting();
 
 
-
-
-
-        public static string PathToFolderINI;
-
-        private string old_rcpName = "";
 
 
         private Button[] btnMenu;
@@ -52,12 +51,6 @@ namespace Bending
             GetPCStatus();
             DisplayChange(btnAutoMain.Name);
 
-#if (noGPT)
-            for (int i = 0; i < btnMenu.Length; i++)
-            {
-                btnMenu[i].Click += btnMenu_Click;
-            }
-#endif
 
             Array.ForEach(btnMenu, btn => btn.Click += btnMenu_Click);
 
@@ -77,19 +70,6 @@ namespace Bending
         {
             string btnText = (sender as Button).Text;
 
-#if (noGPT)
-            for (int i = 0; i < btnMenu.Length; i++)
-            {
-                if (btnText == btnMenu[i].Text)
-                {
-                    DisplayChange(btnMenu[i].Name);
-                    btnMenu[i].ForeColor = Color.Yellow;
-                }
-                else
-                    btnMenu[i].ForeColor = Color.White;
-            }
-#endif
-
             foreach (Button btn in btnMenu)
             {
                 if (btnText == btn.Text)
@@ -106,13 +86,6 @@ namespace Bending
 
         private void DisplayChange(string btnName)
         {
-#if (noGPT)
-            for (int i = 0; i < pnMenu.Controls.Count; i++)
-            {
-                pnMenu.Controls[i].Visible = btnName.ToLower().Substring(3, btnName.Length - 3)
-                    == pnMenu.Controls[i].Name.ToLower().Substring(2, pnMenu.Controls[i].Name.Length - 2) ? true : false;
-            }
-#endif
 
             pnMenu.Controls.Cast<Control>().ToList().ForEach(control =>
             {
@@ -123,23 +96,59 @@ namespace Bending
 
 
 
-
-
-
-        csRecipe csRecipe = new csRecipe();
-        private void timerMenu_Tick(object sender, EventArgs e)
+        public void GetPCStatus()
         {
-            if (old_rcpName != csRecipe.RecipeName)
-            {
+            cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            ramCounter = new PerformanceCounter("Memory", "Available MBytes");
+            computerInfo = new ComputerInfo();
 
-            }
+            var t = new System.Windows.Forms.Timer();
+            t.Interval = 3000;
+            t.Enabled = true;
+            t.Tick += Timer_StatusPC;
+
+        }
+        private void Timer_StatusPC(object sender, EventArgs e)
+        {
+
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
+            DriveInfo cDisk = allDrives.FirstOrDefault(drive => drive.Name.Equals(@"C:\"));
+            DriveInfo dDisk = allDrives.FirstOrDefault(drive => drive.Name.Equals(@"D:\"));
+
+            double cPercentUse = (cDisk.TotalSize - cDisk.AvailableFreeSpace) / (double)cDisk.TotalSize * 100;
+            double dPercentUse = (dDisk.TotalSize - dDisk.AvailableFreeSpace) / (double)dDisk.TotalSize * 100;
+
+            double cpu = cpuCounter.NextValue();
+            double ramUse = (computerInfo.TotalPhysicalMemory - computerInfo.AvailablePhysicalMemory) / (double)computerInfo.TotalPhysicalMemory * 100;
+
+            pgbCpu.Value = (int)cpu;
+            pgbRam.Value = (int)ramUse;
+            pgbHdc.Value = (int)cPercentUse;
+            pgbHdd.Value = (int)dPercentUse;
+
+            prograssbarcolor.SetState(pgbCpu, cpu > 80 ? 2 : 1);
+            prograssbarcolor.SetState(pgbRam, ramUse > 80 ? 2 : 1);
+            prograssbarcolor.SetState(pgbHdc, cPercentUse > 80 ? 2 : 1);
+            prograssbarcolor.SetState(pgbHdd, dPercentUse > 80 ? 2 : 1);
+
+            lbCpuP.Text = $"{cpu:0.00} %";
+            lbRamP.Text = $"{ramUse:0.00} %";
+            lbHddCP.Text = $"{cPercentUse:0.00} %";
+            lbHDDDP.Text = $"{dPercentUse:0.00} %";
+
+
+        }
+
+    }
+    public static class prograssbarcolor
+    {
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr w, IntPtr l);
+
+        public static void SetState(this ProgressBar pBar, int state)
+        {
+            SendMessage(pBar.Handle, 1040, (IntPtr)state, IntPtr.Zero);
         }
     }
-
-
-
-
-
-
 
 }

@@ -46,7 +46,15 @@ namespace Bending.UC
 
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ReadParameterModelToView();
+            eCamName camName = (eCamName)cboName.SelectedItem;
+            CamSetting cam = GetCamSettingByCamName(camName);
+
+            if (cam != null)
+            {
+                ReadCamSettingModelToView(cam);
+                ReadCamOffsetModelToView(cam);
+                ReadCamLaserModelToView(cam);
+            }
         }
 
 

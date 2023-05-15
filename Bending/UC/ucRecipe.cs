@@ -1,8 +1,11 @@
 ﻿using Bending.Data.Enums;
+using Bending.Data.Helpers;
+using Bending.Data.Models.Setting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,6 +17,25 @@ namespace Bending.UC
 {
     public partial class ucRecipe : UserControl
     {
+
+
+        public static CamVision LoadingPre1 = new CamVision();
+        public static CamVision LoadingPre2 = new CamVision();
+        public static CamVision Laser1 = new CamVision();
+        public static CamVision Laser2 = new CamVision();
+
+        public static CamVision[] AllCam = new CamVision[]
+        {
+            LoadingPre1,
+            LoadingPre2,
+            Laser1,
+            Laser2
+        };
+
+
+        
+
+
         public ucRecipe()
         {
             InitializeComponent();
@@ -52,11 +74,66 @@ namespace Bending.UC
 
         }
 
+        private void TriggerOrLiveCamSetting(bool isLive)
+        {
+            eCamName camName = (eCamName)cbCamList.SelectedItem;
+            CamVision cam = GetCamSettingByCamName(camName);
+
+            cogDS.InteractiveGraphics.Clear();
+            cogDS2.InteractiveGraphics.Clear();
+
+            if (cam != null)
+            {
+                // Cam LoadingPre1 or LoadingPre2 
+                if (camName == eCamName.LoadingPre1 || camName == eCamName.LoadingPre2)
+                {
+                    LoadingPre1.LiveOrTrigger(isLive);
+                    LoadingPre2.LiveOrTrigger(isLive);
+                    cogDS.Image = LoadingPre1.cogDisplay.Image;
+                    cogDS2.Image = LoadingPre2.cogDisplay.Image;
+                }
+                else
+                {
+                    Laser1.LiveOrTrigger(isLive);
+                    Laser2.LiveOrTrigger(isLive);
+                    cogDS.Image = Laser1.cogDisplay.Image;
+                    cogDS2.Image = Laser2.cogDisplay.Image;
+                }
+            }
+        }
 
 
 
+        private void cbCamList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TriggerOrLiveCamSetting(false);
+        }
 
+        private void btnLiveImage_Click(object sender, EventArgs e)
+        {
+            TriggerOrLiveCamSetting(true);
+        }
 
+        private CamVision GetCamSettingByCamName(eCamName camName)
+        {
+            switch (camName)
+            {
+                case eCamName.LoadingPre1:
+                    return LoadingPre1;
+                case eCamName.LoadingPre2:
+                    return LoadingPre2;
+                case eCamName.Laser1:
+                    return Laser1;
+                case eCamName.Laser2:
+                    return Laser2;
+                default:
+                    return null;
+            }
+        }
 
+        private void btnCal_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -158,7 +158,6 @@
             this.btnClearImage = new System.Windows.Forms.Button();
             this.btnZoomIn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnOpenCam3 = new System.Windows.Forms.Button();
             this.cbCalImageTest = new System.Windows.Forms.CheckBox();
             this.btnCapture = new System.Windows.Forms.Button();
             this.btnZoomAll1 = new System.Windows.Forms.Button();
@@ -373,8 +372,6 @@
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cogDS = new Cognex.VisionPro.Display.CogDisplay();
             this.cogDS2 = new Cognex.VisionPro.Display.CogDisplay();
-            this.cogDS3 = new Cognex.VisionPro.Display.CogDisplay();
-            this.cogDS4 = new Cognex.VisionPro.Display.CogDisplay();
             this.tbTrace.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -426,8 +423,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Recipedgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cogDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cogDS2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cogDS3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cogDS4)).BeginInit();
             this.SuspendLayout();
             // 
             // label63
@@ -452,6 +447,7 @@
             this.cbCamList.Name = "cbCamList";
             this.cbCamList.Size = new System.Drawing.Size(240, 28);
             this.cbCamList.TabIndex = 85;
+            this.cbCamList.SelectedIndexChanged += new System.EventHandler(this.cbCamList_SelectedIndexChanged);
             // 
             // cbPointLine
             // 
@@ -2033,7 +2029,6 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.btnOpenCam3);
             this.panel2.Controls.Add(this.cbCalImageTest);
             this.panel2.Controls.Add(this.btnCapture);
             this.panel2.Controls.Add(this.btnZoomAll1);
@@ -2047,23 +2042,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 250);
             this.panel2.TabIndex = 309;
-            // 
-            // btnOpenCam3
-            // 
-            this.btnOpenCam3.BackColor = System.Drawing.Color.White;
-            this.btnOpenCam3.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
-            this.btnOpenCam3.FlatAppearance.BorderSize = 2;
-            this.btnOpenCam3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnOpenCam3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnOpenCam3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenCam3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.btnOpenCam3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnOpenCam3.Location = new System.Drawing.Point(3, 37);
-            this.btnOpenCam3.Name = "btnOpenCam3";
-            this.btnOpenCam3.Size = new System.Drawing.Size(95, 32);
-            this.btnOpenCam3.TabIndex = 320;
-            this.btnOpenCam3.Text = "Open (Cam3)";
-            this.btnOpenCam3.UseVisualStyleBackColor = false;
             // 
             // cbCalImageTest
             // 
@@ -2183,6 +2161,7 @@
             this.btnLiveImage.TabIndex = 51;
             this.btnLiveImage.Text = "Live Image";
             this.btnLiveImage.UseVisualStyleBackColor = false;
+            this.btnLiveImage.Click += new System.EventHandler(this.btnLiveImage_Click);
             // 
             // btnPattern
             // 
@@ -3337,10 +3316,10 @@
             // 
             this.tbResult_2.Controls.Add(this.dgvCalResult2_1);
             this.tbResult_2.Controls.Add(this.dgvCalResult2_2);
-            this.tbResult_2.Location = new System.Drawing.Point(4, 22);
+            this.tbResult_2.Location = new System.Drawing.Point(4, 24);
             this.tbResult_2.Name = "tbResult_2";
             this.tbResult_2.Padding = new System.Windows.Forms.Padding(3);
-            this.tbResult_2.Size = new System.Drawing.Size(627, 293);
+            this.tbResult_2.Size = new System.Drawing.Size(627, 291);
             this.tbResult_2.TabIndex = 1;
             this.tbResult_2.Text = "tbResult_2";
             this.tbResult_2.UseVisualStyleBackColor = true;
@@ -3453,10 +3432,10 @@
             // 
             this.tbResult_3.Controls.Add(this.dgvCalResult3_1);
             this.tbResult_3.Controls.Add(this.dgvCalResult3_2);
-            this.tbResult_3.Location = new System.Drawing.Point(4, 22);
+            this.tbResult_3.Location = new System.Drawing.Point(4, 24);
             this.tbResult_3.Name = "tbResult_3";
             this.tbResult_3.Padding = new System.Windows.Forms.Padding(3);
-            this.tbResult_3.Size = new System.Drawing.Size(627, 293);
+            this.tbResult_3.Size = new System.Drawing.Size(627, 291);
             this.tbResult_3.TabIndex = 2;
             this.tbResult_3.Text = "tbResult_3";
             this.tbResult_3.UseVisualStyleBackColor = true;
@@ -3569,10 +3548,10 @@
             // 
             this.tbResult_4.Controls.Add(this.dgvCalResult4_1);
             this.tbResult_4.Controls.Add(this.dgvCalResult4_2);
-            this.tbResult_4.Location = new System.Drawing.Point(4, 22);
+            this.tbResult_4.Location = new System.Drawing.Point(4, 24);
             this.tbResult_4.Name = "tbResult_4";
             this.tbResult_4.Padding = new System.Windows.Forms.Padding(3);
-            this.tbResult_4.Size = new System.Drawing.Size(627, 293);
+            this.tbResult_4.Size = new System.Drawing.Size(627, 291);
             this.tbResult_4.TabIndex = 3;
             this.tbResult_4.Text = "tbResult_4";
             this.tbResult_4.UseVisualStyleBackColor = true;
@@ -3952,6 +3931,7 @@
             this.btnCal.TabIndex = 283;
             this.btnCal.Text = "Start";
             this.btnCal.UseVisualStyleBackColor = false;
+            this.btnCal.Click += new System.EventHandler(this.btnCal_Click);
             // 
             // lbl_ScaleName
             // 
@@ -4533,7 +4513,7 @@
             this.cogDS.MouseWheelSensitivity = 1D;
             this.cogDS.Name = "cogDS";
             this.cogDS.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDS.OcxState")));
-            this.cogDS.Size = new System.Drawing.Size(620, 425);
+            this.cogDS.Size = new System.Drawing.Size(620, 774);
             this.cogDS.TabIndex = 298;
             // 
             // cogDS2
@@ -4550,50 +4530,14 @@
             this.cogDS2.MouseWheelSensitivity = 1D;
             this.cogDS2.Name = "cogDS2";
             this.cogDS2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDS2.OcxState")));
-            this.cogDS2.Size = new System.Drawing.Size(620, 420);
+            this.cogDS2.Size = new System.Drawing.Size(620, 769);
             this.cogDS2.TabIndex = 299;
-            // 
-            // cogDS3
-            // 
-            this.cogDS3.ColorMapLowerClipColor = System.Drawing.Color.Black;
-            this.cogDS3.ColorMapLowerRoiLimit = 0D;
-            this.cogDS3.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
-            this.cogDS3.ColorMapUpperClipColor = System.Drawing.Color.Black;
-            this.cogDS3.ColorMapUpperRoiLimit = 1D;
-            this.cogDS3.DoubleTapZoomCycleLength = 2;
-            this.cogDS3.DoubleTapZoomSensitivity = 2.5D;
-            this.cogDS3.Location = new System.Drawing.Point(0, 452);
-            this.cogDS3.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
-            this.cogDS3.MouseWheelSensitivity = 1D;
-            this.cogDS3.Name = "cogDS3";
-            this.cogDS3.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDS3.OcxState")));
-            this.cogDS3.Size = new System.Drawing.Size(620, 425);
-            this.cogDS3.TabIndex = 300;
-            // 
-            // cogDS4
-            // 
-            this.cogDS4.ColorMapLowerClipColor = System.Drawing.Color.Black;
-            this.cogDS4.ColorMapLowerRoiLimit = 0D;
-            this.cogDS4.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
-            this.cogDS4.ColorMapUpperClipColor = System.Drawing.Color.Black;
-            this.cogDS4.ColorMapUpperRoiLimit = 1D;
-            this.cogDS4.DoubleTapZoomCycleLength = 2;
-            this.cogDS4.DoubleTapZoomSensitivity = 2.5D;
-            this.cogDS4.Location = new System.Drawing.Point(621, 458);
-            this.cogDS4.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
-            this.cogDS4.MouseWheelSensitivity = 1D;
-            this.cogDS4.Name = "cogDS4";
-            this.cogDS4.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDS4.OcxState")));
-            this.cogDS4.Size = new System.Drawing.Size(620, 425);
-            this.cogDS4.TabIndex = 301;
             // 
             // ucRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.Controls.Add(this.cogDS4);
-            this.Controls.Add(this.cogDS3);
             this.Controls.Add(this.cogDS2);
             this.Controls.Add(this.cogDS);
             this.Controls.Add(this.tbTrace);
@@ -4675,8 +4619,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Recipedgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cogDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cogDS2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cogDS3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cogDS4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4812,7 +4754,6 @@
         private System.Windows.Forms.Button btnClearImage;
         private System.Windows.Forms.Button btnZoomIn;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnOpenCam3;
         public System.Windows.Forms.CheckBox cbCalImageTest;
         private System.Windows.Forms.Button btnCapture;
         private System.Windows.Forms.Button btnZoomAll1;
@@ -5027,7 +4968,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
         private Cognex.VisionPro.Display.CogDisplay cogDS;
         private Cognex.VisionPro.Display.CogDisplay cogDS2;
-        private Cognex.VisionPro.Display.CogDisplay cogDS3;
-        private Cognex.VisionPro.Display.CogDisplay cogDS4;
     }
 }

@@ -16,12 +16,11 @@ namespace Bending.UC
 {
     public partial class ucAutoMain : UserControl
     {
-        public csVision[] Visions { get; set; }
+        public CamVision[] Visions { get; set; }
 
         public ucAutoMain()
         {
             InitializeComponent();
-            Visions = new csVision[4];
           //  InitialVison();
         }
 
