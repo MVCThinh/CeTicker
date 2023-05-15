@@ -37,11 +37,20 @@ namespace Bending_MX_IF
 
 
 
+
+
         public MXIF()
         {
             InitializeComponent();
 
             LoadConfig();
+            Initial();
+            
+        }
+
+        private void Initial()
+        {
+            FFU.Open();
         }
 
 
@@ -62,6 +71,8 @@ namespace Bending_MX_IF
 
             deviceSetting.GPSIP = RWFile.ReadFile(Section, "GPSIP");
             deviceSetting.UPSIP = RWFile.ReadFile(Section, "UPSIP");
+
+            deviceSetting.FFU_CNT = int.Parse(RWFile.ReadFile(Section, "FFU_CNT", "10"));
 
             Section = "PLCBIT";
 
@@ -90,6 +101,58 @@ namespace Bending_MX_IF
             pcBit.GMS = int.Parse(RWFile.ReadFile(Section, "GMS"));
             pcBit.UPS = int.Parse(RWFile.ReadFile(Section, "UPS"));
             pcBit.GPS = int.Parse(RWFile.ReadFile(Section, "GPS"));
+
+        }
+
+
+        private void FFUData2(List<byte> Msg)
+        {
+            try
+            {
+                for (int i = 0; i < deviceSetting.FFU_CNT; i++)
+                {
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void FFU_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+            int dataLength = FFU.BytesToRead;
+            byte[] bytes= new byte[dataLength];
+            FFU.Read(bytes, 0, dataLength);
+
+            List<byte> receiveData = new List<byte>();
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                if (bytes[i] == 0x02)  // STX
+                { 
+                    receiveData.Clear();
+                }
+                else if (bytes[i] == 0x03) // ETX
+                {
+                    if (receiveData.Count > 0)
+                    {
+                        FFUData2(receiveData);
+                        receiveData.Clear ();
+                    }
+                }
+                else
+                {
+                    receiveData.Add(bytes[i]);
+                    if (receiveData.Count > 1000)
+                    {
+                        receiveData.Clear();
+                    }
+                        
+                }
+            }
 
         }
     }

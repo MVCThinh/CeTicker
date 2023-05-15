@@ -16,5 +16,6 @@ namespace Bending_MX_IF.Data
         public string SWVersion { get; set; }
         public string GPSIP { get; set; }
         public string UPSIP { get; set; }
+        public int FFU_CNT { get; set; }
     }
 }

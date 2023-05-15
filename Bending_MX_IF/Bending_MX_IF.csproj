@@ -50,16 +50,16 @@
     <Compile Include="Data\Model\PCBit.cs" />
     <Compile Include="Data\Model\PLCBit.cs" />
     <Compile Include="Data\Model\RWFile.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="MX_IF.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MX_IF.Designer.cs">
+      <DependentUpon>MX_IF.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MX_IF.resx">
+      <DependentUpon>MX_IF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

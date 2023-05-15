@@ -1045,6 +1045,10 @@
             this.lblUPSKWtotal.Text = "-";
             this.lblUPSKWtotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // FFU
+            // 
+            this.FFU.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.FFU_DataReceived);
+            // 
             // MXIF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1052,7 +1056,7 @@
             this.ClientSize = new System.Drawing.Size(813, 621);
             this.Controls.Add(this.tabControl1);
             this.Name = "MXIF";
-            this.Text = "MXIF";
+            this.Text = "MX_IF";
             this.tabControl1.ResumeLayout(false);
             this.tpLog.ResumeLayout(false);
             this.tpLog.PerformLayout();
