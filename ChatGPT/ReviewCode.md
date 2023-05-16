@@ -520,6 +520,76 @@ pnMenu.Controls.Cast<Control>().ToList().ForEach(control =>
 </details>
 
 <details>
+<summary><h3 style="color:yellow">Sử dụng API SendMessage để truyền thông điệp(Message) giữa 2 ứng dụng window  </h3></summary>
+ <h3 style = "color : red">Code cũ (Xây dưng 1 hàm chứa thông điệp )</h3>
+
+```
+[DllImport("User32.dll", CharSet = CharSet.Auto, EntryPoint = "ageage")]
+public static extern int SendMessage(IntPtr hWnd, Int32 Msg, IntPtr wParam, ref Win32API.COPYDATASTRUCT lParam);
+public static class Win32API
+{
+    public const Int32 WM_COPYDATA = 0x004A;
+
+    public struct COPYDATASTRUCT
+    {
+        public IntPtr dwData;
+        public int cbData;
+
+        [MarshalAs(UnmanagedType.LPStr)]
+        public string lpData;
+    }
+}
+private void SendData(string Msg)
+{
+    if (hwnd == IntPtr.Zero)
+    {
+        hwnd = FindWindow(null, "BD_IF");
+    }
+    if (hwnd != IntPtr.Zero)
+    {
+        Win32API.COPYDATASTRUCT cds = new Win32API.COPYDATASTRUCT();
+        cds.dwData = (IntPtr)(1024 + 604);  // default value
+        cds.cbData = Encoding.Default.GetBytes(Msg).Length + 1;
+        cds.lpData = Msg;
+        SendMessage(hwnd, Win32API.WM_COPYDATA, IntPtr.Zero, ref cds);
+        SetlbMXLabel(Msg);
+        // csLog.LogSave("[MX -> Vision] : " + Msg);
+        if (lbMX.Items.Count > 100) lbMX.Items.Clear();
+    }
+}
+```
+
+ <h3 style = "color : green">Code mới (sử dụng Marshal.StringToHGlobalAnsi để chuyển đổi chuỗi Msg thành con trỏ IntPtr)</h3>
+
+```
+[DllImport("User32.dll", CharSet = CharSet.Auto, EntryPoint = "SendMessage")]
+public static extern int SendMessage(IntPtr hWnd, Int32 Msg, IntPtr wParam, IntPtr lParam);
+private void SendData(string Msg)
+{
+    if (hwnd == IntPtr.Zero)
+    {
+        hwnd = FindWindow(null, "BD_IF");
+    }
+    if (hwnd != IntPtr.Zero)
+    {
+        IntPtr msgPtr = Marshal.StringToHGlobalAnsi(Msg);
+        try
+        {
+            SendMessage(hwnd, Win32API.WM_COPYDATA, IntPtr.Zero, msgPtr);
+            SetlbMXLabel(Msg);
+            if (lbMX.Items.Count > 100) lbMX.Items.Clear();
+        }
+        finally
+        {
+            Marshal.FreeHGlobal(msgPtr);
+        }
+    }
+}
+```
+
+</details>
+
+<details>
 <summary><h3 style="color:yellow">Đẩy </h3></summary>
  <h3 style = "color : red">Code cũ</h3>
 

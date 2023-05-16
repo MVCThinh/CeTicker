@@ -110,6 +110,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.lblUPSKWtotal = new System.Windows.Forms.Label();
             this.FFU = new System.IO.Ports.SerialPort(this.components);
+            this.tmrIF = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tpLog.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -1049,6 +1050,11 @@
             // 
             this.FFU.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.FFU_DataReceived);
             // 
+            // tmrIF
+            // 
+            this.tmrIF.Interval = 50;
+            this.tmrIF.Tick += new System.EventHandler(this.tmrIF_Tick);
+            // 
             // MXIF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1146,6 +1152,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label lblUPSKWtotal;
         private System.IO.Ports.SerialPort FFU;
+        private System.Windows.Forms.Timer tmrIF;
     }
 }
 

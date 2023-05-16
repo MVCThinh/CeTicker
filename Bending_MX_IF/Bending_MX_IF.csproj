@@ -33,6 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ActUtlTypeLib">
+      <HintPath>C:\MELSEC\ACT\Control\ActUtlTypeLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.ACTETHERLib">
+      <HintPath>C:\Users\Trieu\Desktop\Hello\Programs\IF\MX_IF_210819_LaserMarking\MX_IF\obj\x86\Debug\Interop.ACTETHERLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
