@@ -372,6 +372,7 @@
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cogDS = new Cognex.VisionPro.Display.CogDisplay();
             this.cogDS2 = new Cognex.VisionPro.Display.CogDisplay();
+            this.tmrCal = new System.Windows.Forms.Timer(this.components);
             this.tbTrace.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -4533,6 +4534,11 @@
             this.cogDS2.Size = new System.Drawing.Size(620, 769);
             this.cogDS2.TabIndex = 299;
             // 
+            // tmrCal
+            // 
+            this.tmrCal.Interval = 300;
+            this.tmrCal.Tick += new System.EventHandler(this.tmrCal_Tick);
+            // 
             // ucRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4968,5 +4974,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
         private Cognex.VisionPro.Display.CogDisplay cogDS;
         private Cognex.VisionPro.Display.CogDisplay cogDS2;
+        public System.Windows.Forms.Timer tmrCal;
     }
 }

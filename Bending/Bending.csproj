@@ -157,6 +157,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -171,6 +172,7 @@
     <Compile Include="Data\Enums\EnumClass.cs" />
     <Compile Include="Data\Helpers\csRecipe.cs" />
     <Compile Include="Data\Helpers\CamVision.cs" />
+    <Compile Include="Data\Helpers\rtc\rtcCalib.cs" />
     <Compile Include="Data\Helpers\RWFile.cs" />
     <Compile Include="Data\Models\AutoMain\DeviceSetting.cs" />
     <Compile Include="Data\Models\FolderPath.cs" />
@@ -178,7 +180,7 @@
     <Compile Include="Data\Models\Setting\CamSetting.cs" />
     <Compile Include="Data\Static\CalibControl.cs" />
     <Compile Include="Data\Static\CONST.cs" />
-    <Compile Include="Data\Helpers\csConfig.cs" />
+    <Compile Include="Data\Helpers\CamCalib.cs" />
     <Compile Include="Data\Helpers\csLog.cs" />
     <Compile Include="Data\Static\DispChart.cs" />
     <Compile Include="Data\Static\PanelID.cs" />

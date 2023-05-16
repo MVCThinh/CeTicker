@@ -1,4 +1,5 @@
-﻿using Bending.Data.Enums;
+﻿using Bending.Data.Class;
+using Bending.Data.Enums;
 using Bending.Data.Helpers;
 using Bending.Data.Models.Setting;
 using System;
@@ -133,6 +134,25 @@ namespace Bending.UC
 
         private void btnCal_Click(object sender, EventArgs e)
         {
+            if (tmrCal.Enabled)
+            {
+                MessageBox.Show("Calibraition is not Finished");
+                return;
+            }
+        }
+
+        List<Point> lstRobotPoint= new List<Point>();
+        List<Point> lstVisionPoint= new List<Point>();
+
+        private PointXY[] lstPointRobot = new PointXY[9];
+
+        public CamCalib camCalib = new CamCalib();
+        private void tmrCal_Tick(object sender, EventArgs e)
+        {
+            lstRobotPoint.Clear();
+            lstVisionPoint.Clear();
+
+            camCalib.SetRobotPos(3.0, 3.0, ref lstPointRobot);
 
         }
     }
