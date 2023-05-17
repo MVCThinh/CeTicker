@@ -172,7 +172,6 @@
     <Compile Include="Data\Enums\EnumClass.cs" />
     <Compile Include="Data\Helpers\csRecipe.cs" />
     <Compile Include="Data\Helpers\CamVision.cs" />
-    <Compile Include="Data\Helpers\rtc\rtcCalib.cs" />
     <Compile Include="Data\Helpers\RWFile.cs" />
     <Compile Include="Data\Models\AutoMain\DeviceSetting.cs" />
     <Compile Include="Data\Models\FolderPath.cs" />
