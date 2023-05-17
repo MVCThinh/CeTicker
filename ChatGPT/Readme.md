@@ -1,6 +1,6 @@
 <details>
-<summary><h1 style="color:yellow">từ khóa `ref` trong C#</h1></summary>
- <h2 style="color:red">1.Dưới đây là một số trường hợp phổ biến áp dụng từ khóa `ref` trong C#:</h2>
+<summary style="color:yellow; font-size: 20px">Từ khóa <span style ="color: red; font-size: 30px">ref</span> trong C#</summary>
+ <h3 style="color:red">1.Dưới đây là một số trường hợp phổ biến áp dụng từ khóa `ref` trong C#:</h3>
 
 <h3 style="color:pink">1.1 Thay đổi giá trị của biến truyền vào:</h3> 
 Khi bạn muốn thay đổi giá trị của biến truyền vào trong một phương thức và muốn thay đổi được phản ánh ngay cả bên ngoài phương thức, bạn có thể sử dụng từ khóa ```ref```. Bằng cách truyền biến qua tham số ``ref``, phương thức có thể thay đổi giá trị của biến đó và sự thay đổi này sẽ được phản ánh trực tiếp trong phạm vi gọi phương thức.
@@ -15,12 +15,12 @@ Khi bạn muốn thay đổi giá trị của biến truyền vào trong một p
 <br></br>
 
 
-<h2 style = "color : yellow">Lưu ý: </h2>
+<h3 style = "color : yellow">Lưu ý: </h3>
  Khi sử dụng từ khóa ``ref``, biến truyền vào phải được khởi tạo trước khi truyền vào phương thức. Đồng thời, cả phương thức và nơi gọi phương thức cần truyền cùng một biến để đảm bảo tính nhất quán giữa hai phạm vi.
 <br></br>
 
 
-<h2 style ="color :red">2.Dưới đây là ví dụ về từng trường hợp sử dụng từ khóa ``ref`` trong C#: </h2>
+<h3 style ="color :red">2.Dưới đây là ví dụ về từng trường hợp sử dụng từ khóa ``ref`` trong C#: </h3>
 
 <h3 style = "color : pink">2.1 Thay đổi giá trị của biến truyền vào: </h3>
 
@@ -73,9 +73,9 @@ Trong ví dụ này, đối tượng `largeObj` được truyền vào phương 
 
 
 <details>
-<summary><h1 style="color:yellow">từ khóa `out` trong C#</h1></summary>
+<summary style="color:yellow; font-size : 20px">từ khóa <span style ="color : red; font-size: 30px">out</span> trong C#</summary>
 
-<h2 style="color:red">3.Dưới đây là một vài trường hợp phổ biến áp dụng từ khóa `out` trong C#::</h2>
+<h3 style="color:red">3.Dưới đây là một vài trường hợp phổ biến áp dụng từ khóa `out` trong C#::</h3>
 
 <h3 style="color:pink">3.1 Trả về nhiều giá trị từ một phương thức:</h3> 
 Bạn có thể sử dụng từ khóa out để trả về nhiều giá trị từ một phương thức. Thay vì chỉ trả về một giá trị duy nhất, bạn có thể truyền các tham số đầu ra qua tham biến out để phương thức có thể cập nhật giá trị của chúng.
@@ -144,11 +144,81 @@ Console.WriteLine($"Giá trị sau khi tăng: {value}");
 
 ```
 
-<h2 style= "color :yellow">Lưu ý : </h2>Tuy nhiên, cần lưu ý rằng khi sử dụng từ khóa out, các biến cần được khởi tạo trước khi truyền vào phương thức và không cần khởi tạo giá trị ban đầu. Đồng thời, phương thức cần gán giá trị cho các biến out trước khi kết thúc.
+<h3 style= "color :yellow">Lưu ý : </h3>Tuy nhiên, cần lưu ý rằng khi sử dụng từ khóa out, các biến cần được khởi tạo trước khi truyền vào phương thức và không cần khởi tạo giá trị ban đầu. Đồng thời, phương thức cần gán giá trị cho các biến out trước khi kết thúc.
 
 
 </details>
 
+<details><summary style="color:yellow; font-size: 20px">Attribute <span style = "color: red; font-size : 30px">[Serializable]</span> trong C#</summary>
 
 
+1. Attribute [Serializable] trong C# được sử dụng để đánh dấu một lớp, cho biết rằng các đối tượng của lớp này có thể được serialized (chuyển đổi thành dạng byte để lưu trữ hoặc truyền tải). Khi một lớp được đánh dấu bằng [Serializable], nó cho phép các đối tượng của lớp có khả năng được lưu trữ và khôi phục lại dữ liệu của chúng.
+2. Khi một đối tượng được serialized, nó sẽ được chuyển đổi thành một dạng dữ liệu nhị phân (byte) có thể được ghi vào file, truyền qua mạng hoặc lưu trữ trong cơ sở dữ liệu. Đối tượng serialized có thể được khôi phục lại từ dạng byte thành đối tượng ban đầu thông qua quá trình gọi là deserialization.
+3. Việc sử dụng attribute [Serializable] có ý nghĩa quan trọng trong việc xử lý dữ liệu, đặc biệt là khi cần lưu trữ hoặc truyền tải các đối tượng qua các ứng dụng hoặc hệ thống khác nhau. Nó cho phép các đối tượng được chuyển đổi thành dạng dữ liệu có thể được truyền và lưu trữ dễ dàng, mà không cần quan tâm đến cấu trúc chi tiết của đối tượng.
 
+```
+using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+[Serializable]
+public class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        // Tạo một đối tượng Person
+        Person person = new Person { Name = "John", Age = 30 };
+
+        // Serialize đối tượng thành một mảng byte
+        byte[] serializedData = SerializeObject(person);
+
+        // Deserialize dữ liệu byte thành đối tượng
+        Person deserializedPerson = DeserializeObject<Person>(serializedData);
+
+        // In thông tin của đối tượng đã deserialize
+        Console.WriteLine("Name: " + deserializedPerson.Name);
+        Console.WriteLine("Age: " + deserializedPerson.Age);
+    }
+
+    public static byte[] SerializeObject<T>(T obj)
+    {
+        using (MemoryStream stream = new MemoryStream())
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, obj);
+            return stream.ToArray();
+        }
+    }
+
+    public static T DeserializeObject<T>(byte[] data)
+    {
+        using (MemoryStream stream = new MemoryStream(data))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            return (T)formatter.Deserialize(stream);
+        }
+    }
+}
+
+```
+Trong ví dụ trên, lớp Person được đánh dấu bằng [Serializable], cho phép đối tượng của lớp này được serialized và deserialized. Đối tượng person được tạo ra, sau đó được serialized thành một mảng byte bằng cách sử dụng phương thức SerializeObject. Sau đó, mảng byte được deserialized thành một đối tượng mới bằng cách sử dụng phương thức DeserializeObject. Cuối cùng, thông tin của đối tượng đã được deserialized được in ra màn hình.
+
+</details>
+
+
+<details>
+<summary style = "color :yellow; font-size:20px">abc</summary>
+
+
+</details>
+
+<details>
+<summary></summary>
+
+</details>
