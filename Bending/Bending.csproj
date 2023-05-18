@@ -169,6 +169,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\AutoCalib\AutoCalib.cs" />
     <Compile Include="Data\Enums\EnumClass.cs" />
     <Compile Include="Data\Helpers\csRecipe.cs" />
     <Compile Include="Data\Helpers\CamVision.cs" />
