@@ -70,7 +70,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Menu Grid.Column="0" Foreground="#FF1D1D1D" Background="White" Padding="1" FontSize="13" FontWeight="DemiBold">
+                        <Menu Grid.Row="0" Foreground="#FF1D1D1D" Background="White" Padding="1" FontSize="13" FontWeight="DemiBold">
                             <MenuItem Header="File" VerticalContentAlignment="Center">
                                 <!--<MenuItem.Icon>
                             <Image Source="/VisionApp;component/Icon/engineer_icon_001.png" VerticalAlignment="Center"/>
@@ -278,30 +278,6 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Label Name="LabelProgram" Margin="20,25,20,10" BorderBrush="White" BorderThickness="1" Content="Program" Foreground="Aqua" HorizontalContentAlignment="Center"/>
-                        <!--<Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="6*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Content="&lt;" PreviewMouseDown="LabelNextBackCamera_PreviewMouseDown" FontSize="17" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                            <Label Margin="0,2,0,0" Grid.Column="1" Content="Camera " FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                            <Label Margin="0,2,0,0" Name="lblCameraIndex" Grid.Column="2" Content="{Binding Value}" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left"/>
-                            <Label Grid.Column="3" Content=">" PreviewMouseDown="LabelNextBackCamera_PreviewMouseDown" FontSize="17" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                        </Grid>-->
-                        <Grid>
-                            <!--<ComboBox Name="cbbCameraList" SelectedIndex="0" Style="{StaticResource cbbStyle}">
-                                <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="Camera Index " FontWeight="Bold"/>
-                                                <TextBlock Text="{Binding CurrentCameraIndex}" FontWeight="Bold" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>-->
-                        </Grid>
 
                         <Grid Grid.Row="1" Margin="5, 5, 5, 20" Background="#FF394261">
                             <Grid.ColumnDefinitions>

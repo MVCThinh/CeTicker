@@ -1,5 +1,8 @@
 ﻿using AppVision.Properties;
 using AppVision.VisionPro;
+using Cognex.VisionPro.CalibFix;
+using Cognex.VisionPro.PMAlign;
+using Cognex.VisionPro;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,6 +18,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
+using System.Net.Sockets;
 
 namespace AppVision
 {
@@ -35,7 +40,10 @@ namespace AppVision
 
         private ObservableCollection<CameraVPro> ListCameraVPro = new ObservableCollection<CameraVPro>();
 
+        private System.Windows.Threading.DispatcherTimer TimerVision;
 
+        private Thread socketThread;
+        private Server myServer;
 
 
         public MainWindow()
@@ -46,6 +54,38 @@ namespace AppVision
             DisplayInitial();
 
             VisionProInitial();
+            SocketTCPInitial();
+
+        }
+
+        private void SocketTCPInitial()
+        {
+            Server.eventReceiveString += ProcessClientCommand;
+            socketThread = new Thread(socketServerListenThread);
+            socketThread.IsBackground = true;
+            socketThread.Name = "Socket TCP Thread";
+            socketThread.Start();
+        }
+
+        private void socketServerListenThread()
+        {
+            myServer = new Server();
+            myServer.Start();
+        }
+
+        private void ProcessClientCommand(string rev, Socket socket)
+        {
+            string tempS = $"Time: {DateTime.Now.ToLongTimeString()} - Receive cmd = {rev}, from client = {socket.RemoteEndPoint}\r\n";
+            string[] tempSarr = rev.Split(',');
+            int getCameraIndex = -1;
+            int.TryParse(tempSarr[1], out getCameraIndex);
+
+            string toSend = "Err Command" + " Received!\r\n";
+
+            if ((getCameraIndex >= 0) && (getCameraIndex < 9))
+                toSend = ListCameraVPro[getCameraIndex].Command(rev) + " Received!\r\n";
+            byte[] bytesToSend = Encoding.UTF8.GetBytes(toSend);
+            socket.Send(bytesToSend);
         }
 
         private void DisplayInitial()
@@ -80,13 +120,33 @@ namespace AppVision
         {
             // Khởi tạo List Camera 
             ListCameraVPro.Add(new CameraVPro());
-            ListCameraVPro[0].DoubleClickDisplayEvent += ChangeDisplayInDoubleClick;
+            ListCameraVPro[0].DoubleClickDisplayEvent += ChangeDisplayInDoubleClick; // Đầu tiên index = -1
 
             cbbCameraList.ItemsSource = ListCameraVPro;
             cbbCameraList.SelectionChanged += CbbCameraList_SelectionChanged;
+            cbbCameraList.SelectedIndex = 0;
 
+
+            TimerVision = new System.Windows.Threading.DispatcherTimer();
+            TimerVision.Interval = new TimeSpan(0, 0, 10);
+            TimerVision.Tick += LoadCamera;
+            TimerVision.Start();
 
         }
+
+        private void LoadCamera(object sender, EventArgs e)
+        {
+
+            TimerVision.Stop();
+            for (int i = 0; i < numberCameraSign; i++)
+            {
+                ListCameraVPro[i].Load(i);
+            }
+
+        }
+
+
+
 
         private void ChangeDisplayInDoubleClick(int index)
         {
