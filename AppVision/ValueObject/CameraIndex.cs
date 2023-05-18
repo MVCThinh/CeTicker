@@ -4,9 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppVision.ValueObject
+namespace AppVision
 {
-    internal class CameraIndex
+    public class CameraIndex : ObservableObject
     {
+        private int valueIndex;
+
+        public CameraIndex()
+        {
+            valueIndex = 0;
+        }
+
+        public int Value
+        {
+            get { return valueIndex; }
+            set { valueIndex = value; OnPropertyChanged("Value"); }
+        }
+
+        public override string ToString()
+        {
+            return "Camera " + base.ToString();
+        }
     }
 }
