@@ -8,6 +8,7 @@ namespace Bending.Data.Models.Setting
 {
     public class CamSetting
     {
+        public string Name { get; set; }
         public string FOVX { get; set; }
         public string FOVY { get; set; }
         public string Resolution { get; set; }

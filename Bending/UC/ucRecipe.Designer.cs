@@ -41,24 +41,6 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cogblobDS = new Cognex.VisionPro.Display.CogDisplay();
-            this.gbCam4 = new System.Windows.Forms.GroupBox();
-            this.btnSet4 = new System.Windows.Forms.Button();
-            this.txtIsContrast4 = new System.Windows.Forms.TextBox();
-            this.txtIsExposure4 = new System.Windows.Forms.TextBox();
-            this.txtIsLight4 = new System.Windows.Forms.TextBox();
-            this.btnLightSave4 = new System.Windows.Forms.Button();
-            this.lblContrast4 = new System.Windows.Forms.Label();
-            this.tbExposure4 = new System.Windows.Forms.TrackBar();
-            this.btnExposureDown4 = new System.Windows.Forms.Button();
-            this.txtContrast4 = new System.Windows.Forms.TextBox();
-            this.btnExposureUp4 = new System.Windows.Forms.Button();
-            this.lbExposure4 = new System.Windows.Forms.Label();
-            this.txtExposure4 = new System.Windows.Forms.TextBox();
-            this.tb4 = new System.Windows.Forms.TrackBar();
-            this.lbLight4 = new System.Windows.Forms.Label();
-            this.txtLight4 = new System.Windows.Forms.TextBox();
-            this.btnLightDown4 = new System.Windows.Forms.Button();
-            this.btnLightUp4 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.gbRegion = new System.Windows.Forms.GroupBox();
             this.btnTest1 = new System.Windows.Forms.Button();
@@ -167,24 +149,6 @@
             this.btnDrawLine = new System.Windows.Forms.Button();
             this.btnLiveImage = new System.Windows.Forms.Button();
             this.btnPattern = new System.Windows.Forms.Button();
-            this.gbCam3 = new System.Windows.Forms.GroupBox();
-            this.btnSet3 = new System.Windows.Forms.Button();
-            this.txtIsContrast3 = new System.Windows.Forms.TextBox();
-            this.txtIsExposure3 = new System.Windows.Forms.TextBox();
-            this.txtIsLight3 = new System.Windows.Forms.TextBox();
-            this.btnLightSave3 = new System.Windows.Forms.Button();
-            this.lblContrast3 = new System.Windows.Forms.Label();
-            this.tbExposure3 = new System.Windows.Forms.TrackBar();
-            this.btnExposureDown3 = new System.Windows.Forms.Button();
-            this.txtContrast3 = new System.Windows.Forms.TextBox();
-            this.btnExposureUp3 = new System.Windows.Forms.Button();
-            this.lbExposure3 = new System.Windows.Forms.Label();
-            this.txtExposure3 = new System.Windows.Forms.TextBox();
-            this.tb3 = new System.Windows.Forms.TrackBar();
-            this.lbLight3 = new System.Windows.Forms.Label();
-            this.txtLight3 = new System.Windows.Forms.TextBox();
-            this.btnLightDown3 = new System.Windows.Forms.Button();
-            this.btnLightUp3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.gbCam1 = new System.Windows.Forms.GroupBox();
             this.btnSet1 = new System.Windows.Forms.Button();
@@ -377,9 +341,6 @@
             this.tabPage5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cogblobDS)).BeginInit();
-            this.gbCam4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbExposure4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb4)).BeginInit();
             this.panel7.SuspendLayout();
             this.gbRegion.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -387,9 +348,6 @@
             this.panel6.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.gbCam3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbExposure3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb3)).BeginInit();
             this.gbCam1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbExposure1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb1)).BeginInit();
@@ -540,13 +498,11 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.cogblobDS);
-            this.groupBox4.Controls.Add(this.gbCam4);
             this.groupBox4.Controls.Add(this.panel7);
             this.groupBox4.Controls.Add(this.groupBox2);
             this.groupBox4.Controls.Add(this.panel6);
             this.groupBox4.Controls.Add(this.groupBox1);
             this.groupBox4.Controls.Add(this.panel2);
-            this.groupBox4.Controls.Add(this.gbCam3);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.gbCam1);
             this.groupBox4.Controls.Add(this.gbCam2);
@@ -572,235 +528,6 @@
             this.cogblobDS.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogblobDS.OcxState")));
             this.cogblobDS.Size = new System.Drawing.Size(288, 180);
             this.cogblobDS.TabIndex = 321;
-            // 
-            // gbCam4
-            // 
-            this.gbCam4.Controls.Add(this.btnSet4);
-            this.gbCam4.Controls.Add(this.txtIsContrast4);
-            this.gbCam4.Controls.Add(this.txtIsExposure4);
-            this.gbCam4.Controls.Add(this.txtIsLight4);
-            this.gbCam4.Controls.Add(this.btnLightSave4);
-            this.gbCam4.Controls.Add(this.lblContrast4);
-            this.gbCam4.Controls.Add(this.tbExposure4);
-            this.gbCam4.Controls.Add(this.btnExposureDown4);
-            this.gbCam4.Controls.Add(this.txtContrast4);
-            this.gbCam4.Controls.Add(this.btnExposureUp4);
-            this.gbCam4.Controls.Add(this.lbExposure4);
-            this.gbCam4.Controls.Add(this.txtExposure4);
-            this.gbCam4.Controls.Add(this.tb4);
-            this.gbCam4.Controls.Add(this.lbLight4);
-            this.gbCam4.Controls.Add(this.txtLight4);
-            this.gbCam4.Controls.Add(this.btnLightDown4);
-            this.gbCam4.Controls.Add(this.btnLightUp4);
-            this.gbCam4.Location = new System.Drawing.Point(313, 727);
-            this.gbCam4.Name = "gbCam4";
-            this.gbCam4.Size = new System.Drawing.Size(305, 105);
-            this.gbCam4.TabIndex = 320;
-            this.gbCam4.TabStop = false;
-            // 
-            // btnSet4
-            // 
-            this.btnSet4.BackColor = System.Drawing.Color.White;
-            this.btnSet4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSet4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnSet4.Location = new System.Drawing.Point(159, 74);
-            this.btnSet4.Name = "btnSet4";
-            this.btnSet4.Size = new System.Drawing.Size(63, 21);
-            this.btnSet4.TabIndex = 329;
-            this.btnSet4.Text = "Set";
-            this.btnSet4.UseVisualStyleBackColor = false;
-            // 
-            // txtIsContrast4
-            // 
-            this.txtIsContrast4.BackColor = System.Drawing.Color.DarkGray;
-            this.txtIsContrast4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIsContrast4.Location = new System.Drawing.Point(262, 73);
-            this.txtIsContrast4.Name = "txtIsContrast4";
-            this.txtIsContrast4.ReadOnly = true;
-            this.txtIsContrast4.Size = new System.Drawing.Size(35, 22);
-            this.txtIsContrast4.TabIndex = 329;
-            // 
-            // txtIsExposure4
-            // 
-            this.txtIsExposure4.BackColor = System.Drawing.Color.DarkGray;
-            this.txtIsExposure4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIsExposure4.Location = new System.Drawing.Point(262, 46);
-            this.txtIsExposure4.Name = "txtIsExposure4";
-            this.txtIsExposure4.ReadOnly = true;
-            this.txtIsExposure4.Size = new System.Drawing.Size(35, 22);
-            this.txtIsExposure4.TabIndex = 325;
-            // 
-            // txtIsLight4
-            // 
-            this.txtIsLight4.BackColor = System.Drawing.Color.DarkGray;
-            this.txtIsLight4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIsLight4.Location = new System.Drawing.Point(262, 17);
-            this.txtIsLight4.Name = "txtIsLight4";
-            this.txtIsLight4.ReadOnly = true;
-            this.txtIsLight4.Size = new System.Drawing.Size(35, 22);
-            this.txtIsLight4.TabIndex = 324;
-            // 
-            // btnLightSave4
-            // 
-            this.btnLightSave4.BackColor = System.Drawing.Color.White;
-            this.btnLightSave4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLightSave4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnLightSave4.Location = new System.Drawing.Point(74, 74);
-            this.btnLightSave4.Name = "btnLightSave4";
-            this.btnLightSave4.Size = new System.Drawing.Size(63, 21);
-            this.btnLightSave4.TabIndex = 323;
-            this.btnLightSave4.Text = "Save";
-            this.btnLightSave4.UseVisualStyleBackColor = false;
-            // 
-            // lblContrast4
-            // 
-            this.lblContrast4.BackColor = System.Drawing.Color.Black;
-            this.lblContrast4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblContrast4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContrast4.ForeColor = System.Drawing.Color.Linen;
-            this.lblContrast4.Location = new System.Drawing.Point(3, 74);
-            this.lblContrast4.Name = "lblContrast4";
-            this.lblContrast4.Size = new System.Drawing.Size(70, 21);
-            this.lblContrast4.TabIndex = 291;
-            this.lblContrast4.Text = "Contrast";
-            this.lblContrast4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tbExposure4
-            // 
-            this.tbExposure4.AutoSize = false;
-            this.tbExposure4.BackColor = System.Drawing.Color.Black;
-            this.tbExposure4.Location = new System.Drawing.Point(98, 45);
-            this.tbExposure4.Maximum = 255;
-            this.tbExposure4.Name = "tbExposure4";
-            this.tbExposure4.Size = new System.Drawing.Size(100, 24);
-            this.tbExposure4.TabIndex = 288;
-            this.tbExposure4.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // btnExposureDown4
-            // 
-            this.btnExposureDown4.BackColor = System.Drawing.Color.White;
-            this.btnExposureDown4.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnExposureDown4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnExposureDown4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExposureDown4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExposureDown4.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnExposureDown4.Location = new System.Drawing.Point(74, 44);
-            this.btnExposureDown4.Name = "btnExposureDown4";
-            this.btnExposureDown4.Size = new System.Drawing.Size(24, 27);
-            this.btnExposureDown4.TabIndex = 289;
-            this.btnExposureDown4.Text = "<";
-            this.btnExposureDown4.UseVisualStyleBackColor = false;
-            // 
-            // txtContrast4
-            // 
-            this.txtContrast4.BackColor = System.Drawing.Color.White;
-            this.txtContrast4.Location = new System.Drawing.Point(225, 74);
-            this.txtContrast4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtContrast4.Name = "txtContrast4";
-            this.txtContrast4.Size = new System.Drawing.Size(35, 21);
-            this.txtContrast4.TabIndex = 319;
-            this.txtContrast4.Text = "0";
-            this.txtContrast4.WordWrap = false;
-            // 
-            // btnExposureUp4
-            // 
-            this.btnExposureUp4.BackColor = System.Drawing.Color.White;
-            this.btnExposureUp4.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnExposureUp4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnExposureUp4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExposureUp4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExposureUp4.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnExposureUp4.Location = new System.Drawing.Point(198, 44);
-            this.btnExposureUp4.Name = "btnExposureUp4";
-            this.btnExposureUp4.Size = new System.Drawing.Size(24, 27);
-            this.btnExposureUp4.TabIndex = 290;
-            this.btnExposureUp4.Text = ">";
-            this.btnExposureUp4.UseVisualStyleBackColor = false;
-            // 
-            // lbExposure4
-            // 
-            this.lbExposure4.BackColor = System.Drawing.Color.Black;
-            this.lbExposure4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbExposure4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbExposure4.ForeColor = System.Drawing.Color.Linen;
-            this.lbExposure4.Location = new System.Drawing.Point(3, 46);
-            this.lbExposure4.Name = "lbExposure4";
-            this.lbExposure4.Size = new System.Drawing.Size(70, 21);
-            this.lbExposure4.TabIndex = 286;
-            this.lbExposure4.Text = "Exposure";
-            this.lbExposure4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtExposure4
-            // 
-            this.txtExposure4.BackColor = System.Drawing.Color.White;
-            this.txtExposure4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtExposure4.Location = new System.Drawing.Point(224, 46);
-            this.txtExposure4.Name = "txtExposure4";
-            this.txtExposure4.Size = new System.Drawing.Size(35, 22);
-            this.txtExposure4.TabIndex = 287;
-            // 
-            // tb4
-            // 
-            this.tb4.AutoSize = false;
-            this.tb4.BackColor = System.Drawing.Color.Black;
-            this.tb4.Location = new System.Drawing.Point(98, 13);
-            this.tb4.Maximum = 1023;
-            this.tb4.Name = "tb4";
-            this.tb4.Size = new System.Drawing.Size(100, 24);
-            this.tb4.TabIndex = 257;
-            this.tb4.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // lbLight4
-            // 
-            this.lbLight4.BackColor = System.Drawing.Color.Black;
-            this.lbLight4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbLight4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLight4.ForeColor = System.Drawing.Color.Linen;
-            this.lbLight4.Location = new System.Drawing.Point(3, 16);
-            this.lbLight4.Name = "lbLight4";
-            this.lbLight4.Size = new System.Drawing.Size(70, 21);
-            this.lbLight4.TabIndex = 258;
-            this.lbLight4.Text = "Light";
-            this.lbLight4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtLight4
-            // 
-            this.txtLight4.BackColor = System.Drawing.Color.White;
-            this.txtLight4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtLight4.Location = new System.Drawing.Point(224, 16);
-            this.txtLight4.Name = "txtLight4";
-            this.txtLight4.Size = new System.Drawing.Size(35, 22);
-            this.txtLight4.TabIndex = 259;
-            // 
-            // btnLightDown4
-            // 
-            this.btnLightDown4.BackColor = System.Drawing.Color.White;
-            this.btnLightDown4.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnLightDown4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnLightDown4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLightDown4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLightDown4.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnLightDown4.Location = new System.Drawing.Point(74, 12);
-            this.btnLightDown4.Name = "btnLightDown4";
-            this.btnLightDown4.Size = new System.Drawing.Size(24, 27);
-            this.btnLightDown4.TabIndex = 262;
-            this.btnLightDown4.Text = "<";
-            this.btnLightDown4.UseVisualStyleBackColor = false;
-            // 
-            // btnLightUp4
-            // 
-            this.btnLightUp4.BackColor = System.Drawing.Color.White;
-            this.btnLightUp4.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnLightUp4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnLightUp4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLightUp4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLightUp4.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnLightUp4.Location = new System.Drawing.Point(198, 12);
-            this.btnLightUp4.Name = "btnLightUp4";
-            this.btnLightUp4.Size = new System.Drawing.Size(24, 27);
-            this.btnLightUp4.TabIndex = 263;
-            this.btnLightUp4.Text = ">";
-            this.btnLightUp4.UseVisualStyleBackColor = false;
             // 
             // panel7
             // 
@@ -2181,235 +1908,6 @@
             this.btnPattern.Text = "Regist";
             this.btnPattern.UseVisualStyleBackColor = false;
             // 
-            // gbCam3
-            // 
-            this.gbCam3.Controls.Add(this.btnSet3);
-            this.gbCam3.Controls.Add(this.txtIsContrast3);
-            this.gbCam3.Controls.Add(this.txtIsExposure3);
-            this.gbCam3.Controls.Add(this.txtIsLight3);
-            this.gbCam3.Controls.Add(this.btnLightSave3);
-            this.gbCam3.Controls.Add(this.lblContrast3);
-            this.gbCam3.Controls.Add(this.tbExposure3);
-            this.gbCam3.Controls.Add(this.btnExposureDown3);
-            this.gbCam3.Controls.Add(this.txtContrast3);
-            this.gbCam3.Controls.Add(this.btnExposureUp3);
-            this.gbCam3.Controls.Add(this.lbExposure3);
-            this.gbCam3.Controls.Add(this.txtExposure3);
-            this.gbCam3.Controls.Add(this.tb3);
-            this.gbCam3.Controls.Add(this.lbLight3);
-            this.gbCam3.Controls.Add(this.txtLight3);
-            this.gbCam3.Controls.Add(this.btnLightDown3);
-            this.gbCam3.Controls.Add(this.btnLightUp3);
-            this.gbCam3.Location = new System.Drawing.Point(5, 727);
-            this.gbCam3.Name = "gbCam3";
-            this.gbCam3.Size = new System.Drawing.Size(305, 105);
-            this.gbCam3.TabIndex = 320;
-            this.gbCam3.TabStop = false;
-            // 
-            // btnSet3
-            // 
-            this.btnSet3.BackColor = System.Drawing.Color.White;
-            this.btnSet3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSet3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnSet3.Location = new System.Drawing.Point(160, 75);
-            this.btnSet3.Name = "btnSet3";
-            this.btnSet3.Size = new System.Drawing.Size(63, 21);
-            this.btnSet3.TabIndex = 328;
-            this.btnSet3.Text = "Set";
-            this.btnSet3.UseVisualStyleBackColor = false;
-            // 
-            // txtIsContrast3
-            // 
-            this.txtIsContrast3.BackColor = System.Drawing.Color.DarkGray;
-            this.txtIsContrast3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIsContrast3.Location = new System.Drawing.Point(264, 72);
-            this.txtIsContrast3.Name = "txtIsContrast3";
-            this.txtIsContrast3.ReadOnly = true;
-            this.txtIsContrast3.Size = new System.Drawing.Size(35, 22);
-            this.txtIsContrast3.TabIndex = 328;
-            // 
-            // txtIsExposure3
-            // 
-            this.txtIsExposure3.BackColor = System.Drawing.Color.DarkGray;
-            this.txtIsExposure3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIsExposure3.Location = new System.Drawing.Point(264, 44);
-            this.txtIsExposure3.Name = "txtIsExposure3";
-            this.txtIsExposure3.ReadOnly = true;
-            this.txtIsExposure3.Size = new System.Drawing.Size(35, 22);
-            this.txtIsExposure3.TabIndex = 325;
-            // 
-            // txtIsLight3
-            // 
-            this.txtIsLight3.BackColor = System.Drawing.Color.DarkGray;
-            this.txtIsLight3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIsLight3.Location = new System.Drawing.Point(264, 15);
-            this.txtIsLight3.Name = "txtIsLight3";
-            this.txtIsLight3.ReadOnly = true;
-            this.txtIsLight3.Size = new System.Drawing.Size(35, 22);
-            this.txtIsLight3.TabIndex = 324;
-            // 
-            // btnLightSave3
-            // 
-            this.btnLightSave3.BackColor = System.Drawing.Color.White;
-            this.btnLightSave3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLightSave3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnLightSave3.Location = new System.Drawing.Point(79, 74);
-            this.btnLightSave3.Name = "btnLightSave3";
-            this.btnLightSave3.Size = new System.Drawing.Size(63, 21);
-            this.btnLightSave3.TabIndex = 322;
-            this.btnLightSave3.Text = "Save";
-            this.btnLightSave3.UseVisualStyleBackColor = false;
-            // 
-            // lblContrast3
-            // 
-            this.lblContrast3.BackColor = System.Drawing.Color.Black;
-            this.lblContrast3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblContrast3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContrast3.ForeColor = System.Drawing.Color.Linen;
-            this.lblContrast3.Location = new System.Drawing.Point(3, 74);
-            this.lblContrast3.Name = "lblContrast3";
-            this.lblContrast3.Size = new System.Drawing.Size(70, 21);
-            this.lblContrast3.TabIndex = 291;
-            this.lblContrast3.Text = "Contrast";
-            this.lblContrast3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tbExposure3
-            // 
-            this.tbExposure3.AutoSize = false;
-            this.tbExposure3.BackColor = System.Drawing.Color.Black;
-            this.tbExposure3.Location = new System.Drawing.Point(98, 45);
-            this.tbExposure3.Maximum = 255;
-            this.tbExposure3.Name = "tbExposure3";
-            this.tbExposure3.Size = new System.Drawing.Size(100, 24);
-            this.tbExposure3.TabIndex = 288;
-            this.tbExposure3.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // btnExposureDown3
-            // 
-            this.btnExposureDown3.BackColor = System.Drawing.Color.White;
-            this.btnExposureDown3.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnExposureDown3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnExposureDown3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExposureDown3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExposureDown3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnExposureDown3.Location = new System.Drawing.Point(74, 44);
-            this.btnExposureDown3.Name = "btnExposureDown3";
-            this.btnExposureDown3.Size = new System.Drawing.Size(24, 27);
-            this.btnExposureDown3.TabIndex = 289;
-            this.btnExposureDown3.Text = "<";
-            this.btnExposureDown3.UseVisualStyleBackColor = false;
-            // 
-            // txtContrast3
-            // 
-            this.txtContrast3.BackColor = System.Drawing.Color.White;
-            this.txtContrast3.Location = new System.Drawing.Point(225, 74);
-            this.txtContrast3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtContrast3.Name = "txtContrast3";
-            this.txtContrast3.Size = new System.Drawing.Size(35, 21);
-            this.txtContrast3.TabIndex = 319;
-            this.txtContrast3.Text = "0";
-            this.txtContrast3.WordWrap = false;
-            // 
-            // btnExposureUp3
-            // 
-            this.btnExposureUp3.BackColor = System.Drawing.Color.White;
-            this.btnExposureUp3.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnExposureUp3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnExposureUp3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExposureUp3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExposureUp3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnExposureUp3.Location = new System.Drawing.Point(198, 44);
-            this.btnExposureUp3.Name = "btnExposureUp3";
-            this.btnExposureUp3.Size = new System.Drawing.Size(24, 27);
-            this.btnExposureUp3.TabIndex = 290;
-            this.btnExposureUp3.Text = ">";
-            this.btnExposureUp3.UseVisualStyleBackColor = false;
-            // 
-            // lbExposure3
-            // 
-            this.lbExposure3.BackColor = System.Drawing.Color.Black;
-            this.lbExposure3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbExposure3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbExposure3.ForeColor = System.Drawing.Color.Linen;
-            this.lbExposure3.Location = new System.Drawing.Point(3, 46);
-            this.lbExposure3.Name = "lbExposure3";
-            this.lbExposure3.Size = new System.Drawing.Size(70, 21);
-            this.lbExposure3.TabIndex = 286;
-            this.lbExposure3.Text = "Exposure";
-            this.lbExposure3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtExposure3
-            // 
-            this.txtExposure3.BackColor = System.Drawing.Color.White;
-            this.txtExposure3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtExposure3.Location = new System.Drawing.Point(224, 46);
-            this.txtExposure3.Name = "txtExposure3";
-            this.txtExposure3.Size = new System.Drawing.Size(35, 22);
-            this.txtExposure3.TabIndex = 287;
-            // 
-            // tb3
-            // 
-            this.tb3.AutoSize = false;
-            this.tb3.BackColor = System.Drawing.Color.Black;
-            this.tb3.Location = new System.Drawing.Point(98, 13);
-            this.tb3.Maximum = 1023;
-            this.tb3.Name = "tb3";
-            this.tb3.Size = new System.Drawing.Size(100, 24);
-            this.tb3.TabIndex = 257;
-            this.tb3.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // lbLight3
-            // 
-            this.lbLight3.BackColor = System.Drawing.Color.Black;
-            this.lbLight3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbLight3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLight3.ForeColor = System.Drawing.Color.Linen;
-            this.lbLight3.Location = new System.Drawing.Point(3, 16);
-            this.lbLight3.Name = "lbLight3";
-            this.lbLight3.Size = new System.Drawing.Size(70, 21);
-            this.lbLight3.TabIndex = 258;
-            this.lbLight3.Text = "Light";
-            this.lbLight3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtLight3
-            // 
-            this.txtLight3.BackColor = System.Drawing.Color.White;
-            this.txtLight3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtLight3.Location = new System.Drawing.Point(224, 14);
-            this.txtLight3.Name = "txtLight3";
-            this.txtLight3.Size = new System.Drawing.Size(35, 22);
-            this.txtLight3.TabIndex = 259;
-            // 
-            // btnLightDown3
-            // 
-            this.btnLightDown3.BackColor = System.Drawing.Color.White;
-            this.btnLightDown3.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnLightDown3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnLightDown3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLightDown3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLightDown3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnLightDown3.Location = new System.Drawing.Point(74, 12);
-            this.btnLightDown3.Name = "btnLightDown3";
-            this.btnLightDown3.Size = new System.Drawing.Size(24, 27);
-            this.btnLightDown3.TabIndex = 262;
-            this.btnLightDown3.Text = "<";
-            this.btnLightDown3.UseVisualStyleBackColor = false;
-            // 
-            // btnLightUp3
-            // 
-            this.btnLightUp3.BackColor = System.Drawing.Color.White;
-            this.btnLightUp3.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnLightUp3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnLightUp3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLightUp3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLightUp3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnLightUp3.Location = new System.Drawing.Point(198, 12);
-            this.btnLightUp3.Name = "btnLightUp3";
-            this.btnLightUp3.Size = new System.Drawing.Size(24, 27);
-            this.btnLightUp3.TabIndex = 263;
-            this.btnLightUp3.Text = ">";
-            this.btnLightUp3.UseVisualStyleBackColor = false;
-            // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Gray;
@@ -2441,7 +1939,7 @@
             this.gbCam1.Controls.Add(this.btnLightDown1);
             this.gbCam1.Controls.Add(this.btnLightUp1);
             this.gbCam1.Controls.Add(this.lbExposure1);
-            this.gbCam1.Location = new System.Drawing.Point(5, 623);
+            this.gbCam1.Location = new System.Drawing.Point(11, 663);
             this.gbCam1.Name = "gbCam1";
             this.gbCam1.Size = new System.Drawing.Size(305, 105);
             this.gbCam1.TabIndex = 295;
@@ -2671,7 +2169,7 @@
             this.gbCam2.Controls.Add(this.txtLight2);
             this.gbCam2.Controls.Add(this.btnLightDown2);
             this.gbCam2.Controls.Add(this.btnLightUp2);
-            this.gbCam2.Location = new System.Drawing.Point(313, 623);
+            this.gbCam2.Location = new System.Drawing.Point(319, 663);
             this.gbCam2.Name = "gbCam2";
             this.gbCam2.Size = new System.Drawing.Size(305, 105);
             this.gbCam2.TabIndex = 297;
@@ -4560,10 +4058,6 @@
             this.tabPage5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cogblobDS)).EndInit();
-            this.gbCam4.ResumeLayout(false);
-            this.gbCam4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbExposure4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb4)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.gbRegion.ResumeLayout(false);
@@ -4577,10 +4071,6 @@
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.gbCam3.ResumeLayout(false);
-            this.gbCam3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbExposure3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb3)).EndInit();
             this.gbCam1.ResumeLayout(false);
             this.gbCam1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbExposure1)).EndInit();
@@ -4643,24 +4133,6 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.GroupBox groupBox4;
         private Cognex.VisionPro.Display.CogDisplay cogblobDS;
-        private System.Windows.Forms.GroupBox gbCam4;
-        private System.Windows.Forms.Button btnSet4;
-        private System.Windows.Forms.TextBox txtIsContrast4;
-        private System.Windows.Forms.TextBox txtIsExposure4;
-        private System.Windows.Forms.TextBox txtIsLight4;
-        private System.Windows.Forms.Button btnLightSave4;
-        public System.Windows.Forms.Label lblContrast4;
-        private System.Windows.Forms.TrackBar tbExposure4;
-        private System.Windows.Forms.Button btnExposureDown4;
-        private System.Windows.Forms.TextBox txtContrast4;
-        private System.Windows.Forms.Button btnExposureUp4;
-        public System.Windows.Forms.Label lbExposure4;
-        private System.Windows.Forms.TextBox txtExposure4;
-        private System.Windows.Forms.TrackBar tb4;
-        public System.Windows.Forms.Label lbLight4;
-        private System.Windows.Forms.TextBox txtLight4;
-        private System.Windows.Forms.Button btnLightDown4;
-        private System.Windows.Forms.Button btnLightUp4;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.GroupBox gbRegion;
         private System.Windows.Forms.Button btnTest1;
@@ -4769,24 +4241,6 @@
         private System.Windows.Forms.Button btnDrawLine;
         private System.Windows.Forms.Button btnLiveImage;
         private System.Windows.Forms.Button btnPattern;
-        private System.Windows.Forms.GroupBox gbCam3;
-        private System.Windows.Forms.Button btnSet3;
-        private System.Windows.Forms.TextBox txtIsContrast3;
-        private System.Windows.Forms.TextBox txtIsExposure3;
-        private System.Windows.Forms.TextBox txtIsLight3;
-        private System.Windows.Forms.Button btnLightSave3;
-        public System.Windows.Forms.Label lblContrast3;
-        private System.Windows.Forms.TrackBar tbExposure3;
-        private System.Windows.Forms.Button btnExposureDown3;
-        private System.Windows.Forms.TextBox txtContrast3;
-        private System.Windows.Forms.Button btnExposureUp3;
-        public System.Windows.Forms.Label lbExposure3;
-        private System.Windows.Forms.TextBox txtExposure3;
-        private System.Windows.Forms.TrackBar tb3;
-        public System.Windows.Forms.Label lbLight3;
-        private System.Windows.Forms.TextBox txtLight3;
-        private System.Windows.Forms.Button btnLightDown3;
-        private System.Windows.Forms.Button btnLightUp3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox gbCam1;
         private System.Windows.Forms.Button btnSet1;

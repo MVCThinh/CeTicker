@@ -1,4 +1,4 @@
-﻿using Bending.Data.Class;
+﻿
 using Bending.Data.Helpers;
 using Bending.Data.Models;
 using Bending.Data.Models.Setting;
@@ -23,6 +23,8 @@ namespace Bending.UC
         public static CamSetting Laser2 = new CamSetting();
         public static CamSetting LoadingPre1 = new CamSetting();
         public static CamSetting LoadingPre2 = new CamSetting();
+
+        public static CamSetting[] CamBending = { Laser1, Laser2, LoadingPre1,LoadingPre2 };
 
         public ucSetting()
         {

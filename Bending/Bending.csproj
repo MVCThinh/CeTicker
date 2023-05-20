@@ -174,13 +174,13 @@
     <Compile Include="Data\Helpers\csRecipe.cs" />
     <Compile Include="Data\Helpers\CamVision.cs" />
     <Compile Include="Data\Helpers\RWFile.cs" />
+    <Compile Include="Data\Helpers\VisionPro.cs" />
     <Compile Include="Data\Models\AutoMain\DeviceSetting.cs" />
     <Compile Include="Data\Models\FolderPath.cs" />
     <Compile Include="Data\Models\Parameter.cs" />
     <Compile Include="Data\Models\Setting\CamSetting.cs" />
     <Compile Include="Data\Static\CalibControl.cs" />
     <Compile Include="Data\Static\CONST.cs" />
-    <Compile Include="Data\Helpers\CamCalib.cs" />
     <Compile Include="Data\Helpers\csLog.cs" />
     <Compile Include="Data\Static\DispChart.cs" />
     <Compile Include="Data\Static\PanelID.cs" />
@@ -189,6 +189,12 @@
     </Compile>
     <Compile Include="Foam\FrmMenu.Designer.cs">
       <DependentUpon>FrmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Foam\frmPattern.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Foam\frmPattern.Designer.cs">
+      <DependentUpon>frmPattern.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -223,6 +229,9 @@
     </Compile>
     <EmbeddedResource Include="Foam\FrmMenu.resx">
       <DependentUpon>FrmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Foam\frmPattern.resx">
+      <DependentUpon>frmPattern.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

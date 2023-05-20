@@ -26,7 +26,7 @@ class Program
         string ConfigName = "\\VisionConfig.ini";
         string ecamName = "LoadingPre1";
         string path1 = Path.Combine(PathRoot,ecamName,ConfigName);
-        Console.WriteLine(path1);
+        Console.WriteLine("khong co cam dc ket noi \n\r Kiem tra lai IP Cam");
         
     }
 }

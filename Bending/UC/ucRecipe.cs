@@ -1,5 +1,4 @@
-﻿using Bending.Data.Class;
-using Bending.Data.Enums;
+﻿using Bending.Data.Enums;
 using Bending.Data.Helpers;
 using Bending.Data.Models.Setting;
 using System;
@@ -20,12 +19,12 @@ namespace Bending.UC
     {
 
 
-        public static CamVision LoadingPre1 = new CamVision();
-        public static CamVision LoadingPre2 = new CamVision();
-        public static CamVision Laser1 = new CamVision();
-        public static CamVision Laser2 = new CamVision();
+        public static VisionPro LoadingPre1 = new VisionPro();
+        public static VisionPro LoadingPre2 = new VisionPro();
+        public static VisionPro Laser1 = new VisionPro();
+        public static VisionPro Laser2 = new VisionPro();
 
-        public static CamVision[] AllCam = new CamVision[]
+        public static VisionPro[] AllCam = new VisionPro[]
         {
             LoadingPre1,
             LoadingPre2,
@@ -42,12 +41,15 @@ namespace Bending.UC
             InitializeComponent();
 
 
-            Initial();
+            LoadDisplay();
             RecipeParamDisp();
+
+            VisionPro.GetConnectedCameras(); // Lấy đc 4 cam và tạo đc AcqFifoTool.Operator
+
         }
 
         
-        private void Initial()
+        private void LoadDisplay()
         {
 
             cbAlignMode.DataSource = Enum.GetValues(typeof(eInspMode));
@@ -75,47 +77,12 @@ namespace Bending.UC
 
         }
 
-        private void TriggerOrLiveCamSetting(bool isLive)
-        {
-            eCamName camName = (eCamName)cbCamList.SelectedItem;
-            CamVision cam = GetCamSettingByCamName(camName);
-
-            cogDS.InteractiveGraphics.Clear();
-            cogDS2.InteractiveGraphics.Clear();
-
-            if (cam != null)
-            {
-                // Cam LoadingPre1 or LoadingPre2 
-                if (camName == eCamName.LoadingPre1 || camName == eCamName.LoadingPre2)
-                {
-                    LoadingPre1.LiveOrTrigger(isLive);
-                    LoadingPre2.LiveOrTrigger(isLive);
-                    cogDS.Image = LoadingPre1.cogDisplay.Image;
-                    cogDS2.Image = LoadingPre2.cogDisplay.Image;
-                }
-                else
-                {
-                    Laser1.LiveOrTrigger(isLive);
-                    Laser2.LiveOrTrigger(isLive);
-                    cogDS.Image = Laser1.cogDisplay.Image;
-                    cogDS2.Image = Laser2.cogDisplay.Image;
-                }
-            }
-        }
-
-
-
         private void cbCamList_SelectedIndexChanged(object sender, EventArgs e)
         {
             TriggerOrLiveCamSetting(false);
         }
 
-        private void btnLiveImage_Click(object sender, EventArgs e)
-        {
-            TriggerOrLiveCamSetting(true);
-        }
-
-        private CamVision GetCamSettingByCamName(eCamName camName)
+        private VisionPro GetCamSettingByCamName(eCamName camName)
         {
             switch (camName)
             {
@@ -132,6 +99,40 @@ namespace Bending.UC
             }
         }
 
+
+        private void TriggerOrLiveCamSetting(bool isLive)
+        {
+            eCamName camName = (eCamName)cbCamList.SelectedItem;
+            VisionPro cam = GetCamSettingByCamName(camName);
+
+            cogDS.InteractiveGraphics.Clear();
+            cogDS2.InteractiveGraphics.Clear();
+
+            if (cam != null)
+            {
+                // Cam LoadingPre1 or LoadingPre2 
+                if (camName == eCamName.LoadingPre1 || camName == eCamName.LoadingPre2)
+                {
+                    
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+
+
+
+
+        private void btnLiveImage_Click(object sender, EventArgs e)
+        {
+            TriggerOrLiveCamSetting(true);
+        }
+
+
+
         private void btnCal_Click(object sender, EventArgs e)
         {
             if (tmrCal.Enabled)
@@ -144,15 +145,11 @@ namespace Bending.UC
         List<Point> lstRobotPoint= new List<Point>();
         List<Point> lstVisionPoint= new List<Point>();
 
-        private PointXY[] lstPointRobot = new PointXY[9];
 
-        public CamCalib camCalib = new CamCalib();
+
         private void tmrCal_Tick(object sender, EventArgs e)
         {
-            lstRobotPoint.Clear();
-            lstVisionPoint.Clear();
 
-            camCalib.SetRobotPos(3.0, 3.0, ref lstPointRobot);
 
         }
     }
