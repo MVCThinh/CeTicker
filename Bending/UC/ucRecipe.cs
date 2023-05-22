@@ -42,7 +42,7 @@ namespace Bending.UC
             InitializeComponent();
 
             LoadDisplay();
-            RecipeParamDisp();
+
 
 
         }
@@ -93,31 +93,11 @@ namespace Bending.UC
 
         private void LoadDisplay()
         {
-
-            cbAlignMode.DataSource = Enum.GetValues(typeof(eInspMode));
-            cbEdgeLine.DataSource = Enum.GetValues(typeof(eLineKind));
-            cbRecognition.DataSource = Enum.GetValues(typeof(ePatternKind));
             cbCamList.DataSource = Enum.GetValues(typeof(eCamName));
 
         }
 
-
-        public void RecipeParamDisp()
-        {
-            int RcpNo = 1;
-
-            Recipedgv.BeginInvoke(new MethodInvoker(delegate
-            {
-                Recipedgv.Rows.Clear();
-
-                foreach (string name in Enum.GetNames(typeof(eRecipe)))
-                {
-                    Recipedgv.Rows.Add(RcpNo.ToString(), name, 0);
-                    RcpNo++;
-                }
-            }));
-
-        }
+        
 
         private void cbCamList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -195,5 +175,8 @@ namespace Bending.UC
 
 
         }
+
+
+
     }
 }
