@@ -1,7 +1,10 @@
 ﻿using Bending.UC;
 using Cognex.VisionPro;
+using Cognex.VisionPro.Display;
+using Cognex.VisionPro.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,46 +14,50 @@ namespace Bending.Data.Helpers
 {
     public class VisionPro
     {
-        // Lấy tất cả Camera đang kết nôi.
-        public static CogFrameGrabbers frameGrabbers;
-        public static ICogFrameGrabber[] frameGrabber;
 
-        private static CogAcqFifoTool AcqFifoTool;
-
-        static bool Laser1;
+        private ICogAcqFifo AcqFifo;
+        private ICogFrameGrabber FrameGrabber;
 
 
-        // Lấy được tất cả cam. Lưu vào frameGrabber
-        public static void GetConnectedCameras()
+        public  CogAcqFifoTool AcqFifoTool { get; set; }
+
+
+
+
+        public void Capture(ICogFrameGrabber frameGrabber, CogDisplay Display)
         {
-            frameGrabbers = new CogFrameGrabbers();
+            string VIDEOFORMAT = "Generic GigEVision (Mono)";
+            int acqTicket, completeTicket, triggerNumber, numPending, numReady;
+            bool busy;
 
-            int cameraCount = frameGrabbers.Count;
-            frameGrabber = new ICogFrameGrabber[cameraCount];
+            AcqFifo = frameGrabber.CreateAcqFifo(VIDEOFORMAT, CogAcqFifoPixelFormatConstants.Format8Grey, 0, false);
+            acqTicket = AcqFifo.StartAcquire();
 
-            if (cameraCount > 0)
-            {
-                for (int i = 0; i < cameraCount; i++)
+                do
                 {
-                    frameGrabber[i] = frameGrabbers[i];
-                    LoadCameras(frameGrabber[i]);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Không tìm thấy camera nào đang kết nối. \n\r" +
-                    "Kiểm tra lại IP Camera trong phần mềm Cognex GigE Vision Configurator");
-            }
+                    AcqFifo.GetFifoState(out numPending, out numReady, out busy);
+
+                    if ( numReady > 0)
+                    {
+                    Display.Image = AcqFifo.CompleteAcquire(acqTicket, out completeTicket, out triggerNumber);
+
+                    }
+                } while (numReady < 0);
+
         }
 
-        public static void LoadCameras(ICogFrameGrabber frameGrabber)
-        {          
-            string cVISION_VIDEOFORMAT = "Generic GigEVision (Mono)";
-            AcqFifoTool.Operator = frameGrabber.CreateAcqFifo(cVISION_VIDEOFORMAT, CogAcqFifoPixelFormatConstants.Format8Grey, 0, true);
-        }
-
-        private static void LiveCamera()
+        public void LiveCamera(ICogFrameGrabber frameGrabber, CogDisplay Display)
         {
+            string VIDEOFORMAT = "Generic GigEVision (Mono)";
+
+            AcqFifo = frameGrabber.CreateAcqFifo(VIDEOFORMAT, CogAcqFifoPixelFormatConstants.Format8Grey, 0, false);
+            Display.StartLiveDisplay(AcqFifo);
+
+        }
+        public void StopLiveCamera(CogDisplay Display)
+        {
+            if (Display.LiveDisplayRunning)
+                Display.StopLiveDisplay();
 
         }
     }

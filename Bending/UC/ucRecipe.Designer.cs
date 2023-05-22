@@ -40,26 +40,11 @@
             this.tbTrace = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cogblobDS = new Cognex.VisionPro.Display.CogDisplay();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.gbRegion = new System.Windows.Forms.GroupBox();
-            this.btnTest1 = new System.Windows.Forms.Button();
-            this.cbHistogram = new System.Windows.Forms.ComboBox();
-            this.label150 = new System.Windows.Forms.Label();
-            this.btnDetachInsp = new System.Windows.Forms.Button();
-            this.txtTH = new System.Windows.Forms.TextBox();
-            this.cbAttach = new System.Windows.Forms.ComboBox();
             this.rbLcheck2 = new System.Windows.Forms.RadioButton();
             this.rbLcheck1 = new System.Windows.Forms.RadioButton();
-            this.txtInspX1_new = new System.Windows.Forms.TextBox();
-            this.txtInspY2_new = new System.Windows.Forms.TextBox();
-            this.txtInspX2_new = new System.Windows.Forms.TextBox();
-            this.txtInspY1_new = new System.Windows.Forms.TextBox();
             this.btnLCheckOffset = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtRotation = new System.Windows.Forms.TextBox();
             this.btnInspection = new System.Windows.Forms.Button();
-            this.cbBendSelect = new System.Windows.Forms.ComboBox();
             this.LCheckTest = new System.Windows.Forms.Button();
             this.listAlignResult = new System.Windows.Forms.ListBox();
             this.label144 = new System.Windows.Forms.Label();
@@ -69,34 +54,8 @@
             this.txtInspY2 = new System.Windows.Forms.TextBox();
             this.txtInspX2 = new System.Windows.Forms.TextBox();
             this.label143 = new System.Windows.Forms.Label();
-            this.cbAlignMode = new System.Windows.Forms.ComboBox();
             this.txtInspY1 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label149 = new System.Windows.Forms.Label();
-            this.lblTarget = new System.Windows.Forms.Label();
-            this.btnTargetPosSet = new System.Windows.Forms.Button();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.txtTargetX4 = new System.Windows.Forms.TextBox();
-            this.txtTargetX1 = new System.Windows.Forms.TextBox();
-            this.txtTargetY1 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtTargetX2 = new System.Windows.Forms.TextBox();
-            this.label137 = new System.Windows.Forms.Label();
-            this.label139 = new System.Windows.Forms.Label();
-            this.label140 = new System.Windows.Forms.Label();
-            this.label138 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.txtTargetY2 = new System.Windows.Forms.TextBox();
-            this.txtTargetX3 = new System.Windows.Forms.TextBox();
-            this.label42 = new System.Windows.Forms.Label();
-            this.txtTargetY3 = new System.Windows.Forms.TextBox();
-            this.txtTargetY4 = new System.Windows.Forms.TextBox();
-            this.label41 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.rbDL2 = new System.Windows.Forms.RadioButton();
-            this.rbDL1 = new System.Windows.Forms.RadioButton();
-            this.rbLine = new System.Windows.Forms.RadioButton();
-            this.rbPattern = new System.Windows.Forms.RadioButton();
             this.txtX3 = new System.Windows.Forms.TextBox();
             this.txtY3 = new System.Windows.Forms.TextBox();
             this.txtX4 = new System.Windows.Forms.TextBox();
@@ -124,21 +83,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.txtR1 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbLineDisp2 = new System.Windows.Forms.CheckBox();
-            this.txtDistY2 = new System.Windows.Forms.TextBox();
-            this.txtDistX2 = new System.Windows.Forms.TextBox();
-            this.cbLineDispX2 = new System.Windows.Forms.CheckBox();
-            this.txtDistX1 = new System.Windows.Forms.TextBox();
-            this.cbLineDispX1 = new System.Windows.Forms.CheckBox();
-            this.cbLineDisp1 = new System.Windows.Forms.CheckBox();
-            this.txtDistY1 = new System.Windows.Forms.TextBox();
-            this.btnAllAutoFit = new System.Windows.Forms.Button();
-            this.cbOveray = new System.Windows.Forms.CheckBox();
-            this.cbDist = new System.Windows.Forms.CheckBox();
-            this.btnZoomOut = new System.Windows.Forms.Button();
-            this.btnClearImage = new System.Windows.Forms.Button();
-            this.btnZoomIn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cbCalImageTest = new System.Windows.Forms.CheckBox();
             this.btnCapture = new System.Windows.Forms.Button();
@@ -340,13 +284,8 @@
             this.tbTrace.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cogblobDS)).BeginInit();
             this.panel7.SuspendLayout();
-            this.gbRegion.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gbCam1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbExposure1)).BeginInit();
@@ -497,11 +436,8 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.cogblobDS);
             this.groupBox4.Controls.Add(this.panel7);
-            this.groupBox4.Controls.Add(this.groupBox2);
             this.groupBox4.Controls.Add(this.panel6);
-            this.groupBox4.Controls.Add(this.groupBox1);
             this.groupBox4.Controls.Add(this.panel2);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.gbCam1);
@@ -512,39 +448,13 @@
             this.groupBox4.TabIndex = 307;
             this.groupBox4.TabStop = false;
             // 
-            // cogblobDS
-            // 
-            this.cogblobDS.ColorMapLowerClipColor = System.Drawing.Color.Black;
-            this.cogblobDS.ColorMapLowerRoiLimit = 0D;
-            this.cogblobDS.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
-            this.cogblobDS.ColorMapUpperClipColor = System.Drawing.Color.Black;
-            this.cogblobDS.ColorMapUpperRoiLimit = 1D;
-            this.cogblobDS.DoubleTapZoomCycleLength = 2;
-            this.cogblobDS.DoubleTapZoomSensitivity = 2.5D;
-            this.cogblobDS.Location = new System.Drawing.Point(11, 281);
-            this.cogblobDS.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
-            this.cogblobDS.MouseWheelSensitivity = 1D;
-            this.cogblobDS.Name = "cogblobDS";
-            this.cogblobDS.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogblobDS.OcxState")));
-            this.cogblobDS.Size = new System.Drawing.Size(288, 180);
-            this.cogblobDS.TabIndex = 321;
-            // 
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel7.Controls.Add(this.gbRegion);
-            this.panel7.Controls.Add(this.cbAttach);
             this.panel7.Controls.Add(this.rbLcheck2);
             this.panel7.Controls.Add(this.rbLcheck1);
-            this.panel7.Controls.Add(this.txtInspX1_new);
-            this.panel7.Controls.Add(this.txtInspY2_new);
-            this.panel7.Controls.Add(this.txtInspX2_new);
-            this.panel7.Controls.Add(this.txtInspY1_new);
             this.panel7.Controls.Add(this.btnLCheckOffset);
-            this.panel7.Controls.Add(this.label12);
-            this.panel7.Controls.Add(this.txtRotation);
             this.panel7.Controls.Add(this.btnInspection);
-            this.panel7.Controls.Add(this.cbBendSelect);
             this.panel7.Controls.Add(this.LCheckTest);
             this.panel7.Controls.Add(this.listAlignResult);
             this.panel7.Controls.Add(this.label144);
@@ -554,105 +464,11 @@
             this.panel7.Controls.Add(this.txtInspY2);
             this.panel7.Controls.Add(this.txtInspX2);
             this.panel7.Controls.Add(this.label143);
-            this.panel7.Controls.Add(this.cbAlignMode);
             this.panel7.Controls.Add(this.txtInspY1);
             this.panel7.Location = new System.Drawing.Point(209, 29);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(412, 250);
             this.panel7.TabIndex = 308;
-            // 
-            // gbRegion
-            // 
-            this.gbRegion.Controls.Add(this.btnTest1);
-            this.gbRegion.Controls.Add(this.cbHistogram);
-            this.gbRegion.Controls.Add(this.label150);
-            this.gbRegion.Controls.Add(this.btnDetachInsp);
-            this.gbRegion.Controls.Add(this.txtTH);
-            this.gbRegion.Location = new System.Drawing.Point(201, -8);
-            this.gbRegion.Name = "gbRegion";
-            this.gbRegion.Size = new System.Drawing.Size(205, 93);
-            this.gbRegion.TabIndex = 326;
-            this.gbRegion.TabStop = false;
-            // 
-            // btnTest1
-            // 
-            this.btnTest1.BackColor = System.Drawing.Color.White;
-            this.btnTest1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnTest1.FlatAppearance.BorderSize = 2;
-            this.btnTest1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnTest1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnTest1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTest1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnTest1.Location = new System.Drawing.Point(148, 35);
-            this.btnTest1.Name = "btnTest1";
-            this.btnTest1.Size = new System.Drawing.Size(54, 25);
-            this.btnTest1.TabIndex = 326;
-            this.btnTest1.Text = "Test";
-            this.btnTest1.UseVisualStyleBackColor = false;
-            // 
-            // cbHistogram
-            // 
-            this.cbHistogram.FormattingEnabled = true;
-            this.cbHistogram.Items.AddRange(new object[] {
-            "Detach Check",
-            "MCR Pre Check",
-            "REF Point ",
-            "MCR Region",
-            "ImageProcessing"});
-            this.cbHistogram.Location = new System.Drawing.Point(89, 10);
-            this.cbHistogram.Name = "cbHistogram";
-            this.cbHistogram.Size = new System.Drawing.Size(113, 23);
-            this.cbHistogram.TabIndex = 324;
-            // 
-            // label150
-            // 
-            this.label150.BackColor = System.Drawing.Color.Black;
-            this.label150.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label150.ForeColor = System.Drawing.Color.White;
-            this.label150.Location = new System.Drawing.Point(62, 39);
-            this.label150.Name = "label150";
-            this.label150.Size = new System.Drawing.Size(27, 16);
-            this.label150.TabIndex = 325;
-            this.label150.Text = "TH";
-            this.label150.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnDetachInsp
-            // 
-            this.btnDetachInsp.BackColor = System.Drawing.Color.White;
-            this.btnDetachInsp.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnDetachInsp.FlatAppearance.BorderSize = 2;
-            this.btnDetachInsp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnDetachInsp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnDetachInsp.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetachInsp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDetachInsp.Location = new System.Drawing.Point(148, 64);
-            this.btnDetachInsp.Name = "btnDetachInsp";
-            this.btnDetachInsp.Size = new System.Drawing.Size(54, 25);
-            this.btnDetachInsp.TabIndex = 322;
-            this.btnDetachInsp.Text = "Save";
-            this.btnDetachInsp.UseVisualStyleBackColor = false;
-            // 
-            // txtTH
-            // 
-            this.txtTH.BackColor = System.Drawing.Color.White;
-            this.txtTH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTH.Location = new System.Drawing.Point(89, 35);
-            this.txtTH.Name = "txtTH";
-            this.txtTH.Size = new System.Drawing.Size(50, 22);
-            this.txtTH.TabIndex = 323;
-            // 
-            // cbAttach
-            // 
-            this.cbAttach.BackColor = System.Drawing.Color.White;
-            this.cbAttach.FormattingEnabled = true;
-            this.cbAttach.Items.AddRange(new object[] {
-            "Attach",
-            "Detach"});
-            this.cbAttach.Location = new System.Drawing.Point(3, 50);
-            this.cbAttach.Name = "cbAttach";
-            this.cbAttach.Size = new System.Drawing.Size(99, 23);
-            this.cbAttach.TabIndex = 317;
-            this.cbAttach.Visible = false;
             // 
             // rbLcheck2
             // 
@@ -678,50 +494,6 @@
             this.rbLcheck1.Text = "Lcheck1";
             this.rbLcheck1.UseVisualStyleBackColor = true;
             // 
-            // txtInspX1_new
-            // 
-            this.txtInspX1_new.BackColor = System.Drawing.Color.White;
-            this.txtInspX1_new.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtInspX1_new.Location = new System.Drawing.Point(3, 114);
-            this.txtInspX1_new.Name = "txtInspX1_new";
-            this.txtInspX1_new.ReadOnly = true;
-            this.txtInspX1_new.Size = new System.Drawing.Size(50, 22);
-            this.txtInspX1_new.TabIndex = 309;
-            this.txtInspX1_new.Visible = false;
-            // 
-            // txtInspY2_new
-            // 
-            this.txtInspY2_new.BackColor = System.Drawing.Color.White;
-            this.txtInspY2_new.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtInspY2_new.Location = new System.Drawing.Point(159, 114);
-            this.txtInspY2_new.Name = "txtInspY2_new";
-            this.txtInspY2_new.ReadOnly = true;
-            this.txtInspY2_new.Size = new System.Drawing.Size(50, 22);
-            this.txtInspY2_new.TabIndex = 312;
-            this.txtInspY2_new.Visible = false;
-            // 
-            // txtInspX2_new
-            // 
-            this.txtInspX2_new.BackColor = System.Drawing.Color.White;
-            this.txtInspX2_new.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtInspX2_new.Location = new System.Drawing.Point(107, 114);
-            this.txtInspX2_new.Name = "txtInspX2_new";
-            this.txtInspX2_new.ReadOnly = true;
-            this.txtInspX2_new.Size = new System.Drawing.Size(50, 22);
-            this.txtInspX2_new.TabIndex = 311;
-            this.txtInspX2_new.Visible = false;
-            // 
-            // txtInspY1_new
-            // 
-            this.txtInspY1_new.BackColor = System.Drawing.Color.White;
-            this.txtInspY1_new.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtInspY1_new.Location = new System.Drawing.Point(55, 114);
-            this.txtInspY1_new.Name = "txtInspY1_new";
-            this.txtInspY1_new.ReadOnly = true;
-            this.txtInspY1_new.Size = new System.Drawing.Size(50, 22);
-            this.txtInspY1_new.TabIndex = 310;
-            this.txtInspY1_new.Visible = false;
-            // 
             // btnLCheckOffset
             // 
             this.btnLCheckOffset.BackColor = System.Drawing.Color.White;
@@ -737,30 +509,6 @@
             this.btnLCheckOffset.TabIndex = 302;
             this.btnLCheckOffset.Text = "Set LCheck";
             this.btnLCheckOffset.UseVisualStyleBackColor = false;
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Linen;
-            this.label12.Location = new System.Drawing.Point(223, 70);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(21, 13);
-            this.label12.TabIndex = 307;
-            this.label12.Text = "RT";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label12.Visible = false;
-            // 
-            // txtRotation
-            // 
-            this.txtRotation.BackColor = System.Drawing.Color.White;
-            this.txtRotation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtRotation.Location = new System.Drawing.Point(210, 86);
-            this.txtRotation.Name = "txtRotation";
-            this.txtRotation.ReadOnly = true;
-            this.txtRotation.Size = new System.Drawing.Size(50, 22);
-            this.txtRotation.TabIndex = 308;
-            this.txtRotation.Visible = false;
             // 
             // btnInspection
             // 
@@ -778,19 +526,6 @@
             this.btnInspection.TabIndex = 167;
             this.btnInspection.Text = "Inspection";
             this.btnInspection.UseVisualStyleBackColor = false;
-            // 
-            // cbBendSelect
-            // 
-            this.cbBendSelect.BackColor = System.Drawing.Color.White;
-            this.cbBendSelect.FormattingEnabled = true;
-            this.cbBendSelect.Items.AddRange(new object[] {
-            "Head1",
-            "Head2"});
-            this.cbBendSelect.Location = new System.Drawing.Point(101, 4);
-            this.cbBendSelect.Name = "cbBendSelect";
-            this.cbBendSelect.Size = new System.Drawing.Size(99, 23);
-            this.cbBendSelect.TabIndex = 305;
-            this.cbBendSelect.Visible = false;
             // 
             // LCheckTest
             // 
@@ -896,21 +631,6 @@
             this.label143.Text = "LY";
             this.label143.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cbAlignMode
-            // 
-            this.cbAlignMode.BackColor = System.Drawing.Color.White;
-            this.cbAlignMode.FormattingEnabled = true;
-            this.cbAlignMode.Items.AddRange(new object[] {
-            "MarkToMark",
-            "PanelMarkFPCBMark",
-            "PanelEdgeFPCBMark",
-            "PanelMarkFPCBEdge",
-            "PanelEdgeFPCBEdge"});
-            this.cbAlignMode.Location = new System.Drawing.Point(101, 26);
-            this.cbAlignMode.Name = "cbAlignMode";
-            this.cbAlignMode.Size = new System.Drawing.Size(99, 23);
-            this.cbAlignMode.TabIndex = 306;
-            // 
             // txtInspY1
             // 
             this.txtInspY1.BackColor = System.Drawing.Color.White;
@@ -921,259 +641,9 @@
             this.txtInspY1.Size = new System.Drawing.Size(50, 22);
             this.txtInspY1.TabIndex = 268;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label149);
-            this.groupBox2.Controls.Add(this.lblTarget);
-            this.groupBox2.Controls.Add(this.btnTargetPosSet);
-            this.groupBox2.Controls.Add(this.groupBox8);
-            this.groupBox2.Location = new System.Drawing.Point(320, 321);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(301, 145);
-            this.groupBox2.TabIndex = 298;
-            this.groupBox2.TabStop = false;
-            // 
-            // label149
-            // 
-            this.label149.BackColor = System.Drawing.Color.Gray;
-            this.label149.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label149.ForeColor = System.Drawing.Color.White;
-            this.label149.Location = new System.Drawing.Point(11, -6);
-            this.label149.Name = "label149";
-            this.label149.Size = new System.Drawing.Size(194, 25);
-            this.label149.TabIndex = 301;
-            this.label149.Text = "L-Check Target Setting";
-            this.label149.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblTarget
-            // 
-            this.lblTarget.BackColor = System.Drawing.Color.Gray;
-            this.lblTarget.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTarget.ForeColor = System.Drawing.Color.White;
-            this.lblTarget.Location = new System.Drawing.Point(33, -15);
-            this.lblTarget.Name = "lblTarget";
-            this.lblTarget.Size = new System.Drawing.Size(194, 25);
-            this.lblTarget.TabIndex = 301;
-            this.lblTarget.Text = "L-Check Target Setting";
-            this.lblTarget.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnTargetPosSet
-            // 
-            this.btnTargetPosSet.BackColor = System.Drawing.Color.White;
-            this.btnTargetPosSet.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnTargetPosSet.FlatAppearance.BorderSize = 2;
-            this.btnTargetPosSet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnTargetPosSet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnTargetPosSet.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTargetPosSet.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnTargetPosSet.Location = new System.Drawing.Point(5, 115);
-            this.btnTargetPosSet.Name = "btnTargetPosSet";
-            this.btnTargetPosSet.Size = new System.Drawing.Size(138, 25);
-            this.btnTargetPosSet.TabIndex = 298;
-            this.btnTargetPosSet.Text = "Target Pos Save";
-            this.btnTargetPosSet.UseVisualStyleBackColor = false;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.txtTargetX4);
-            this.groupBox8.Controls.Add(this.txtTargetX1);
-            this.groupBox8.Controls.Add(this.txtTargetY1);
-            this.groupBox8.Controls.Add(this.label22);
-            this.groupBox8.Controls.Add(this.txtTargetX2);
-            this.groupBox8.Controls.Add(this.label137);
-            this.groupBox8.Controls.Add(this.label139);
-            this.groupBox8.Controls.Add(this.label140);
-            this.groupBox8.Controls.Add(this.label138);
-            this.groupBox8.Controls.Add(this.label29);
-            this.groupBox8.Controls.Add(this.txtTargetY2);
-            this.groupBox8.Controls.Add(this.txtTargetX3);
-            this.groupBox8.Controls.Add(this.label42);
-            this.groupBox8.Controls.Add(this.txtTargetY3);
-            this.groupBox8.Controls.Add(this.txtTargetY4);
-            this.groupBox8.Controls.Add(this.label41);
-            this.groupBox8.ForeColor = System.Drawing.Color.White;
-            this.groupBox8.Location = new System.Drawing.Point(6, 27);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(287, 86);
-            this.groupBox8.TabIndex = 297;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Target Position";
-            // 
-            // txtTargetX4
-            // 
-            this.txtTargetX4.BackColor = System.Drawing.Color.White;
-            this.txtTargetX4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTargetX4.Location = new System.Drawing.Point(233, 23);
-            this.txtTargetX4.Name = "txtTargetX4";
-            this.txtTargetX4.Size = new System.Drawing.Size(40, 22);
-            this.txtTargetX4.TabIndex = 168;
-            // 
-            // txtTargetX1
-            // 
-            this.txtTargetX1.BackColor = System.Drawing.Color.White;
-            this.txtTargetX1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTargetX1.Location = new System.Drawing.Point(30, 23);
-            this.txtTargetX1.Name = "txtTargetX1";
-            this.txtTargetX1.Size = new System.Drawing.Size(40, 22);
-            this.txtTargetX1.TabIndex = 167;
-            // 
-            // txtTargetY1
-            // 
-            this.txtTargetY1.BackColor = System.Drawing.Color.White;
-            this.txtTargetY1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTargetY1.Location = new System.Drawing.Point(30, 51);
-            this.txtTargetY1.Name = "txtTargetY1";
-            this.txtTargetY1.Size = new System.Drawing.Size(40, 22);
-            this.txtTargetY1.TabIndex = 169;
-            // 
-            // label22
-            // 
-            this.label22.BackColor = System.Drawing.Color.Black;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(208, 46);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(22, 30);
-            this.label22.TabIndex = 174;
-            this.label22.Text = "Y4";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtTargetX2
-            // 
-            this.txtTargetX2.BackColor = System.Drawing.Color.White;
-            this.txtTargetX2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTargetX2.Location = new System.Drawing.Point(97, 22);
-            this.txtTargetX2.Name = "txtTargetX2";
-            this.txtTargetX2.Size = new System.Drawing.Size(40, 22);
-            this.txtTargetX2.TabIndex = 168;
-            // 
-            // label137
-            // 
-            this.label137.BackColor = System.Drawing.Color.Black;
-            this.label137.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label137.ForeColor = System.Drawing.Color.White;
-            this.label137.Location = new System.Drawing.Point(75, 46);
-            this.label137.Name = "label137";
-            this.label137.Size = new System.Drawing.Size(22, 30);
-            this.label137.TabIndex = 174;
-            this.label137.Text = "Y2";
-            this.label137.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label139
-            // 
-            this.label139.BackColor = System.Drawing.Color.Black;
-            this.label139.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label139.ForeColor = System.Drawing.Color.White;
-            this.label139.Location = new System.Drawing.Point(6, 45);
-            this.label139.Name = "label139";
-            this.label139.Size = new System.Drawing.Size(22, 30);
-            this.label139.TabIndex = 172;
-            this.label139.Text = "Y1";
-            this.label139.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label140
-            // 
-            this.label140.BackColor = System.Drawing.Color.Black;
-            this.label140.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label140.ForeColor = System.Drawing.Color.White;
-            this.label140.Location = new System.Drawing.Point(6, 17);
-            this.label140.Name = "label140";
-            this.label140.Size = new System.Drawing.Size(22, 30);
-            this.label140.TabIndex = 171;
-            this.label140.Text = "X1";
-            this.label140.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label138
-            // 
-            this.label138.BackColor = System.Drawing.Color.Black;
-            this.label138.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label138.ForeColor = System.Drawing.Color.White;
-            this.label138.Location = new System.Drawing.Point(75, 16);
-            this.label138.Name = "label138";
-            this.label138.Size = new System.Drawing.Size(22, 30);
-            this.label138.TabIndex = 173;
-            this.label138.Text = "X2";
-            this.label138.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label29
-            // 
-            this.label29.BackColor = System.Drawing.Color.Black;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(209, 16);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(22, 30);
-            this.label29.TabIndex = 173;
-            this.label29.Text = "X4";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtTargetY2
-            // 
-            this.txtTargetY2.BackColor = System.Drawing.Color.White;
-            this.txtTargetY2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTargetY2.Location = new System.Drawing.Point(97, 51);
-            this.txtTargetY2.Name = "txtTargetY2";
-            this.txtTargetY2.Size = new System.Drawing.Size(40, 22);
-            this.txtTargetY2.TabIndex = 170;
-            // 
-            // txtTargetX3
-            // 
-            this.txtTargetX3.BackColor = System.Drawing.Color.White;
-            this.txtTargetX3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTargetX3.Location = new System.Drawing.Point(164, 23);
-            this.txtTargetX3.Name = "txtTargetX3";
-            this.txtTargetX3.Size = new System.Drawing.Size(40, 22);
-            this.txtTargetX3.TabIndex = 167;
-            // 
-            // label42
-            // 
-            this.label42.BackColor = System.Drawing.Color.Black;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.ForeColor = System.Drawing.Color.White;
-            this.label42.Location = new System.Drawing.Point(142, 16);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(22, 30);
-            this.label42.TabIndex = 171;
-            this.label42.Text = "X3";
-            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtTargetY3
-            // 
-            this.txtTargetY3.BackColor = System.Drawing.Color.White;
-            this.txtTargetY3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTargetY3.Location = new System.Drawing.Point(164, 51);
-            this.txtTargetY3.Name = "txtTargetY3";
-            this.txtTargetY3.Size = new System.Drawing.Size(40, 22);
-            this.txtTargetY3.TabIndex = 169;
-            // 
-            // txtTargetY4
-            // 
-            this.txtTargetY4.BackColor = System.Drawing.Color.White;
-            this.txtTargetY4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTargetY4.Location = new System.Drawing.Point(233, 52);
-            this.txtTargetY4.Name = "txtTargetY4";
-            this.txtTargetY4.Size = new System.Drawing.Size(40, 22);
-            this.txtTargetY4.TabIndex = 170;
-            // 
-            // label41
-            // 
-            this.label41.BackColor = System.Drawing.Color.Black;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.ForeColor = System.Drawing.Color.White;
-            this.label41.Location = new System.Drawing.Point(142, 44);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(22, 30);
-            this.label41.TabIndex = 172;
-            this.label41.Text = "Y3";
-            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel6.Controls.Add(this.rbDL2);
-            this.panel6.Controls.Add(this.rbDL1);
-            this.panel6.Controls.Add(this.rbLine);
-            this.panel6.Controls.Add(this.rbPattern);
             this.panel6.Controls.Add(this.txtX3);
             this.panel6.Controls.Add(this.txtY3);
             this.panel6.Controls.Add(this.txtX4);
@@ -1201,56 +671,10 @@
             this.panel6.Controls.Add(this.label1);
             this.panel6.Controls.Add(this.label21);
             this.panel6.Controls.Add(this.txtR1);
-            this.panel6.Location = new System.Drawing.Point(11, 472);
+            this.panel6.Location = new System.Drawing.Point(1, 313);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(300, 145);
             this.panel6.TabIndex = 308;
-            // 
-            // rbDL2
-            // 
-            this.rbDL2.AutoSize = true;
-            this.rbDL2.ForeColor = System.Drawing.Color.White;
-            this.rbDL2.Location = new System.Drawing.Point(249, 33);
-            this.rbDL2.Name = "rbDL2";
-            this.rbDL2.Size = new System.Drawing.Size(48, 19);
-            this.rbDL2.TabIndex = 304;
-            this.rbDL2.Text = "DL2";
-            this.rbDL2.UseVisualStyleBackColor = true;
-            // 
-            // rbDL1
-            // 
-            this.rbDL1.AutoSize = true;
-            this.rbDL1.ForeColor = System.Drawing.Color.White;
-            this.rbDL1.Location = new System.Drawing.Point(210, 33);
-            this.rbDL1.Name = "rbDL1";
-            this.rbDL1.Size = new System.Drawing.Size(48, 19);
-            this.rbDL1.TabIndex = 303;
-            this.rbDL1.Text = "DL1";
-            this.rbDL1.UseVisualStyleBackColor = true;
-            // 
-            // rbLine
-            // 
-            this.rbLine.AutoSize = true;
-            this.rbLine.ForeColor = System.Drawing.Color.White;
-            this.rbLine.Location = new System.Drawing.Point(210, 17);
-            this.rbLine.Name = "rbLine";
-            this.rbLine.Size = new System.Drawing.Size(49, 19);
-            this.rbLine.TabIndex = 298;
-            this.rbLine.Text = "Line";
-            this.rbLine.UseVisualStyleBackColor = true;
-            // 
-            // rbPattern
-            // 
-            this.rbPattern.AutoSize = true;
-            this.rbPattern.Checked = true;
-            this.rbPattern.ForeColor = System.Drawing.Color.White;
-            this.rbPattern.Location = new System.Drawing.Point(210, 3);
-            this.rbPattern.Name = "rbPattern";
-            this.rbPattern.Size = new System.Drawing.Size(64, 19);
-            this.rbPattern.TabIndex = 297;
-            this.rbPattern.TabStop = true;
-            this.rbPattern.Text = "Pattern";
-            this.rbPattern.UseVisualStyleBackColor = true;
             // 
             // txtX3
             // 
@@ -1562,198 +986,6 @@
             this.txtR1.Size = new System.Drawing.Size(40, 22);
             this.txtR1.TabIndex = 79;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cbLineDisp2);
-            this.groupBox1.Controls.Add(this.txtDistY2);
-            this.groupBox1.Controls.Add(this.txtDistX2);
-            this.groupBox1.Controls.Add(this.cbLineDispX2);
-            this.groupBox1.Controls.Add(this.txtDistX1);
-            this.groupBox1.Controls.Add(this.cbLineDispX1);
-            this.groupBox1.Controls.Add(this.cbLineDisp1);
-            this.groupBox1.Controls.Add(this.txtDistY1);
-            this.groupBox1.Controls.Add(this.btnAllAutoFit);
-            this.groupBox1.Controls.Add(this.cbOveray);
-            this.groupBox1.Controls.Add(this.cbDist);
-            this.groupBox1.Controls.Add(this.btnZoomOut);
-            this.groupBox1.Controls.Add(this.btnClearImage);
-            this.groupBox1.Controls.Add(this.btnZoomIn);
-            this.groupBox1.Location = new System.Drawing.Point(319, 472);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(300, 145);
-            this.groupBox1.TabIndex = 296;
-            this.groupBox1.TabStop = false;
-            // 
-            // cbLineDisp2
-            // 
-            this.cbLineDisp2.AutoSize = true;
-            this.cbLineDisp2.ForeColor = System.Drawing.Color.Linen;
-            this.cbLineDisp2.Location = new System.Drawing.Point(65, 44);
-            this.cbLineDisp2.Name = "cbLineDisp2";
-            this.cbLineDisp2.Size = new System.Drawing.Size(67, 19);
-            this.cbLineDisp2.TabIndex = 321;
-            this.cbLineDisp2.Text = "Line Y2";
-            this.cbLineDisp2.UseVisualStyleBackColor = true;
-            // 
-            // txtDistY2
-            // 
-            this.txtDistY2.BackColor = System.Drawing.Color.White;
-            this.txtDistY2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtDistY2.Location = new System.Drawing.Point(131, 41);
-            this.txtDistY2.Name = "txtDistY2";
-            this.txtDistY2.Size = new System.Drawing.Size(40, 22);
-            this.txtDistY2.TabIndex = 320;
-            this.txtDistY2.Text = "3";
-            // 
-            // txtDistX2
-            // 
-            this.txtDistX2.BackColor = System.Drawing.Color.White;
-            this.txtDistX2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtDistX2.Location = new System.Drawing.Point(238, 41);
-            this.txtDistX2.Name = "txtDistX2";
-            this.txtDistX2.Size = new System.Drawing.Size(40, 22);
-            this.txtDistX2.TabIndex = 319;
-            this.txtDistX2.Text = "3";
-            // 
-            // cbLineDispX2
-            // 
-            this.cbLineDispX2.AutoSize = true;
-            this.cbLineDispX2.ForeColor = System.Drawing.Color.Linen;
-            this.cbLineDispX2.Location = new System.Drawing.Point(174, 44);
-            this.cbLineDispX2.Name = "cbLineDispX2";
-            this.cbLineDispX2.Size = new System.Drawing.Size(68, 19);
-            this.cbLineDispX2.TabIndex = 318;
-            this.cbLineDispX2.Text = "Line X2";
-            this.cbLineDispX2.UseVisualStyleBackColor = true;
-            // 
-            // txtDistX1
-            // 
-            this.txtDistX1.BackColor = System.Drawing.Color.White;
-            this.txtDistX1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtDistX1.Location = new System.Drawing.Point(238, 13);
-            this.txtDistX1.Name = "txtDistX1";
-            this.txtDistX1.Size = new System.Drawing.Size(40, 22);
-            this.txtDistX1.TabIndex = 317;
-            this.txtDistX1.Text = "3";
-            // 
-            // cbLineDispX1
-            // 
-            this.cbLineDispX1.AutoSize = true;
-            this.cbLineDispX1.ForeColor = System.Drawing.Color.Linen;
-            this.cbLineDispX1.Location = new System.Drawing.Point(174, 16);
-            this.cbLineDispX1.Name = "cbLineDispX1";
-            this.cbLineDispX1.Size = new System.Drawing.Size(68, 19);
-            this.cbLineDispX1.TabIndex = 316;
-            this.cbLineDispX1.Text = "Line X1";
-            this.cbLineDispX1.UseVisualStyleBackColor = true;
-            // 
-            // cbLineDisp1
-            // 
-            this.cbLineDisp1.AutoSize = true;
-            this.cbLineDisp1.ForeColor = System.Drawing.Color.Linen;
-            this.cbLineDisp1.Location = new System.Drawing.Point(65, 16);
-            this.cbLineDisp1.Name = "cbLineDisp1";
-            this.cbLineDisp1.Size = new System.Drawing.Size(67, 19);
-            this.cbLineDisp1.TabIndex = 315;
-            this.cbLineDisp1.Text = "Line Y1";
-            this.cbLineDisp1.UseVisualStyleBackColor = true;
-            // 
-            // txtDistY1
-            // 
-            this.txtDistY1.BackColor = System.Drawing.Color.White;
-            this.txtDistY1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtDistY1.Location = new System.Drawing.Point(131, 13);
-            this.txtDistY1.Name = "txtDistY1";
-            this.txtDistY1.Size = new System.Drawing.Size(40, 22);
-            this.txtDistY1.TabIndex = 314;
-            this.txtDistY1.Text = "3";
-            // 
-            // btnAllAutoFit
-            // 
-            this.btnAllAutoFit.BackColor = System.Drawing.Color.White;
-            this.btnAllAutoFit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnAllAutoFit.FlatAppearance.BorderSize = 2;
-            this.btnAllAutoFit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnAllAutoFit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnAllAutoFit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAllAutoFit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAllAutoFit.Location = new System.Drawing.Point(6, 102);
-            this.btnAllAutoFit.Name = "btnAllAutoFit";
-            this.btnAllAutoFit.Size = new System.Drawing.Size(133, 29);
-            this.btnAllAutoFit.TabIndex = 307;
-            this.btnAllAutoFit.Text = "All Image Auto Fit";
-            this.btnAllAutoFit.UseVisualStyleBackColor = false;
-            // 
-            // cbOveray
-            // 
-            this.cbOveray.AutoSize = true;
-            this.cbOveray.ForeColor = System.Drawing.Color.Linen;
-            this.cbOveray.Location = new System.Drawing.Point(6, 14);
-            this.cbOveray.Name = "cbOveray";
-            this.cbOveray.Size = new System.Drawing.Size(63, 19);
-            this.cbOveray.TabIndex = 144;
-            this.cbOveray.Text = "Overay";
-            this.cbOveray.UseVisualStyleBackColor = true;
-            // 
-            // cbDist
-            // 
-            this.cbDist.AutoSize = true;
-            this.cbDist.ForeColor = System.Drawing.Color.Linen;
-            this.cbDist.Location = new System.Drawing.Point(6, 34);
-            this.cbDist.Name = "cbDist";
-            this.cbDist.Size = new System.Drawing.Size(47, 19);
-            this.cbDist.TabIndex = 147;
-            this.cbDist.Text = "Dist";
-            this.cbDist.UseVisualStyleBackColor = true;
-            // 
-            // btnZoomOut
-            // 
-            this.btnZoomOut.BackColor = System.Drawing.Color.White;
-            this.btnZoomOut.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnZoomOut.FlatAppearance.BorderSize = 2;
-            this.btnZoomOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnZoomOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnZoomOut.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZoomOut.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnZoomOut.Location = new System.Drawing.Point(82, 70);
-            this.btnZoomOut.Name = "btnZoomOut";
-            this.btnZoomOut.Size = new System.Drawing.Size(85, 29);
-            this.btnZoomOut.TabIndex = 82;
-            this.btnZoomOut.Text = "Zoom Out";
-            this.btnZoomOut.UseVisualStyleBackColor = false;
-            // 
-            // btnClearImage
-            // 
-            this.btnClearImage.BackColor = System.Drawing.Color.White;
-            this.btnClearImage.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnClearImage.FlatAppearance.BorderSize = 2;
-            this.btnClearImage.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnClearImage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnClearImage.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearImage.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnClearImage.Location = new System.Drawing.Point(145, 103);
-            this.btnClearImage.Name = "btnClearImage";
-            this.btnClearImage.Size = new System.Drawing.Size(120, 29);
-            this.btnClearImage.TabIndex = 82;
-            this.btnClearImage.Text = "Clear All Image";
-            this.btnClearImage.UseVisualStyleBackColor = false;
-            // 
-            // btnZoomIn
-            // 
-            this.btnZoomIn.BackColor = System.Drawing.Color.White;
-            this.btnZoomIn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnZoomIn.FlatAppearance.BorderSize = 2;
-            this.btnZoomIn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnZoomIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnZoomIn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZoomIn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnZoomIn.Location = new System.Drawing.Point(6, 69);
-            this.btnZoomIn.Name = "btnZoomIn";
-            this.btnZoomIn.Size = new System.Drawing.Size(70, 29);
-            this.btnZoomIn.TabIndex = 81;
-            this.btnZoomIn.Text = "Zoom In";
-            this.btnZoomIn.UseVisualStyleBackColor = false;
-            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -1939,7 +1171,7 @@
             this.gbCam1.Controls.Add(this.btnLightDown1);
             this.gbCam1.Controls.Add(this.btnLightUp1);
             this.gbCam1.Controls.Add(this.lbExposure1);
-            this.gbCam1.Location = new System.Drawing.Point(11, 663);
+            this.gbCam1.Location = new System.Drawing.Point(1, 521);
             this.gbCam1.Name = "gbCam1";
             this.gbCam1.Size = new System.Drawing.Size(305, 105);
             this.gbCam1.TabIndex = 295;
@@ -2169,7 +1401,7 @@
             this.gbCam2.Controls.Add(this.txtLight2);
             this.gbCam2.Controls.Add(this.btnLightDown2);
             this.gbCam2.Controls.Add(this.btnLightUp2);
-            this.gbCam2.Location = new System.Drawing.Point(319, 663);
+            this.gbCam2.Location = new System.Drawing.Point(311, 521);
             this.gbCam2.Name = "gbCam2";
             this.gbCam2.Size = new System.Drawing.Size(305, 105);
             this.gbCam2.TabIndex = 297;
@@ -4057,18 +3289,10 @@
             this.tbTrace.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cogblobDS)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.gbRegion.ResumeLayout(false);
-            this.gbRegion.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.gbCam1.ResumeLayout(false);
@@ -4132,26 +3356,11 @@
         private System.Windows.Forms.TabControl tbTrace;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.GroupBox groupBox4;
-        private Cognex.VisionPro.Display.CogDisplay cogblobDS;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.GroupBox gbRegion;
-        private System.Windows.Forms.Button btnTest1;
-        private System.Windows.Forms.ComboBox cbHistogram;
-        private System.Windows.Forms.Label label150;
-        private System.Windows.Forms.Button btnDetachInsp;
-        private System.Windows.Forms.TextBox txtTH;
-        private System.Windows.Forms.ComboBox cbAttach;
         private System.Windows.Forms.RadioButton rbLcheck2;
         private System.Windows.Forms.RadioButton rbLcheck1;
-        private System.Windows.Forms.TextBox txtInspX1_new;
-        private System.Windows.Forms.TextBox txtInspY2_new;
-        private System.Windows.Forms.TextBox txtInspX2_new;
-        private System.Windows.Forms.TextBox txtInspY1_new;
         private System.Windows.Forms.Button btnLCheckOffset;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtRotation;
         private System.Windows.Forms.Button btnInspection;
-        private System.Windows.Forms.ComboBox cbBendSelect;
         private System.Windows.Forms.Button LCheckTest;
         private System.Windows.Forms.ListBox listAlignResult;
         private System.Windows.Forms.Label label144;
@@ -4161,34 +3370,8 @@
         private System.Windows.Forms.TextBox txtInspY2;
         private System.Windows.Forms.TextBox txtInspX2;
         private System.Windows.Forms.Label label143;
-        private System.Windows.Forms.ComboBox cbAlignMode;
         private System.Windows.Forms.TextBox txtInspY1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        public System.Windows.Forms.Label label149;
-        public System.Windows.Forms.Label lblTarget;
-        private System.Windows.Forms.Button btnTargetPosSet;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.TextBox txtTargetX4;
-        private System.Windows.Forms.TextBox txtTargetX1;
-        private System.Windows.Forms.TextBox txtTargetY1;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox txtTargetX2;
-        private System.Windows.Forms.Label label137;
-        private System.Windows.Forms.Label label139;
-        private System.Windows.Forms.Label label140;
-        private System.Windows.Forms.Label label138;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox txtTargetY2;
-        private System.Windows.Forms.TextBox txtTargetX3;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.TextBox txtTargetY3;
-        private System.Windows.Forms.TextBox txtTargetY4;
-        private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.RadioButton rbDL2;
-        private System.Windows.Forms.RadioButton rbDL1;
-        private System.Windows.Forms.RadioButton rbLine;
-        private System.Windows.Forms.RadioButton rbPattern;
         private System.Windows.Forms.TextBox txtX3;
         private System.Windows.Forms.TextBox txtY3;
         private System.Windows.Forms.TextBox txtX4;
@@ -4216,21 +3399,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txtR1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox cbLineDisp2;
-        private System.Windows.Forms.TextBox txtDistY2;
-        private System.Windows.Forms.TextBox txtDistX2;
-        private System.Windows.Forms.CheckBox cbLineDispX2;
-        private System.Windows.Forms.TextBox txtDistX1;
-        private System.Windows.Forms.CheckBox cbLineDispX1;
-        private System.Windows.Forms.CheckBox cbLineDisp1;
-        private System.Windows.Forms.TextBox txtDistY1;
-        private System.Windows.Forms.Button btnAllAutoFit;
-        private System.Windows.Forms.CheckBox cbOveray;
-        private System.Windows.Forms.CheckBox cbDist;
-        private System.Windows.Forms.Button btnZoomOut;
-        private System.Windows.Forms.Button btnClearImage;
-        private System.Windows.Forms.Button btnZoomIn;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.CheckBox cbCalImageTest;
         private System.Windows.Forms.Button btnCapture;

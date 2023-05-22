@@ -1,6 +1,7 @@
 ﻿using Bending.Data.Enums;
 using Bending.Data.Helpers;
 using Bending.Data.Models.Setting;
+using Cognex.VisionPro;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,38 +18,79 @@ namespace Bending.UC
 {
     public partial class ucRecipe : UserControl
     {
+        // Lấy tất cả Camera đang kết nôi.
+        public static CogFrameGrabbers frameGrabbers;
+        public static ICogFrameGrabber[] frameGrabber;
+
+        public  VisionPro LoadingPre1 = new VisionPro();
+        public  VisionPro LoadingPre2 = new VisionPro();
+        public  VisionPro Laser1 = new VisionPro();
+        public  VisionPro Laser2 = new VisionPro();
 
 
-        public static VisionPro LoadingPre1 = new VisionPro();
-        public static VisionPro LoadingPre2 = new VisionPro();
-        public static VisionPro Laser1 = new VisionPro();
-        public static VisionPro Laser2 = new VisionPro();
-
-        public static VisionPro[] AllCam = new VisionPro[]
-        {
-            LoadingPre1,
-            LoadingPre2,
-            Laser1,
-            Laser2
-        };
+        public Dictionary<string, ICogFrameGrabber> mapCamera = new Dictionary<string, ICogFrameGrabber>();
 
 
-        
+
+
+
+
 
 
         public ucRecipe()
         {
             InitializeComponent();
 
-
             LoadDisplay();
             RecipeParamDisp();
 
-            VisionPro.GetConnectedCameras(); // Lấy đc 4 cam và tạo đc AcqFifoTool.Operator
 
         }
 
-        
+
+        // Lấy được tất cả cam. Lưu vào frameGrabber
+        public void GetConnectedCameras()
+        {
+            frameGrabbers = new CogFrameGrabbers();
+
+            int cameraCount = frameGrabbers.Count;
+            frameGrabber = new ICogFrameGrabber[cameraCount];
+
+            if (cameraCount > 0)
+            {
+                for (int i = 0; i < cameraCount; i++)
+                {
+                    frameGrabber[i] = frameGrabbers[i];
+                    foreach (var camSetting in ucSetting.AllCamSetting)
+                    {
+                        if (camSetting.Serial == frameGrabber[i].SerialNumber)
+                        {
+                            camSetting.Connected = true;
+                            mapCamera.Add(camSetting.Name, frameGrabber[i]);
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy camera nào đang kết nối. \n\r" +
+                    "Kiểm tra lại IP Camera trong phần mềm Cognex GigE Vision Configurator");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void LoadDisplay()
         {
 
@@ -103,23 +145,10 @@ namespace Bending.UC
         private void TriggerOrLiveCamSetting(bool isLive)
         {
             eCamName camName = (eCamName)cbCamList.SelectedItem;
-            VisionPro cam = GetCamSettingByCamName(camName);
 
             cogDS.InteractiveGraphics.Clear();
             cogDS2.InteractiveGraphics.Clear();
 
-            if (cam != null)
-            {
-                // Cam LoadingPre1 or LoadingPre2 
-                if (camName == eCamName.LoadingPre1 || camName == eCamName.LoadingPre2)
-                {
-                    
-                }
-                else
-                {
-
-                }
-            }
         }
 
 
@@ -128,7 +157,21 @@ namespace Bending.UC
 
         private void btnLiveImage_Click(object sender, EventArgs e)
         {
-            TriggerOrLiveCamSetting(true);
+            eCamName camName = (eCamName)cbCamList.SelectedItem;
+            cogDS.InteractiveGraphics.Clear();
+            cogDS2.InteractiveGraphics.Clear();
+
+            if (camName == eCamName.LoadingPre1 || camName == eCamName.LoadingPre2)
+            {
+                LoadingPre1.LiveCamera(mapCamera[ucSetting.LoadingPre1.Name], cogDS);
+                LoadingPre2.LiveCamera(mapCamera[ucSetting.LoadingPre2.Name] , cogDS2);
+            }
+            else
+            {
+                Laser1.LiveCamera(mapCamera[ucSetting.Laser1.Name], cogDS);
+                Laser2.LiveCamera(mapCamera[ucSetting.Laser2.Name], cogDS2);
+            }
+
         }
 
 
@@ -142,8 +185,8 @@ namespace Bending.UC
             }
         }
 
-        List<Point> lstRobotPoint= new List<Point>();
-        List<Point> lstVisionPoint= new List<Point>();
+        List<Point> lstRobotPoint = new List<Point>();
+        List<Point> lstVisionPoint = new List<Point>();
 
 
 

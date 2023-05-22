@@ -24,7 +24,7 @@ namespace Bending.UC
         public static CamSetting LoadingPre1 = new CamSetting();
         public static CamSetting LoadingPre2 = new CamSetting();
 
-        public static CamSetting[] CamBending = { Laser1, Laser2, LoadingPre1,LoadingPre2 };
+        public static CamSetting[] AllCamSetting = { Laser1, Laser2, LoadingPre1,LoadingPre2 };
 
         public ucSetting()
         {
