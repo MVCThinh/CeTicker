@@ -1,5 +1,6 @@
 ﻿
 
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO.Pipes;
 using System.Reflection;
@@ -198,18 +199,112 @@ class Program
         return true;
     }
 
+    public int RomanToInt(string s)
+    {
+        Dictionary<char, int> romanDigits = new()
+        {
+            {'I',1 },
+            {'V',5 },
+            {'X',10 },
+            {'L',50 },
+            {'C',100 },
+            {'D',500 },
+            {'M',1000 }
+        };
 
-    //public double FindMedianSortedArrays(int[] nums1, int[] nums2)
-    //{
-    //    int k = (nums1.Length + nums2.Length) / 2;
+        int result = 0;
+        int prvVal = 0;
 
-    //    if (k > nums1.Length + 1)
-    //    {
-
-    //    }
-    //}
+        for (int i = s.Length -1; i >= 0 ; i--)
+        {
+            int curVal = romanDigits[s[i]];
 
 
+            if (curVal >= prvVal)
+                result += curVal;
+            else
+                result -= curVal;
+
+            prvVal = curVal;
+        }
+
+        return result;
+
+    }
+
+    public string LongestCommonPrefix(string[] strs)
+    {
+        if (strs.Length == 0)
+            return "";
+
+        string prefix = strs[0];
+
+        for (int i = 1; i < strs.Length; i++)
+        {
+            while (strs[i].IndexOf(prefix) != 0 )
+            {
+                // bỏ đi phần tử cuối
+                prefix = prefix.Substring(0, prefix.Length - 1);
+                if (prefix.Length == 0)
+                    return "";
+            }
+        }
+        return prefix;
+    }
+
+    public bool IsValid(string s)
+    {
+        Stack<char> stack = new Stack<char>();
+
+        foreach (char c in s)
+        {
+            if (c == '(' || c == '{' || c == '[')
+                stack.Push(c);
+            else if (c == ')' || c == '}' || c == ']')
+            {
+                if (stack.Count == 0)
+                    return false;
+
+                char top = stack.Pop();
+                if (c == ')' && top != '(' || c == '}' && top != '{' || c == ']' && top != '[')
+                    return false;
+            }
+        }
+
+        return stack.Count == 0;
+    }
+
+    public IList<IList<int>> PermuteUnique(int[] nums)
+    {
+        IList<IList<int>> result = new List<IList<int>>();
+        List<int> permutation = new List<int>();
+        Array.Sort(nums);
+        bool[] used = new bool[nums.Length];
+
+        Permute(nums, permutation, used, result);
+        return result;
+
+    }
+
+    private void Permute(int[] nums, List<int> permutation, bool[] used, IList<IList<int>> result)
+    {
+        if (permutation.Count == nums.Length)
+        {
+            result.Add(new List<int>(permutation));
+            return;
+        }
+         // 1 ,2 
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (used[i]) continue;
+            if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) continue;
+            permutation.Add(nums[i]); // 1, 1, 1, 2, 3, 4
+            used[i] = true;
+            Permute(nums, permutation, used, result);
+            permutation.RemoveAt(permutation.Count - 1); // Bỏ phần tử cuối cùng
+            used[i] = false;
+        }
+    }
 
     static void Main(string[] args)
     {

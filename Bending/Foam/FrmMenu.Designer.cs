@@ -30,8 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.pnTOP = new System.Windows.Forms.Panel();
-            this.cbSimulation = new System.Windows.Forms.CheckBox();
-            this.pnDL = new System.Windows.Forms.Panel();
+            this.Camera = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lbProgramVer = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -69,15 +71,14 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.pnMenu = new System.Windows.Forms.Panel();
             this.pnTOP.SuspendLayout();
+            this.Camera.SuspendLayout();
             this.lbBottom.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnTOP
             // 
             this.pnTOP.BackColor = System.Drawing.Color.Black;
-            this.pnTOP.Controls.Add(this.cbSimulation);
-            this.pnTOP.Controls.Add(this.pnDL);
-            this.pnTOP.Controls.Add(this.label2);
+            this.pnTOP.Controls.Add(this.Camera);
             this.pnTOP.Controls.Add(this.lbProgramVer);
             this.pnTOP.Controls.Add(this.label11);
             this.pnTOP.Controls.Add(this.lbClock);
@@ -97,34 +98,57 @@
             this.pnTOP.Size = new System.Drawing.Size(1886, 66);
             this.pnTOP.TabIndex = 28;
             // 
-            // cbSimulation
+            // Camera
             // 
-            this.cbSimulation.AutoSize = true;
-            this.cbSimulation.Location = new System.Drawing.Point(1491, 13);
-            this.cbSimulation.Name = "cbSimulation";
-            this.cbSimulation.Size = new System.Drawing.Size(15, 14);
-            this.cbSimulation.TabIndex = 169;
-            this.cbSimulation.UseVisualStyleBackColor = true;
+            this.Camera.Controls.Add(this.label6);
+            this.Camera.Controls.Add(this.label5);
+            this.Camera.Controls.Add(this.label4);
+            this.Camera.Controls.Add(this.label2);
+            this.Camera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Camera.ForeColor = System.Drawing.Color.White;
+            this.Camera.Location = new System.Drawing.Point(785, 4);
+            this.Camera.Name = "Camera";
+            this.Camera.Size = new System.Drawing.Size(340, 57);
+            this.Camera.TabIndex = 161;
+            this.Camera.TabStop = false;
+            this.Camera.Text = "Camera Status";
             // 
-            // pnDL
+            // label6
             // 
-            this.pnDL.Location = new System.Drawing.Point(1690, 42);
-            this.pnDL.Name = "pnDL";
-            this.pnDL.Size = new System.Drawing.Size(18, 16);
-            this.pnDL.TabIndex = 168;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(261, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 20);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Laser2";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(180, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 20);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Laser1";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(93, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Loading2";
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.Black;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1686, 4);
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(12, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 26);
-            this.label2.TabIndex = 167;
-            this.label2.Text = "DL";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Size = new System.Drawing.Size(75, 20);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Loading1";
             // 
             // lbProgramVer
             // 
@@ -186,9 +210,9 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Arial", 25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(768, 3);
+            this.label1.Location = new System.Drawing.Point(1110, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(717, 58);
+            this.label1.Size = new System.Drawing.Size(375, 58);
             this.label1.TabIndex = 29;
             this.label1.Text = "Bending System";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -639,7 +663,8 @@
             this.Name = "Menu";
             this.Text = "Bending";
             this.pnTOP.ResumeLayout(false);
-            this.pnTOP.PerformLayout();
+            this.Camera.ResumeLayout(false);
+            this.Camera.PerformLayout();
             this.lbBottom.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -648,9 +673,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pnTOP;
-        private System.Windows.Forms.CheckBox cbSimulation;
-        private System.Windows.Forms.Panel pnDL;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbProgramVer;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lbClock;
@@ -686,6 +708,11 @@
         private System.Windows.Forms.Button btnLogIn;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel pnMenu;
+        private System.Windows.Forms.GroupBox Camera;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
     }
 }
 

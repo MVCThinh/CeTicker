@@ -54,7 +54,7 @@ namespace Bending
 
             Array.ForEach(btnMenu, btn => btn.Click += btnMenu_Click);
 
-
+            
 
         }
 

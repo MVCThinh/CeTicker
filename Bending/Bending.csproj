@@ -175,9 +175,9 @@
     <Compile Include="Data\Helpers\CamVision.cs" />
     <Compile Include="Data\Helpers\RWFile.cs" />
     <Compile Include="Data\Helpers\VisionPro.cs" />
-    <Compile Include="Data\Models\AutoMain\DeviceSetting.cs" />
-    <Compile Include="Data\Models\Parameter.cs" />
     <Compile Include="Data\Models\CamSetting.cs" />
+    <Compile Include="Data\Models\PLCRobotSetting.cs" />
+    <Compile Include="Data\Models\ToolSetting.cs" />
     <Compile Include="Data\Static\CalibControl.cs" />
     <Compile Include="Data\Static\CONST.cs" />
     <Compile Include="Data\Helpers\csLog.cs" />
@@ -265,9 +265,7 @@
   <ItemGroup>
     <Content Include="Image\button.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Models\Recipe\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PackageReference Include="Markdown">
       <Version>2.2.1</Version>
