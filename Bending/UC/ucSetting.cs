@@ -36,79 +36,31 @@ namespace Bending.UC
         private void Initial()
         {
             cboName.DataSource = Enum.GetValues(typeof(eCamName));
-            ReadParameterFormFolder();
-            ReadParameterModelToView();
+            ReadParaFormFolder();
+            ReadParaModelToView();
         }
 
         private void btnConfigSave_Click(object sender, EventArgs e)
         {
-            WriteParameterViewToModel();
-            WriteParameterToFolder();
+            WriteParaViewToModel();
+            WriteParaToFolder();
         }
 
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)
         {
             eCamName camName = (eCamName)cboName.SelectedItem;
-            CamSetting cam = GetCamSettingByCamName(camName);
+            CamSetting camSetting = GetCamSettingByName(camName);
 
-            if (cam != null)
+            if (camSetting != null)
             {
-                ReadCamSettingModelToView(cam);
+                PushParaViewToModel(camSetting);
 
             }
         }
 
-
-
-
-        #region Đọc ghi dữ liệu từ Folder vào Setting
-
-        string PathRoot = @"C:\EQData1\Config\";
-        string ConfigName = "VisionConfig.ini";
-
-
-        void WriteCamSettingViewToModel(CamSetting camSetting)
+        private void PushParaViewToModel (CamSetting camSetting)
         {
-
-
-            camSetting.Serial = txtSerial.Text;
-
-
-
-            camSetting.LightType = cbLightType.SelectedIndex;
-            camSetting.LighComport = txtLight1Comport.Text;
-            camSetting.LightChanel = txtLight1CH.Text;
-
-            camSetting.ImageSaveType = cbImageSaveType.SelectedIndex;
-
-            camSetting.GrapDelay = txtGrabDelay.Text;
-            camSetting.LightDelay = txtLightDelay.Text;
-
-
-            camSetting.RetryLimitCount = txtAlignLimitCnt.Text;
-            camSetting.RetryCaptureCount = txtRetryCnt.Text;
-            camSetting.ImageAutoDeleteDay = txtImgAutoDelDay.Text;
-
-        }
-
-        /// <summary>
-        /// Viết giá trị từ View vào Model
-        /// </summary>
-        public void WriteParameterViewToModel()
-        {
-            eCamName camName = (eCamName)cboName.SelectedItem;
-            CamSetting cam = GetCamSettingByCamName(camName);
-
-            if (cam != null)
-            {
-                WriteCamSettingViewToModel(cam);
-            }
-        }
-
-        void ReadCamSettingModelToView( CamSetting camSetting)
-        { 
             txtSerial.Text = camSetting.Serial;
-
 
             cbLightType.SelectedIndex = camSetting.LightType;
             txtLight1Comport.Text = camSetting.LighComport;
@@ -126,40 +78,78 @@ namespace Bending.UC
             txtImgAutoDelDay.Text = camSetting.ImageAutoDeleteDay;
         }
 
+        private void PushParaModelToView(CamSetting camSetting)
+        {
+                camSetting.Serial = txtSerial.Text;
 
+                camSetting.LightType = cbLightType.SelectedIndex;
+                camSetting.LighComport = txtLight1Comport.Text;
+                camSetting.LightChanel = txtLight1CH.Text;
+
+                camSetting.ImageSaveType = cbImageSaveType.SelectedIndex;
+
+                camSetting.GrapDelay = txtGrabDelay.Text;
+                camSetting.LightDelay = txtLightDelay.Text;
+
+
+                camSetting.RetryLimitCount = txtAlignLimitCnt.Text;
+                camSetting.RetryCaptureCount = txtRetryCnt.Text;
+                camSetting.ImageAutoDeleteDay = txtImgAutoDelDay.Text;
+            }
+
+
+
+
+        #region Đọc ghi dữ liệu từ Folder vào Setting
+
+        string PathRoot = @"C:\EQData1\Config\";
+        string ConfigName = "VisionConfig.ini";
+
+
+        /// <summary>
+        /// Viết giá trị từ View vào Model
+        /// </summary>
+        public void WriteParaViewToModel()
+        {
+            eCamName camName = (eCamName)cboName.SelectedItem;
+            CamSetting camSetting = GetCamSettingByName(camName);
+
+            if (camSetting != null)
+            {
+                PushParaModelToView(camSetting);
+
+            }         
+        }
 
         /// <summary>
         /// Đẩy giá trị từ Model tới View
         /// </summary>
-        public void ReadParameterModelToView()
+        public void ReadParaModelToView()
         {
             eCamName camName = (eCamName)cboName.SelectedItem;
-            CamSetting cam = GetCamSettingByCamName(camName);
+            CamSetting camSetting = GetCamSettingByName(camName);
 
-            if (cam != null)
+            if (camSetting != null)
             {
-                ReadCamSettingModelToView(cam);
+                txtSerial.Text = camSetting.Serial;
+
+                cbLightType.SelectedIndex = camSetting.LightType;
+                txtLight1Comport.Text = camSetting.LighComport;
+                txtLight1CH.Text = camSetting.LightChanel;
+
+
+                cbImageSaveType.SelectedIndex = camSetting.ImageSaveType;
+
+                txtGrabDelay.Text = camSetting.GrapDelay;
+                txtLightDelay.Text = camSetting.LightDelay;
+
+
+                txtAlignLimitCnt.Text = camSetting.RetryLimitCount;
+                txtRetryCnt.Text = camSetting.RetryCaptureCount;
+                txtImgAutoDelDay.Text = camSetting.ImageAutoDeleteDay;
 
             }
         }
-
-        private CamSetting GetCamSettingByCamName(eCamName camName)
-        {
-            switch (camName)
-            {
-                case eCamName.LoadingPre1:
-                    return LoadingPre1;
-                case eCamName.LoadingPre2:
-                    return LoadingPre2;
-                case eCamName.Laser1:
-                    return Laser1;
-                case eCamName.Laser2:
-                    return Laser2;
-                default:
-                    return null;
-            }
-        }
-
 
         void ReadCamSetting(ref CamSetting camSetting)
         {
@@ -181,51 +171,6 @@ namespace Bending.UC
             camSetting.ImageAutoDeleteDay = RWFile.ReadFile(Section, "ImageAutoDeleteDay", "0");
 
         }
-
-
-        /// <summary>
-        /// Đẩy giá trị từ Folder vào Model
-        /// </summary>
-        /// <returns></returns>
-        public void ReadParameterFormFolder()
-        {
-            try
-            {
-                string[] camNames = Enum.GetNames(typeof(eCamName));
-
-                foreach (string camName in camNames)
-                {
-                    RWFile.RWFilePath = Path.Combine(PathRoot, camName, ConfigName);
-
-                    CamSetting camSetting;
-
-                    switch (camName)
-                    {
-                        case "LoadingPre1":
-                            camSetting = LoadingPre1;
-                            break;
-                        case "LoadingPre2":
-                            camSetting = LoadingPre2;
-                            break;
-                        case "Laser1":
-                            camSetting = Laser1;
-                            break;
-                        case "Laser2":
-                            camSetting = Laser2;
-                            break;
-                        default:
-                            continue;
-                    }
-                    ReadCamSetting(ref camSetting);
-                }
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
         void WriteCamSetting(ref CamSetting camSetting)
         {
             string Section = "CAMSETTING";
@@ -248,13 +193,11 @@ namespace Bending.UC
             RWFile.WriteFile(Section, "ImageAutoDeleteDay", camSetting.ImageAutoDeleteDay);
         }
 
-
-        
         /// <summary>
-        /// Viết giá trị từ Model vào Folder
+        /// Đẩy giá trị từ Folder vào Model
         /// </summary>
         /// <returns></returns>
-        public void WriteParameterToFolder()
+        public void ReadParaFormFolder()
         {
             try
             {
@@ -262,36 +205,67 @@ namespace Bending.UC
 
                 foreach (string camName in camNames)
                 {
-                    RWFile.RWFilePath = Path.Combine(PathRoot, camName, ConfigName);
-
-                    CamSetting camSetting;
-
-                    switch (camName)
+                    if (Enum.TryParse(camName, out eCamName parsedCamName))
                     {
-                        case "LoadingPre1":
-                            camSetting = LoadingPre1;
-                            break;
-                        case "LoadingPre2":
-                            camSetting = LoadingPre2;
-                            break;
-                        case "Laser1":
-                            camSetting = Laser1;
-                            break;
-                        case "Laser2":
-                            camSetting = Laser2;
-                            break;
-                        default:
-                            continue;
+                        CamSetting camSetting = GetCamSettingByName(parsedCamName);
+                        if (camSetting != null)
+                        {
+                            RWFile.RWFilePath = Path.Combine(PathRoot, camName, ConfigName);
+                            ReadCamSetting(ref camSetting);
+                        }
                     }
-
-                    WriteCamSetting(ref camSetting);
-
                 }
 
-            }            
+            }
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        /// <summary>
+        /// Viết giá trị từ Model vào Folder
+        /// </summary>
+        public void WriteParaToFolder()
+        {
+            try
+            {
+                string[] camNames = Enum.GetNames(typeof(eCamName));
+
+                foreach (string camName in camNames)
+                {
+                    if (Enum.TryParse(camName, out eCamName parsedCamName))
+                    {
+                        CamSetting camSetting = GetCamSettingByName(parsedCamName);
+                        if (camSetting != null)
+                        {
+                            RWFile.RWFilePath = Path.Combine(PathRoot, camName, ConfigName);
+                            WriteCamSetting(ref camSetting);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private CamSetting GetCamSettingByName(eCamName camName)
+        {
+            switch (camName)
+            {
+                case eCamName.LoadingPre1:
+                    return LoadingPre1;
+                case eCamName.LoadingPre2:
+                    return LoadingPre2;
+                case eCamName.Laser1:
+                    return Laser1;
+                case eCamName.Laser2:
+                    return Laser2;
+                default:
+                    return null;
             }
         }
 

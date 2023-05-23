@@ -171,7 +171,6 @@
   <ItemGroup>
     <Compile Include="Data\AutoCalib\AutoCalib.cs" />
     <Compile Include="Data\Enums\EnumClass.cs" />
-    <Compile Include="Data\Helpers\csRecipe.cs" />
     <Compile Include="Data\Helpers\CamVision.cs" />
     <Compile Include="Data\Helpers\RWFile.cs" />
     <Compile Include="Data\Helpers\VisionPro.cs" />

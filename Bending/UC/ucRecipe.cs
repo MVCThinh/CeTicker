@@ -3,6 +3,7 @@ using Bending.Data.Helpers;
 using Bending.Data.Models.Setting;
 using Cognex.VisionPro;
 using Cognex.VisionPro.Display;
+using Cognex.VisionPro.PMAlign;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Bending.UC
 {
@@ -87,25 +89,109 @@ namespace Bending.UC
 
         }
 
+        CogPMAlignTool PMAlign;
+        CogRectangleAffine ar;
+        bool SettingUp;
+        const double PI = 3.141592653589;
 
-        private void RefreshAll()
+        private void btnSetup_Click(object sender, EventArgs e)
         {
-            btnLiveCamera.Text = "Live Camera";
-            btnLiveCamera.ForeColor = Color.Transparent;
+            string camName = (string)cbCamList.SelectedItem;
+            PMAlign = new CogPMAlignTool();
+
+            if (!SettingUp)
+            {
+                SettingUp = true;
+                DisableAll(SettingUpConstant.SettingPMAlign);
+
+                cogDSPattern.StaticGraphics.Clear();
+                cogDSPattern.InteractiveGraphics.Clear();
+                Trigger(mapCamera[camName], cogDSPattern);
+
+                PMAlign.Pattern.TrainImage = cogDSPattern.Image;
+
+                ar = new CogRectangleAffine();
+                cogDSPattern.DrawingEnabled = false;
+                ar.GraphicDOFEnable = CogRectangleAffineDOFConstants.Position |
+                                        CogRectangleAffineDOFConstants.Rotation |
+                                        CogRectangleAffineDOFConstants.Size;
+
+                ar.SetOriginLengthsRotationSkew(20, 20, 100, 100, 0, 0);
+                ar.MouseCursor = CogStandardCursorConstants.ManipulableGraphic;
+
+                cogDSPattern.InteractiveGraphics.Add(ar, "Train Region", false);
+
+                cogDSPattern.DrawingEnabled = true;
+
+                //PMAlign.Pattern.Origin.TranslationX = ar.CenterX;
+                //PMAlign.Pattern.Origin.TranslationY = ar.CenterY;
+
+                //PMAlign.RunParams.ApproximateNumberToFind = 1;
+                //PMAlign.RunParams.ZoneAngle.Configuration = CogPMAlignZoneConstants.LowHigh;
+                //PMAlign.RunParams.ZoneAngle.Low = -PI;
+                //PMAlign.RunParams.ZoneAngle.High = PI;
+
+
+
+
+            }
+            else
+            {
+                SettingUp = false;
+
+
+                PMAlign.Pattern.TrainRegion = ar;
+
+                PMAlign.Pattern.TrainAlgorithm = CogPMAlignTrainAlgorithmConstants.PatMaxAndPatQuick;
+                PMAlign.Pattern.TrainMode = CogPMAlignTrainModeConstants.Image;
+
+                PMAlign.RunParams.ApproximateNumberToFind = 1;
+                PMAlign.RunParams.AcceptThreshold = 0.6;
+
+                PMAlign.RunParams.ZoneAngle.Configuration = CogPMAlignZoneConstants.LowHigh;
+                PMAlign.RunParams.ZoneAngle.Low = -PI;
+                PMAlign.RunParams.ZoneAngle.High = PI;
+
+                PMAlign.RunParams.ZoneScale.Configuration = CogPMAlignZoneConstants.LowHigh;
+                PMAlign.RunParams.ZoneScale.Low = 0.8;
+                PMAlign.RunParams.ZoneScale.High = 1.2;
+
+                PMAlign.Pattern.Train();
+            }
 
         }
-        private VisionPro GetCamSettingByCamName(eCamName camName)
+
+        private void DisableAll(SettingUpConstant Settings)
+        {
+
+
+
+
+            if (Settings == SettingUpConstant.SettingPMAlign)
+            {
+                cogDS1.Visible = false;
+                cogDS2.Visible = false;
+                cogDSPattern.Visible = true;
+
+            }
+        }
+        private void EnableAll(SettingUpConstant Settings)
+        {
+
+        }
+
+        private string GetCamSettingByCamName(eCamName camName)
         {
             switch (camName)
             {
                 case eCamName.LoadingPre1:
-                    return LoadingPre1;
+                    return ucSetting.LoadingPre1.Name;
                 case eCamName.LoadingPre2:
-                    return LoadingPre2;
+                    return ucSetting.LoadingPre2.Name;
                 case eCamName.Laser1:
-                    return Laser1;
+                    return ucSetting.Laser1.Name;
                 case eCamName.Laser2:
-                    return Laser2;
+                    return ucSetting.Laser2.Name;
                 default:
                     return null;
             }
@@ -128,7 +214,6 @@ namespace Bending.UC
             }
 
         }
-
         private void btnCapture_Click(object sender, EventArgs e)
         {
             eCamName camName = (eCamName)cbCamList.SelectedItem;
@@ -137,13 +222,13 @@ namespace Bending.UC
 
             if (camName == eCamName.LoadingPre1 || camName == eCamName.LoadingPre2)
             {
-                Capture(mapCamera[ucSetting.LoadingPre1.Name], cogDS1);
-                Capture(mapCamera[ucSetting.LoadingPre2.Name], cogDS2);
+                Trigger(mapCamera[ucSetting.LoadingPre1.Name], cogDS1);
+                Trigger(mapCamera[ucSetting.LoadingPre2.Name], cogDS2);
             }
             else
             {
-                Capture(mapCamera[ucSetting.Laser1.Name], cogDS1);
-                Capture(mapCamera[ucSetting.Laser2.Name], cogDS2);
+                Trigger(mapCamera[ucSetting.Laser1.Name], cogDS1);
+                Trigger(mapCamera[ucSetting.Laser2.Name], cogDS2);
             }
         }
 
@@ -169,8 +254,7 @@ namespace Bending.UC
             }    
 
         }
-
-        private void Capture(ICogFrameGrabber frameGrabber, CogDisplay Display)
+        private void Trigger(ICogFrameGrabber frameGrabber, CogDisplay Display)
         {
             int acqTicket, completeTicket, triggerNumber, numPending, numReady;
             bool busy;
@@ -192,22 +276,6 @@ namespace Bending.UC
         }
 
 
-
-
-
-
-
-
-
-
-        private void btnCal_Click(object sender, EventArgs e)
-        {
-            if (tmrCal.Enabled)
-            {
-                MessageBox.Show("Calibraition is not Finished");
-                return;
-            }
-        }
 
         List<Point> lstRobotPoint = new List<Point>();
         List<Point> lstVisionPoint = new List<Point>();

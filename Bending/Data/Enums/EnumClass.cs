@@ -15,7 +15,11 @@ namespace Bending
         Laser2 = 3,
     }
 
-
+    public enum SettingUpConstant
+    {
+        SettingPMAlign,
+        SettingLiveVideo
+    }
     public enum eBendMode
     {
         armXYT = 0,
