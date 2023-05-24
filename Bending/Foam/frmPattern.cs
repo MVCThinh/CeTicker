@@ -26,11 +26,6 @@ namespace Bending.Foam
         public static ICogFrameGrabber[] frameGrabber;
 
 
-        CogImageFileTool ImageFileTool;
-        CogPMAlignTool PatSearchTool;
-        CogAcqFifoTool AcqFifoTool;
-        bool SettingUp;
-
 
         public frmPattern()
         {
@@ -42,9 +37,6 @@ namespace Bending.Foam
 
         private void frmPattern_Load(object sender, EventArgs e)
         {
-            SettingUp = false;
-
-            ImageFileTool = new CogImageFileTool();
 
 
         }
@@ -86,25 +78,35 @@ namespace Bending.Foam
         {
             if (optImageAcquisitionOptionFrameGrabber.Checked)
             {
-                cmdImageAcquisitionLiveOrOpenCommand.Text = "Live Video";
-                cmdImageAcquisitionNewImageCommand.Text = "New Image";
+                btnOpenFile.Text = "Live Video";
+                btnNextImage.Text = "New Image";
             }
             else if (optImageAcquisitionOptionImageFile.Checked)
             {
-                cmdImageAcquisitionLiveOrOpenCommand.Text = "Open File";
-                cmdImageAcquisitionNewImageCommand.Text = "Next Image";
+                btnOpenFile.Text = "Open File";
+                btnNextImage.Text = "Next Image";
             }
         }
 
-        private void cmdImageAcquisitionLiveOrOpenCommand_Click(object sender, EventArgs e)
+        private CogImageFileTool cogImageFileTool = new CogImageFileTool();
+        private void btnOpenFile_Click(object sender, EventArgs e)
         {
-            // Xóa các graphics
-            cogDisplay.StaticGraphics.Clear();
             cogDisplay.InteractiveGraphics.Clear();
-
-
+            openFileDialog.ShowDialog();
+            if (openFileDialog.FileName != "")
+            {
+                cogImageFileTool.Operator.Open(openFileDialog.FileName, CogImageFileModeConstants.Read);
+                cogDisplay.AutoFit= true;
+                cogImageFileTool.Run();
+                cogDisplay.Image = cogImageFileTool.OutputImage;
+            }
         }
 
-
+        private void btnNextImage_Click(object sender, EventArgs e)
+        {
+            cogDisplay.InteractiveGraphics.Clear();
+            cogImageFileTool.Run();
+            cogDisplay.Image = cogImageFileTool.OutputImage;
+        }
     }
 }

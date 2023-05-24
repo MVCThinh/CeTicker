@@ -306,6 +306,40 @@ class Program
         }
     }
 
+    public int Reverse(int x)
+    {
+        int rev = 0;
+        bool negative = false;
+
+        if (x < 0)
+        {
+            negative = true;
+            x = -x;
+        }
+
+        while (x > 0)
+        {
+            int digit = x % 10;
+
+            rev = rev * 10 + digit;
+            x = x / 10;
+        }
+
+        if (negative)
+        {
+            rev = -rev;
+        }
+
+        if (rev <int.MinValue || rev >int.MaxValue)
+        {
+            return 0;
+        }
+        return rev;
+
+    }
+
+
+
     static void Main(string[] args)
     {
         //Console.WriteLine(DecryptPassword("cAB2AHEAcAB2AHEA"));

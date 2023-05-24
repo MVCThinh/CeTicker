@@ -43,11 +43,11 @@
             this.txtScoreLimit = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnDeletePattern = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnDeletePattern = new System.Windows.Forms.Button();
             this.frmImageAcquisitionFrame = new System.Windows.Forms.GroupBox();
-            this.cmdImageAcquisitionNewImageCommand = new System.Windows.Forms.Button();
-            this.cmdImageAcquisitionLiveOrOpenCommand = new System.Windows.Forms.Button();
+            this.btnNextImage = new System.Windows.Forms.Button();
+            this.btnOpenFile = new System.Windows.Forms.Button();
             this.optImageAcquisitionOptionImageFile = new System.Windows.Forms.RadioButton();
             this.optImageAcquisitionOptionFrameGrabber = new System.Windows.Forms.RadioButton();
             this.frmPatMax = new System.Windows.Forms.GroupBox();
@@ -57,6 +57,7 @@
             this.cmdPatMaxSetupCommand = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.cogDisplay)).BeginInit();
             this.lbBottom.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -73,7 +74,7 @@
             this.cogDisplay.ColorMapUpperRoiLimit = 1D;
             this.cogDisplay.DoubleTapZoomCycleLength = 2;
             this.cogDisplay.DoubleTapZoomSensitivity = 2.5D;
-            this.cogDisplay.Location = new System.Drawing.Point(474, 39);
+            this.cogDisplay.Location = new System.Drawing.Point(453, 45);
             this.cogDisplay.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
             this.cogDisplay.MouseWheelSensitivity = 1D;
             this.cogDisplay.Name = "cogDisplay";
@@ -119,7 +120,7 @@
             this.listPattern.BackColor = System.Drawing.Color.Black;
             this.listPattern.ForeColor = System.Drawing.Color.Yellow;
             this.listPattern.FormattingEnabled = true;
-            this.listPattern.Location = new System.Drawing.Point(474, 476);
+            this.listPattern.Location = new System.Drawing.Point(539, 471);
             this.listPattern.Name = "listPattern";
             this.listPattern.Size = new System.Drawing.Size(414, 121);
             this.listPattern.TabIndex = 251;
@@ -214,28 +215,13 @@
             this.groupBox1.Controls.Add(this.txtScoreLimit);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(25, 243);
+            this.groupBox1.Location = new System.Drawing.Point(17, 232);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
             this.groupBox1.Size = new System.Drawing.Size(385, 159);
             this.groupBox1.TabIndex = 257;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Parametter";
-            // 
-            // btnDeletePattern
-            // 
-            this.btnDeletePattern.BackColor = System.Drawing.Color.White;
-            this.btnDeletePattern.FlatAppearance.BorderColor = System.Drawing.Color.SkyBlue;
-            this.btnDeletePattern.FlatAppearance.BorderSize = 2;
-            this.btnDeletePattern.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeletePattern.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeletePattern.Location = new System.Drawing.Point(153, 111);
-            this.btnDeletePattern.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeletePattern.Name = "btnDeletePattern";
-            this.btnDeletePattern.Size = new System.Drawing.Size(68, 29);
-            this.btnDeletePattern.TabIndex = 256;
-            this.btnDeletePattern.Text = "Reset";
-            this.btnDeletePattern.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
@@ -252,10 +238,25 @@
             this.button2.Text = "Apply";
             this.button2.UseVisualStyleBackColor = false;
             // 
+            // btnDeletePattern
+            // 
+            this.btnDeletePattern.BackColor = System.Drawing.Color.White;
+            this.btnDeletePattern.FlatAppearance.BorderColor = System.Drawing.Color.SkyBlue;
+            this.btnDeletePattern.FlatAppearance.BorderSize = 2;
+            this.btnDeletePattern.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeletePattern.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeletePattern.Location = new System.Drawing.Point(153, 111);
+            this.btnDeletePattern.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeletePattern.Name = "btnDeletePattern";
+            this.btnDeletePattern.Size = new System.Drawing.Size(68, 29);
+            this.btnDeletePattern.TabIndex = 256;
+            this.btnDeletePattern.Text = "Reset";
+            this.btnDeletePattern.UseVisualStyleBackColor = false;
+            // 
             // frmImageAcquisitionFrame
             // 
-            this.frmImageAcquisitionFrame.Controls.Add(this.cmdImageAcquisitionNewImageCommand);
-            this.frmImageAcquisitionFrame.Controls.Add(this.cmdImageAcquisitionLiveOrOpenCommand);
+            this.frmImageAcquisitionFrame.Controls.Add(this.btnNextImage);
+            this.frmImageAcquisitionFrame.Controls.Add(this.btnOpenFile);
             this.frmImageAcquisitionFrame.Controls.Add(this.optImageAcquisitionOptionImageFile);
             this.frmImageAcquisitionFrame.Controls.Add(this.optImageAcquisitionOptionFrameGrabber);
             this.frmImageAcquisitionFrame.Location = new System.Drawing.Point(26, 90);
@@ -265,22 +266,23 @@
             this.frmImageAcquisitionFrame.TabStop = false;
             this.frmImageAcquisitionFrame.Text = "Image Acquisition";
             // 
-            // cmdImageAcquisitionNewImageCommand
+            // btnNextImage
             // 
-            this.cmdImageAcquisitionNewImageCommand.Location = new System.Drawing.Point(280, 48);
-            this.cmdImageAcquisitionNewImageCommand.Name = "cmdImageAcquisitionNewImageCommand";
-            this.cmdImageAcquisitionNewImageCommand.Size = new System.Drawing.Size(75, 40);
-            this.cmdImageAcquisitionNewImageCommand.TabIndex = 3;
-            this.cmdImageAcquisitionNewImageCommand.Text = "Next Image";
+            this.btnNextImage.Location = new System.Drawing.Point(250, 48);
+            this.btnNextImage.Name = "btnNextImage";
+            this.btnNextImage.Size = new System.Drawing.Size(75, 40);
+            this.btnNextImage.TabIndex = 3;
+            this.btnNextImage.Text = "Next Image";
+            this.btnNextImage.Click += new System.EventHandler(this.btnNextImage_Click);
             // 
-            // cmdImageAcquisitionLiveOrOpenCommand
+            // btnOpenFile
             // 
-            this.cmdImageAcquisitionLiveOrOpenCommand.Location = new System.Drawing.Point(152, 48);
-            this.cmdImageAcquisitionLiveOrOpenCommand.Name = "cmdImageAcquisitionLiveOrOpenCommand";
-            this.cmdImageAcquisitionLiveOrOpenCommand.Size = new System.Drawing.Size(75, 40);
-            this.cmdImageAcquisitionLiveOrOpenCommand.TabIndex = 2;
-            this.cmdImageAcquisitionLiveOrOpenCommand.Text = "Open File";
-            this.cmdImageAcquisitionLiveOrOpenCommand.Click += new System.EventHandler(this.cmdImageAcquisitionLiveOrOpenCommand_Click);
+            this.btnOpenFile.Location = new System.Drawing.Point(152, 48);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(75, 40);
+            this.btnOpenFile.TabIndex = 2;
+            this.btnOpenFile.Text = "Open File";
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
             // optImageAcquisitionOptionImageFile
             // 
@@ -308,7 +310,7 @@
             this.frmPatMax.Controls.Add(this.txtPatMaxScoreValue);
             this.frmPatMax.Controls.Add(this.cmdPatMaxRunCommand);
             this.frmPatMax.Controls.Add(this.cmdPatMaxSetupCommand);
-            this.frmPatMax.Location = new System.Drawing.Point(26, 476);
+            this.frmPatMax.Location = new System.Drawing.Point(26, 421);
             this.frmPatMax.Name = "frmPatMax";
             this.frmPatMax.Size = new System.Drawing.Size(392, 128);
             this.frmPatMax.TabIndex = 261;
@@ -349,7 +351,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(463, 629);
+            this.button1.Location = new System.Drawing.Point(34, 555);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(96, 48);
             this.button1.TabIndex = 262;
@@ -357,7 +359,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(571, 629);
+            this.button3.Location = new System.Drawing.Point(151, 555);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(96, 48);
             this.button3.TabIndex = 263;
@@ -367,7 +369,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 826);
+            this.ClientSize = new System.Drawing.Size(1037, 723);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.frmPatMax);
@@ -409,8 +411,8 @@
         private System.Windows.Forms.Button btnDeletePattern;
         private System.Windows.Forms.Button button2;
         internal System.Windows.Forms.GroupBox frmImageAcquisitionFrame;
-        private System.Windows.Forms.Button cmdImageAcquisitionNewImageCommand;
-        private System.Windows.Forms.Button cmdImageAcquisitionLiveOrOpenCommand;
+        private System.Windows.Forms.Button btnNextImage;
+        private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.RadioButton optImageAcquisitionOptionImageFile;
         private System.Windows.Forms.RadioButton optImageAcquisitionOptionFrameGrabber;
         internal System.Windows.Forms.GroupBox frmPatMax;
@@ -420,5 +422,6 @@
         private System.Windows.Forms.Button cmdPatMaxSetupCommand;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
