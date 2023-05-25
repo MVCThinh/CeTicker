@@ -1,23 +1,26 @@
 ﻿
 
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO.Pipes;
 using System.Reflection;
+using System.Text;
 using System.Transactions;
+using System.Xml;
 
 class Program
 {
-    static string DecryptPassword(string encryptedPassword)
-    {
-        if (string.IsNullOrEmpty(encryptedPassword))
-        {
-            return "";
-        }
-        byte[] passByteData = Convert.FromBase64String(encryptedPassword);
-        string originalPassword = System.Text.Encoding.Unicode.GetString(passByteData);
-        return originalPassword;
-    }
+    //static string DecryptPassword(string encryptedPassword)
+    //{
+    //    if (string.IsNullOrEmpty(encryptedPassword))
+    //    {
+    //        return "";
+    //    }
+    //   // byte[] passByteData = Convert.FromBase64String(encryptedPassword);
+    //   // string originalPassword = System.Text.Encoding.Unicode.GetString(passByteData);
+    //    return originalPassword;
+    //}
 
 
     public bool ContainsDuplicate(int[] nums)
@@ -308,37 +311,143 @@ class Program
 
     public int Reverse(int x)
     {
-        int rev = 0;
-        bool negative = false;
+        int result = 0;
 
-        if (x < 0)
-        {
-            negative = true;
-            x = -x;
-        }
-
-        while (x > 0)
+        while (x != 0)
         {
             int digit = x % 10;
+            x /= 10;
 
-            rev = rev * 10 + digit;
-            x = x / 10;
+            if (result > int.MaxValue / 10 || (result == int.MaxValue / 10 && digit > 7))
+                return 0;
+            if (result < int.MinValue / 10 || (result == int.MinValue / 10 && digit < -8))
+                return 0;
+
+            result = result*10 + digit;
+
         }
 
-        if (negative)
-        {
-            rev = -rev;
-        }
-
-        if (rev <int.MinValue || rev >int.MaxValue)
-        {
-            return 0;
-        }
-        return rev;
+        return result;
 
     }
 
+    public string LongestPalindrome(string s)
+    {
+        if (string.IsNullOrEmpty(s))
+            return string.Empty;
 
+        int start = 0;
+        int maxLength = 1;
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            int length1 = ExpandAroundCenter(s, i, i);
+            if (length1 > maxLength)
+            {
+                maxLength = length1;
+                start = i - length1 / 2;
+            }
+
+            int length2 = ExpandAroundCenter(s, i, i+1);
+            if (length2 > maxLength)
+            {
+                maxLength = length2;
+                start = i - length2 / 2 + 1;
+            }
+        }
+
+        return s.Substring(start, maxLength);
+        
+    }
+
+    private int ExpandAroundCenter(string s, int left, int right)
+    {
+        while (left >= 0 && right < s.Length && s[left] == s[right])
+        {
+            left--;
+            right++;
+        }
+
+        return right - left - 1;
+    }
+
+    public string Convert(string s, int numRows)
+    {
+        if (numRows == 1 || numRows >= s.Length ) return s;
+
+        List<StringBuilder> rows = new List<StringBuilder>();
+
+        for (int i = 0; i < numRows; i++)
+        {
+            rows.Add(new StringBuilder());
+        }
+
+        int currentRow = 0;
+        bool goingDown = false;
+
+        foreach (char c in s)
+        {
+            rows[currentRow].Append(c);
+
+            if (currentRow == 0 || currentRow == numRows - 1)
+            {
+                goingDown = !goingDown;
+            }
+
+            currentRow += goingDown ? 1 : -1;
+
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        foreach (StringBuilder row in rows)
+        {
+            result.Append(row.ToString());
+        }
+
+        return result.ToString();
+
+    }
+
+    public int MyAtoi(string s)
+    {
+        int index = 0;
+        int sign = 1;
+        int result = 0;
+
+
+        // Bỏ qua khoảng trắng đầu chuỗi
+        while (index < s.Length && s[index] == ' ')
+        {
+            index++;
+        }
+
+        // Xác đinh dấu
+        if (index < s.Length && (s[index] == '-' || s[index] == '+'))
+        {
+            sign = (s[index] == '-')? -1 : 1;
+            index++;
+        }
+
+        // Đọc các chữ số và chuyển thành số nguyên
+        while (index < s.Length && char.IsDigit(s[index]))
+        {
+            int digit = s[index] - '0';
+
+            // Kiểm tra nếu nhân result với 10 có vượt quá giới hạn không
+
+            if (result > int.MaxValue/10 || (result == int.MaxValue/10 && digit > 7))
+            {
+                return (sign == 1) ? int.MaxValue : int.MinValue;
+            }
+
+            result = result * 10 + digit;
+            index++;
+        }
+
+        return result * sign;
+
+    }
 
     static void Main(string[] args)
     {

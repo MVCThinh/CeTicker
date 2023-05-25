@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,22 +25,39 @@ namespace Bending.Foam
 
         private CogImageFileTool imageFileTool;
         private CogPMAlignTool pmAlignTool;
-     
+        private CogPMAlignPattern pmAlignPattern;
+        private CogPMAlignResult result;
+
         private void frmTest_Load(object sender, EventArgs e)
         {
-            imageFileTool= new CogImageFileTool();
+            imageFileTool = new CogImageFileTool();
             pmAlignTool = new CogPMAlignTool();
+            pmAlignPattern = new CogPMAlignPattern();
+            result = new CogPMAlignResult();
 
-
-
+            pmAlignTool.Ran += PmAlignTool_Ran;
             imageFileTool.Ran += ImageFileTool_Ran;
         }
 
+        private void PmAlignTool_Ran(object sender, EventArgs e)
+        {
+            Display.InteractiveGraphics.Clear();
+            Display.StaticGraphics.Clear();
 
+            Display.Image = imageFileTool.OutputImage;
+            result = pmAlignTool.Results[0];
+
+            Display.StaticGraphics.Add(result.CreateResultGraphics(CogPMAlignResultGraphicConstants.All), "test");
+
+            lbScore.Text = Math.Round(pmAlignTool.Results[0].Score, 2).ToString();
+
+        }
 
         private void ImageFileTool_Ran(object sender, EventArgs e)
         {
             Display.InteractiveGraphics.Clear();
+            Display.StaticGraphics.Clear();
+            Display.AutoFit = true;
             Display.Image = imageFileTool.OutputImage;
         }
 
@@ -61,38 +79,6 @@ namespace Bending.Foam
 
         }
 
-        private void btnCreateRegion_Click(object sender, EventArgs e)
-        {
-            int originX, originY;
-
-
-            pmAlignTool.InputImage = Display.Image;
-
-            Display.DrawingEnabled = false;
-            CogRectangleAffine rectangleAffine = (CogRectangleAffine)pmAlignTool.Pattern.TrainRegion;
-            rectangleAffine.TipText = "Rectange Pattern Train";
-            rectangleAffine.GraphicDOFEnable = CogRectangleAffineDOFConstants.Position |
-                                                CogRectangleAffineDOFConstants.Rotation |
-                                                CogRectangleAffineDOFConstants.Size;
-
-            originX = Display.Width / 2;
-            originY = Display.Height / 2;
-
-            rectangleAffine.SetOriginLengthsRotationSkew(originX, originY, 100, 100, 0, 0);
-
-
-            Display.InteractiveGraphics.Add(rectangleAffine, "Region Train", false);
-
-            rectangleAffine.MouseCursor = CogStandardCursorConstants.ManipulableGraphic;
-
-            Display.DrawingEnabled = true;
-
-
-
-
-
-
-        }
 
         private CogRectangleAffine ar;
         private CogRectangleAffine CreateRectange()
@@ -105,16 +91,16 @@ namespace Bending.Foam
             ar.SetCenterLengthsRotationSkew(Display.Width / 2, Display.Height / 2, 100, 100, 0, 0);
             ar.MouseCursor = CogStandardCursorConstants.ManipulableGraphic;
 
-            Display.InteractiveGraphics.Add(ar, "Region Train", false) ;
+            Display.InteractiveGraphics.Add(ar, "Region Train", false);
 
             return ar;
-            
+
         }
 
         private CogCoordinateAxes axes;
         private CogCoordinateAxes CreateAxes()
         {
-            axes= new CogCoordinateAxes();
+            axes = new CogCoordinateAxes();
             axes.TipText = "Axes Pattern Train";
             axes.GraphicDOFEnable = CogCoordinateAxesDOFConstants.All | CogCoordinateAxesDOFConstants.Skew;
             axes.MouseCursor = CogStandardCursorConstants.ManipulableGraphic;
@@ -128,6 +114,7 @@ namespace Bending.Foam
         }
 
         bool Settingup;
+        private CogPMAlignPattern Pattern;
         private void btnSettingUp_Click(object sender, EventArgs e)
         {
             if (!Settingup)
@@ -141,7 +128,7 @@ namespace Bending.Foam
                 //                        CogRectangleAffineDOFConstants.Rotation |
                 //                        CogRectangleAffineDOFConstants.Size;
                 ar.SetOriginLengthsRotationSkew(Display.Width / 2, Display.Height / 2, 100, 100, 0, 0);
-                
+
                 Display.DrawingEnabled = true;
 
                 Display.InteractiveGraphics.Add(ar, "Train Pattern", false);
@@ -173,7 +160,87 @@ namespace Bending.Foam
                 lbX.Text = pmAlignTool.Results[0].GetPose().TranslationX.ToString("#.##");
                 lbY.Text = pmAlignTool.Results[0].GetPose().TranslationY.ToString("#.##");
                 lbT.Text = pmAlignTool.Results[0].GetPose().Rotation.ToString("#.##");
+
+
+                pmAlignTool.Pattern = Pattern;
             }
+
+        }
+
+
+
+        bool PatternTrain = false;
+        CogRectangleAffine rec;
+        private void btnTrainPattern_Click(object sender, EventArgs e)
+        {
+            rec = new CogRectangleAffine();
+
+            rec.SetOriginLengthsRotationSkew(Display.Width / 2, Display.Height / 2, 100, 100, 0, 0);
+            rec = pmAlignPattern.TrainRegion as CogRectangleAffine;
+
+
+
+            Display.InteractiveGraphics.Add(rec, "Train Region", false);
+            Display.DrawingEnabled = true;
+
+            if (!PatternTrain)
+            {
+                PatternTrain = true;
+                btnTrainPattern.Text = "Train Pattern";
+            }
+            else
+            {
+                PatternTrain = false;
+                btnTrainPattern.Text = "Create Region";
+
+                pmAlignPattern.TrainImage = imageFileTool.OutputImage;
+               pmAlignPattern.TrainRegion = rec;
+
+                pmAlignPattern.TrainAlgorithm = CogPMAlignTrainAlgorithmConstants.PatMaxAndPatQuick;
+                pmAlignPattern.TrainMode = CogPMAlignTrainModeConstants.Image;
+                pmAlignPattern.TrainRegionMode = CogRegionModeConstants.PixelAlignedBoundingBox;
+
+                pmAlignPattern.Origin.TranslationX = rec.CenterX;
+                pmAlignPattern.Origin.TranslationY = rec.CenterY;
+
+                pmAlignPattern.Train();
+
+
+                Display.StaticGraphics.Clear();
+                Display.StaticGraphics.AddList(pmAlignPattern.CreateGraphicsCoarse(CogColorConstants.Yellow), "test");
+                //  Display.StaticGraphics.AddList(pmAlignPattern.CreateGraphicsFine(CogColorConstants.Cyan), "test2");
+
+                cdPattern.InteractiveGraphics.Clear();
+                cdPattern.StaticGraphics.Clear();
+                cdPattern.Image = pmAlignPattern.GetTrainedPatternImage();
+                cdPattern.StaticGraphics.AddList(pmAlignPattern.CreateGraphicsCoarse(CogColorConstants.Yellow), "test");
+
+            }
+        }
+
+        private void btnRunPMAlign_Click(object sender, EventArgs e)
+        {
+            pmAlignTool.InputImage = imageFileTool.OutputImage;
+            pmAlignTool.Pattern = pmAlignPattern;
+
+            pmAlignTool.RunParams.RunAlgorithm = CogPMAlignRunAlgorithmConstants.BestTrained;
+            pmAlignTool.RunParams.RunMode = CogPMAlignRunModeConstants.SearchImage;
+
+            pmAlignTool.RunParams.ApproximateNumberToFind = 1;
+            pmAlignTool.RunParams.AcceptThreshold = 0.5;
+
+            pmAlignTool.RunParams.ZoneAngle.Configuration = CogPMAlignZoneConstants.LowHigh;
+            pmAlignTool.RunParams.ZoneAngle.Low = -Math.PI/4;
+            pmAlignTool.RunParams.ZoneAngle.High = Math.PI/4;
+
+            pmAlignTool.RunParams.ZoneScale.Configuration = CogPMAlignZoneConstants.LowHigh;
+            pmAlignTool.RunParams.ZoneScale.Low = 0.6;
+            pmAlignTool.RunParams.ZoneScale.High = 1.6;
+
+            pmAlignTool.Run();
+
+            
+
 
         }
     }
