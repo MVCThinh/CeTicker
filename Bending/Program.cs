@@ -1,4 +1,5 @@
 ﻿using Bending.Foam;
+using Cognex.VisionPro.Interop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,14 @@ namespace Bending
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAllTool());
+            Application.Run(new PMAlign());
+
+            // Giải phóng framGrabbers
+            CogFrameGrabbers cogFrameGrabbers = new CogFrameGrabbers();
+            for (int i = 0; i < cogFrameGrabbers.Count; i++)
+            {
+                cogFrameGrabbers[i].Disconnect(false);
+            }
         }
     }
 }

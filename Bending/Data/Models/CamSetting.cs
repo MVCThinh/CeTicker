@@ -9,7 +9,7 @@ namespace Bending.Data.Models.Setting
 {
     public class CamSetting
     {
-        public string Name { get; set; }
+        public eCamName Name { get; set; }
         public bool Connected { get; set; }
         public string Serial { get; set; }
         public int LightType { get; set; }

@@ -3,6 +3,7 @@ using Bending.Data.Helpers;
 using Bending.Data.Models.Setting;
 using Cognex.VisionPro;
 using Cognex.VisionPro.Display;
+using Cognex.VisionPro.ImageFile;
 using Cognex.VisionPro.PMAlign;
 using System;
 using System.Collections.Generic;
@@ -22,32 +23,19 @@ namespace Bending.UC
     public partial class ucRecipe : UserControl
     {
         // Lấy tất cả Camera đang kết nôi.
-        public static CogFrameGrabbers frameGrabbers;
-        public static ICogFrameGrabber[] frameGrabber;
+        private CogFrameGrabbers frameGrabbers;
+        private ICogFrameGrabber[] frameGrabber;
 
-        public  VisionPro LoadingPre1 = new VisionPro();
-        public  VisionPro LoadingPre2 = new VisionPro();
-        public  VisionPro Laser1 = new VisionPro();
-        public  VisionPro Laser2 = new VisionPro();
+        private CogAcqFifoTool[] AcqFifoTool;
 
-
-        public Dictionary<string, ICogFrameGrabber> mapCamera = new Dictionary<string, ICogFrameGrabber>();
-
-
-
-
-
-
+        public Dictionary<eCamName, ICogAcqFifo> mapCamera;
 
 
         public ucRecipe()
         {
             InitializeComponent();
 
-
             cbCamList.DataSource = Enum.GetValues(typeof(eCamName));
-
-
 
         }
 
@@ -55,22 +43,27 @@ namespace Bending.UC
         // Lấy được tất cả cam. Lưu vào frameGrabber
         public void GetConnectedCameras()
         {
+            mapCamera = new Dictionary<eCamName, ICogAcqFifo>();
             frameGrabbers = new CogFrameGrabbers();
 
             int cameraCount = frameGrabbers.Count;
             frameGrabber = new ICogFrameGrabber[cameraCount];
+            AcqFifoTool = new CogAcqFifoTool[cameraCount];
 
             if (cameraCount > 0)
             {
                 for (int i = 0; i < cameraCount; i++)
                 {
                     frameGrabber[i] = frameGrabbers[i];
+                    AcqFifoTool[i] = new CogAcqFifoTool();
+
                     foreach (var camSetting in ucSetting.AllCamSetting)
                     {
                         if (camSetting.Serial == frameGrabber[i].SerialNumber)
                         {
                             camSetting.Connected = true;
-                            mapCamera.Add(camSetting.Name, frameGrabber[i]);
+                            AcqFifoTool[i].Operator = frameGrabber[i].CreateAcqFifo(VIDEOFORMAT, CogAcqFifoPixelFormatConstants.Format8Grey, 0, false);
+                            mapCamera.Add(camSetting.Name, AcqFifoTool[i].Operator);
                         }
 
                     }
@@ -106,7 +99,7 @@ namespace Bending.UC
 
                 cogDSPattern.StaticGraphics.Clear();
                 cogDSPattern.InteractiveGraphics.Clear();
-                Trigger(mapCamera[camName], cogDSPattern);
+                //Trigger(mapCamera[camName], cogDSPattern);
 
                 PMAlign.Pattern.TrainImage = cogDSPattern.Image;
 
@@ -180,37 +173,62 @@ namespace Bending.UC
 
         }
 
-        private string GetCamSettingByCamName(eCamName camName)
-        {
-            switch (camName)
-            {
-                case eCamName.LoadingPre1:
-                    return ucSetting.LoadingPre1.Name;
-                case eCamName.LoadingPre2:
-                    return ucSetting.LoadingPre2.Name;
-                case eCamName.Laser1:
-                    return ucSetting.Laser1.Name;
-                case eCamName.Laser2:
-                    return ucSetting.Laser2.Name;
-                default:
-                    return null;
-            }
-        }
-        private void btnLiveImage_Click(object sender, EventArgs e)
+        //private string GetCamSettingByCamName(eCamName camName)
+        //{
+        //    switch (camName)
+        //    {
+        //        case eCamName.LoadingPre1:
+        //            return ucSetting.LoadingPre1.Name;
+        //        case eCamName.LoadingPre2:
+        //            return ucSetting.LoadingPre2.Name;
+        //        case eCamName.Laser1:
+        //            return ucSetting.Laser1.Name;
+        //        case eCamName.Laser2:
+        //            return ucSetting.Laser2.Name;
+        //        default:
+        //            return null;
+        //    }
+        //}
+
+        private CogAcqFifoTool AcqFifoToolCam1;
+        private CogAcqFifoTool AcqFifoToolCam2;
+        private CogImageFileTool ImageFileToolCam1;
+        private CogImageFileTool ImageFileToolCam2;
+        private void btnLiveCamera_Click(object sender, EventArgs e)
         {
             eCamName camName = (eCamName)cbCamList.SelectedItem;
-            cogDS1.InteractiveGraphics.Clear();
-            cogDS2.InteractiveGraphics.Clear();
 
-            if (camName == eCamName.LoadingPre1 || camName == eCamName.LoadingPre2)
+            //if (camName == eCamName.LoadingPre1 || camName == eCamName.LoadingPre2)
+            //{
+            //    LiveCamera(], cogDS1);
+            //    LiveCamera(mapCamera[ucSetting.LoadingPre2.Name] , cogDS2);
+            //}
+            //else
+            //{
+            //    LiveCamera(mapCamera[ucSetting.Laser1.Name], cogDS1);
+            //    LiveCamera(mapCamera[ucSetting.Laser2.Name], cogDS2);
+            //}
+
+        }
+
+        string VIDEOFORMAT = "Generic GigEVision (Mono)";
+        private ICogAcqFifo AcqFifo;
+        private void LiveCamera(ICogFrameGrabber frameGrabber, CogDisplay Display)
+        {
+            if (cogDS1.LiveDisplayRunning || cogDS2.LiveDisplayRunning)
             {
-                LiveCamera(mapCamera[ucSetting.LoadingPre1.Name], cogDS1);
-                LiveCamera(mapCamera[ucSetting.LoadingPre2.Name] , cogDS2);
+                btnLiveCamera.Text = "Stop Live";
+                btnLiveCamera.ForeColor = Color.Transparent;
+                Display.StopLiveDisplay();
+                cbCamList.Enabled = true;
             }
             else
             {
-                LiveCamera(mapCamera[ucSetting.Laser1.Name], cogDS1);
-                LiveCamera(mapCamera[ucSetting.Laser2.Name], cogDS2);
+                btnLiveCamera.Text = "Live Camera";
+                btnLiveCamera.ForeColor = Color.Transparent;
+                AcqFifo = frameGrabber.CreateAcqFifo(VIDEOFORMAT, CogAcqFifoPixelFormatConstants.Format8Grey, 0, false);
+                Display.StartLiveDisplay(AcqFifo);
+                cbCamList.Enabled = false;
             }
 
         }
@@ -222,63 +240,43 @@ namespace Bending.UC
 
             if (camName == eCamName.LoadingPre1 || camName == eCamName.LoadingPre2)
             {
-                Trigger(mapCamera[ucSetting.LoadingPre1.Name], cogDS1);
-                Trigger(mapCamera[ucSetting.LoadingPre2.Name], cogDS2);
+                //Trigger(mapCamera[ucSetting.LoadingPre1.Name], cogDS1);
+                //Trigger(mapCamera[ucSetting.LoadingPre2.Name], cogDS2);
             }
             else
             {
-                Trigger(mapCamera[ucSetting.Laser1.Name], cogDS1);
-                Trigger(mapCamera[ucSetting.Laser2.Name], cogDS2);
+            //    Trigger(mapCamera[ucSetting.Laser1.Name], cogDS1);
+            //    Trigger(mapCamera[ucSetting.Laser2.Name], cogDS2);
             }
         }
 
 
-        string VIDEOFORMAT = "Generic GigEVision (Mono)";
-        private ICogAcqFifo AcqFifo;
-        private void LiveCamera(ICogFrameGrabber frameGrabber, CogDisplay Display)
-        {
-            if (cogDS1.LiveDisplayRunning || cogDS2.LiveDisplayRunning)
-            {
-                btnLiveCamera.Text = "Stop Live";
-                btnLiveCamera.ForeColor = Color.AliceBlue;
-                Display.StopLiveDisplay();
-                cbCamList.Enabled = true;
-            }
-            else
-            {
-                btnLiveCamera.Text = "Live Camera";
-                btnLiveCamera.ForeColor = Color.Transparent;
-                AcqFifo = frameGrabber.CreateAcqFifo(VIDEOFORMAT, CogAcqFifoPixelFormatConstants.Format8Grey, 0, false);
-                Display.StartLiveDisplay(AcqFifo);
-                cbCamList.Enabled = false;
-            }    
 
-        }
-        private void Trigger(ICogFrameGrabber frameGrabber, CogDisplay Display)
-        {
-            int acqTicket, completeTicket, triggerNumber, numPending, numReady;
-            bool busy;
+        //private void Trigger(ICogFrameGrabber frameGrabber, CogDisplay Display)
+        //{
+        //    int acqTicket, completeTicket, triggerNumber, numPending, numReady;
+        //    bool busy;
 
-            AcqFifo = frameGrabber.CreateAcqFifo(VIDEOFORMAT, CogAcqFifoPixelFormatConstants.Format8Grey, 0, false);
-            acqTicket = AcqFifo.StartAcquire();
+        //    AcqFifo = frameGrabber.CreateAcqFifo(VIDEOFORMAT, CogAcqFifoPixelFormatConstants.Format8Grey, 0, false);
+        //    acqTicket = AcqFifo.StartAcquire();
 
-            do
-            {
-                AcqFifo.GetFifoState(out numPending, out numReady, out busy);
+        //    do
+        //    {
+        //        AcqFifo.GetFifoState(out numPending, out numReady, out busy);
 
-                if (numReady > 0)
-                {
-                    Display.Image = AcqFifo.CompleteAcquire(acqTicket, out completeTicket, out triggerNumber);
+        //        if (numReady > 0)
+        //        {
+        //            Display.Image = AcqFifo.CompleteAcquire(acqTicket, out completeTicket, out triggerNumber);
 
-                }
-            } while (numReady < 0);
+        //        }
+        //    } while (numReady < 0);
 
-        }
+        //}
 
 
 
-        List<Point> lstRobotPoint = new List<Point>();
-        List<Point> lstVisionPoint = new List<Point>();
+        //List<Point> lstRobotPoint = new List<Point>();
+        //List<Point> lstVisionPoint = new List<Point>();
 
 
 
@@ -287,7 +285,6 @@ namespace Bending.UC
 
 
         }
-
 
     }
 }

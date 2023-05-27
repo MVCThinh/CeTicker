@@ -37,22 +37,25 @@
             this.tmrCal = new System.Windows.Forms.Timer(this.components);
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnCapture = new System.Windows.Forms.Button();
-            this.btnLiveCamera = new System.Windows.Forms.Button();
-            this.btnRecognition = new System.Windows.Forms.Button();
-            this.gbLight1 = new System.Windows.Forms.GroupBox();
-            this.lblContrast2 = new System.Windows.Forms.Label();
-            this.lbExposure2 = new System.Windows.Forms.Label();
-            this.lbLight2 = new System.Windows.Forms.Label();
-            this.txtLight2 = new System.Windows.Forms.TextBox();
-            this.tbTrace = new System.Windows.Forms.TabControl();
-            this.pnCalib = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cogDSPattern = new Cognex.VisionPro.Display.CogDisplay();
+            this.listPattern = new System.Windows.Forms.ListBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnRecognition = new System.Windows.Forms.Button();
+            this.btnLiveCamera = new System.Windows.Forms.Button();
+            this.btnCapture = new System.Windows.Forms.Button();
+            this.frmPatMax = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPatMaxScoreValue = new System.Windows.Forms.TextBox();
+            this.cmdPatMaxRunCommand = new System.Windows.Forms.Button();
+            this.btnSetup = new System.Windows.Forms.Button();
+            this.gbLight2 = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.gbParametter = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.txtAngleHigh = new System.Windows.Forms.TextBox();
@@ -63,37 +66,34 @@
             this.txtPatternContrastThreshold = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtScoreLimit = new System.Windows.Forms.TextBox();
-            this.btnLightSave2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.pnCalib = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.gbLight1 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.gbLight2 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.frmPatMax = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPatMaxScoreValue = new System.Windows.Forms.TextBox();
-            this.cmdPatMaxRunCommand = new System.Windows.Forms.Button();
-            this.btnSetup = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listPattern = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnLightSave2 = new System.Windows.Forms.Button();
+            this.lblContrast2 = new System.Windows.Forms.Label();
+            this.lbExposure2 = new System.Windows.Forms.Label();
+            this.lbLight2 = new System.Windows.Forms.Label();
+            this.txtLight2 = new System.Windows.Forms.TextBox();
+            this.tbTrace = new System.Windows.Forms.TabControl();
             ((System.ComponentModel.ISupportInitialize)(this.cogDS1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cogDS2)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.gbLight1.SuspendLayout();
-            this.tbTrace.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDSPattern)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.frmPatMax.SuspendLayout();
+            this.gbLight2.SuspendLayout();
+            this.gbParametter.SuspendLayout();
             this.pnCalib.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cogDSPattern)).BeginInit();
-            this.gbParametter.SuspendLayout();
-            this.gbLight2.SuspendLayout();
-            this.frmPatMax.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.gbLight1.SuspendLayout();
+            this.tbTrace.SuspendLayout();
             this.SuspendLayout();
             // 
             // label63
@@ -116,7 +116,7 @@
             this.cbCamList.FormattingEnabled = true;
             this.cbCamList.Location = new System.Drawing.Point(96, 4);
             this.cbCamList.Name = "cbCamList";
-            this.cbCamList.Size = new System.Drawing.Size(240, 28);
+            this.cbCamList.Size = new System.Drawing.Size(157, 28);
             this.cbCamList.TabIndex = 85;
             this.cbCamList.SelectedIndexChanged += new System.EventHandler(this.cbCamList_SelectedIndexChanged);
             // 
@@ -129,12 +129,12 @@
             this.cogDS1.ColorMapUpperRoiLimit = 1D;
             this.cogDS1.DoubleTapZoomCycleLength = 2;
             this.cogDS1.DoubleTapZoomSensitivity = 2.5D;
-            this.cogDS1.Location = new System.Drawing.Point(0, 34);
+            this.cogDS1.Location = new System.Drawing.Point(3, 161);
             this.cogDS1.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
             this.cogDS1.MouseWheelSensitivity = 1D;
             this.cogDS1.Name = "cogDS1";
             this.cogDS1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDS1.OcxState")));
-            this.cogDS1.Size = new System.Drawing.Size(620, 774);
+            this.cogDS1.Size = new System.Drawing.Size(620, 526);
             this.cogDS1.TabIndex = 298;
             // 
             // cogDS2
@@ -146,12 +146,12 @@
             this.cogDS2.ColorMapUpperRoiLimit = 1D;
             this.cogDS2.DoubleTapZoomCycleLength = 2;
             this.cogDS2.DoubleTapZoomSensitivity = 2.5D;
-            this.cogDS2.Location = new System.Drawing.Point(621, 36);
+            this.cogDS2.Location = new System.Drawing.Point(625, 161);
             this.cogDS2.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
             this.cogDS2.MouseWheelSensitivity = 1D;
             this.cogDS2.Name = "cogDS2";
             this.cogDS2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDS2.OcxState")));
-            this.cogDS2.Size = new System.Drawing.Size(620, 769);
+            this.cogDS2.Size = new System.Drawing.Size(620, 526);
             this.cogDS2.TabIndex = 299;
             // 
             // tmrCal
@@ -173,6 +173,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.cogDSPattern);
             this.groupBox4.Controls.Add(this.listPattern);
             this.groupBox4.Controls.Add(this.groupBox3);
             this.groupBox4.Controls.Add(this.frmPatMax);
@@ -186,39 +187,48 @@
             this.groupBox4.TabIndex = 307;
             this.groupBox4.TabStop = false;
             // 
-            // btnCapture
+            // cogDSPattern
             // 
-            this.btnCapture.BackColor = System.Drawing.Color.White;
-            this.btnCapture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCapture.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapture.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.btnCapture.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCapture.Location = new System.Drawing.Point(108, 25);
-            this.btnCapture.Name = "btnCapture";
-            this.btnCapture.Size = new System.Drawing.Size(101, 40);
-            this.btnCapture.TabIndex = 291;
-            this.btnCapture.Text = "Capture";
-            this.btnCapture.UseVisualStyleBackColor = false;
-            this.btnCapture.Click += new System.EventHandler(this.btnCapture_Click);
+            this.cogDSPattern.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cogDSPattern.ColorMapLowerRoiLimit = 0D;
+            this.cogDSPattern.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cogDSPattern.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cogDSPattern.ColorMapUpperRoiLimit = 1D;
+            this.cogDSPattern.DoubleTapZoomCycleLength = 2;
+            this.cogDSPattern.DoubleTapZoomSensitivity = 2.5D;
+            this.cogDSPattern.Location = new System.Drawing.Point(48, 602);
+            this.cogDSPattern.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cogDSPattern.MouseWheelSensitivity = 1D;
+            this.cogDSPattern.Name = "cogDSPattern";
+            this.cogDSPattern.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDSPattern.OcxState")));
+            this.cogDSPattern.Size = new System.Drawing.Size(223, 191);
+            this.cogDSPattern.TabIndex = 300;
+            this.cogDSPattern.Visible = false;
             // 
-            // btnLiveCamera
+            // listPattern
             // 
-            this.btnLiveCamera.BackColor = System.Drawing.Color.White;
-            this.btnLiveCamera.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
-            this.btnLiveCamera.FlatAppearance.BorderSize = 2;
-            this.btnLiveCamera.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnLiveCamera.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnLiveCamera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLiveCamera.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLiveCamera.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.btnLiveCamera.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLiveCamera.Location = new System.Drawing.Point(6, 25);
-            this.btnLiveCamera.Name = "btnLiveCamera";
-            this.btnLiveCamera.Size = new System.Drawing.Size(89, 82);
-            this.btnLiveCamera.TabIndex = 51;
-            this.btnLiveCamera.Text = "Live Camera";
-            this.btnLiveCamera.UseVisualStyleBackColor = false;
-            this.btnLiveCamera.Click += new System.EventHandler(this.btnLiveImage_Click);
+            this.listPattern.BackColor = System.Drawing.Color.Black;
+            this.listPattern.ForeColor = System.Drawing.Color.Yellow;
+            this.listPattern.FormattingEnabled = true;
+            this.listPattern.ItemHeight = 15;
+            this.listPattern.Location = new System.Drawing.Point(382, 468);
+            this.listPattern.Name = "listPattern";
+            this.listPattern.Size = new System.Drawing.Size(244, 109);
+            this.listPattern.TabIndex = 315;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnRecognition);
+            this.groupBox3.Controls.Add(this.btnLiveCamera);
+            this.groupBox3.Controls.Add(this.btnCapture);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
+            this.groupBox3.Location = new System.Drawing.Point(6, 458);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(363, 119);
+            this.groupBox3.TabIndex = 314;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Operator";
             // 
             // btnRecognition
             // 
@@ -238,155 +248,185 @@
             this.btnRecognition.Text = "Recognition";
             this.btnRecognition.UseVisualStyleBackColor = false;
             // 
-            // gbLight1
+            // btnLiveCamera
             // 
-            this.gbLight1.Controls.Add(this.textBox2);
-            this.gbLight1.Controls.Add(this.textBox1);
-            this.gbLight1.Controls.Add(this.btnLightSave2);
-            this.gbLight1.Controls.Add(this.lblContrast2);
-            this.gbLight1.Controls.Add(this.lbExposure2);
-            this.gbLight1.Controls.Add(this.lbLight2);
-            this.gbLight1.Controls.Add(this.txtLight2);
-            this.gbLight1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.gbLight1.ForeColor = System.Drawing.Color.Cyan;
-            this.gbLight1.Location = new System.Drawing.Point(4, 173);
-            this.gbLight1.Name = "gbLight1";
-            this.gbLight1.Size = new System.Drawing.Size(151, 153);
-            this.gbLight1.TabIndex = 297;
-            this.gbLight1.TabStop = false;
-            this.gbLight1.Text = "Light 1";
+            this.btnLiveCamera.BackColor = System.Drawing.Color.White;
+            this.btnLiveCamera.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
+            this.btnLiveCamera.FlatAppearance.BorderSize = 2;
+            this.btnLiveCamera.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnLiveCamera.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnLiveCamera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLiveCamera.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLiveCamera.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.btnLiveCamera.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLiveCamera.Location = new System.Drawing.Point(6, 25);
+            this.btnLiveCamera.Name = "btnLiveCamera";
+            this.btnLiveCamera.Size = new System.Drawing.Size(89, 82);
+            this.btnLiveCamera.TabIndex = 51;
+            this.btnLiveCamera.Text = "Live Camera";
+            this.btnLiveCamera.UseVisualStyleBackColor = false;
+            this.btnLiveCamera.Click += new System.EventHandler(this.btnLiveCamera_Click);
             // 
-            // lblContrast2
+            // btnCapture
             // 
-            this.lblContrast2.BackColor = System.Drawing.Color.Black;
-            this.lblContrast2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblContrast2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContrast2.ForeColor = System.Drawing.Color.Linen;
-            this.lblContrast2.Location = new System.Drawing.Point(3, 84);
-            this.lblContrast2.Name = "lblContrast2";
-            this.lblContrast2.Size = new System.Drawing.Size(70, 21);
-            this.lblContrast2.TabIndex = 291;
-            this.lblContrast2.Text = "Contrast";
-            this.lblContrast2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnCapture.BackColor = System.Drawing.Color.White;
+            this.btnCapture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCapture.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapture.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.btnCapture.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCapture.Location = new System.Drawing.Point(108, 25);
+            this.btnCapture.Name = "btnCapture";
+            this.btnCapture.Size = new System.Drawing.Size(101, 40);
+            this.btnCapture.TabIndex = 291;
+            this.btnCapture.Text = "Capture";
+            this.btnCapture.UseVisualStyleBackColor = false;
+            this.btnCapture.Click += new System.EventHandler(this.btnCapture_Click);
             // 
-            // lbExposure2
+            // frmPatMax
             // 
-            this.lbExposure2.BackColor = System.Drawing.Color.Black;
-            this.lbExposure2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbExposure2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbExposure2.ForeColor = System.Drawing.Color.Linen;
-            this.lbExposure2.Location = new System.Drawing.Point(3, 56);
-            this.lbExposure2.Name = "lbExposure2";
-            this.lbExposure2.Size = new System.Drawing.Size(70, 21);
-            this.lbExposure2.TabIndex = 286;
-            this.lbExposure2.Text = "Exposure";
-            this.lbExposure2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.frmPatMax.Controls.Add(this.label5);
+            this.frmPatMax.Controls.Add(this.txtPatMaxScoreValue);
+            this.frmPatMax.Controls.Add(this.cmdPatMaxRunCommand);
+            this.frmPatMax.Controls.Add(this.btnSetup);
+            this.frmPatMax.ForeColor = System.Drawing.Color.White;
+            this.frmPatMax.Location = new System.Drawing.Point(6, 334);
+            this.frmPatMax.Name = "frmPatMax";
+            this.frmPatMax.Size = new System.Drawing.Size(360, 102);
+            this.frmPatMax.TabIndex = 313;
+            this.frmPatMax.TabStop = false;
+            this.frmPatMax.Text = "Pattern Search";
             // 
-            // lbLight2
+            // label5
             // 
-            this.lbLight2.BackColor = System.Drawing.Color.Black;
-            this.lbLight2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbLight2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLight2.ForeColor = System.Drawing.Color.Linen;
-            this.lbLight2.Location = new System.Drawing.Point(3, 26);
-            this.lbLight2.Name = "lbLight2";
-            this.lbLight2.Size = new System.Drawing.Size(70, 21);
-            this.lbLight2.TabIndex = 258;
-            this.lbLight2.Text = "Light";
-            this.lbLight2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(192, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 27);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Score";
             // 
-            // txtLight2
+            // txtPatMaxScoreValue
             // 
-            this.txtLight2.BackColor = System.Drawing.Color.White;
-            this.txtLight2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtLight2.Location = new System.Drawing.Point(81, 25);
-            this.txtLight2.Name = "txtLight2";
-            this.txtLight2.Size = new System.Drawing.Size(46, 22);
-            this.txtLight2.TabIndex = 259;
+            this.txtPatMaxScoreValue.Location = new System.Drawing.Point(246, 39);
+            this.txtPatMaxScoreValue.Multiline = true;
+            this.txtPatMaxScoreValue.Name = "txtPatMaxScoreValue";
+            this.txtPatMaxScoreValue.Size = new System.Drawing.Size(70, 37);
+            this.txtPatMaxScoreValue.TabIndex = 2;
             // 
-            // tbTrace
+            // cmdPatMaxRunCommand
             // 
-            this.tbTrace.Controls.Add(this.tabPage5);
-            this.tbTrace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbTrace.Location = new System.Drawing.Point(1241, 0);
-            this.tbTrace.Name = "tbTrace";
-            this.tbTrace.SelectedIndex = 0;
-            this.tbTrace.Size = new System.Drawing.Size(660, 890);
-            this.tbTrace.TabIndex = 297;
+            this.cmdPatMaxRunCommand.ForeColor = System.Drawing.Color.White;
+            this.cmdPatMaxRunCommand.Location = new System.Drawing.Point(89, 39);
+            this.cmdPatMaxRunCommand.Name = "cmdPatMaxRunCommand";
+            this.cmdPatMaxRunCommand.Size = new System.Drawing.Size(85, 37);
+            this.cmdPatMaxRunCommand.TabIndex = 1;
+            this.cmdPatMaxRunCommand.Text = "Run";
             // 
-            // pnCalib
+            // btnSetup
             // 
-            this.pnCalib.BackColor = System.Drawing.Color.DimGray;
-            this.pnCalib.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnCalib.Controls.Add(this.dataGridView1);
-            this.pnCalib.Controls.Add(this.button1);
-            this.pnCalib.Location = new System.Drawing.Point(381, 6);
-            this.pnCalib.Name = "pnCalib";
-            this.pnCalib.Size = new System.Drawing.Size(244, 449);
-            this.pnCalib.TabIndex = 310;
+            this.btnSetup.ForeColor = System.Drawing.Color.White;
+            this.btnSetup.Location = new System.Drawing.Point(8, 40);
+            this.btnSetup.Name = "btnSetup";
+            this.btnSetup.Size = new System.Drawing.Size(75, 36);
+            this.btnSetup.TabIndex = 0;
+            this.btnSetup.Text = "Setup";
+            this.btnSetup.Click += new System.EventHandler(this.btnSetup_Click);
             // 
-            // button1
+            // gbLight2
             // 
-            this.button1.Location = new System.Drawing.Point(23, 348);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 33);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Calibration";
-            this.button1.UseVisualStyleBackColor = true;
+            this.gbLight2.Controls.Add(this.textBox3);
+            this.gbLight2.Controls.Add(this.textBox4);
+            this.gbLight2.Controls.Add(this.button3);
+            this.gbLight2.Controls.Add(this.label1);
+            this.gbLight2.Controls.Add(this.label2);
+            this.gbLight2.Controls.Add(this.label4);
+            this.gbLight2.Controls.Add(this.textBox5);
+            this.gbLight2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.gbLight2.ForeColor = System.Drawing.Color.Cyan;
+            this.gbLight2.Location = new System.Drawing.Point(198, 175);
+            this.gbLight2.Name = "gbLight2";
+            this.gbLight2.Size = new System.Drawing.Size(151, 153);
+            this.gbLight2.TabIndex = 312;
+            this.gbLight2.TabStop = false;
+            this.gbLight2.Text = "Light 2";
             // 
-            // dataGridView1
+            // textBox3
             // 
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(242, 168);
-            this.dataGridView1.TabIndex = 1;
+            this.textBox3.BackColor = System.Drawing.Color.White;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox3.Location = new System.Drawing.Point(81, 84);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(46, 22);
+            this.textBox3.TabIndex = 329;
             // 
-            // Column1
+            // textBox4
             // 
-            this.Column1.HeaderText = "Points";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 66;
+            this.textBox4.BackColor = System.Drawing.Color.White;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox4.Location = new System.Drawing.Point(81, 56);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(46, 22);
+            this.textBox4.TabIndex = 328;
             // 
-            // Column2
+            // button3
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Robot";
-            this.Column2.Name = "Column2";
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button3.Location = new System.Drawing.Point(34, 114);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(63, 33);
+            this.button3.TabIndex = 322;
+            this.button3.Text = "Save";
+            this.button3.UseVisualStyleBackColor = false;
             // 
-            // Column3
+            // label1
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Vision";
-            this.Column3.Name = "Column3";
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Linen;
+            this.label1.Location = new System.Drawing.Point(3, 84);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 21);
+            this.label1.TabIndex = 291;
+            this.label1.Text = "Contrast";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cogDSPattern
+            // label2
             // 
-            this.cogDSPattern.ColorMapLowerClipColor = System.Drawing.Color.Black;
-            this.cogDSPattern.ColorMapLowerRoiLimit = 0D;
-            this.cogDSPattern.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
-            this.cogDSPattern.ColorMapUpperClipColor = System.Drawing.Color.Black;
-            this.cogDSPattern.ColorMapUpperRoiLimit = 1D;
-            this.cogDSPattern.DoubleTapZoomCycleLength = 2;
-            this.cogDSPattern.DoubleTapZoomSensitivity = 2.5D;
-            this.cogDSPattern.Location = new System.Drawing.Point(287, 176);
-            this.cogDSPattern.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
-            this.cogDSPattern.MouseWheelSensitivity = 1D;
-            this.cogDSPattern.Name = "cogDSPattern";
-            this.cogDSPattern.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDSPattern.OcxState")));
-            this.cogDSPattern.Size = new System.Drawing.Size(620, 431);
-            this.cogDSPattern.TabIndex = 300;
-            this.cogDSPattern.Visible = false;
+            this.label2.BackColor = System.Drawing.Color.Black;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Linen;
+            this.label2.Location = new System.Drawing.Point(3, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 21);
+            this.label2.TabIndex = 286;
+            this.label2.Text = "Exposure";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Black;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Linen;
+            this.label4.Location = new System.Drawing.Point(3, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 21);
+            this.label4.TabIndex = 258;
+            this.label4.Text = "Light";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.White;
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox5.Location = new System.Drawing.Point(81, 25);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(46, 22);
+            this.textBox5.TabIndex = 259;
             // 
             // gbParametter
             // 
@@ -516,6 +556,98 @@
             this.txtScoreLimit.TabIndex = 107;
             this.txtScoreLimit.Text = "0.7";
             // 
+            // pnCalib
+            // 
+            this.pnCalib.BackColor = System.Drawing.Color.DimGray;
+            this.pnCalib.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnCalib.Controls.Add(this.dataGridView1);
+            this.pnCalib.Controls.Add(this.button1);
+            this.pnCalib.Location = new System.Drawing.Point(381, 6);
+            this.pnCalib.Name = "pnCalib";
+            this.pnCalib.Size = new System.Drawing.Size(244, 449);
+            this.pnCalib.TabIndex = 310;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(242, 168);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Points";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 66;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "Robot";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Vision";
+            this.Column3.Name = "Column3";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(23, 348);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(92, 33);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Calibration";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // gbLight1
+            // 
+            this.gbLight1.Controls.Add(this.textBox2);
+            this.gbLight1.Controls.Add(this.textBox1);
+            this.gbLight1.Controls.Add(this.btnLightSave2);
+            this.gbLight1.Controls.Add(this.lblContrast2);
+            this.gbLight1.Controls.Add(this.lbExposure2);
+            this.gbLight1.Controls.Add(this.lbLight2);
+            this.gbLight1.Controls.Add(this.txtLight2);
+            this.gbLight1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.gbLight1.ForeColor = System.Drawing.Color.Cyan;
+            this.gbLight1.Location = new System.Drawing.Point(4, 173);
+            this.gbLight1.Name = "gbLight1";
+            this.gbLight1.Size = new System.Drawing.Size(151, 153);
+            this.gbLight1.TabIndex = 297;
+            this.gbLight1.TabStop = false;
+            this.gbLight1.Text = "Light 1";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.White;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox2.Location = new System.Drawing.Point(81, 84);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(46, 22);
+            this.textBox2.TabIndex = 329;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox1.Location = new System.Drawing.Point(81, 56);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(46, 22);
+            this.textBox1.TabIndex = 328;
+            // 
             // btnLightSave2
             // 
             this.btnLightSave2.BackColor = System.Drawing.Color.White;
@@ -528,201 +660,69 @@
             this.btnLightSave2.Text = "Save";
             this.btnLightSave2.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // lblContrast2
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox1.Location = new System.Drawing.Point(81, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(46, 22);
-            this.textBox1.TabIndex = 328;
+            this.lblContrast2.BackColor = System.Drawing.Color.Black;
+            this.lblContrast2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblContrast2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContrast2.ForeColor = System.Drawing.Color.Linen;
+            this.lblContrast2.Location = new System.Drawing.Point(3, 84);
+            this.lblContrast2.Name = "lblContrast2";
+            this.lblContrast2.Size = new System.Drawing.Size(70, 21);
+            this.lblContrast2.TabIndex = 291;
+            this.lblContrast2.Text = "Contrast";
+            this.lblContrast2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox2
+            // lbExposure2
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox2.Location = new System.Drawing.Point(81, 84);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(46, 22);
-            this.textBox2.TabIndex = 329;
+            this.lbExposure2.BackColor = System.Drawing.Color.Black;
+            this.lbExposure2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbExposure2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbExposure2.ForeColor = System.Drawing.Color.Linen;
+            this.lbExposure2.Location = new System.Drawing.Point(3, 56);
+            this.lbExposure2.Name = "lbExposure2";
+            this.lbExposure2.Size = new System.Drawing.Size(70, 21);
+            this.lbExposure2.TabIndex = 286;
+            this.lbExposure2.Text = "Exposure";
+            this.lbExposure2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // gbLight2
+            // lbLight2
             // 
-            this.gbLight2.Controls.Add(this.textBox3);
-            this.gbLight2.Controls.Add(this.textBox4);
-            this.gbLight2.Controls.Add(this.button3);
-            this.gbLight2.Controls.Add(this.label1);
-            this.gbLight2.Controls.Add(this.label2);
-            this.gbLight2.Controls.Add(this.label4);
-            this.gbLight2.Controls.Add(this.textBox5);
-            this.gbLight2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.gbLight2.ForeColor = System.Drawing.Color.Cyan;
-            this.gbLight2.Location = new System.Drawing.Point(198, 175);
-            this.gbLight2.Name = "gbLight2";
-            this.gbLight2.Size = new System.Drawing.Size(151, 153);
-            this.gbLight2.TabIndex = 312;
-            this.gbLight2.TabStop = false;
-            this.gbLight2.Text = "Light 2";
+            this.lbLight2.BackColor = System.Drawing.Color.Black;
+            this.lbLight2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbLight2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLight2.ForeColor = System.Drawing.Color.Linen;
+            this.lbLight2.Location = new System.Drawing.Point(3, 26);
+            this.lbLight2.Name = "lbLight2";
+            this.lbLight2.Size = new System.Drawing.Size(70, 21);
+            this.lbLight2.TabIndex = 258;
+            this.lbLight2.Text = "Light";
+            this.lbLight2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox3
+            // txtLight2
             // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox3.Location = new System.Drawing.Point(81, 84);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(46, 22);
-            this.textBox3.TabIndex = 329;
+            this.txtLight2.BackColor = System.Drawing.Color.White;
+            this.txtLight2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtLight2.Location = new System.Drawing.Point(81, 25);
+            this.txtLight2.Name = "txtLight2";
+            this.txtLight2.Size = new System.Drawing.Size(46, 22);
+            this.txtLight2.TabIndex = 259;
             // 
-            // textBox4
+            // tbTrace
             // 
-            this.textBox4.BackColor = System.Drawing.Color.White;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox4.Location = new System.Drawing.Point(81, 56);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(46, 22);
-            this.textBox4.TabIndex = 328;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button3.Location = new System.Drawing.Point(34, 114);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(63, 33);
-            this.button3.TabIndex = 322;
-            this.button3.Text = "Save";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Linen;
-            this.label1.Location = new System.Drawing.Point(3, 84);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 21);
-            this.label1.TabIndex = 291;
-            this.label1.Text = "Contrast";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Black;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Linen;
-            this.label2.Location = new System.Drawing.Point(3, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 21);
-            this.label2.TabIndex = 286;
-            this.label2.Text = "Exposure";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.Black;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Linen;
-            this.label4.Location = new System.Drawing.Point(3, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 21);
-            this.label4.TabIndex = 258;
-            this.label4.Text = "Light";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox5.Location = new System.Drawing.Point(81, 25);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(46, 22);
-            this.textBox5.TabIndex = 259;
-            // 
-            // frmPatMax
-            // 
-            this.frmPatMax.Controls.Add(this.label5);
-            this.frmPatMax.Controls.Add(this.txtPatMaxScoreValue);
-            this.frmPatMax.Controls.Add(this.cmdPatMaxRunCommand);
-            this.frmPatMax.Controls.Add(this.btnSetup);
-            this.frmPatMax.ForeColor = System.Drawing.Color.White;
-            this.frmPatMax.Location = new System.Drawing.Point(6, 334);
-            this.frmPatMax.Name = "frmPatMax";
-            this.frmPatMax.Size = new System.Drawing.Size(360, 102);
-            this.frmPatMax.TabIndex = 313;
-            this.frmPatMax.TabStop = false;
-            this.frmPatMax.Text = "Pattern Search";
-            // 
-            // label5
-            // 
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(192, 49);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 27);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Score";
-            // 
-            // txtPatMaxScoreValue
-            // 
-            this.txtPatMaxScoreValue.Location = new System.Drawing.Point(246, 39);
-            this.txtPatMaxScoreValue.Multiline = true;
-            this.txtPatMaxScoreValue.Name = "txtPatMaxScoreValue";
-            this.txtPatMaxScoreValue.Size = new System.Drawing.Size(70, 37);
-            this.txtPatMaxScoreValue.TabIndex = 2;
-            // 
-            // cmdPatMaxRunCommand
-            // 
-            this.cmdPatMaxRunCommand.ForeColor = System.Drawing.Color.White;
-            this.cmdPatMaxRunCommand.Location = new System.Drawing.Point(89, 39);
-            this.cmdPatMaxRunCommand.Name = "cmdPatMaxRunCommand";
-            this.cmdPatMaxRunCommand.Size = new System.Drawing.Size(85, 37);
-            this.cmdPatMaxRunCommand.TabIndex = 1;
-            this.cmdPatMaxRunCommand.Text = "Run";
-            // 
-            // btnSetup
-            // 
-            this.btnSetup.ForeColor = System.Drawing.Color.White;
-            this.btnSetup.Location = new System.Drawing.Point(8, 40);
-            this.btnSetup.Name = "btnSetup";
-            this.btnSetup.Size = new System.Drawing.Size(75, 36);
-            this.btnSetup.TabIndex = 0;
-            this.btnSetup.Text = "Setup";
-            this.btnSetup.Click += new System.EventHandler(this.btnSetup_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnRecognition);
-            this.groupBox3.Controls.Add(this.btnLiveCamera);
-            this.groupBox3.Controls.Add(this.btnCapture);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(6, 458);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(363, 119);
-            this.groupBox3.TabIndex = 314;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Operator";
-            // 
-            // listPattern
-            // 
-            this.listPattern.BackColor = System.Drawing.Color.Black;
-            this.listPattern.ForeColor = System.Drawing.Color.Yellow;
-            this.listPattern.FormattingEnabled = true;
-            this.listPattern.ItemHeight = 15;
-            this.listPattern.Location = new System.Drawing.Point(382, 468);
-            this.listPattern.Name = "listPattern";
-            this.listPattern.Size = new System.Drawing.Size(244, 109);
-            this.listPattern.TabIndex = 315;
+            this.tbTrace.Controls.Add(this.tabPage5);
+            this.tbTrace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tbTrace.Location = new System.Drawing.Point(1241, 0);
+            this.tbTrace.Name = "tbTrace";
+            this.tbTrace.SelectedIndex = 0;
+            this.tbTrace.Size = new System.Drawing.Size(660, 890);
+            this.tbTrace.TabIndex = 297;
             // 
             // ucRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.Controls.Add(this.cogDSPattern);
             this.Controls.Add(this.cogDS2);
             this.Controls.Add(this.cogDS1);
             this.Controls.Add(this.tbTrace);
@@ -734,19 +734,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.cogDS2)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cogDSPattern)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.frmPatMax.ResumeLayout(false);
+            this.frmPatMax.PerformLayout();
+            this.gbLight2.ResumeLayout(false);
+            this.gbLight2.PerformLayout();
+            this.gbParametter.ResumeLayout(false);
+            this.gbParametter.PerformLayout();
+            this.pnCalib.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.gbLight1.ResumeLayout(false);
             this.gbLight1.PerformLayout();
             this.tbTrace.ResumeLayout(false);
-            this.pnCalib.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cogDSPattern)).EndInit();
-            this.gbParametter.ResumeLayout(false);
-            this.gbParametter.PerformLayout();
-            this.gbLight2.ResumeLayout(false);
-            this.gbLight2.PerformLayout();
-            this.frmPatMax.ResumeLayout(false);
-            this.frmPatMax.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
