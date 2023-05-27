@@ -107,9 +107,9 @@ namespace Bending.Foam
                     txtbScore.Text = PMAlignTool.Results[0].Score.ToString("g3");
                     txtbScore.Refresh();
 
-                    CogCompositeShape resultGraphics = new CogCompositeShape();
-                    resultGraphics = PMAlignTool.Results[0].CreateResultGraphics(CogPMAlignResultGraphicConstants.All);
-                    cdDisplay.InteractiveGraphics.Add(resultGraphics, "Match", false);
+                    //CogCompositeShape resultGraphics = new CogCompositeShape();
+                    ICogGraphicInteractive resultGraphics = PMAlignTool.Results[0].CreateResultGraphics(CogPMAlignResultGraphicConstants.MatchFeatures);
+                    cdDisplay.StaticGraphics.Add(resultGraphics, "Match");
 
                 }
                 else
