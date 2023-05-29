@@ -32,68 +32,48 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucRecipe));
             this.label63 = new System.Windows.Forms.Label();
             this.cbCamList = new System.Windows.Forms.ComboBox();
-            this.cogDS1 = new Cognex.VisionPro.Display.CogDisplay();
-            this.cogDS2 = new Cognex.VisionPro.Display.CogDisplay();
+            this.cdDisplay1 = new Cognex.VisionPro.Display.CogDisplay();
+            this.cdDisplay2 = new Cognex.VisionPro.Display.CogDisplay();
             this.tmrCal = new System.Windows.Forms.Timer(this.components);
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cogDSPattern = new Cognex.VisionPro.Display.CogDisplay();
-            this.listPattern = new System.Windows.Forms.ListBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnRecognition = new System.Windows.Forms.Button();
-            this.btnLiveCamera = new System.Windows.Forms.Button();
-            this.btnCapture = new System.Windows.Forms.Button();
-            this.frmPatMax = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPatMaxScoreValue = new System.Windows.Forms.TextBox();
-            this.cmdPatMaxRunCommand = new System.Windows.Forms.Button();
-            this.btnSetup = new System.Windows.Forms.Button();
-            this.gbLight2 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.gbParametter = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.txtAngleHigh = new System.Windows.Forms.TextBox();
-            this.btnDeletePattern = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtAngleLow = new System.Windows.Forms.TextBox();
-            this.txtPatternContrastThreshold = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtScoreLimit = new System.Windows.Forms.TextBox();
+            this.pnRunVision = new System.Windows.Forms.Panel();
             this.pnCalib = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lbStatusCalib = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dgvCalib = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.gbLight1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnLightSave2 = new System.Windows.Forms.Button();
-            this.lblContrast2 = new System.Windows.Forms.Label();
-            this.lbExposure2 = new System.Windows.Forms.Label();
+            this.btnCalibration = new System.Windows.Forms.Button();
+            this.pnControlAndResult = new System.Windows.Forms.Panel();
+            this.gbRunResult = new System.Windows.Forms.GroupBox();
+            this.btnRun = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtbScore = new System.Windows.Forms.Button();
+            this.btnSetting = new System.Windows.Forms.Button();
+            this.gbLight = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtbLight4 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtbLight3 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtbLight2 = new System.Windows.Forms.TextBox();
             this.lbLight2 = new System.Windows.Forms.Label();
-            this.txtLight2 = new System.Windows.Forms.TextBox();
-            this.tbTrace = new System.Windows.Forms.TabControl();
-            ((System.ComponentModel.ISupportInitialize)(this.cogDS1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cogDS2)).BeginInit();
-            this.tabPage5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cogDSPattern)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.frmPatMax.SuspendLayout();
-            this.gbLight2.SuspendLayout();
-            this.gbParametter.SuspendLayout();
+            this.txtbLight1 = new System.Windows.Forms.TextBox();
+            this.gbImageAcq = new System.Windows.Forms.GroupBox();
+            this.rbImageFile = new System.Windows.Forms.RadioButton();
+            this.rbFrameGrabber = new System.Windows.Forms.RadioButton();
+            this.btnNextImage = new System.Windows.Forms.Button();
+            this.btnOpenFolder = new System.Windows.Forms.Button();
+            this.openFD = new System.Windows.Forms.OpenFileDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.cdDisplay1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cdDisplay2)).BeginInit();
+            this.pnRunVision.SuspendLayout();
             this.pnCalib.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.gbLight1.SuspendLayout();
-            this.tbTrace.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCalib)).BeginInit();
+            this.pnControlAndResult.SuspendLayout();
+            this.gbRunResult.SuspendLayout();
+            this.gbLight.SuspendLayout();
+            this.gbImageAcq.SuspendLayout();
             this.SuspendLayout();
             // 
             // label63
@@ -120,476 +100,114 @@
             this.cbCamList.TabIndex = 85;
             this.cbCamList.SelectedIndexChanged += new System.EventHandler(this.cbCamList_SelectedIndexChanged);
             // 
-            // cogDS1
+            // cdDisplay1
             // 
-            this.cogDS1.ColorMapLowerClipColor = System.Drawing.Color.Black;
-            this.cogDS1.ColorMapLowerRoiLimit = 0D;
-            this.cogDS1.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
-            this.cogDS1.ColorMapUpperClipColor = System.Drawing.Color.Black;
-            this.cogDS1.ColorMapUpperRoiLimit = 1D;
-            this.cogDS1.DoubleTapZoomCycleLength = 2;
-            this.cogDS1.DoubleTapZoomSensitivity = 2.5D;
-            this.cogDS1.Location = new System.Drawing.Point(3, 161);
-            this.cogDS1.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
-            this.cogDS1.MouseWheelSensitivity = 1D;
-            this.cogDS1.Name = "cogDS1";
-            this.cogDS1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDS1.OcxState")));
-            this.cogDS1.Size = new System.Drawing.Size(620, 526);
-            this.cogDS1.TabIndex = 298;
+            this.cdDisplay1.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cdDisplay1.ColorMapLowerRoiLimit = 0D;
+            this.cdDisplay1.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cdDisplay1.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cdDisplay1.ColorMapUpperRoiLimit = 1D;
+            this.cdDisplay1.DoubleTapZoomCycleLength = 2;
+            this.cdDisplay1.DoubleTapZoomSensitivity = 2.5D;
+            this.cdDisplay1.Location = new System.Drawing.Point(-1, 161);
+            this.cdDisplay1.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cdDisplay1.MouseWheelSensitivity = 1D;
+            this.cdDisplay1.Name = "cdDisplay1";
+            this.cdDisplay1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cdDisplay1.OcxState")));
+            this.cdDisplay1.Size = new System.Drawing.Size(620, 526);
+            this.cdDisplay1.TabIndex = 298;
             // 
-            // cogDS2
+            // cdDisplay2
             // 
-            this.cogDS2.ColorMapLowerClipColor = System.Drawing.Color.Black;
-            this.cogDS2.ColorMapLowerRoiLimit = 0D;
-            this.cogDS2.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
-            this.cogDS2.ColorMapUpperClipColor = System.Drawing.Color.Black;
-            this.cogDS2.ColorMapUpperRoiLimit = 1D;
-            this.cogDS2.DoubleTapZoomCycleLength = 2;
-            this.cogDS2.DoubleTapZoomSensitivity = 2.5D;
-            this.cogDS2.Location = new System.Drawing.Point(625, 161);
-            this.cogDS2.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
-            this.cogDS2.MouseWheelSensitivity = 1D;
-            this.cogDS2.Name = "cogDS2";
-            this.cogDS2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDS2.OcxState")));
-            this.cogDS2.Size = new System.Drawing.Size(620, 526);
-            this.cogDS2.TabIndex = 299;
+            this.cdDisplay2.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cdDisplay2.ColorMapLowerRoiLimit = 0D;
+            this.cdDisplay2.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cdDisplay2.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cdDisplay2.ColorMapUpperRoiLimit = 1D;
+            this.cdDisplay2.DoubleTapZoomCycleLength = 2;
+            this.cdDisplay2.DoubleTapZoomSensitivity = 2.5D;
+            this.cdDisplay2.Location = new System.Drawing.Point(622, 161);
+            this.cdDisplay2.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cdDisplay2.MouseWheelSensitivity = 1D;
+            this.cdDisplay2.Name = "cdDisplay2";
+            this.cdDisplay2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cdDisplay2.OcxState")));
+            this.cdDisplay2.Size = new System.Drawing.Size(620, 526);
+            this.cdDisplay2.TabIndex = 299;
             // 
             // tmrCal
             // 
             this.tmrCal.Interval = 300;
             this.tmrCal.Tick += new System.EventHandler(this.tmrCal_Tick);
             // 
-            // tabPage5
+            // pnRunVision
             // 
-            this.tabPage5.BackColor = System.Drawing.Color.Black;
-            this.tabPage5.Controls.Add(this.groupBox4);
-            this.tabPage5.ImageIndex = 5;
-            this.tabPage5.Location = new System.Drawing.Point(4, 24);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(652, 862);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Vision";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.cogDSPattern);
-            this.groupBox4.Controls.Add(this.listPattern);
-            this.groupBox4.Controls.Add(this.groupBox3);
-            this.groupBox4.Controls.Add(this.frmPatMax);
-            this.groupBox4.Controls.Add(this.gbLight2);
-            this.groupBox4.Controls.Add(this.gbParametter);
-            this.groupBox4.Controls.Add(this.pnCalib);
-            this.groupBox4.Controls.Add(this.gbLight1);
-            this.groupBox4.Location = new System.Drawing.Point(2, 6);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(625, 837);
-            this.groupBox4.TabIndex = 307;
-            this.groupBox4.TabStop = false;
-            // 
-            // cogDSPattern
-            // 
-            this.cogDSPattern.ColorMapLowerClipColor = System.Drawing.Color.Black;
-            this.cogDSPattern.ColorMapLowerRoiLimit = 0D;
-            this.cogDSPattern.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
-            this.cogDSPattern.ColorMapUpperClipColor = System.Drawing.Color.Black;
-            this.cogDSPattern.ColorMapUpperRoiLimit = 1D;
-            this.cogDSPattern.DoubleTapZoomCycleLength = 2;
-            this.cogDSPattern.DoubleTapZoomSensitivity = 2.5D;
-            this.cogDSPattern.Location = new System.Drawing.Point(48, 602);
-            this.cogDSPattern.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
-            this.cogDSPattern.MouseWheelSensitivity = 1D;
-            this.cogDSPattern.Name = "cogDSPattern";
-            this.cogDSPattern.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDSPattern.OcxState")));
-            this.cogDSPattern.Size = new System.Drawing.Size(223, 191);
-            this.cogDSPattern.TabIndex = 300;
-            this.cogDSPattern.Visible = false;
-            // 
-            // listPattern
-            // 
-            this.listPattern.BackColor = System.Drawing.Color.Black;
-            this.listPattern.ForeColor = System.Drawing.Color.Yellow;
-            this.listPattern.FormattingEnabled = true;
-            this.listPattern.ItemHeight = 15;
-            this.listPattern.Location = new System.Drawing.Point(382, 468);
-            this.listPattern.Name = "listPattern";
-            this.listPattern.Size = new System.Drawing.Size(244, 109);
-            this.listPattern.TabIndex = 315;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnRecognition);
-            this.groupBox3.Controls.Add(this.btnLiveCamera);
-            this.groupBox3.Controls.Add(this.btnCapture);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(6, 458);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(363, 119);
-            this.groupBox3.TabIndex = 314;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Operator";
-            // 
-            // btnRecognition
-            // 
-            this.btnRecognition.BackColor = System.Drawing.Color.White;
-            this.btnRecognition.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
-            this.btnRecognition.FlatAppearance.BorderSize = 2;
-            this.btnRecognition.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnRecognition.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnRecognition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRecognition.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecognition.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.btnRecognition.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRecognition.Location = new System.Drawing.Point(108, 67);
-            this.btnRecognition.Name = "btnRecognition";
-            this.btnRecognition.Size = new System.Drawing.Size(101, 40);
-            this.btnRecognition.TabIndex = 149;
-            this.btnRecognition.Text = "Recognition";
-            this.btnRecognition.UseVisualStyleBackColor = false;
-            // 
-            // btnLiveCamera
-            // 
-            this.btnLiveCamera.BackColor = System.Drawing.Color.White;
-            this.btnLiveCamera.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
-            this.btnLiveCamera.FlatAppearance.BorderSize = 2;
-            this.btnLiveCamera.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnLiveCamera.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnLiveCamera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLiveCamera.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLiveCamera.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.btnLiveCamera.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLiveCamera.Location = new System.Drawing.Point(6, 25);
-            this.btnLiveCamera.Name = "btnLiveCamera";
-            this.btnLiveCamera.Size = new System.Drawing.Size(89, 82);
-            this.btnLiveCamera.TabIndex = 51;
-            this.btnLiveCamera.Text = "Live Camera";
-            this.btnLiveCamera.UseVisualStyleBackColor = false;
-            this.btnLiveCamera.Click += new System.EventHandler(this.btnLiveCamera_Click);
-            // 
-            // btnCapture
-            // 
-            this.btnCapture.BackColor = System.Drawing.Color.White;
-            this.btnCapture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCapture.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapture.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.btnCapture.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCapture.Location = new System.Drawing.Point(108, 25);
-            this.btnCapture.Name = "btnCapture";
-            this.btnCapture.Size = new System.Drawing.Size(101, 40);
-            this.btnCapture.TabIndex = 291;
-            this.btnCapture.Text = "Capture";
-            this.btnCapture.UseVisualStyleBackColor = false;
-            this.btnCapture.Click += new System.EventHandler(this.btnCapture_Click);
-            // 
-            // frmPatMax
-            // 
-            this.frmPatMax.Controls.Add(this.label5);
-            this.frmPatMax.Controls.Add(this.txtPatMaxScoreValue);
-            this.frmPatMax.Controls.Add(this.cmdPatMaxRunCommand);
-            this.frmPatMax.Controls.Add(this.btnSetup);
-            this.frmPatMax.ForeColor = System.Drawing.Color.White;
-            this.frmPatMax.Location = new System.Drawing.Point(6, 334);
-            this.frmPatMax.Name = "frmPatMax";
-            this.frmPatMax.Size = new System.Drawing.Size(360, 102);
-            this.frmPatMax.TabIndex = 313;
-            this.frmPatMax.TabStop = false;
-            this.frmPatMax.Text = "Pattern Search";
-            // 
-            // label5
-            // 
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(192, 49);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 27);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Score";
-            // 
-            // txtPatMaxScoreValue
-            // 
-            this.txtPatMaxScoreValue.Location = new System.Drawing.Point(246, 39);
-            this.txtPatMaxScoreValue.Multiline = true;
-            this.txtPatMaxScoreValue.Name = "txtPatMaxScoreValue";
-            this.txtPatMaxScoreValue.Size = new System.Drawing.Size(70, 37);
-            this.txtPatMaxScoreValue.TabIndex = 2;
-            // 
-            // cmdPatMaxRunCommand
-            // 
-            this.cmdPatMaxRunCommand.ForeColor = System.Drawing.Color.White;
-            this.cmdPatMaxRunCommand.Location = new System.Drawing.Point(89, 39);
-            this.cmdPatMaxRunCommand.Name = "cmdPatMaxRunCommand";
-            this.cmdPatMaxRunCommand.Size = new System.Drawing.Size(85, 37);
-            this.cmdPatMaxRunCommand.TabIndex = 1;
-            this.cmdPatMaxRunCommand.Text = "Run";
-            // 
-            // btnSetup
-            // 
-            this.btnSetup.ForeColor = System.Drawing.Color.White;
-            this.btnSetup.Location = new System.Drawing.Point(8, 40);
-            this.btnSetup.Name = "btnSetup";
-            this.btnSetup.Size = new System.Drawing.Size(75, 36);
-            this.btnSetup.TabIndex = 0;
-            this.btnSetup.Text = "Setup";
-            this.btnSetup.Click += new System.EventHandler(this.btnSetup_Click);
-            // 
-            // gbLight2
-            // 
-            this.gbLight2.Controls.Add(this.textBox3);
-            this.gbLight2.Controls.Add(this.textBox4);
-            this.gbLight2.Controls.Add(this.button3);
-            this.gbLight2.Controls.Add(this.label1);
-            this.gbLight2.Controls.Add(this.label2);
-            this.gbLight2.Controls.Add(this.label4);
-            this.gbLight2.Controls.Add(this.textBox5);
-            this.gbLight2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.gbLight2.ForeColor = System.Drawing.Color.Cyan;
-            this.gbLight2.Location = new System.Drawing.Point(198, 175);
-            this.gbLight2.Name = "gbLight2";
-            this.gbLight2.Size = new System.Drawing.Size(151, 153);
-            this.gbLight2.TabIndex = 312;
-            this.gbLight2.TabStop = false;
-            this.gbLight2.Text = "Light 2";
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox3.Location = new System.Drawing.Point(81, 84);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(46, 22);
-            this.textBox3.TabIndex = 329;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.White;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox4.Location = new System.Drawing.Point(81, 56);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(46, 22);
-            this.textBox4.TabIndex = 328;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button3.Location = new System.Drawing.Point(34, 114);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(63, 33);
-            this.button3.TabIndex = 322;
-            this.button3.Text = "Save";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Linen;
-            this.label1.Location = new System.Drawing.Point(3, 84);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 21);
-            this.label1.TabIndex = 291;
-            this.label1.Text = "Contrast";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Black;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Linen;
-            this.label2.Location = new System.Drawing.Point(3, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 21);
-            this.label2.TabIndex = 286;
-            this.label2.Text = "Exposure";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.Black;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Linen;
-            this.label4.Location = new System.Drawing.Point(3, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 21);
-            this.label4.TabIndex = 258;
-            this.label4.Text = "Light";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox5.Location = new System.Drawing.Point(81, 25);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(46, 22);
-            this.textBox5.TabIndex = 259;
-            // 
-            // gbParametter
-            // 
-            this.gbParametter.BackColor = System.Drawing.SystemColors.Control;
-            this.gbParametter.Controls.Add(this.button2);
-            this.gbParametter.Controls.Add(this.txtAngleHigh);
-            this.gbParametter.Controls.Add(this.btnDeletePattern);
-            this.gbParametter.Controls.Add(this.label13);
-            this.gbParametter.Controls.Add(this.label24);
-            this.gbParametter.Controls.Add(this.txtAngleLow);
-            this.gbParametter.Controls.Add(this.txtPatternContrastThreshold);
-            this.gbParametter.Controls.Add(this.label3);
-            this.gbParametter.Controls.Add(this.txtScoreLimit);
-            this.gbParametter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gbParametter.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbParametter.Location = new System.Drawing.Point(3, 10);
-            this.gbParametter.Name = "gbParametter";
-            this.gbParametter.Padding = new System.Windows.Forms.Padding(5);
-            this.gbParametter.Size = new System.Drawing.Size(376, 159);
-            this.gbParametter.TabIndex = 311;
-            this.gbParametter.TabStop = false;
-            this.gbParametter.Text = "Parametter";
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.SkyBlue;
-            this.button2.FlatAppearance.BorderSize = 2;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(82, 121);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(68, 29);
-            this.button2.TabIndex = 257;
-            this.button2.Text = "Apply";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // txtAngleHigh
-            // 
-            this.txtAngleHigh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAngleHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtAngleHigh.Location = new System.Drawing.Point(236, 72);
-            this.txtAngleHigh.Name = "txtAngleHigh";
-            this.txtAngleHigh.Size = new System.Drawing.Size(64, 22);
-            this.txtAngleHigh.TabIndex = 232;
-            this.txtAngleHigh.Text = "2";
-            // 
-            // btnDeletePattern
-            // 
-            this.btnDeletePattern.BackColor = System.Drawing.Color.White;
-            this.btnDeletePattern.FlatAppearance.BorderColor = System.Drawing.Color.SkyBlue;
-            this.btnDeletePattern.FlatAppearance.BorderSize = 2;
-            this.btnDeletePattern.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeletePattern.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeletePattern.Location = new System.Drawing.Point(158, 121);
-            this.btnDeletePattern.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeletePattern.Name = "btnDeletePattern";
-            this.btnDeletePattern.Size = new System.Drawing.Size(68, 29);
-            this.btnDeletePattern.TabIndex = 256;
-            this.btnDeletePattern.Text = "Reset";
-            this.btnDeletePattern.UseVisualStyleBackColor = false;
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.White;
-            this.label13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(22, 36);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 22);
-            this.label13.TabIndex = 104;
-            this.label13.Text = "Threshold";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label24
-            // 
-            this.label24.BackColor = System.Drawing.Color.White;
-            this.label24.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.Black;
-            this.label24.Location = new System.Drawing.Point(22, 71);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(83, 22);
-            this.label24.TabIndex = 237;
-            this.label24.Text = "Angle (Low)";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtAngleLow
-            // 
-            this.txtAngleLow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAngleLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtAngleLow.Location = new System.Drawing.Point(126, 72);
-            this.txtAngleLow.Name = "txtAngleLow";
-            this.txtAngleLow.Size = new System.Drawing.Size(64, 22);
-            this.txtAngleLow.TabIndex = 231;
-            this.txtAngleLow.Text = "-2";
-            // 
-            // txtPatternContrastThreshold
-            // 
-            this.txtPatternContrastThreshold.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPatternContrastThreshold.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtPatternContrastThreshold.Location = new System.Drawing.Point(103, 36);
-            this.txtPatternContrastThreshold.Name = "txtPatternContrastThreshold";
-            this.txtPatternContrastThreshold.Size = new System.Drawing.Size(64, 22);
-            this.txtPatternContrastThreshold.TabIndex = 105;
-            this.txtPatternContrastThreshold.Text = "10";
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(195, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 22);
-            this.label3.TabIndex = 106;
-            this.label3.Text = "ScoreLimit";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtScoreLimit
-            // 
-            this.txtScoreLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtScoreLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtScoreLimit.Location = new System.Drawing.Point(282, 37);
-            this.txtScoreLimit.Name = "txtScoreLimit";
-            this.txtScoreLimit.Size = new System.Drawing.Size(64, 22);
-            this.txtScoreLimit.TabIndex = 107;
-            this.txtScoreLimit.Text = "0.7";
+            this.pnRunVision.Controls.Add(this.pnCalib);
+            this.pnRunVision.Controls.Add(this.pnControlAndResult);
+            this.pnRunVision.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnRunVision.Location = new System.Drawing.Point(1248, 0);
+            this.pnRunVision.Name = "pnRunVision";
+            this.pnRunVision.Size = new System.Drawing.Size(665, 823);
+            this.pnRunVision.TabIndex = 315;
             // 
             // pnCalib
             // 
             this.pnCalib.BackColor = System.Drawing.Color.DimGray;
             this.pnCalib.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnCalib.Controls.Add(this.dataGridView1);
-            this.pnCalib.Controls.Add(this.button1);
-            this.pnCalib.Location = new System.Drawing.Point(381, 6);
+            this.pnCalib.Controls.Add(this.lbStatusCalib);
+            this.pnCalib.Controls.Add(this.label5);
+            this.pnCalib.Controls.Add(this.dgvCalib);
+            this.pnCalib.Controls.Add(this.btnCalibration);
+            this.pnCalib.Location = new System.Drawing.Point(3, 380);
             this.pnCalib.Name = "pnCalib";
-            this.pnCalib.Size = new System.Drawing.Size(244, 449);
-            this.pnCalib.TabIndex = 310;
+            this.pnCalib.Size = new System.Drawing.Size(285, 440);
+            this.pnCalib.TabIndex = 334;
             // 
-            // dataGridView1
+            // lbStatusCalib
             // 
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lbStatusCalib.AutoSize = true;
+            this.lbStatusCalib.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStatusCalib.ForeColor = System.Drawing.Color.Lime;
+            this.lbStatusCalib.Location = new System.Drawing.Point(228, 388);
+            this.lbStatusCalib.Name = "lbStatusCalib";
+            this.lbStatusCalib.Size = new System.Drawing.Size(33, 20);
+            this.lbStatusCalib.TabIndex = 4;
+            this.lbStatusCalib.Text = "OK";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Lime;
+            this.label5.Location = new System.Drawing.Point(156, 388);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 20);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Status :";
+            // 
+            // dgvCalib
+            // 
+            this.dgvCalib.AllowUserToResizeColumns = false;
+            this.dgvCalib.AllowUserToResizeRows = false;
+            this.dgvCalib.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvCalib.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvCalib.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCalib.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(242, 168);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvCalib.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvCalib.Location = new System.Drawing.Point(0, 0);
+            this.dgvCalib.Name = "dgvCalib";
+            this.dgvCalib.RowHeadersVisible = false;
+            this.dgvCalib.Size = new System.Drawing.Size(283, 258);
+            this.dgvCalib.TabIndex = 1;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Points";
             this.Column1.Name = "Column1";
-            this.Column1.Width = 66;
+            this.Column1.Width = 61;
             // 
             // Column2
             // 
@@ -603,88 +221,192 @@
             this.Column3.HeaderText = "Vision";
             this.Column3.Name = "Column3";
             // 
-            // button1
+            // btnCalibration
             // 
-            this.button1.Location = new System.Drawing.Point(23, 348);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 33);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Calibration";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCalibration.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalibration.Location = new System.Drawing.Point(21, 375);
+            this.btnCalibration.Name = "btnCalibration";
+            this.btnCalibration.Size = new System.Drawing.Size(107, 48);
+            this.btnCalibration.TabIndex = 0;
+            this.btnCalibration.Text = "Calibration";
+            this.btnCalibration.UseVisualStyleBackColor = true;
             // 
-            // gbLight1
+            // pnControlAndResult
             // 
-            this.gbLight1.Controls.Add(this.textBox2);
-            this.gbLight1.Controls.Add(this.textBox1);
-            this.gbLight1.Controls.Add(this.btnLightSave2);
-            this.gbLight1.Controls.Add(this.lblContrast2);
-            this.gbLight1.Controls.Add(this.lbExposure2);
-            this.gbLight1.Controls.Add(this.lbLight2);
-            this.gbLight1.Controls.Add(this.txtLight2);
-            this.gbLight1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.gbLight1.ForeColor = System.Drawing.Color.Cyan;
-            this.gbLight1.Location = new System.Drawing.Point(4, 173);
-            this.gbLight1.Name = "gbLight1";
-            this.gbLight1.Size = new System.Drawing.Size(151, 153);
-            this.gbLight1.TabIndex = 297;
-            this.gbLight1.TabStop = false;
-            this.gbLight1.Text = "Light 1";
+            this.pnControlAndResult.Controls.Add(this.gbRunResult);
+            this.pnControlAndResult.Controls.Add(this.gbLight);
+            this.pnControlAndResult.Controls.Add(this.gbImageAcq);
+            this.pnControlAndResult.Location = new System.Drawing.Point(3, 4);
+            this.pnControlAndResult.Name = "pnControlAndResult";
+            this.pnControlAndResult.Size = new System.Drawing.Size(498, 370);
+            this.pnControlAndResult.TabIndex = 318;
             // 
-            // textBox2
+            // gbRunResult
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox2.Location = new System.Drawing.Point(81, 84);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(46, 22);
-            this.textBox2.TabIndex = 329;
+            this.gbRunResult.Controls.Add(this.btnRun);
+            this.gbRunResult.Controls.Add(this.label4);
+            this.gbRunResult.Controls.Add(this.txtbScore);
+            this.gbRunResult.Controls.Add(this.btnSetting);
+            this.gbRunResult.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbRunResult.ForeColor = System.Drawing.Color.White;
+            this.gbRunResult.Location = new System.Drawing.Point(7, 250);
+            this.gbRunResult.Name = "gbRunResult";
+            this.gbRunResult.Size = new System.Drawing.Size(470, 100);
+            this.gbRunResult.TabIndex = 315;
+            this.gbRunResult.TabStop = false;
+            this.gbRunResult.Text = "Run And Result";
             // 
-            // textBox1
+            // btnRun
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox1.Location = new System.Drawing.Point(81, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(46, 22);
-            this.textBox1.TabIndex = 328;
+            this.btnRun.AutoSize = true;
+            this.btnRun.BackColor = System.Drawing.Color.White;
+            this.btnRun.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
+            this.btnRun.FlatAppearance.BorderSize = 2;
+            this.btnRun.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnRun.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnRun.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRun.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRun.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.btnRun.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRun.Location = new System.Drawing.Point(143, 30);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(108, 49);
+            this.btnRun.TabIndex = 295;
+            this.btnRun.Text = "RUN";
+            this.btnRun.UseVisualStyleBackColor = false;
             // 
-            // btnLightSave2
+            // label4
             // 
-            this.btnLightSave2.BackColor = System.Drawing.Color.White;
-            this.btnLightSave2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLightSave2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnLightSave2.Location = new System.Drawing.Point(34, 114);
-            this.btnLightSave2.Name = "btnLightSave2";
-            this.btnLightSave2.Size = new System.Drawing.Size(63, 33);
-            this.btnLightSave2.TabIndex = 322;
-            this.btnLightSave2.Text = "Save";
-            this.btnLightSave2.UseVisualStyleBackColor = false;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(289, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 19);
+            this.label4.TabIndex = 294;
+            this.label4.Text = "Score :";
             // 
-            // lblContrast2
+            // txtbScore
             // 
-            this.lblContrast2.BackColor = System.Drawing.Color.Black;
-            this.lblContrast2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblContrast2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContrast2.ForeColor = System.Drawing.Color.Linen;
-            this.lblContrast2.Location = new System.Drawing.Point(3, 84);
-            this.lblContrast2.Name = "lblContrast2";
-            this.lblContrast2.Size = new System.Drawing.Size(70, 21);
-            this.lblContrast2.TabIndex = 291;
-            this.lblContrast2.Text = "Contrast";
-            this.lblContrast2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtbScore.AutoSize = true;
+            this.txtbScore.BackColor = System.Drawing.Color.White;
+            this.txtbScore.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
+            this.txtbScore.FlatAppearance.BorderSize = 2;
+            this.txtbScore.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.txtbScore.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.txtbScore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtbScore.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbScore.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtbScore.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.txtbScore.Location = new System.Drawing.Point(369, 30);
+            this.txtbScore.Name = "txtbScore";
+            this.txtbScore.Size = new System.Drawing.Size(83, 49);
+            this.txtbScore.TabIndex = 293;
+            this.txtbScore.Text = "N/A";
+            this.txtbScore.UseVisualStyleBackColor = false;
             // 
-            // lbExposure2
+            // btnSetting
             // 
-            this.lbExposure2.BackColor = System.Drawing.Color.Black;
-            this.lbExposure2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbExposure2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbExposure2.ForeColor = System.Drawing.Color.Linen;
-            this.lbExposure2.Location = new System.Drawing.Point(3, 56);
-            this.lbExposure2.Name = "lbExposure2";
-            this.lbExposure2.Size = new System.Drawing.Size(70, 21);
-            this.lbExposure2.TabIndex = 286;
-            this.lbExposure2.Text = "Exposure";
-            this.lbExposure2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSetting.AutoSize = true;
+            this.btnSetting.BackColor = System.Drawing.Color.White;
+            this.btnSetting.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
+            this.btnSetting.FlatAppearance.BorderSize = 2;
+            this.btnSetting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnSetting.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetting.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetting.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSetting.Location = new System.Drawing.Point(17, 30);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(108, 49);
+            this.btnSetting.TabIndex = 292;
+            this.btnSetting.Text = "SETTING";
+            this.btnSetting.UseVisualStyleBackColor = false;
+            // 
+            // gbLight
+            // 
+            this.gbLight.Controls.Add(this.label2);
+            this.gbLight.Controls.Add(this.txtbLight4);
+            this.gbLight.Controls.Add(this.label3);
+            this.gbLight.Controls.Add(this.txtbLight3);
+            this.gbLight.Controls.Add(this.label1);
+            this.gbLight.Controls.Add(this.txtbLight2);
+            this.gbLight.Controls.Add(this.lbLight2);
+            this.gbLight.Controls.Add(this.txtbLight1);
+            this.gbLight.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbLight.ForeColor = System.Drawing.Color.White;
+            this.gbLight.Location = new System.Drawing.Point(7, 3);
+            this.gbLight.Name = "gbLight";
+            this.gbLight.Size = new System.Drawing.Size(470, 104);
+            this.gbLight.TabIndex = 317;
+            this.gbLight.TabStop = false;
+            this.gbLight.Text = "Light Setting";
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Black;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Linen;
+            this.label2.Location = new System.Drawing.Point(143, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 21);
+            this.label2.TabIndex = 264;
+            this.label2.Text = "Light 4";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtbLight4
+            // 
+            this.txtbLight4.BackColor = System.Drawing.Color.White;
+            this.txtbLight4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtbLight4.Location = new System.Drawing.Point(221, 60);
+            this.txtbLight4.Name = "txtbLight4";
+            this.txtbLight4.Size = new System.Drawing.Size(46, 22);
+            this.txtbLight4.TabIndex = 265;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Black;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Linen;
+            this.label3.Location = new System.Drawing.Point(143, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 21);
+            this.label3.TabIndex = 262;
+            this.label3.Text = "Light 3";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtbLight3
+            // 
+            this.txtbLight3.BackColor = System.Drawing.Color.White;
+            this.txtbLight3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtbLight3.Location = new System.Drawing.Point(221, 24);
+            this.txtbLight3.Name = "txtbLight3";
+            this.txtbLight3.Size = new System.Drawing.Size(46, 22);
+            this.txtbLight3.TabIndex = 263;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Linen;
+            this.label1.Location = new System.Drawing.Point(3, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 21);
+            this.label1.TabIndex = 260;
+            this.label1.Text = "Light 2";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtbLight2
+            // 
+            this.txtbLight2.BackColor = System.Drawing.Color.White;
+            this.txtbLight2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtbLight2.Location = new System.Drawing.Point(81, 61);
+            this.txtbLight2.Name = "txtbLight2";
+            this.txtbLight2.Size = new System.Drawing.Size(46, 22);
+            this.txtbLight2.TabIndex = 261;
             // 
             // lbLight2
             // 
@@ -696,57 +418,122 @@
             this.lbLight2.Name = "lbLight2";
             this.lbLight2.Size = new System.Drawing.Size(70, 21);
             this.lbLight2.TabIndex = 258;
-            this.lbLight2.Text = "Light";
+            this.lbLight2.Text = "Light 1";
             this.lbLight2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtLight2
+            // txtbLight1
             // 
-            this.txtLight2.BackColor = System.Drawing.Color.White;
-            this.txtLight2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtLight2.Location = new System.Drawing.Point(81, 25);
-            this.txtLight2.Name = "txtLight2";
-            this.txtLight2.Size = new System.Drawing.Size(46, 22);
-            this.txtLight2.TabIndex = 259;
+            this.txtbLight1.BackColor = System.Drawing.Color.White;
+            this.txtbLight1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtbLight1.Location = new System.Drawing.Point(81, 25);
+            this.txtbLight1.Name = "txtbLight1";
+            this.txtbLight1.Size = new System.Drawing.Size(46, 22);
+            this.txtbLight1.TabIndex = 259;
             // 
-            // tbTrace
+            // gbImageAcq
             // 
-            this.tbTrace.Controls.Add(this.tabPage5);
-            this.tbTrace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbTrace.Location = new System.Drawing.Point(1241, 0);
-            this.tbTrace.Name = "tbTrace";
-            this.tbTrace.SelectedIndex = 0;
-            this.tbTrace.Size = new System.Drawing.Size(660, 890);
-            this.tbTrace.TabIndex = 297;
+            this.gbImageAcq.Controls.Add(this.rbImageFile);
+            this.gbImageAcq.Controls.Add(this.rbFrameGrabber);
+            this.gbImageAcq.Controls.Add(this.btnNextImage);
+            this.gbImageAcq.Controls.Add(this.btnOpenFolder);
+            this.gbImageAcq.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbImageAcq.ForeColor = System.Drawing.Color.White;
+            this.gbImageAcq.Location = new System.Drawing.Point(7, 124);
+            this.gbImageAcq.Name = "gbImageAcq";
+            this.gbImageAcq.Size = new System.Drawing.Size(470, 100);
+            this.gbImageAcq.TabIndex = 314;
+            this.gbImageAcq.TabStop = false;
+            this.gbImageAcq.Text = "Image Acquisition";
+            // 
+            // rbImageFile
+            // 
+            this.rbImageFile.AutoSize = true;
+            this.rbImageFile.Checked = true;
+            this.rbImageFile.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbImageFile.Location = new System.Drawing.Point(15, 59);
+            this.rbImageFile.Name = "rbImageFile";
+            this.rbImageFile.Size = new System.Drawing.Size(97, 20);
+            this.rbImageFile.TabIndex = 294;
+            this.rbImageFile.TabStop = true;
+            this.rbImageFile.Text = "Image File";
+            this.rbImageFile.UseVisualStyleBackColor = true;
+            // 
+            // rbFrameGrabber
+            // 
+            this.rbFrameGrabber.AutoSize = true;
+            this.rbFrameGrabber.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbFrameGrabber.Location = new System.Drawing.Point(15, 29);
+            this.rbFrameGrabber.Name = "rbFrameGrabber";
+            this.rbFrameGrabber.Size = new System.Drawing.Size(131, 20);
+            this.rbFrameGrabber.TabIndex = 293;
+            this.rbFrameGrabber.Text = "Frame Grabber";
+            this.rbFrameGrabber.UseVisualStyleBackColor = true;
+            this.rbFrameGrabber.CheckedChanged += new System.EventHandler(this.rbFrameGrabber_CheckedChanged);
+            // 
+            // btnNextImage
+            // 
+            this.btnNextImage.AutoSize = true;
+            this.btnNextImage.BackColor = System.Drawing.Color.White;
+            this.btnNextImage.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
+            this.btnNextImage.FlatAppearance.BorderSize = 2;
+            this.btnNextImage.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnNextImage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnNextImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextImage.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNextImage.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.btnNextImage.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNextImage.Location = new System.Drawing.Point(341, 29);
+            this.btnNextImage.Name = "btnNextImage";
+            this.btnNextImage.Size = new System.Drawing.Size(109, 50);
+            this.btnNextImage.TabIndex = 292;
+            this.btnNextImage.Text = "Next Image";
+            this.btnNextImage.UseVisualStyleBackColor = false;
+            // 
+            // btnOpenFolder
+            // 
+            this.btnOpenFolder.AutoSize = true;
+            this.btnOpenFolder.BackColor = System.Drawing.Color.White;
+            this.btnOpenFolder.FlatAppearance.BorderColor = System.Drawing.Color.Aqua;
+            this.btnOpenFolder.FlatAppearance.BorderSize = 2;
+            this.btnOpenFolder.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnOpenFolder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnOpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenFolder.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenFolder.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.btnOpenFolder.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnOpenFolder.Location = new System.Drawing.Point(191, 29);
+            this.btnOpenFolder.Name = "btnOpenFolder";
+            this.btnOpenFolder.Size = new System.Drawing.Size(109, 50);
+            this.btnOpenFolder.TabIndex = 51;
+            this.btnOpenFolder.Text = "Open Folder";
+            this.btnOpenFolder.UseVisualStyleBackColor = false;
+            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
             // 
             // ucRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.Controls.Add(this.cogDS2);
-            this.Controls.Add(this.cogDS1);
-            this.Controls.Add(this.tbTrace);
+            this.Controls.Add(this.pnRunVision);
+            this.Controls.Add(this.cdDisplay2);
+            this.Controls.Add(this.cdDisplay1);
             this.Controls.Add(this.cbCamList);
             this.Controls.Add(this.label63);
             this.Name = "ucRecipe";
             this.Size = new System.Drawing.Size(1913, 823);
-            ((System.ComponentModel.ISupportInitialize)(this.cogDS1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cogDS2)).EndInit();
-            this.tabPage5.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cogDSPattern)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.frmPatMax.ResumeLayout(false);
-            this.frmPatMax.PerformLayout();
-            this.gbLight2.ResumeLayout(false);
-            this.gbLight2.PerformLayout();
-            this.gbParametter.ResumeLayout(false);
-            this.gbParametter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cdDisplay1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cdDisplay2)).EndInit();
+            this.pnRunVision.ResumeLayout(false);
             this.pnCalib.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.gbLight1.ResumeLayout(false);
-            this.gbLight1.PerformLayout();
-            this.tbTrace.ResumeLayout(false);
+            this.pnCalib.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCalib)).EndInit();
+            this.pnControlAndResult.ResumeLayout(false);
+            this.gbRunResult.ResumeLayout(false);
+            this.gbRunResult.PerformLayout();
+            this.gbLight.ResumeLayout(false);
+            this.gbLight.PerformLayout();
+            this.gbImageAcq.ResumeLayout(false);
+            this.gbImageAcq.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -754,55 +541,39 @@
         #endregion
 
         public System.Windows.Forms.Label label63;
-        private Cognex.VisionPro.Display.CogDisplay cogDS1;
-        private Cognex.VisionPro.Display.CogDisplay cogDS2;
+        private Cognex.VisionPro.Display.CogDisplay cdDisplay1;
+        private Cognex.VisionPro.Display.CogDisplay cdDisplay2;
         public System.Windows.Forms.Timer tmrCal;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button btnCapture;
-        private System.Windows.Forms.Button btnLiveCamera;
-        private System.Windows.Forms.Button btnRecognition;
-        private System.Windows.Forms.GroupBox gbLight1;
-        public System.Windows.Forms.Label lblContrast2;
-        public System.Windows.Forms.Label lbExposure2;
+        private System.Windows.Forms.ComboBox cbCamList;
+        private System.Windows.Forms.Panel pnRunVision;
+        private System.Windows.Forms.Panel pnControlAndResult;
+        private System.Windows.Forms.GroupBox gbRunResult;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button txtbScore;
+        private System.Windows.Forms.Button btnSetting;
+        private System.Windows.Forms.GroupBox gbImageAcq;
+        private System.Windows.Forms.RadioButton rbImageFile;
+        private System.Windows.Forms.RadioButton rbFrameGrabber;
+        private System.Windows.Forms.Button btnNextImage;
+        private System.Windows.Forms.Button btnOpenFolder;
+        private System.Windows.Forms.GroupBox gbLight;
+        public System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtbLight4;
+        public System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtbLight3;
+        public System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtbLight2;
         public System.Windows.Forms.Label lbLight2;
-        private System.Windows.Forms.TextBox txtLight2;
-        private System.Windows.Forms.TabControl tbTrace;
+        private System.Windows.Forms.TextBox txtbLight1;
         private System.Windows.Forms.Panel pnCalib;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lbStatusCalib;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dgvCalib;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox cbCamList;
-        private Cognex.VisionPro.Display.CogDisplay cogDSPattern;
-        private System.Windows.Forms.GroupBox gbLight2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button3;
-        public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label label2;
-        public System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.GroupBox gbParametter;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox txtAngleHigh;
-        private System.Windows.Forms.Button btnDeletePattern;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox txtAngleLow;
-        private System.Windows.Forms.TextBox txtPatternContrastThreshold;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtScoreLimit;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnLightSave2;
-        internal System.Windows.Forms.GroupBox frmPatMax;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtPatMaxScoreValue;
-        private System.Windows.Forms.Button cmdPatMaxRunCommand;
-        private System.Windows.Forms.Button btnSetup;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListBox listPattern;
+        private System.Windows.Forms.Button btnCalibration;
+        private System.Windows.Forms.Button btnRun;
+        private System.Windows.Forms.OpenFileDialog openFD;
     }
 }

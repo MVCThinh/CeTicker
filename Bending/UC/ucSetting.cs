@@ -19,12 +19,8 @@ namespace Bending.UC
 {
     public partial class ucSetting : UserControl
     {
-        public static CamSetting Laser1 = new CamSetting();
-        public static CamSetting Laser2 = new CamSetting();
-        public static CamSetting LoadingPre1 = new CamSetting();
-        public static CamSetting LoadingPre2 = new CamSetting();
 
-        public static CamSetting[] AllCamSetting = { Laser1, Laser2, LoadingPre1,LoadingPre2 };
+
 
         public ucSetting()
         {
@@ -35,68 +31,15 @@ namespace Bending.UC
 
         private void Initial()
         {
-            cboName.DataSource = Enum.GetValues(typeof(eCamName));
-            ReadParaFormFolder();
-            ReadParaModelToView();
+            PullFolder();
+            PushView();
         }
 
         private void btnConfigSave_Click(object sender, EventArgs e)
         {
-            WriteParaViewToModel();
-            WriteParaToFolder();
+            PullView();
+            PushFolder();
         }
-
-        private void cboName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            eCamName camName = (eCamName)cboName.SelectedItem;
-            CamSetting camSetting = GetCamSettingByName(camName);
-
-            if (camSetting != null)
-            {
-                PushParaViewToModel(camSetting);
-
-            }
-        }
-
-        private void PushParaViewToModel (CamSetting camSetting)
-        {
-            txtSerial.Text = camSetting.Serial;
-
-            cbLightType.SelectedIndex = camSetting.LightType;
-            txtLight1Comport.Text = camSetting.LighComport;
-            txtLight1CH.Text = camSetting.LightChanel;
-
-
-            cbImageSaveType.SelectedIndex = camSetting.ImageSaveType;
-
-            txtGrabDelay.Text = camSetting.GrapDelay;
-            txtLightDelay.Text = camSetting.LightDelay;
-
-
-            txtAlignLimitCnt.Text = camSetting.RetryLimitCount;
-            txtRetryCnt.Text = camSetting.RetryCaptureCount;
-            txtImgAutoDelDay.Text = camSetting.ImageAutoDeleteDay;
-        }
-
-        private void PushParaModelToView(CamSetting camSetting)
-        {
-                camSetting.Serial = txtSerial.Text;
-
-                camSetting.LightType = cbLightType.SelectedIndex;
-                camSetting.LighComport = txtLight1Comport.Text;
-                camSetting.LightChanel = txtLight1CH.Text;
-
-                camSetting.ImageSaveType = cbImageSaveType.SelectedIndex;
-
-                camSetting.GrapDelay = txtGrabDelay.Text;
-                camSetting.LightDelay = txtLightDelay.Text;
-
-
-                camSetting.RetryLimitCount = txtAlignLimitCnt.Text;
-                camSetting.RetryCaptureCount = txtRetryCnt.Text;
-                camSetting.ImageAutoDeleteDay = txtImgAutoDelDay.Text;
-            }
-
 
 
 
@@ -105,116 +48,17 @@ namespace Bending.UC
         string PathRoot = @"C:\EQData1\Config\";
         string ConfigName = "VisionConfig.ini";
 
-
-        /// <summary>
-        /// Viết giá trị từ View vào Model
-        /// </summary>
-        public void WriteParaViewToModel()
-        {
-            eCamName camName = (eCamName)cboName.SelectedItem;
-            CamSetting camSetting = GetCamSettingByName(camName);
-
-            if (camSetting != null)
-            {
-                PushParaModelToView(camSetting);
-
-            }         
-        }
-
-        /// <summary>
-        /// Đẩy giá trị từ Model tới View
-        /// </summary>
-        public void ReadParaModelToView()
-        {
-            eCamName camName = (eCamName)cboName.SelectedItem;
-            CamSetting camSetting = GetCamSettingByName(camName);
-
-            if (camSetting != null)
-            {
-                txtSerial.Text = camSetting.Serial;
-
-                cbLightType.SelectedIndex = camSetting.LightType;
-                txtLight1Comport.Text = camSetting.LighComport;
-                txtLight1CH.Text = camSetting.LightChanel;
-
-
-                cbImageSaveType.SelectedIndex = camSetting.ImageSaveType;
-
-                txtGrabDelay.Text = camSetting.GrapDelay;
-                txtLightDelay.Text = camSetting.LightDelay;
-
-
-                txtAlignLimitCnt.Text = camSetting.RetryLimitCount;
-                txtRetryCnt.Text = camSetting.RetryCaptureCount;
-                txtImgAutoDelDay.Text = camSetting.ImageAutoDeleteDay;
-
-            }
-        }
-
-        void ReadCamSetting(ref CamSetting camSetting)
-        {
-            string Section = "CAMSETTING";
-
-            camSetting.Serial = RWFile.ReadFile(Section, "Serial", "0");
-
-            camSetting.LightType = int.Parse(RWFile.ReadFile(Section, "LightType", "0"));
-            camSetting.LighComport = RWFile.ReadFile(Section, "LighComport", "0");
-            camSetting.LightChanel = RWFile.ReadFile(Section, "LightChanel", "0");
-
-            camSetting.ImageSaveType = int.Parse(RWFile.ReadFile(Section, "ImageSaveType", "0"));
-
-            camSetting.GrapDelay = RWFile.ReadFile(Section, "GrapDelay", "0");
-            camSetting.LightDelay = RWFile.ReadFile(Section, "LightDelay", "0");
-
-            camSetting.RetryLimitCount = RWFile.ReadFile(Section, "RetryLimitCount", "0");
-            camSetting.RetryCaptureCount = RWFile.ReadFile(Section, "RetryCaptureCount", "0");
-            camSetting.ImageAutoDeleteDay = RWFile.ReadFile(Section, "ImageAutoDeleteDay", "0");
-
-        }
-        void WriteCamSetting(ref CamSetting camSetting)
-        {
-            string Section = "CAMSETTING";
-            RWFile.WriteFile(Section, "Serial", camSetting.Serial);
-
-
-
-            RWFile.WriteFile(Section, "LightType", camSetting.LightType.ToString());
-            RWFile.WriteFile(Section, "LighComport", camSetting.LighComport);
-            RWFile.WriteFile(Section, "LightChanel", camSetting.LightChanel);
-
-
-            RWFile.WriteFile(Section, "ImageSaveType", camSetting.ImageSaveType.ToString());
-            RWFile.WriteFile(Section, "GrapDelay", camSetting.GrapDelay);
-            RWFile.WriteFile(Section, "LightDelay", camSetting.LightDelay);
-
-
-            RWFile.WriteFile(Section, "RetryLimitCount", camSetting.RetryLimitCount);
-            RWFile.WriteFile(Section, "RetryCaptureCount", camSetting.RetryCaptureCount);
-            RWFile.WriteFile(Section, "ImageAutoDeleteDay", camSetting.ImageAutoDeleteDay);
-        }
-
-        /// <summary>
-        /// Đẩy giá trị từ Folder vào Model
-        /// </summary>
-        /// <returns></returns>
-        public void ReadParaFormFolder()
+        // Lấy giá trị từ Folder
+        public void PullFolder()
         {
             try
             {
-                string[] camNames = Enum.GetNames(typeof(eCamName));
+                string Section = "VISION";
 
-                foreach (string camName in camNames)
-                {
-                    if (Enum.TryParse(camName, out eCamName parsedCamName))
-                    {
-                        CamSetting camSetting = GetCamSettingByName(parsedCamName);
-                        if (camSetting != null)
-                        {
-                            RWFile.RWFilePath = Path.Combine(PathRoot, camName, ConfigName);
-                            ReadCamSetting(ref camSetting);
-                        }
-                    }
-                }
+                VisionSetting.SerialLoading1 = RWFile.ReadFile(Section, "SerialLoading1", "0");
+                VisionSetting.SerialLoading2 = RWFile.ReadFile(Section, "SerialLoading2", "0");
+                VisionSetting.SerialLaser1 = RWFile.ReadFile(Section, "SerialLaser1", "0");
+                VisionSetting.SerialLaser2 = RWFile.ReadFile(Section, "SerialLaser2", "0");
 
             }
             catch (Exception)
@@ -223,27 +67,38 @@ namespace Bending.UC
             }
         }
 
-        /// <summary>
-        /// Viết giá trị từ Model vào Folder
-        /// </summary>
-        public void WriteParaToFolder()
+        // Đẩy giá trị vào View
+        public void PushView()
+        {
+            txtSerialLoading1.Text = VisionSetting.SerialLoading1;
+            txtSerialLoading2.Text = VisionSetting.SerialLoading2;
+            txtSerialLaser1.Text = VisionSetting.SerialLaser1;
+            txtSerialLaser2.Text = VisionSetting.SerialLaser2;
+
+        }
+
+
+        // Lấy giá trị từ View
+        public void PullView()
+        {
+            VisionSetting.SerialLoading1 = txtSerialLoading1.Text;
+            VisionSetting.SerialLoading2 = txtSerialLoading2.Text;
+            VisionSetting.SerialLaser1 = txtSerialLaser1.Text;
+            VisionSetting.SerialLaser2 = txtSerialLaser2.Text;
+
+        }
+
+        // Đẩy giá trị vào Folder
+        public void PushFolder()
         {
             try
             {
-                string[] camNames = Enum.GetNames(typeof(eCamName));
+                string Section = "VISION";
 
-                foreach (string camName in camNames)
-                {
-                    if (Enum.TryParse(camName, out eCamName parsedCamName))
-                    {
-                        CamSetting camSetting = GetCamSettingByName(parsedCamName);
-                        if (camSetting != null)
-                        {
-                            RWFile.RWFilePath = Path.Combine(PathRoot, camName, ConfigName);
-                            WriteCamSetting(ref camSetting);
-                        }
-                    }
-                }
+                RWFile.WriteFile(Section, "SerialLoading1", VisionSetting.SerialLoading1);
+                RWFile.WriteFile(Section, "SerialLoading1", VisionSetting.SerialLoading2);
+                RWFile.WriteFile(Section, "SerialLoading1", VisionSetting.SerialLaser1);
+                RWFile.WriteFile(Section, "SerialLoading1", VisionSetting.SerialLaser2);
 
             }
             catch (Exception)
@@ -251,24 +106,6 @@ namespace Bending.UC
                 throw;
             }
         }
-
-        private CamSetting GetCamSettingByName(eCamName camName)
-        {
-            switch (camName)
-            {
-                case eCamName.LoadingPre1:
-                    return LoadingPre1;
-                case eCamName.LoadingPre2:
-                    return LoadingPre2;
-                case eCamName.Laser1:
-                    return Laser1;
-                case eCamName.Laser2:
-                    return Laser2;
-                default:
-                    return null;
-            }
-        }
-
         #endregion
 
 

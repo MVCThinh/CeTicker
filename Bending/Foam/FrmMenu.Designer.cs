@@ -70,6 +70,8 @@
             this.btnLogIn = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnMenu = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.pnTOP.SuspendLayout();
             this.Camera.SuspendLayout();
             this.lbBottom.SuspendLayout();
@@ -78,6 +80,8 @@
             // pnTOP
             // 
             this.pnTOP.BackColor = System.Drawing.Color.Black;
+            this.pnTOP.Controls.Add(this.label10);
+            this.pnTOP.Controls.Add(this.label13);
             this.pnTOP.Controls.Add(this.Camera);
             this.pnTOP.Controls.Add(this.lbProgramVer);
             this.pnTOP.Controls.Add(this.label11);
@@ -104,11 +108,11 @@
             this.Camera.Controls.Add(this.label5);
             this.Camera.Controls.Add(this.label4);
             this.Camera.Controls.Add(this.label2);
-            this.Camera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Camera.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Camera.ForeColor = System.Drawing.Color.White;
-            this.Camera.Location = new System.Drawing.Point(785, 4);
+            this.Camera.Location = new System.Drawing.Point(615, 3);
             this.Camera.Name = "Camera";
-            this.Camera.Size = new System.Drawing.Size(340, 57);
+            this.Camera.Size = new System.Drawing.Size(340, 58);
             this.Camera.TabIndex = 161;
             this.Camera.TabStop = false;
             this.Camera.Text = "Camera Status";
@@ -116,27 +120,30 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Red;
             this.label6.Location = new System.Drawing.Point(261, 25);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 20);
+            this.label6.Size = new System.Drawing.Size(56, 18);
             this.label6.TabIndex = 3;
             this.label6.Text = "Laser2";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Red;
             this.label5.Location = new System.Drawing.Point(180, 25);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 20);
+            this.label5.Size = new System.Drawing.Size(56, 18);
             this.label5.TabIndex = 2;
             this.label5.Text = "Laser1";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Red;
             this.label4.Location = new System.Drawing.Point(93, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 20);
+            this.label4.Size = new System.Drawing.Size(73, 18);
             this.label4.TabIndex = 1;
             this.label4.Text = "Loading2";
             // 
@@ -146,7 +153,7 @@
             this.label2.BackColor = System.Drawing.Color.Red;
             this.label2.Location = new System.Drawing.Point(12, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 20);
+            this.label2.Size = new System.Drawing.Size(73, 18);
             this.label2.TabIndex = 0;
             this.label2.Text = "Loading1";
             // 
@@ -210,9 +217,9 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Arial", 25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1110, 3);
+            this.label1.Location = new System.Drawing.Point(1163, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(375, 58);
+            this.label1.Size = new System.Drawing.Size(322, 58);
             this.label1.TabIndex = 29;
             this.label1.Text = "Bending System";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -239,7 +246,7 @@
             this.lbMainCurrentRcp.ForeColor = System.Drawing.Color.Black;
             this.lbMainCurrentRcp.Location = new System.Drawing.Point(306, 4);
             this.lbMainCurrentRcp.Name = "lbMainCurrentRcp";
-            this.lbMainCurrentRcp.Size = new System.Drawing.Size(155, 25);
+            this.lbMainCurrentRcp.Size = new System.Drawing.Size(85, 25);
             this.lbMainCurrentRcp.TabIndex = 62;
             this.lbMainCurrentRcp.Text = "EG1_5.1";
             this.lbMainCurrentRcp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -250,9 +257,9 @@
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(467, 35);
+            this.label7.Location = new System.Drawing.Point(402, 35);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 25);
+            this.label7.Size = new System.Drawing.Size(102, 25);
             this.label7.TabIndex = 160;
             this.label7.Text = "P L C";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -277,11 +284,11 @@
             this.label_PLC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label_PLC.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
             this.label_PLC.ForeColor = System.Drawing.Color.Black;
-            this.label_PLC.Location = new System.Drawing.Point(607, 36);
+            this.label_PLC.Location = new System.Drawing.Point(512, 36);
             this.label_PLC.Name = "label_PLC";
-            this.label_PLC.Size = new System.Drawing.Size(155, 25);
+            this.label_PLC.Size = new System.Drawing.Size(93, 25);
             this.label_PLC.TabIndex = 155;
-            this.label_PLC.Text = "Disconnect!";
+            this.label_PLC.Text = "Disconnect";
             this.label_PLC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblAuto
@@ -292,7 +299,7 @@
             this.lblAuto.ForeColor = System.Drawing.Color.Black;
             this.lblAuto.Location = new System.Drawing.Point(306, 36);
             this.lblAuto.Name = "lblAuto";
-            this.lblAuto.Size = new System.Drawing.Size(155, 25);
+            this.lblAuto.Size = new System.Drawing.Size(85, 25);
             this.lblAuto.TabIndex = 63;
             this.lblAuto.Text = "STOP";
             this.lblAuto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -304,9 +311,9 @@
             this.lbLogINUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbLogINUser.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
             this.lbLogINUser.ForeColor = System.Drawing.Color.Black;
-            this.lbLogINUser.Location = new System.Drawing.Point(607, 4);
+            this.lbLogINUser.Location = new System.Drawing.Point(512, 4);
             this.lbLogINUser.Name = "lbLogINUser";
-            this.lbLogINUser.Size = new System.Drawing.Size(155, 25);
+            this.lbLogINUser.Size = new System.Drawing.Size(93, 25);
             this.lbLogINUser.TabIndex = 30;
             this.lbLogINUser.Text = "LogINUser";
             this.lbLogINUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -317,9 +324,9 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(467, 4);
+            this.label3.Location = new System.Drawing.Point(402, 4);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(134, 25);
+            this.label3.Size = new System.Drawing.Size(102, 25);
             this.label3.TabIndex = 156;
             this.label3.Text = "Login Level";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -650,6 +657,33 @@
             this.pnMenu.Size = new System.Drawing.Size(1886, 827);
             this.pnMenu.TabIndex = 56;
             // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.Black;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(973, 5);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(102, 25);
+            this.label10.TabIndex = 163;
+            this.label10.Text = "ROBOT";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.White;
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label13.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(973, 36);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(102, 25);
+            this.label13.TabIndex = 162;
+            this.label13.Text = "Disconnect";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -713,6 +747,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label10;
+        public System.Windows.Forms.Label label13;
     }
 }
 

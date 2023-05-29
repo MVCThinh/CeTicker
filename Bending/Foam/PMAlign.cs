@@ -30,6 +30,8 @@ namespace Bending.Foam
 
         string VIDEOFORMAT = "Generic GigEVision (Mono)";
 
+        private ToolTip toolTip1;
+
         public enum SettingUpConstants
         {
             SettingUpPMAlign,
@@ -39,8 +41,12 @@ namespace Bending.Foam
         public PMAlign()
         {
             InitializeComponent();
+            toolTip1 = new ToolTip();
+            toolTip1.SetToolTip(label2, "Calib2");
+            toolTip1.SetToolTip(label3, "Calib3");
+            toolTip1.SetToolTip(label4, "Calib4");
+            
         }
-
         private void PMAlign_Load(object sender, EventArgs e)
         {
             settingUp = false;
@@ -328,6 +334,10 @@ namespace Bending.Foam
                 rbImageFile.Enabled = true;
             }
         }
+
+
+
+
 
 
 

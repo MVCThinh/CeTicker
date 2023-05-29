@@ -1,5 +1,6 @@
 ﻿using Bending.Data.Enums;
 using Bending.Data.Helpers;
+using Bending.Data.Models.Setting;
 using Bending.Properties;
 using Bending.UC;
 using Microsoft.VisualBasic.Devices;
@@ -34,7 +35,7 @@ namespace Bending
 
 
 
-
+        
         private Button[] btnMenu;
         public Menu()
         {

@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Bending
-{
-    
+{  
     public enum eCamName
     {
         LoadingPre1 = 0,
@@ -15,10 +14,10 @@ namespace Bending
         Laser2 = 3,
     }
 
-    public enum SettingUpConstant
+    public enum SettingUpConstants
     {
-        SettingPMAlign,
-        SettingLiveVideo
+        SettingLiveCamera,
+        SettingUpPMAlign
     }
     public enum eBendMode
     {
