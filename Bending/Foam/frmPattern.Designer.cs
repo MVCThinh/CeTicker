@@ -33,6 +33,12 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tcPattern = new System.Windows.Forms.TabControl();
             this.tpPMAlign = new System.Windows.Forms.TabPage();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.gbImageAcq = new System.Windows.Forms.GroupBox();
+            this.btnNextImage = new System.Windows.Forms.Button();
+            this.btnOpenFile = new System.Windows.Forms.Button();
+            this.rbImageFile = new System.Windows.Forms.RadioButton();
+            this.rbFrameGrabber = new System.Windows.Forms.RadioButton();
             this.gbPMAlign = new System.Windows.Forms.GroupBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.txtbScore = new System.Windows.Forms.TextBox();
@@ -41,22 +47,16 @@
             this.cdDisplay = new Cognex.VisionPro.Display.CogDisplay();
             this.tpBlob = new System.Windows.Forms.TabPage();
             this.pnHeader = new System.Windows.Forms.Panel();
-            this.pnContent = new System.Windows.Forms.Panel();
             this.cbCamList = new System.Windows.Forms.ComboBox();
             this.label63 = new System.Windows.Forms.Label();
-            this.gbImageAcq = new System.Windows.Forms.GroupBox();
-            this.btnNextImage = new System.Windows.Forms.Button();
-            this.btnOpenFile = new System.Windows.Forms.Button();
-            this.rbImageFile = new System.Windows.Forms.RadioButton();
-            this.rbFrameGrabber = new System.Windows.Forms.RadioButton();
-            this.btnClose = new System.Windows.Forms.Button();
+            this.pnContent = new System.Windows.Forms.Panel();
             this.tcPattern.SuspendLayout();
             this.tpPMAlign.SuspendLayout();
+            this.gbImageAcq.SuspendLayout();
             this.gbPMAlign.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay)).BeginInit();
             this.pnHeader.SuspendLayout();
             this.pnContent.SuspendLayout();
-            this.gbImageAcq.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcPattern
@@ -87,6 +87,62 @@
             this.tpPMAlign.TabIndex = 0;
             this.tpPMAlign.Text = "PMAlign";
             this.tpPMAlign.UseVisualStyleBackColor = true;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(826, 572);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(104, 48);
+            this.btnClose.TabIndex = 8;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // gbImageAcq
+            // 
+            this.gbImageAcq.Controls.Add(this.btnNextImage);
+            this.gbImageAcq.Controls.Add(this.btnOpenFile);
+            this.gbImageAcq.Controls.Add(this.rbImageFile);
+            this.gbImageAcq.Controls.Add(this.rbFrameGrabber);
+            this.gbImageAcq.Location = new System.Drawing.Point(33, 47);
+            this.gbImageAcq.Name = "gbImageAcq";
+            this.gbImageAcq.Size = new System.Drawing.Size(392, 123);
+            this.gbImageAcq.TabIndex = 7;
+            this.gbImageAcq.TabStop = false;
+            this.gbImageAcq.Text = "Image Acquisition";
+            // 
+            // btnNextImage
+            // 
+            this.btnNextImage.Location = new System.Drawing.Point(280, 48);
+            this.btnNextImage.Name = "btnNextImage";
+            this.btnNextImage.Size = new System.Drawing.Size(96, 40);
+            this.btnNextImage.TabIndex = 3;
+            this.btnNextImage.Text = "Next Image";
+            // 
+            // btnOpenFile
+            // 
+            this.btnOpenFile.Location = new System.Drawing.Point(170, 48);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(85, 40);
+            this.btnOpenFile.TabIndex = 2;
+            this.btnOpenFile.Text = "Open File";
+            // 
+            // rbImageFile
+            // 
+            this.rbImageFile.Checked = true;
+            this.rbImageFile.Location = new System.Drawing.Point(24, 64);
+            this.rbImageFile.Name = "rbImageFile";
+            this.rbImageFile.Size = new System.Drawing.Size(104, 24);
+            this.rbImageFile.TabIndex = 1;
+            this.rbImageFile.TabStop = true;
+            this.rbImageFile.Text = "Image File";
+            // 
+            // rbFrameGrabber
+            // 
+            this.rbFrameGrabber.Location = new System.Drawing.Point(24, 32);
+            this.rbFrameGrabber.Name = "rbFrameGrabber";
+            this.rbFrameGrabber.Size = new System.Drawing.Size(122, 24);
+            this.rbFrameGrabber.TabIndex = 0;
+            this.rbFrameGrabber.Text = "Frame Grabber";
             // 
             // gbPMAlign
             // 
@@ -174,15 +230,6 @@
             this.pnHeader.Size = new System.Drawing.Size(1128, 43);
             this.pnHeader.TabIndex = 1;
             // 
-            // pnContent
-            // 
-            this.pnContent.Controls.Add(this.tcPattern);
-            this.pnContent.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnContent.Location = new System.Drawing.Point(0, 42);
-            this.pnContent.Name = "pnContent";
-            this.pnContent.Size = new System.Drawing.Size(1128, 720);
-            this.pnContent.TabIndex = 2;
-            // 
             // cbCamList
             // 
             this.cbCamList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -206,61 +253,14 @@
             this.label63.Text = "Select Vision";
             this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // gbImageAcq
+            // pnContent
             // 
-            this.gbImageAcq.Controls.Add(this.btnNextImage);
-            this.gbImageAcq.Controls.Add(this.btnOpenFile);
-            this.gbImageAcq.Controls.Add(this.rbImageFile);
-            this.gbImageAcq.Controls.Add(this.rbFrameGrabber);
-            this.gbImageAcq.Location = new System.Drawing.Point(33, 47);
-            this.gbImageAcq.Name = "gbImageAcq";
-            this.gbImageAcq.Size = new System.Drawing.Size(392, 123);
-            this.gbImageAcq.TabIndex = 7;
-            this.gbImageAcq.TabStop = false;
-            this.gbImageAcq.Text = "Image Acquisition";
-            // 
-            // btnNextImage
-            // 
-            this.btnNextImage.Location = new System.Drawing.Point(280, 48);
-            this.btnNextImage.Name = "btnNextImage";
-            this.btnNextImage.Size = new System.Drawing.Size(96, 40);
-            this.btnNextImage.TabIndex = 3;
-            this.btnNextImage.Text = "Next Image";
-            // 
-            // btnOpenFile
-            // 
-            this.btnOpenFile.Location = new System.Drawing.Point(170, 48);
-            this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(85, 40);
-            this.btnOpenFile.TabIndex = 2;
-            this.btnOpenFile.Text = "Open File";
-            // 
-            // rbImageFile
-            // 
-            this.rbImageFile.Checked = true;
-            this.rbImageFile.Location = new System.Drawing.Point(24, 64);
-            this.rbImageFile.Name = "rbImageFile";
-            this.rbImageFile.Size = new System.Drawing.Size(104, 24);
-            this.rbImageFile.TabIndex = 1;
-            this.rbImageFile.TabStop = true;
-            this.rbImageFile.Text = "Image File";
-            // 
-            // rbFrameGrabber
-            // 
-            this.rbFrameGrabber.Location = new System.Drawing.Point(24, 32);
-            this.rbFrameGrabber.Name = "rbFrameGrabber";
-            this.rbFrameGrabber.Size = new System.Drawing.Size(122, 24);
-            this.rbFrameGrabber.TabIndex = 0;
-            this.rbFrameGrabber.Text = "Frame Grabber";
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(826, 572);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(104, 48);
-            this.btnClose.TabIndex = 8;
-            this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.pnContent.Controls.Add(this.tcPattern);
+            this.pnContent.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnContent.Location = new System.Drawing.Point(0, 42);
+            this.pnContent.Name = "pnContent";
+            this.pnContent.Size = new System.Drawing.Size(1128, 720);
+            this.pnContent.TabIndex = 2;
             // 
             // frmPattern
             // 
@@ -269,7 +269,7 @@
             this.Controls.Add(this.pnContent);
             this.Controls.Add(this.pnHeader);
             this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmPattern";
@@ -277,12 +277,12 @@
             this.Text = "Pattern Register";
             this.tcPattern.ResumeLayout(false);
             this.tpPMAlign.ResumeLayout(false);
+            this.gbImageAcq.ResumeLayout(false);
             this.gbPMAlign.ResumeLayout(false);
             this.gbPMAlign.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay)).EndInit();
             this.pnHeader.ResumeLayout(false);
             this.pnContent.ResumeLayout(false);
-            this.gbImageAcq.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
