@@ -588,6 +588,29 @@ class Program
 
     }
 
+    public string IntToRoman(int num)
+    {
+        string[] symbol = new string[] { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+        int[] value = new int[] { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+        string result = "";
+        int index = 0;
+
+        while (num > 0)
+        {
+            if (num >= value[index])
+            {
+                result += symbol[index];
+                num -= value[index];
+            }
+            else
+            {
+                index++;
+            }
+        }
+
+        return result;
+    }
+
 
     static void Main(string[] args)
     {
@@ -619,17 +642,17 @@ class Program
         int player = 0;
         int equal = 0;
 
-        bacarat bacarat = new bacarat();
-        bacarat.CreateCard(mapCardScore, listCard);
-        for (int i = 0; i < 30; i++)
-        {
-            bacarat.StartMatch(mapCardScore, listCard, playerHand, bankerHand, ref cardIndex, ref player, ref banker, ref equal );
-            playerHand.Clear();
-            bankerHand.Clear();
-        }
+        //bacarat bacarat = new bacarat();
+        //bacarat.CreateCard(mapCardScore, listCard);
+        //for (int i = 0; i < 30; i++)
+        //{
+        //    bacarat.StartMatch(mapCardScore, listCard, playerHand, bankerHand, ref cardIndex, ref player, ref banker, ref equal );
+        //    playerHand.Clear();
+        //    bankerHand.Clear();
+        //}
 
         Console.OutputEncoding = Encoding.UTF8;
-        Console.WriteLine($"Result: B:{banker} - P:{player} - E:{equal} ");
+        // Console.WriteLine($"Result: B:{banker} - P:{player} - E:{equal} ");
 
 
     }
