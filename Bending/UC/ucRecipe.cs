@@ -31,7 +31,9 @@ namespace Bending.UC
         private CogImageFileTool ImageFileTool;
 
         public CogAcqFifoTool[] AcqFifoTool;
-        public Dictionary<eCamName, CogAcqFifoTool> mapCamera;
+
+        public static Dictionary<eCamName, CogAcqFifoTool> mapCamera;
+        public static frmPattern patternRegister;
 
         private CogPMAlignTool PMAlignTool1;
         private CogPMAlignTool PMAlignTool2;
@@ -45,6 +47,9 @@ namespace Bending.UC
 
             cbCamList.DataSource = Enum.GetValues(typeof(eCamName));
             GetConnectedCameras();
+
+            patternRegister = new frmPattern();
+
 
             ImageFileTool = new CogImageFileTool();
             ImageFileTool.Ran += ImageFileTool_Ran;
@@ -269,22 +274,35 @@ namespace Bending.UC
         private void DisableAll(SettingUpConstants Settings)
         {
 
-            if (Settings == SettingUpConstants.SettingUpPMAlign)
+        }
+
+        private void btnNextImage_Click(object sender, EventArgs e)
+        {
+            if (rbFrameGrabber.Checked)
             {
+                eCamName camName = (eCamName)cbCamList.SelectedItem;
+                bool isLoadingPreCam = (camName == eCamName.LoadingPre1 || camName == eCamName.LoadingPre2);
 
-            }
+                if (isLoadingPreCam)
+                {
+                    mapCamera[eCamName.LoadingPre1].Run();
+                    mapCamera[eCamName.LoadingPre2].Run();
+                }
+                else
+                {
+                    mapCamera[eCamName.Laser1].Run();
+                    mapCamera[eCamName.Laser2].Run();
+                }
+            }              
+            else
+                ImageFileTool.Run();
         }
 
-
-        private void cbCamList_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnSetting_Click(object sender, EventArgs e)
         {
-
+            patternRegister.ShowDialog();
         }
-        private void tmrCal_Tick(object sender, EventArgs e)
-        {
 
-
-        }
 
 
     }

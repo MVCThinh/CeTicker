@@ -34,7 +34,6 @@
             this.cbCamList = new System.Windows.Forms.ComboBox();
             this.cdDisplay1 = new Cognex.VisionPro.Display.CogDisplay();
             this.cdDisplay2 = new Cognex.VisionPro.Display.CogDisplay();
-            this.tmrCal = new System.Windows.Forms.Timer(this.components);
             this.pnRunVision = new System.Windows.Forms.Panel();
             this.pnCalib = new System.Windows.Forms.Panel();
             this.lbStatusCalib = new System.Windows.Forms.Label();
@@ -84,9 +83,9 @@
             this.label63.ForeColor = System.Drawing.Color.White;
             this.label63.Location = new System.Drawing.Point(0, 0);
             this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(1242, 35);
+            this.label63.Size = new System.Drawing.Size(264, 35);
             this.label63.TabIndex = 84;
-            this.label63.Text = "Camera View";
+            this.label63.Text = "Select Vision";
             this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cbCamList
@@ -98,7 +97,6 @@
             this.cbCamList.Name = "cbCamList";
             this.cbCamList.Size = new System.Drawing.Size(157, 28);
             this.cbCamList.TabIndex = 85;
-            this.cbCamList.SelectedIndexChanged += new System.EventHandler(this.cbCamList_SelectedIndexChanged);
             // 
             // cdDisplay1
             // 
@@ -133,11 +131,6 @@
             this.cdDisplay2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cdDisplay2.OcxState")));
             this.cdDisplay2.Size = new System.Drawing.Size(620, 526);
             this.cdDisplay2.TabIndex = 299;
-            // 
-            // tmrCal
-            // 
-            this.tmrCal.Interval = 300;
-            this.tmrCal.Tick += new System.EventHandler(this.tmrCal_Tick);
             // 
             // pnRunVision
             // 
@@ -322,6 +315,7 @@
             this.btnSetting.TabIndex = 292;
             this.btnSetting.Text = "SETTING";
             this.btnSetting.UseVisualStyleBackColor = false;
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
             // 
             // gbLight
             // 
@@ -488,6 +482,7 @@
             this.btnNextImage.TabIndex = 292;
             this.btnNextImage.Text = "Next Image";
             this.btnNextImage.UseVisualStyleBackColor = false;
+            this.btnNextImage.Click += new System.EventHandler(this.btnNextImage_Click);
             // 
             // btnOpenFolder
             // 
@@ -543,7 +538,6 @@
         public System.Windows.Forms.Label label63;
         private Cognex.VisionPro.Display.CogDisplay cdDisplay1;
         private Cognex.VisionPro.Display.CogDisplay cdDisplay2;
-        public System.Windows.Forms.Timer tmrCal;
         private System.Windows.Forms.ComboBox cbCamList;
         private System.Windows.Forms.Panel pnRunVision;
         private System.Windows.Forms.Panel pnControlAndResult;
