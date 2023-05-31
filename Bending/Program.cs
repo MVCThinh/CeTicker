@@ -1,5 +1,5 @@
 ﻿using Bending.Foam;
-using Cognex.VisionPro.Interop;
+using Cognex.VisionPro;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -199,16 +199,16 @@ namespace Bending.UC
             cdDisplay2.InteractiveGraphics.Clear();
             cdDisplay2.StaticGraphics.Clear();
 
-            eCamName camName = (eCamName)cbCamList.SelectedItem;
-
-            bool isLiveDisplayRunning = cdDisplay1.LiveDisplayRunning && cdDisplay2.LiveDisplayRunning;
-
-            bool isLoadingPreCam = (camName == eCamName.LoadingPre1 || camName == eCamName.LoadingPre2);
-            bool isLoadingPreOperatorAvailable = (mapCamera[eCamName.LoadingPre1].Operator != null && mapCamera[eCamName.LoadingPre2].Operator != null);
-            bool isLaserOperatorAvailable = (mapCamera[eCamName.Laser1].Operator != null && mapCamera[eCamName.Laser2].Operator != null);
-
             if (rbFrameGrabber.Checked)
             {
+                eCamName camName = (eCamName)cbCamList.SelectedItem;
+
+                bool isLiveDisplayRunning = cdDisplay1.LiveDisplayRunning && cdDisplay2.LiveDisplayRunning;
+
+                bool isLoadingPreCam = (camName == eCamName.LoadingPre1 || camName == eCamName.LoadingPre2);
+                bool isLoadingPreOperatorAvailable = (mapCamera[eCamName.LoadingPre1].Operator != null && mapCamera[eCamName.LoadingPre2].Operator != null);
+                bool isLaserOperatorAvailable = (mapCamera[eCamName.Laser1].Operator != null && mapCamera[eCamName.Laser2].Operator != null);
+
                 // Cài đặt Live Camera or Stop Live
                 if (isLiveDisplayRunning)
                 {

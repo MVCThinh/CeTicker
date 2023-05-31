@@ -177,8 +177,10 @@ namespace Bending.Foam
             cdDisplay.InteractiveGraphics.Clear();
             cdDisplay.Image = ImageFileTool.OutputImage;
 
+            Bitmap bmp = ImageFileTool.OutputImage.ToBitmap();
             // Đẩy Image vào Tool PMAlign
-            PMAlignTool.InputImage = ImageFileTool.OutputImage as CogImage8Grey;
+            CogImage8Grey cogImage = new CogImage8Grey(bmp);
+            PMAlignTool.InputImage = cogImage;
         }
 
         private void btnOpenFile_Click(object sender, EventArgs e)
@@ -263,7 +265,7 @@ namespace Bending.Foam
                 cdDisplay.InteractiveGraphics.Add(PMAlignTool.Pattern.TrainRegion as ICogGraphicInteractive, "Train Region", false);
                 if (PMAlignTool.SearchRegion != null)
                 {
-                    cdDisplay.StaticGraphics.Add(PMAlignTool.SearchRegion as ICogGraphic, "Search Region");
+                    cdDisplay.InteractiveGraphics.Add(PMAlignTool.SearchRegion as ICogGraphicInteractive, "Search Region", false);
                 }
             }
             else
@@ -333,6 +335,58 @@ namespace Bending.Foam
                 rbFrameGrabber.Enabled = true;
                 rbImageFile.Enabled = true;
             }
+        }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            
+            cdSmall.Image = PMAlignTool.Pattern.GetTrainedPatternImage();
+        }
+
+        private void btnShow1_Click(object sender, EventArgs e)
+        {
+            cdSmall.StaticGraphics.Clear();
+            CogGraphicCollection graphics = PMAlignTool.Pattern.CreateGraphicsCoarse(CogColorConstants.Yellow);
+            for (int i = 0; i < graphics.Count; i++)
+            {
+                cdSmall.StaticGraphics.Add(graphics[i], "");
+            }
+        }
+
+        private void btnShow2_Click(object sender, EventArgs e)
+        {
+            cdSmall.StaticGraphics.Clear();
+            CogGraphicCollection graphics = PMAlignTool.Pattern.CreateGraphicsFine(CogColorConstants.Green);
+            for (int i = 0; i < graphics.Count; i++)
+            {
+                cdSmall.StaticGraphics.Add(graphics[i], "");
+            }
+        }
+
+        private void btnShow3_Click(object sender, EventArgs e)
+        {
+            cogDisplay1.InteractiveGraphics.Clear();
+            cogDisplay1.StaticGraphics.Clear();
+
+            cogDisplay1.Image = PMAlignTool.InputImage;
+            CogCompositeShape graphics =  PMAlignTool.Results[0].CreateResultGraphics(CogPMAlignResultGraphicConstants.All);
+
+
+            cogDisplay1.StaticGraphics.Add(graphics, "test");
+
+            cogDisplay1.Refresh();
+        }
+
+        private void btnShow4_Click(object sender, EventArgs e)
+        {
+            cogDisplay1.InteractiveGraphics.Clear();
+            cogDisplay1.StaticGraphics.Clear();
+
+            cogDisplay1.Image = PMAlignTool.InputImage;
+            CogCompositeShape graphics = PMAlignTool.Results[0].CreateResultGraphics(CogPMAlignResultGraphicConstants.MatchFeatures);
+
+            cogDisplay1.StaticGraphics.Add(graphics, "test");
+            cogDisplay1.Refresh();
         }
 
 

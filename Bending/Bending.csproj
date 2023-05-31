@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="Cognex.VisionPro, Version=59.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\Cognex.VisionPro.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.dll</HintPath>
     </Reference>
     <Reference Include="Cognex.VisionPro.Blob, Version=59.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
@@ -67,7 +67,7 @@
     </Reference>
     <Reference Include="Cognex.VisionPro.Core, Version=59.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\Cognex.VisionPro.Core.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.Core.dll</HintPath>
     </Reference>
     <Reference Include="Cognex.VisionPro.CorePlus, Version=59.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
@@ -95,20 +95,11 @@
     </Reference>
     <Reference Include="Cognex.VisionPro.ImageFile, Version=59.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\Cognex.VisionPro.ImageFile.dll</HintPath>
-    </Reference>
-    <Reference Include="Cognex.VisionPro.ImageProcessing, Version=59.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\Cognex.VisionPro.ImageProcessing.dll</HintPath>
-    </Reference>
-    <Reference Include="Cognex.VisionPro.Interop.Core, Version=59.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\Cognex.VisionPro.Interop.Core.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.ImageFile.dll</HintPath>
     </Reference>
     <Reference Include="Cognex.VisionPro.PMAlign, Version=59.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\LaserMarkingProgram\Hello\EQData\VisionProgram\Cognex.VisionPro.PMAlign.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.PMAlign.dll</HintPath>
     </Reference>
     <Reference Include="Cognex.VisionPro.SearchMax, Version=59.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
@@ -174,6 +165,7 @@
     <Compile Include="Data\Helpers\CamVision.cs" />
     <Compile Include="Data\Helpers\RWFile.cs" />
     <Compile Include="Data\Helpers\VisionPro.cs" />
+    <Compile Include="Data\Models\PMAlignTool.cs" />
     <Compile Include="Data\Models\RobotSetting.cs" />
     <Compile Include="Data\Models\VisionSetting.cs" />
     <Compile Include="Data\Models\PLCSetting.cs" />
