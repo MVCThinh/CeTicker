@@ -654,6 +654,46 @@ class Program
         return result;
 
     }
+    public int ThreeSumClosest(int[] nums, int target)
+    {
+        Array.Sort(nums);
+        int result = target;
+
+        for (int i = 0; i < nums.Length - 2; i++)
+        {
+            int left = i + 1;
+            int right = nums.Length - 1;
+
+            while (left < right)
+            {
+
+                int sum = nums[i] + nums[left] + nums[right];
+                result = Math.Min(Math.Abs(sum), Math.Abs(result));
+
+                int sub = nums[i] + nums[left] + nums[right] - target;
+
+                if (sub == 0)
+                {
+                    left = nums.Length;
+                    i = nums.Length;
+                }
+
+                while (left < right && sub > 0 )
+                {
+                    right--;
+                }
+                while (left < right && sub < 0)
+                {
+                    left++;
+                }
+
+
+            }
+        }
+
+        return result;
+    }
+
 
 
 

@@ -60,7 +60,7 @@ namespace Bending.UC
             PMAlignTool1 = new CogPMAlignTool();
             PMAlignTool2 = new CogPMAlignTool();
 
-            PMAlignToolRecipe.Ran += PMAlignToolRecipe_Ran;
+
             PMAlignTool1.Ran += PMAlignTool12_Ran;
             PMAlignTool2.Ran += PMAlignTool12_Ran;
 
@@ -325,6 +325,7 @@ namespace Bending.UC
         private void btnRun_Click(object sender, EventArgs e)
         {
             PMAlignToolRecipe.Run();
+            PMAlignToolRecipe.Ran += PMAlignToolRecipe_Ran;
         }
 
         private void btnRefreshList_Click(object sender, EventArgs e)
@@ -343,6 +344,7 @@ namespace Bending.UC
             if (model != null)
             {
                 PMAlignToolRecipe = new CogPMAlignTool((CogPMAlignTool)frmPattern.VisionToolDictionary[model]);
+
             }
            
         }
