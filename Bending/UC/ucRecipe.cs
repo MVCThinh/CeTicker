@@ -28,15 +28,19 @@ namespace Bending.UC
         private CogFrameGrabbers frameGrabbers;
         private ICogFrameGrabber[] frameGrabber;
 
-        private CogImageFileTool ImageFileTool;
+        // Live, Open File
+        private  CogImageFileTool ImageFileTool;
+        private CogAcqFifoTool[] AcqFifoTool;
 
-        public CogAcqFifoTool[] AcqFifoTool;
+        private CogPMAlignTool PMAlignToolRecipe;
+
 
         public static Dictionary<eCamName, CogAcqFifoTool> mapCamera;
         public static frmPattern patternRegister;
 
-        private CogPMAlignTool PMAlignTool1;
-        private CogPMAlignTool PMAlignTool2;
+
+        public static CogPMAlignTool PMAlignTool1;
+        public static CogPMAlignTool PMAlignTool2;
 
         string VIDEOFORMAT = "Generic GigEVision (Mono)";
 
@@ -48,19 +52,20 @@ namespace Bending.UC
             cbCamList.DataSource = Enum.GetValues(typeof(eCamName));
             GetConnectedCameras();
 
-            patternRegister = new frmPattern();
-
 
             ImageFileTool = new CogImageFileTool();
             ImageFileTool.Ran += ImageFileTool_Ran;
 
+            PMAlignToolRecipe = new CogPMAlignTool();
             PMAlignTool1 = new CogPMAlignTool();
             PMAlignTool2 = new CogPMAlignTool();
-            PMAlignTool1.Ran += PMAlignTool_Ran;
-            PMAlignTool2.Ran += PMAlignTool_Ran;
+
+            PMAlignToolRecipe.Ran += PMAlignToolRecipe_Ran;
+            PMAlignTool1.Ran += PMAlignTool12_Ran;
+            PMAlignTool2.Ran += PMAlignTool12_Ran;
+
+            patternRegister = new frmPattern();
         }
-
-
 
 
         // Lấy được tất cả cam. Lưu vào frameGrabber
@@ -173,7 +178,21 @@ namespace Bending.UC
         }
 
 
-        private void PMAlignTool_Ran(object sender, EventArgs e)
+        private void PMAlignToolRecipe_Ran(object sender, EventArgs e)
+        {
+            cdDisplay2.InteractiveGraphics.Clear();
+            cdDisplay2.StaticGraphics.Clear();
+
+            if (PMAlignToolRecipe.Results.Count > 0)
+            {
+                txtbScore.Text = Math.Round(PMAlignToolRecipe.Results[0].Score, 2).ToString();
+                CogCompositeShape graphics = PMAlignToolRecipe.Results[0].CreateResultGraphics(CogPMAlignResultGraphicConstants.All);
+                cdDisplay2.StaticGraphics.Add(graphics as ICogGraphic, "Match Features");
+
+            }
+        }
+
+        private void PMAlignTool12_Ran(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
@@ -303,7 +322,29 @@ namespace Bending.UC
             patternRegister.ShowDialog();
         }
 
+        private void btnRun_Click(object sender, EventArgs e)
+        {
+            PMAlignToolRecipe.Run();
+        }
 
+        private void btnRefreshList_Click(object sender, EventArgs e)
+        {
+            lboxModel.Items.Clear();
 
+            foreach (var item in patternRegister.lboxModel.Items)
+            {
+                lboxModel.Items.Add(item);
+            }
+        }
+
+        private void btnLoadModel_Click(object sender, EventArgs e)
+        {
+            string model = lboxModel.SelectedItem.ToString();
+            if (model != null)
+            {
+                PMAlignToolRecipe = new CogPMAlignTool((CogPMAlignTool)frmPattern.VisionToolDictionary[model]);
+            }
+           
+        }
     }
 }

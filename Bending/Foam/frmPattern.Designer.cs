@@ -33,45 +33,60 @@
             this.openFD = new System.Windows.Forms.OpenFileDialog();
             this.tcPattern = new System.Windows.Forms.TabControl();
             this.tpPMAlign = new System.Windows.Forms.TabPage();
+            this.gbPMAlignResult = new System.Windows.Forms.GroupBox();
+            this.cboxShowFeatures = new System.Windows.Forms.CheckBox();
+            this.txtbScore = new System.Windows.Forms.TextBox();
+            this.Label1 = new System.Windows.Forms.Label();
+            this.lbTrain = new System.Windows.Forms.Label();
+            this.btnRun = new System.Windows.Forms.Button();
+            this.gbPMAlign = new System.Windows.Forms.GroupBox();
+            this.txtbScaleHigh = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtbScaleLow = new System.Windows.Forms.TextBox();
+            this.txtbAngleHigh = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtbAngleLow = new System.Windows.Forms.TextBox();
+            this.cboxScoreUsingClutter = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtbAcceptThreshold = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numudNumberToFind = new System.Windows.Forms.NumericUpDown();
+            this.cboxIgnorePolarity = new System.Windows.Forms.CheckBox();
+            this.btnSetup = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtbEdgeThreshold = new System.Windows.Forms.TextBox();
+            this.tpBlob = new System.Windows.Forms.TabPage();
             this.btnClose = new System.Windows.Forms.Button();
             this.gbImageAcq = new System.Windows.Forms.GroupBox();
             this.btnNextImage = new System.Windows.Forms.Button();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.rbImageFile = new System.Windows.Forms.RadioButton();
             this.rbFrameGrabber = new System.Windows.Forms.RadioButton();
-            this.gbPMAlign = new System.Windows.Forms.GroupBox();
-            this.Label1 = new System.Windows.Forms.Label();
-            this.txtbScore = new System.Windows.Forms.TextBox();
-            this.btnRun = new System.Windows.Forms.Button();
-            this.btnSetup = new System.Windows.Forms.Button();
             this.cdDisplay = new Cognex.VisionPro.Display.CogDisplay();
-            this.tpBlob = new System.Windows.Forms.TabPage();
             this.pnHeader = new System.Windows.Forms.Panel();
             this.cbCamList = new System.Windows.Forms.ComboBox();
             this.label63 = new System.Windows.Forms.Label();
             this.pnContent = new System.Windows.Forms.Panel();
             this.pnFooter = new System.Windows.Forms.Panel();
             this.pnDisplay = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.gbShowDisplay = new System.Windows.Forms.GroupBox();
-            this.lbTrain = new System.Windows.Forms.Label();
-            this.cboxShowGraphics = new System.Windows.Forms.CheckBox();
             this.cdPatternTrain = new Cognex.VisionPro.Display.CogDisplay();
+            this.gbControlTool = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.lboxModel = new System.Windows.Forms.ListBox();
             this.tcPattern.SuspendLayout();
             this.tpPMAlign.SuspendLayout();
-            this.gbImageAcq.SuspendLayout();
+            this.gbPMAlignResult.SuspendLayout();
             this.gbPMAlign.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numudNumberToFind)).BeginInit();
+            this.gbImageAcq.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay)).BeginInit();
             this.pnHeader.SuspendLayout();
             this.pnContent.SuspendLayout();
             this.pnFooter.SuspendLayout();
             this.pnDisplay.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.gbShowDisplay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cdPatternTrain)).BeginInit();
+            this.gbControlTool.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcPattern
@@ -85,28 +100,273 @@
             this.tcPattern.Name = "tcPattern";
             this.tcPattern.SelectedIndex = 0;
             this.tcPattern.ShowToolTips = true;
-            this.tcPattern.Size = new System.Drawing.Size(737, 674);
+            this.tcPattern.Size = new System.Drawing.Size(522, 674);
             this.tcPattern.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tcPattern.TabIndex = 0;
             // 
             // tpPMAlign
             // 
-            this.tpPMAlign.Controls.Add(this.gbShowDisplay);
+            this.tpPMAlign.Controls.Add(this.gbPMAlignResult);
             this.tpPMAlign.Controls.Add(this.gbPMAlign);
             this.tpPMAlign.Location = new System.Drawing.Point(4, 34);
             this.tpPMAlign.Name = "tpPMAlign";
             this.tpPMAlign.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPMAlign.Size = new System.Drawing.Size(729, 636);
+            this.tpPMAlign.Size = new System.Drawing.Size(514, 636);
             this.tpPMAlign.TabIndex = 0;
             this.tpPMAlign.Text = "PMAlign";
             this.tpPMAlign.UseVisualStyleBackColor = true;
+            // 
+            // gbPMAlignResult
+            // 
+            this.gbPMAlignResult.Controls.Add(this.cboxShowFeatures);
+            this.gbPMAlignResult.Controls.Add(this.txtbScore);
+            this.gbPMAlignResult.Controls.Add(this.Label1);
+            this.gbPMAlignResult.Controls.Add(this.lbTrain);
+            this.gbPMAlignResult.Controls.Add(this.btnRun);
+            this.gbPMAlignResult.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbPMAlignResult.Location = new System.Drawing.Point(259, 37);
+            this.gbPMAlignResult.Name = "gbPMAlignResult";
+            this.gbPMAlignResult.Size = new System.Drawing.Size(160, 281);
+            this.gbPMAlignResult.TabIndex = 8;
+            this.gbPMAlignResult.TabStop = false;
+            this.gbPMAlignResult.Text = "PMAlign Result";
+            // 
+            // cboxShowFeatures
+            // 
+            this.cboxShowFeatures.AutoSize = true;
+            this.cboxShowFeatures.Checked = true;
+            this.cboxShowFeatures.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cboxShowFeatures.Location = new System.Drawing.Point(20, 43);
+            this.cboxShowFeatures.Name = "cboxShowFeatures";
+            this.cboxShowFeatures.Size = new System.Drawing.Size(109, 18);
+            this.cboxShowFeatures.TabIndex = 11;
+            this.cboxShowFeatures.Text = "Show Features";
+            this.cboxShowFeatures.UseVisualStyleBackColor = true;
+            // 
+            // txtbScore
+            // 
+            this.txtbScore.Location = new System.Drawing.Point(62, 69);
+            this.txtbScore.Multiline = true;
+            this.txtbScore.Name = "txtbScore";
+            this.txtbScore.Size = new System.Drawing.Size(54, 20);
+            this.txtbScore.TabIndex = 2;
+            // 
+            // Label1
+            // 
+            this.Label1.Location = new System.Drawing.Point(16, 71);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(40, 17);
+            this.Label1.TabIndex = 3;
+            this.Label1.Text = "Score";
+            // 
+            // lbTrain
+            // 
+            this.lbTrain.AutoSize = true;
+            this.lbTrain.Location = new System.Drawing.Point(16, 23);
+            this.lbTrain.Name = "lbTrain";
+            this.lbTrain.Size = new System.Drawing.Size(69, 14);
+            this.lbTrain.TabIndex = 0;
+            this.lbTrain.Text = "Not Trained";
+            // 
+            // btnRun
+            // 
+            this.btnRun.Location = new System.Drawing.Point(25, 213);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(104, 48);
+            this.btnRun.TabIndex = 1;
+            this.btnRun.Text = "Run";
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+            // 
+            // gbPMAlign
+            // 
+            this.gbPMAlign.Controls.Add(this.txtbScaleHigh);
+            this.gbPMAlign.Controls.Add(this.label6);
+            this.gbPMAlign.Controls.Add(this.txtbScaleLow);
+            this.gbPMAlign.Controls.Add(this.txtbAngleHigh);
+            this.gbPMAlign.Controls.Add(this.label5);
+            this.gbPMAlign.Controls.Add(this.txtbAngleLow);
+            this.gbPMAlign.Controls.Add(this.cboxScoreUsingClutter);
+            this.gbPMAlign.Controls.Add(this.label4);
+            this.gbPMAlign.Controls.Add(this.txtbAcceptThreshold);
+            this.gbPMAlign.Controls.Add(this.label3);
+            this.gbPMAlign.Controls.Add(this.numudNumberToFind);
+            this.gbPMAlign.Controls.Add(this.cboxIgnorePolarity);
+            this.gbPMAlign.Controls.Add(this.btnSetup);
+            this.gbPMAlign.Controls.Add(this.label2);
+            this.gbPMAlign.Controls.Add(this.txtbEdgeThreshold);
+            this.gbPMAlign.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbPMAlign.Location = new System.Drawing.Point(19, 37);
+            this.gbPMAlign.Name = "gbPMAlign";
+            this.gbPMAlign.Size = new System.Drawing.Size(199, 281);
+            this.gbPMAlign.TabIndex = 6;
+            this.gbPMAlign.TabStop = false;
+            this.gbPMAlign.Text = "PMAlign Tool Setup";
+            // 
+            // txtbScaleHigh
+            // 
+            this.txtbScaleHigh.Location = new System.Drawing.Point(133, 181);
+            this.txtbScaleHigh.Name = "txtbScaleHigh";
+            this.txtbScaleHigh.Size = new System.Drawing.Size(53, 20);
+            this.txtbScaleHigh.TabIndex = 21;
+            this.txtbScaleHigh.Text = "1.2";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 184);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 14);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Scale";
+            // 
+            // txtbScaleLow
+            // 
+            this.txtbScaleLow.Location = new System.Drawing.Point(64, 181);
+            this.txtbScaleLow.Name = "txtbScaleLow";
+            this.txtbScaleLow.Size = new System.Drawing.Size(53, 20);
+            this.txtbScaleLow.TabIndex = 20;
+            this.txtbScaleLow.Text = "0.8";
+            // 
+            // txtbAngleHigh
+            // 
+            this.txtbAngleHigh.Location = new System.Drawing.Point(133, 152);
+            this.txtbAngleHigh.Name = "txtbAngleHigh";
+            this.txtbAngleHigh.Size = new System.Drawing.Size(53, 20);
+            this.txtbAngleHigh.TabIndex = 18;
+            this.txtbAngleHigh.Text = "0.25";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 155);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 14);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Angle :";
+            // 
+            // txtbAngleLow
+            // 
+            this.txtbAngleLow.Location = new System.Drawing.Point(64, 152);
+            this.txtbAngleLow.Name = "txtbAngleLow";
+            this.txtbAngleLow.Size = new System.Drawing.Size(53, 20);
+            this.txtbAngleLow.TabIndex = 17;
+            this.txtbAngleLow.Text = "-0.25";
+            // 
+            // cboxScoreUsingClutter
+            // 
+            this.cboxScoreUsingClutter.AutoSize = true;
+            this.cboxScoreUsingClutter.Checked = true;
+            this.cboxScoreUsingClutter.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cboxScoreUsingClutter.Location = new System.Drawing.Point(11, 43);
+            this.cboxScoreUsingClutter.Name = "cboxScoreUsingClutter";
+            this.cboxScoreUsingClutter.Size = new System.Drawing.Size(133, 18);
+            this.cboxScoreUsingClutter.TabIndex = 15;
+            this.cboxScoreUsingClutter.Text = "Score Using Clutter";
+            this.cboxScoreUsingClutter.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 129);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(111, 14);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Accept Threshold :";
+            // 
+            // txtbAcceptThreshold
+            // 
+            this.txtbAcceptThreshold.Location = new System.Drawing.Point(133, 126);
+            this.txtbAcceptThreshold.Name = "txtbAcceptThreshold";
+            this.txtbAcceptThreshold.Size = new System.Drawing.Size(53, 20);
+            this.txtbAcceptThreshold.TabIndex = 14;
+            this.txtbAcceptThreshold.Text = "0.5";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 100);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 14);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Number To Find :";
+            // 
+            // numudNumberToFind
+            // 
+            this.numudNumberToFind.Location = new System.Drawing.Point(133, 97);
+            this.numudNumberToFind.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.numudNumberToFind.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numudNumberToFind.Name = "numudNumberToFind";
+            this.numudNumberToFind.Size = new System.Drawing.Size(53, 20);
+            this.numudNumberToFind.TabIndex = 11;
+            this.numudNumberToFind.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numudNumberToFind.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // cboxIgnorePolarity
+            // 
+            this.cboxIgnorePolarity.AutoSize = true;
+            this.cboxIgnorePolarity.Checked = true;
+            this.cboxIgnorePolarity.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cboxIgnorePolarity.Location = new System.Drawing.Point(11, 19);
+            this.cboxIgnorePolarity.Name = "cboxIgnorePolarity";
+            this.cboxIgnorePolarity.Size = new System.Drawing.Size(106, 18);
+            this.cboxIgnorePolarity.TabIndex = 10;
+            this.cboxIgnorePolarity.Text = "Ignore Polarity";
+            this.cboxIgnorePolarity.UseVisualStyleBackColor = true;
+            // 
+            // btnSetup
+            // 
+            this.btnSetup.Location = new System.Drawing.Point(48, 213);
+            this.btnSetup.Name = "btnSetup";
+            this.btnSetup.Size = new System.Drawing.Size(96, 48);
+            this.btnSetup.TabIndex = 0;
+            this.btnSetup.Text = "Setup";
+            this.btnSetup.Click += new System.EventHandler(this.btnSetup_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 14);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "EdgeThreshold :";
+            // 
+            // txtbEdgeThreshold
+            // 
+            this.txtbEdgeThreshold.Location = new System.Drawing.Point(133, 68);
+            this.txtbEdgeThreshold.Name = "txtbEdgeThreshold";
+            this.txtbEdgeThreshold.Size = new System.Drawing.Size(53, 20);
+            this.txtbEdgeThreshold.TabIndex = 9;
+            this.txtbEdgeThreshold.Text = "10";
+            // 
+            // tpBlob
+            // 
+            this.tpBlob.Location = new System.Drawing.Point(4, 34);
+            this.tpBlob.Name = "tpBlob";
+            this.tpBlob.Padding = new System.Windows.Forms.Padding(3);
+            this.tpBlob.Size = new System.Drawing.Size(514, 636);
+            this.tpBlob.TabIndex = 1;
+            this.tpBlob.Text = "Blob";
+            this.tpBlob.UseVisualStyleBackColor = true;
             // 
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnClose.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.Magenta;
-            this.btnClose.Location = new System.Drawing.Point(1320, 12);
+            this.btnClose.Location = new System.Drawing.Point(1059, 12);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(104, 48);
             this.btnClose.TabIndex = 8;
@@ -120,6 +380,7 @@
             this.gbImageAcq.Controls.Add(this.btnOpenFile);
             this.gbImageAcq.Controls.Add(this.rbImageFile);
             this.gbImageAcq.Controls.Add(this.rbFrameGrabber);
+            this.gbImageAcq.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbImageAcq.Location = new System.Drawing.Point(5, 491);
             this.gbImageAcq.Name = "gbImageAcq";
             this.gbImageAcq.Size = new System.Drawing.Size(421, 123);
@@ -164,52 +425,6 @@
             this.rbFrameGrabber.Text = "Frame Grabber";
             this.rbFrameGrabber.CheckedChanged += new System.EventHandler(this.rbFrameGrabber_CheckedChanged);
             // 
-            // gbPMAlign
-            // 
-            this.gbPMAlign.Controls.Add(this.Label1);
-            this.gbPMAlign.Controls.Add(this.txtbScore);
-            this.gbPMAlign.Controls.Add(this.btnRun);
-            this.gbPMAlign.Controls.Add(this.btnSetup);
-            this.gbPMAlign.Location = new System.Drawing.Point(19, 37);
-            this.gbPMAlign.Name = "gbPMAlign";
-            this.gbPMAlign.Size = new System.Drawing.Size(392, 128);
-            this.gbPMAlign.TabIndex = 6;
-            this.gbPMAlign.TabStop = false;
-            this.gbPMAlign.Text = "PMAlign Tool";
-            // 
-            // Label1
-            // 
-            this.Label1.Location = new System.Drawing.Point(232, 56);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(48, 32);
-            this.Label1.TabIndex = 3;
-            this.Label1.Text = "Score";
-            // 
-            // txtbScore
-            // 
-            this.txtbScore.Location = new System.Drawing.Point(296, 40);
-            this.txtbScore.Multiline = true;
-            this.txtbScore.Name = "txtbScore";
-            this.txtbScore.Size = new System.Drawing.Size(80, 40);
-            this.txtbScore.TabIndex = 2;
-            // 
-            // btnRun
-            // 
-            this.btnRun.Location = new System.Drawing.Point(112, 40);
-            this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(104, 48);
-            this.btnRun.TabIndex = 1;
-            this.btnRun.Text = "Run";
-            // 
-            // btnSetup
-            // 
-            this.btnSetup.Location = new System.Drawing.Point(8, 40);
-            this.btnSetup.Name = "btnSetup";
-            this.btnSetup.Size = new System.Drawing.Size(96, 48);
-            this.btnSetup.TabIndex = 0;
-            this.btnSetup.Text = "Setup";
-            this.btnSetup.Click += new System.EventHandler(this.btnSetup_Click);
-            // 
             // cdDisplay
             // 
             this.cdDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -222,23 +437,13 @@
             this.cdDisplay.ColorMapUpperRoiLimit = 1D;
             this.cdDisplay.DoubleTapZoomCycleLength = 2;
             this.cdDisplay.DoubleTapZoomSensitivity = 2.5D;
-            this.cdDisplay.Location = new System.Drawing.Point(21, 12);
+            this.cdDisplay.Location = new System.Drawing.Point(18, 15);
             this.cdDisplay.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
             this.cdDisplay.MouseWheelSensitivity = 1D;
             this.cdDisplay.Name = "cdDisplay";
             this.cdDisplay.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cdDisplay.OcxState")));
-            this.cdDisplay.Size = new System.Drawing.Size(405, 457);
+            this.cdDisplay.Size = new System.Drawing.Size(396, 457);
             this.cdDisplay.TabIndex = 5;
-            // 
-            // tpBlob
-            // 
-            this.tpBlob.Location = new System.Drawing.Point(4, 34);
-            this.tpBlob.Name = "tpBlob";
-            this.tpBlob.Padding = new System.Windows.Forms.Padding(3);
-            this.tpBlob.Size = new System.Drawing.Size(1120, 682);
-            this.tpBlob.TabIndex = 1;
-            this.tpBlob.Text = "Blob";
-            this.tpBlob.UseVisualStyleBackColor = true;
             // 
             // pnHeader
             // 
@@ -248,7 +453,7 @@
             this.pnHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnHeader.Location = new System.Drawing.Point(0, 0);
             this.pnHeader.Name = "pnHeader";
-            this.pnHeader.Size = new System.Drawing.Size(1447, 43);
+            this.pnHeader.Size = new System.Drawing.Size(1206, 43);
             this.pnHeader.TabIndex = 1;
             // 
             // cbCamList
@@ -281,7 +486,7 @@
             this.pnContent.Controls.Add(this.tcPattern);
             this.pnContent.Location = new System.Drawing.Point(0, 49);
             this.pnContent.Name = "pnContent";
-            this.pnContent.Size = new System.Drawing.Size(737, 674);
+            this.pnContent.Size = new System.Drawing.Size(522, 674);
             this.pnContent.TabIndex = 2;
             // 
             // pnFooter
@@ -291,87 +496,20 @@
             this.pnFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnFooter.Location = new System.Drawing.Point(0, 729);
             this.pnFooter.Name = "pnFooter";
-            this.pnFooter.Size = new System.Drawing.Size(1447, 72);
+            this.pnFooter.Size = new System.Drawing.Size(1206, 72);
             this.pnFooter.TabIndex = 3;
             // 
             // pnDisplay
             // 
             this.pnDisplay.Controls.Add(this.cdPatternTrain);
-            this.pnDisplay.Controls.Add(this.groupBox1);
-            this.pnDisplay.Controls.Add(this.listBox1);
+            this.pnDisplay.Controls.Add(this.gbControlTool);
+            this.pnDisplay.Controls.Add(this.lboxModel);
             this.pnDisplay.Controls.Add(this.gbImageAcq);
             this.pnDisplay.Controls.Add(this.cdDisplay);
-            this.pnDisplay.Location = new System.Drawing.Point(738, 49);
+            this.pnDisplay.Location = new System.Drawing.Point(524, 49);
             this.pnDisplay.Name = "pnDisplay";
-            this.pnDisplay.Size = new System.Drawing.Size(709, 674);
+            this.pnDisplay.Size = new System.Drawing.Size(674, 674);
             this.pnDisplay.TabIndex = 4;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(448, 12);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(238, 228);
-            this.listBox1.TabIndex = 9;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Location = new System.Drawing.Point(432, 491);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 123);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Pattern Train";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(141, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 40);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Clear";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(28, 48);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 40);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Save";
-            // 
-            // gbShowDisplay
-            // 
-            this.gbShowDisplay.Controls.Add(this.cboxShowGraphics);
-            this.gbShowDisplay.Controls.Add(this.lbTrain);
-            this.gbShowDisplay.Location = new System.Drawing.Point(428, 37);
-            this.gbShowDisplay.Name = "gbShowDisplay";
-            this.gbShowDisplay.Size = new System.Drawing.Size(259, 128);
-            this.gbShowDisplay.TabIndex = 7;
-            this.gbShowDisplay.TabStop = false;
-            this.gbShowDisplay.Text = "Show Display";
-            // 
-            // lbTrain
-            // 
-            this.lbTrain.AutoSize = true;
-            this.lbTrain.Location = new System.Drawing.Point(6, 40);
-            this.lbTrain.Name = "lbTrain";
-            this.lbTrain.Size = new System.Drawing.Size(80, 16);
-            this.lbTrain.TabIndex = 0;
-            this.lbTrain.Text = "Not Trained";
-            // 
-            // cboxShowGraphics
-            // 
-            this.cboxShowGraphics.AutoSize = true;
-            this.cboxShowGraphics.Location = new System.Drawing.Point(117, 38);
-            this.cboxShowGraphics.Name = "cboxShowGraphics";
-            this.cboxShowGraphics.Size = new System.Drawing.Size(122, 20);
-            this.cboxShowGraphics.TabIndex = 1;
-            this.cboxShowGraphics.Text = "Show Graphics";
-            this.cboxShowGraphics.UseVisualStyleBackColor = true;
-            this.cboxShowGraphics.CheckedChanged += new System.EventHandler(this.cboxShowGraphics_CheckedChanged);
             // 
             // cdPatternTrain
             // 
@@ -385,18 +523,57 @@
             this.cdPatternTrain.ColorMapUpperRoiLimit = 1D;
             this.cdPatternTrain.DoubleTapZoomCycleLength = 2;
             this.cdPatternTrain.DoubleTapZoomSensitivity = 2.5D;
-            this.cdPatternTrain.Location = new System.Drawing.Point(448, 256);
+            this.cdPatternTrain.Location = new System.Drawing.Point(420, 255);
             this.cdPatternTrain.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
             this.cdPatternTrain.MouseWheelSensitivity = 1D;
             this.cdPatternTrain.Name = "cdPatternTrain";
             this.cdPatternTrain.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cdPatternTrain.OcxState")));
-            this.cdPatternTrain.Size = new System.Drawing.Size(249, 213);
+            this.cdPatternTrain.Size = new System.Drawing.Size(219, 213);
             this.cdPatternTrain.TabIndex = 11;
+            // 
+            // gbControlTool
+            // 
+            this.gbControlTool.Controls.Add(this.btnClear);
+            this.gbControlTool.Controls.Add(this.btnSave);
+            this.gbControlTool.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbControlTool.Location = new System.Drawing.Point(432, 491);
+            this.gbControlTool.Name = "gbControlTool";
+            this.gbControlTool.Size = new System.Drawing.Size(207, 123);
+            this.gbControlTool.TabIndex = 10;
+            this.gbControlTool.TabStop = false;
+            this.gbControlTool.Text = "Control Tool";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(91, 27);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(67, 28);
+            this.btnClear.TabIndex = 3;
+            this.btnClear.Text = "Clear";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(16, 27);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(69, 28);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // lboxModel
+            // 
+            this.lboxModel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lboxModel.FormattingEnabled = true;
+            this.lboxModel.ItemHeight = 14;
+            this.lboxModel.Location = new System.Drawing.Point(420, 21);
+            this.lboxModel.Name = "lboxModel";
+            this.lboxModel.Size = new System.Drawing.Size(219, 228);
+            this.lboxModel.TabIndex = 9;
             // 
             // frmPattern
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1447, 801);
+            this.ClientSize = new System.Drawing.Size(1206, 801);
             this.Controls.Add(this.pnDisplay);
             this.Controls.Add(this.pnFooter);
             this.Controls.Add(this.pnContent);
@@ -410,18 +587,19 @@
             this.Text = "Pattern Register";
             this.tcPattern.ResumeLayout(false);
             this.tpPMAlign.ResumeLayout(false);
-            this.gbImageAcq.ResumeLayout(false);
+            this.gbPMAlignResult.ResumeLayout(false);
+            this.gbPMAlignResult.PerformLayout();
             this.gbPMAlign.ResumeLayout(false);
             this.gbPMAlign.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numudNumberToFind)).EndInit();
+            this.gbImageAcq.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay)).EndInit();
             this.pnHeader.ResumeLayout(false);
             this.pnContent.ResumeLayout(false);
             this.pnFooter.ResumeLayout(false);
             this.pnDisplay.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.gbShowDisplay.ResumeLayout(false);
-            this.gbShowDisplay.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cdPatternTrain)).EndInit();
+            this.gbControlTool.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -449,13 +627,27 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel pnFooter;
         private System.Windows.Forms.Panel pnDisplay;
-        internal System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListBox listBox1;
-        internal System.Windows.Forms.GroupBox gbShowDisplay;
-        private System.Windows.Forms.CheckBox cboxShowGraphics;
+        internal System.Windows.Forms.GroupBox gbControlTool;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lbTrain;
         internal Cognex.VisionPro.Display.CogDisplay cdPatternTrain;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtbEdgeThreshold;
+        private System.Windows.Forms.CheckBox cboxIgnorePolarity;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numudNumberToFind;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtbAcceptThreshold;
+        private System.Windows.Forms.CheckBox cboxScoreUsingClutter;
+        private System.Windows.Forms.TextBox txtbAngleHigh;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtbAngleLow;
+        private System.Windows.Forms.TextBox txtbScaleHigh;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtbScaleLow;
+        private System.Windows.Forms.GroupBox gbPMAlignResult;
+        private System.Windows.Forms.CheckBox cboxShowFeatures;
+        public System.Windows.Forms.ListBox lboxModel;
     }
 }

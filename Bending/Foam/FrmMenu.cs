@@ -59,14 +59,6 @@ namespace Bending
 
         }
 
-        private void LoadFolderPathRoot()
-        {
-            // path là thư mực ../Bending
-            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName; 
-            //PathToFolderINI = Path.Combine(path, )
-        }
-
-
         private void btnMenu_Click(object sender, EventArgs e)
         {
             string btnText = (sender as Button).Text;

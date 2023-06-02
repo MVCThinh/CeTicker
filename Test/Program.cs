@@ -700,6 +700,22 @@ class Program
         // Console.WriteLine($"Result: B:{banker} - P:{player} - E:{equal} ");
 
 
+
+
+        int[] numbers = { 1, 2, 3, 4, 5 };
+        IEnumerable<int> enumable = numbers;
+        IEnumerator<int> enumerator = enumable.GetEnumerator();
+
+        while (enumerator.MoveNext())
+        {
+            int number = enumerator.Current;
+        }
+
+        HashSet<int> set = new HashSet<int> { 1, 2, 3, 4, 5 };
+        IEnumerable<int> enumable1 = set;
+        IEnumerator<int> enumrator1 = enumable1.GetEnumerator();
+
+
     }
 }
 

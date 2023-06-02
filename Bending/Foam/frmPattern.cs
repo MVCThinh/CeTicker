@@ -1,19 +1,10 @@
-﻿using Bending.UC;
+﻿using Bending.Data.Models;
+using Bending.UC;
 using Cognex.VisionPro;
-using Cognex.VisionPro.Display;
-using Cognex.VisionPro.FGGigE;
 using Cognex.VisionPro.ImageFile;
 using Cognex.VisionPro.PMAlign;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.Remoting.Channels;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -22,11 +13,12 @@ namespace Bending.Foam
     public partial class frmPattern : Form
     {
         private CogPMAlignTool PMAlignTool;
-        private CogPMAlignPattern PMAlignPattern;
         private CogAcqFifoTool AcqFifoTool;
         private CogImageFileTool ImageFileTool;
 
-        private CogRectangleAffine RectangleAffine;
+
+        public static CogDictionary VisionToolDictionary;
+
 
         bool settingUp;
 
@@ -44,40 +36,32 @@ namespace Bending.Foam
 
             ImageFileTool = new CogImageFileTool();
             AcqFifoTool = new CogAcqFifoTool();
-            PMAlignPattern = new CogPMAlignPattern();
             PMAlignTool = new CogPMAlignTool();
 
-            RectangleAffine = new CogRectangleAffine();
+            VisionToolDictionary = new CogDictionary();
+
 
             ImageFileTool.Ran += ImageFileTool_Ran;
             AcqFifoTool.Ran += AcqFifoTool_Ran;
-            PMAlignPattern.Changed += PMAlignPattern_Changed;
             PMAlignTool.Ran += PMAlignTool_Ran;
 
 
         }
 
-        private void PMAlignPattern_Changed(object sender, CogChangedEventArgs e)
-        {
-            if (PMAlignPattern.Trained)
-            {
-                lbTrain.Text = "Trained";
-                lbTrain.BackColor = Color.Green;
-
-                cdPatternTrain.Image = PMAlignPattern.GetTrainedPatternImage();
-                cdPatternTrain.StaticGraphics.Add(PMAlignPattern.CreateGraphicsFine(CogColorConstants.Green) as ICogGraphic, "");
-            }
-            else
-            {
-                lbTrain.Text = "Not Trained";
-                lbTrain.BackColor = Color.Red;
-            }
-            
-        }
 
         private void PMAlignTool_Ran(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            cdDisplay.InteractiveGraphics.Clear();
+            cdDisplay.StaticGraphics.Clear();
+
+            if (PMAlignTool.Results.Count > 0)
+            {
+                txtbScore.Text = Math.Round(PMAlignTool.Results[0].Score, 2).ToString();
+                CogCompositeShape graphics = PMAlignTool.Results[0].CreateResultGraphics(CogPMAlignResultGraphicConstants.Origin |
+                                                                                            CogPMAlignResultGraphicConstants.BoundingBox);
+                cdDisplay.StaticGraphics.Add(graphics as ICogGraphic, "Match Features");
+
+            }
         }
 
         private void ImageFileTool_Ran(object sender, EventArgs e)
@@ -102,7 +86,6 @@ namespace Bending.Foam
 
             // Đẩy Image vào Tool PMAlign, ImageFileTool
             PMAlignTool.InputImage = AcqFifoTool.OutputImage as CogImage8Grey;
-          
 
             // Giảm bộ nhớ bằng GC
             num_acq++;
@@ -182,66 +165,139 @@ namespace Bending.Foam
                 eCamName camName = (eCamName)cbCamList.SelectedItem;
                 AcqFifoTool = new CogAcqFifoTool(ucRecipe.mapCamera[camName]);
                 AcqFifoTool.Run();
-            }          
+            }
             else
                 ImageFileTool.Run();
         }
 
         private void btnSetup_Click(object sender, EventArgs e)
         {
+            CogRectangleAffine recAff = new CogRectangleAffine();
+
             if (!settingUp)
             {
                 if (PMAlignTool.InputImage == null)
                 {
-                    MessageBox.Show("Chưa có Image được thêm vào Tool PMALign", "Thông báo");
+                    MessageBox.Show("Chưa có ảnh", "Thông báo");
                     return;
                 }
 
-                settingUp = true;
-                PMAlignPattern.TrainImage = PMAlignTool.InputImage;
-
                 cdDisplay.InteractiveGraphics.Clear();
                 cdDisplay.StaticGraphics.Clear();
 
-                RectangleAffine = PMAlignPattern.TrainRegion as CogRectangleAffine;
-                if (RectangleAffine != null)
+                settingUp = true;
+                btnSetup.Text = "OK";
+                gbPMAlignResult.Enabled = false;
+                gbImageAcq.Enabled = false;
+
+                PMAlignTool.Pattern.TrainImage = PMAlignTool.InputImage;               
+                recAff = PMAlignTool.Pattern.TrainRegion as CogRectangleAffine;
+                if (recAff != null)
                 {
-                    RectangleAffine.SetCenterLengthsRotationSkew(320, 240, 100, 100, 0, 0);
-                    RectangleAffine.GraphicDOFEnable = CogRectangleAffineDOFConstants.Position |
+                    recAff.SetCenterLengthsRotationSkew(PMAlignTool.InputImage.Width / 2, PMAlignTool.InputImage.Height / 2, 100, 100, 0, 0);
+                    recAff.GraphicDOFEnable = CogRectangleAffineDOFConstants.Position |
                                                 CogRectangleAffineDOFConstants.Rotation |
                                                 CogRectangleAffineDOFConstants.Size;
                 }
-                cdDisplay.InteractiveGraphics.Add(PMAlignPattern.TrainRegion as ICogGraphicInteractive, "Train Region", false);
+                cdDisplay.InteractiveGraphics.Add(PMAlignTool.Pattern.TrainRegion as ICogGraphicInteractive, "Train Region", false);
+                recAff.TipText = "Train Region";
 
-                
 
+                PMAlignTool.Pattern.TrainAlgorithm = CogPMAlignTrainAlgorithmConstants.PatMaxAndPatQuick;
+                PMAlignTool.Pattern.TrainMode = CogPMAlignTrainModeConstants.Image;
+                PMAlignTool.Pattern.IgnorePolarity = cboxIgnorePolarity.Checked;
+                PMAlignTool.Pattern.GrainLimitAutoSelect = true;
+                PMAlignTool.Pattern.EdgeThreshold = double.Parse(txtbEdgeThreshold.Text);
+
+                PMAlignTool.Pattern.TrainRegionMode = CogRegionModeConstants.PixelAlignedBoundingBoxAdjustMask;
+                PMAlignTool.Pattern.Origin.TranslationX = recAff.CenterX;
+                PMAlignTool.Pattern.Origin.TranslationY = recAff.CenterY;
+
+                PMAlignTool.RunParams.RunAlgorithm = CogPMAlignRunAlgorithmConstants.BestTrained;
+                PMAlignTool.RunParams.RunMode = CogPMAlignRunModeConstants.SearchImage;
+                PMAlignTool.RunParams.ApproximateNumberToFind = (int)numudNumberToFind.Value;
+                PMAlignTool.RunParams.AcceptThreshold = double.Parse(txtbAcceptThreshold.Text);
+
+                PMAlignTool.RunParams.ScoreUsingClutter = cboxScoreUsingClutter.Checked;
+                PMAlignTool.RunParams.ZoneAngle.Configuration = CogPMAlignZoneConstants.LowHigh;
+                PMAlignTool.RunParams.ZoneAngle.Low = double.Parse(txtbAngleLow.Text) * Math.PI;
+                PMAlignTool.RunParams.ZoneAngle.High = double.Parse(txtbAngleHigh.Text) * Math.PI;
+
+                PMAlignTool.RunParams.ZoneScale.Configuration = CogPMAlignZoneConstants.LowHigh;
+                PMAlignTool.RunParams.ZoneScale.Low = double.Parse(txtbScaleLow.Text);
+                PMAlignTool.RunParams.ZoneScale.High = double.Parse(txtbScaleHigh.Text);
+
+                CogRectangle rec = new CogRectangle();
+                PMAlignTool.SearchRegion = rec;
+                rec.SetCenterWidthHeight(PMAlignTool.InputImage.Width / 2, PMAlignTool.InputImage.Height / 2, 640, 480);
+                rec.GraphicDOFEnable = CogRectangleDOFConstants.Position |
+                                       CogRectangleDOFConstants.Size;
+
+                cdDisplay.InteractiveGraphics.Add(PMAlignTool.SearchRegion as ICogGraphicInteractive, "Search Region", false);
+                rec.Interactive = true;
+                rec.TipText = "Search Region";
             }
             else
             {
-                settingUp = false;
-
                 cdDisplay.InteractiveGraphics.Clear();
                 cdDisplay.StaticGraphics.Clear();
 
+                settingUp = false;
+                btnSetup.Text = "Setup";
+                gbPMAlignResult.Enabled = true;
+                gbImageAcq.Enabled = true;
+                gbControlTool.Enabled = true;
                 try
                 {
-                    PMAlignPattern.Train();
-                    
+                    PMAlignTool.Pattern.Train();
+
+                    if (PMAlignTool.Pattern.Trained)
+                    {
+                        modelToolName = tcPattern.SelectedTab.Text + " "+ numModelPMAlign.ToString();
+                    }
+                    else
+                        modelToolName = string.Empty;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Train Pattern xảy ra lỗi " + ex.Message, "Train Pattern Error");
                 }
+
             }
         }
 
-        private void cboxShowGraphics_CheckedChanged(object sender, EventArgs e)
+        int numModelPMAlign = 1;
+        string modelToolName = string.Empty;
+        private void btnRun_Click(object sender, EventArgs e)
         {
-            if (cboxShowGraphics.Checked)
+            PMAlignTool.Run();
+            if (PMAlignTool.RunStatus.Exception != null)
             {
-
-
+                MessageBox.Show(PMAlignTool.RunStatus.Exception.Message, "PMAlign Tool Error");
             }
+
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {           
+            if (!string.IsNullOrEmpty(modelToolName))
+            {
+                if(MessageBox.Show("Lưu Model " + modelToolName, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    VisionToolDictionary.Add(modelToolName, PMAlignTool);
+                    lboxModel.Items.Add(modelToolName);
+
+                    numModelPMAlign++;
+                    modelToolName = string.Empty;
+                }    
+            }
+            else
+            {
+                MessageBox.Show("Chưa có Model hoặc Model đã được thêm", "Thông báo");
+            }
+
+        }
+
+
     }
 }

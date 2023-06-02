@@ -35,6 +35,10 @@
             this.cdDisplay1 = new Cognex.VisionPro.Display.CogDisplay();
             this.cdDisplay2 = new Cognex.VisionPro.Display.CogDisplay();
             this.pnRunVision = new System.Windows.Forms.Panel();
+            this.pnListModel = new System.Windows.Forms.Panel();
+            this.btnRefreshList = new System.Windows.Forms.Button();
+            this.btnLoadModel = new System.Windows.Forms.Button();
+            this.lboxModel = new System.Windows.Forms.ListBox();
             this.pnCalib = new System.Windows.Forms.Panel();
             this.lbStatusCalib = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay2)).BeginInit();
             this.pnRunVision.SuspendLayout();
+            this.pnListModel.SuspendLayout();
             this.pnCalib.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalib)).BeginInit();
             this.pnControlAndResult.SuspendLayout();
@@ -134,6 +139,7 @@
             // 
             // pnRunVision
             // 
+            this.pnRunVision.Controls.Add(this.pnListModel);
             this.pnRunVision.Controls.Add(this.pnCalib);
             this.pnRunVision.Controls.Add(this.pnControlAndResult);
             this.pnRunVision.Dock = System.Windows.Forms.DockStyle.Right;
@@ -141,6 +147,48 @@
             this.pnRunVision.Name = "pnRunVision";
             this.pnRunVision.Size = new System.Drawing.Size(665, 823);
             this.pnRunVision.TabIndex = 315;
+            // 
+            // pnListModel
+            // 
+            this.pnListModel.Controls.Add(this.btnRefreshList);
+            this.pnListModel.Controls.Add(this.btnLoadModel);
+            this.pnListModel.Controls.Add(this.lboxModel);
+            this.pnListModel.Location = new System.Drawing.Point(295, 381);
+            this.pnListModel.Name = "pnListModel";
+            this.pnListModel.Size = new System.Drawing.Size(282, 423);
+            this.pnListModel.TabIndex = 335;
+            // 
+            // btnRefreshList
+            // 
+            this.btnRefreshList.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefreshList.Location = new System.Drawing.Point(8, 360);
+            this.btnRefreshList.Name = "btnRefreshList";
+            this.btnRefreshList.Size = new System.Drawing.Size(97, 32);
+            this.btnRefreshList.TabIndex = 337;
+            this.btnRefreshList.Text = "Refresh List";
+            this.btnRefreshList.UseVisualStyleBackColor = true;
+            this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
+            // 
+            // btnLoadModel
+            // 
+            this.btnLoadModel.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadModel.Location = new System.Drawing.Point(119, 360);
+            this.btnLoadModel.Name = "btnLoadModel";
+            this.btnLoadModel.Size = new System.Drawing.Size(97, 32);
+            this.btnLoadModel.TabIndex = 336;
+            this.btnLoadModel.Text = "Load Model";
+            this.btnLoadModel.UseVisualStyleBackColor = true;
+            this.btnLoadModel.Click += new System.EventHandler(this.btnLoadModel_Click);
+            // 
+            // lboxModel
+            // 
+            this.lboxModel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lboxModel.FormattingEnabled = true;
+            this.lboxModel.ItemHeight = 14;
+            this.lboxModel.Location = new System.Drawing.Point(3, 3);
+            this.lboxModel.Name = "lboxModel";
+            this.lboxModel.Size = new System.Drawing.Size(213, 340);
+            this.lboxModel.TabIndex = 335;
             // 
             // pnCalib
             // 
@@ -267,6 +315,7 @@
             this.btnRun.TabIndex = 295;
             this.btnRun.Text = "RUN";
             this.btnRun.UseVisualStyleBackColor = false;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // label4
             // 
@@ -519,6 +568,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay2)).EndInit();
             this.pnRunVision.ResumeLayout(false);
+            this.pnListModel.ResumeLayout(false);
             this.pnCalib.ResumeLayout(false);
             this.pnCalib.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalib)).EndInit();
@@ -569,5 +619,9 @@
         private System.Windows.Forms.Button btnCalibration;
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.OpenFileDialog openFD;
+        private System.Windows.Forms.Panel pnListModel;
+        private System.Windows.Forms.Button btnLoadModel;
+        private System.Windows.Forms.ListBox lboxModel;
+        private System.Windows.Forms.Button btnRefreshList;
     }
 }
