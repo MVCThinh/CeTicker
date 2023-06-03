@@ -19,6 +19,7 @@ using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using Bending.Foam;
 using static Bending.Foam.PMAlign;
+using Bending.Data.Models;
 
 namespace Bending.UC
 {
@@ -45,6 +46,13 @@ namespace Bending.UC
         string VIDEOFORMAT = "Generic GigEVision (Mono)";
 
 
+
+
+
+
+
+
+        public static CamSetting[] Visions;
         public ucRecipe()
         {
             InitializeComponent();
@@ -53,19 +61,48 @@ namespace Bending.UC
             GetConnectedCameras();
 
 
-            ImageFileTool = new CogImageFileTool();
-            ImageFileTool.Ran += ImageFileTool_Ran;
+            //ImageFileTool = new CogImageFileTool();
+            //ImageFileTool.Ran += ImageFileTool_Ran;
 
-            PMAlignToolRecipe = new CogPMAlignTool();
-            PMAlignTool1 = new CogPMAlignTool();
-            PMAlignTool2 = new CogPMAlignTool();
+            //PMAlignToolRecipe = new CogPMAlignTool();
+            //PMAlignTool1 = new CogPMAlignTool();
+            //PMAlignTool2 = new CogPMAlignTool();
 
 
-            PMAlignTool1.Ran += PMAlignTool12_Ran;
-            PMAlignTool2.Ran += PMAlignTool12_Ran;
+            //PMAlignTool1.Ran += PMAlignTool12_Ran;
+            //PMAlignTool2.Ran += PMAlignTool12_Ran;
 
-            patternRegister = new frmPattern();
+            //patternRegister = new frmPattern();
+
+
+
+
+
         }
+
+
+        private void GetVisionConnected()
+        {
+            CogFrameGrabbers cogFrameGrabbers = new CogFrameGrabbers();
+            int camConnected = cogFrameGrabbers.Count;
+
+            if (camConnected > 0)
+            {
+                Visions = new CamSetting[camConnected];
+                for (int i = 0; i < camConnected; i++)
+                {
+                    Visions[i] = new CamSetting();
+                    Visions[i].framGrabber = cogFrameGrabbers[i];
+
+                }
+            }
+        }
+
+
+
+
+
+
 
 
         // Lấy được tất cả cam. Lưu vào frameGrabber
