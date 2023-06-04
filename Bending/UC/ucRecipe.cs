@@ -1,24 +1,11 @@
-﻿using Bending.Data.Enums;
-using Bending.Data.Helpers;
-using Bending.Data.Models.Setting;
+﻿using Bending.Data.Models.Setting;
 using Cognex.VisionPro;
-using Cognex.VisionPro.Display;
 using Cognex.VisionPro.ImageFile;
 using Cognex.VisionPro.PMAlign;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 using Bending.Foam;
-using static Bending.Foam.PMAlign;
 using Bending.Data.Models;
 
 namespace Bending.UC
@@ -73,7 +60,6 @@ namespace Bending.UC
             //PMAlignTool2.Ran += PMAlignTool12_Ran;
 
             //patternRegister = new frmPattern();
-
 
 
 

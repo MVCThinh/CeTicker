@@ -1,4 +1,5 @@
-﻿using Cognex.VisionPro;
+﻿using Bending.UC;
+using Cognex.VisionPro;
 using Cognex.VisionPro.PMAlign;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,13 @@ namespace Bending.Data.Models
         public ICogFrameGrabber framGrabber { get; set; }
         public CogPMAlignTool PMAlignTool { get; set; }
         public CogAcqFifoTool AcqFifoTool { get; set; }
+        public CogCheckBox cogCheckBox { get; set; }
+
+
+
+        
     }
+
+    
+
 }

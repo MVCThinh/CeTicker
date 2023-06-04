@@ -68,6 +68,7 @@
             this.btnNextImage = new System.Windows.Forms.Button();
             this.btnOpenFolder = new System.Windows.Forms.Button();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
+            this.cbox01 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay2)).BeginInit();
             this.pnRunVision.SuspendLayout();
@@ -139,6 +140,7 @@
             // 
             // pnRunVision
             // 
+            this.pnRunVision.Controls.Add(this.cbox01);
             this.pnRunVision.Controls.Add(this.pnListModel);
             this.pnRunVision.Controls.Add(this.pnCalib);
             this.pnRunVision.Controls.Add(this.pnControlAndResult);
@@ -553,6 +555,16 @@
             this.btnOpenFolder.UseVisualStyleBackColor = false;
             this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
             // 
+            // cbox01
+            // 
+            this.cbox01.AutoSize = true;
+            this.cbox01.Location = new System.Drawing.Point(496, 175);
+            this.cbox01.Name = "cbox01";
+            this.cbox01.Size = new System.Drawing.Size(80, 17);
+            this.cbox01.TabIndex = 336;
+            this.cbox01.Text = "checkBox1";
+            this.cbox01.UseVisualStyleBackColor = true;
+            // 
             // ucRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -568,6 +580,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay2)).EndInit();
             this.pnRunVision.ResumeLayout(false);
+            this.pnRunVision.PerformLayout();
             this.pnListModel.ResumeLayout(false);
             this.pnCalib.ResumeLayout(false);
             this.pnCalib.PerformLayout();
@@ -623,5 +636,6 @@
         private System.Windows.Forms.Button btnLoadModel;
         private System.Windows.Forms.ListBox lboxModel;
         private System.Windows.Forms.Button btnRefreshList;
+        public System.Windows.Forms.CheckBox cbox01;
     }
 }
