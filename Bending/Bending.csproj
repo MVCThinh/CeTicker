@@ -200,12 +200,6 @@
     <Compile Include="Foam\frmTest.Designer.cs">
       <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Foam\PLC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Foam\PLC.Designer.cs">
-      <DependentUpon>PLC.cs</DependentUpon>
-    </Compile>
     <Compile Include="Foam\PMAlign.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,9 +245,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Foam\frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Foam\PLC.resx">
-      <DependentUpon>PLC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Foam\PMAlign.resx">
       <DependentUpon>PMAlign.cs</DependentUpon>
