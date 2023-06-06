@@ -33,6 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ActUtlTypeLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=627cb188e78f967a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Program Files (x86)\MELSOFT\ACT\Control\ActUtlTypeLib.dll</HintPath>
+    </Reference>
     <Reference Include="Cognex.VisionPro, Version=59.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.dll</HintPath>
@@ -171,6 +176,7 @@
     <Compile Include="Data\Models\VisionSetting.cs" />
     <Compile Include="Data\Models\PLCSetting.cs" />
     <Compile Include="Data\Models\ToolSetting.cs" />
+    <Compile Include="Data\PLC\PLCLoad.cs" />
     <Compile Include="Data\Static\CalibControl.cs" />
     <Compile Include="Data\Static\CONST.cs" />
     <Compile Include="Data\Helpers\csLog.cs" />
@@ -193,6 +199,12 @@
     </Compile>
     <Compile Include="Foam\frmTest.Designer.cs">
       <DependentUpon>frmTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Foam\PLC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Foam\PLC.Designer.cs">
+      <DependentUpon>PLC.cs</DependentUpon>
     </Compile>
     <Compile Include="Foam\PMAlign.cs">
       <SubType>Form</SubType>
@@ -239,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Foam\frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Foam\PLC.resx">
+      <DependentUpon>PLC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Foam\PMAlign.resx">
       <DependentUpon>PMAlign.cs</DependentUpon>
