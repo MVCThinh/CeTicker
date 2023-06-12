@@ -56,7 +56,7 @@ namespace Bending.Data.PLC
             public int Second { get; set; }
 
             public int CompareTo(IntPair other)
-            {
+            { 
                 int sum1 = First + Second;
                 int sum2 = other.First + other.Second;
                 return sum1.CompareTo(sum2);
