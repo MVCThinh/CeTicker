@@ -89,12 +89,6 @@ namespace Bending.UC
         }
 
 
-
-
-
-
-
-
         // Lấy được tất cả cam. Lưu vào frameGrabber
         public void GetConnectedCameras()
         {
@@ -424,10 +418,13 @@ namespace Bending.UC
         }
 
         PointWT pointXTVS;
+        PointWT pointXTRB;
        
-        public PointWT RunXT(ICogTransform2D matrix, PointWT pointVSRaw)
+        public bool RunXT(ICogTransform2D matrix, PointWT pointVSRaw)
         {
-            return TransfromPoint(matrix, pointVSRaw);
+            pointXTVS = TransfromPoint(matrix, pointVSRaw);
+
+            return true;
         }
 
 

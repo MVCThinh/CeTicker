@@ -61,5 +61,34 @@ namespace Bending.Foam
             string ketQua = ((char)(so & 0xFF)).ToString() + ((char)((so >> 8) & 0xFF)).ToString();
             return ketQua;
         }
+
+
+
+
+        public int MaxProductPath(int[][] grid)
+        {
+            int m = grid.Length;
+            int n = grid[0].Length;
+            int mod = 1000000007;
+
+            long[][] maxProduct = new long[m][];
+            long[][] minProduct = new long[m][];
+
+            for (int i = 0; i < m; i++)
+            {
+                maxProduct[i] = new long[n];
+                minProduct[i] = new long[n];
+            }
+
+            maxProduct[0][0] = minProduct[0][0] = grid[0][0];
+
+            // Tính toán tích lớn nhất và tích nhỏ nhất tại mỗi ô
+            for (int i = 1; i < m; i++)
+            {
+                maxProduct[i][0] = minProduct[i][0] = maxProduct[i - 1][0] * grid[i][0];
+            }
+        }
+
+
     }
 }
