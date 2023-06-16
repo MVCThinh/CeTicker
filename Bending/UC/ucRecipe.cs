@@ -7,6 +7,10 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Bending.Foam;
 using Bending.Data.Models;
+using Cognex.VisionPro.CalibFix;
+using System.Drawing;
+using System.Xml.Linq;
+using System.Data.Odbc;
 
 namespace Bending.UC
 {
@@ -17,7 +21,7 @@ namespace Bending.UC
         private ICogFrameGrabber[] frameGrabber;
 
         // Live, Open File
-        private  CogImageFileTool ImageFileTool;
+        private CogImageFileTool ImageFileTool;
         private CogAcqFifoTool[] AcqFifoTool;
 
         private CogPMAlignTool PMAlignToolRecipe;
@@ -178,7 +182,7 @@ namespace Bending.UC
                 PMAlignTool1.InputImage = mapCamera[eCamName.Laser1].OutputImage as CogImage8Grey;
                 PMAlignTool2.InputImage = mapCamera[eCamName.Laser2].OutputImage as CogImage8Grey;
             }
-            
+
             // Giảm bộ nhớ bằng GC
             num_acq++;
             if (num_acq > 4)
@@ -335,7 +339,7 @@ namespace Bending.UC
                     mapCamera[eCamName.Laser1].Run();
                     mapCamera[eCamName.Laser2].Run();
                 }
-            }              
+            }
             else
                 ImageFileTool.Run();
         }
@@ -369,7 +373,183 @@ namespace Bending.UC
                 PMAlignToolRecipe = new CogPMAlignTool((CogPMAlignTool)frmPattern.VisionToolDictionary[model]);
 
             }
-           
+
         }
+
+
+
+        private CogCalibNPointToNPoint Calib9RBVS = new CogCalibNPointToNPoint();
+        private ICogTransform2D TransPoint = null;
+
+        private List<PointWT> listPointsRB = new List<PointWT>(11);
+        private List<PointWT> listPointsVS = new List<PointWT>(11);
+
+        PointWT pointPOvr = new PointWT();
+        PointWT pointsPBase = new PointWT();
+
+        private bool Calculate()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                Calib9RBVS.AddPointPair(listPointsRB[i].X, listPointsRB[i].Y, listPointsVS[i].X, listPointsVS[i].Y);
+            }
+            Calib9RBVS.Calibrate();
+            if (!Calib9RBVS.Calibrated)
+            {
+                MessageBox.Show("Calib 9 Points Failed!");
+                return false;
+            }
+            else
+            {
+                TransPoint = Calib9RBVS.GetComputedUncalibratedFromCalibratedTransform();
+                //double[,] points2VSRaw = new double[2, 2]
+                //{
+                //    { listPointsVS[9].X, listPointsVS[9].Y },
+                //    { listPointsVS[10].X, listPointsVS[10].Y }
+                //};
+
+                //double[,] points2VS = TransPoint.MapPoints(points2VSRaw);
+
+                //PointWT point9VS = new PointWT(points2VS[0, 0], points2VS[0, 1], listPointsVS[9].R);
+                //PointWT point10VS = new PointWT(points2VS[1, 0], points2VS[1, 1], listPointsVS[10].R);
+
+                PointWT point9VS = TransfromPoint(TransPoint, listPointsVS[9]);
+                PointWT point10VS = TransfromPoint(TransPoint, listPointsVS[10]);
+
+                CalOriginPoint(point9VS, point10VS, listPointsRB[9], listPointsRB[10], ref pointPOvr, ref pointsPBase);
+            }
+
+            return true;
+
+        }
+
+        PointWT pointXTVS;
+       
+        public PointWT RunXT(ICogTransform2D matrix, PointWT pointVSRaw)
+        {
+            return TransfromPoint(matrix, pointVSRaw);
+        }
+
+
+        static PointWT PointPickUp(PointWT pointVSRaw, PointWT pointXTVS, PointWT pointXTRB,  ICogTransform2D matrix, PointWT POvr)
+        {
+            double XOvr = POvr.X;
+            double YOvr = POvr.Y;
+            double aOvr = POvr.R;
+
+
+            double XPVs1 = pointXTVS.X;
+            double YPVs1 = pointXTVS.Y;
+            double aPVs1 = pointXTVS.R;
+
+            double XPg1 = pointXTRB.X;
+            double YPg1 = pointXTRB.Y;
+            double aPg1 = pointXTRB.R;
+          
+            PointWT pointTT = TransfromPoint(matrix, pointVSRaw);
+            double XPVs2 = pointTT.X;
+            double YPVs2 = pointTT.Y;
+            double aPVs2 = pointTT.R;
+
+
+            // Calculate PGet2
+
+            double XPg2 = -XOvr * Math.Cos(aOvr) - Math.Sin(aOvr) * YOvr + Math.Cos(aOvr) * XPVs2
+                            + Math.Sin(aOvr) * YPVs2 + YPg1 * Math.Sin(aPVs1 - aPVs2) + XPg1 * Math.Cos(aPVs1 - aPVs2)
+                            + XOvr * Math.Cos(aPVs1 + aOvr - aPVs2) - XPVs1 * Math.Cos(aPVs1 + aOvr - aPVs2)
+                            + YOvr * Math.Sin(aPVs1 + aOvr - aPVs2) - YPVs1 * Math.Sin(aPVs1 + aOvr - aPVs2);
+
+            double YPg2 = -Math.Cos(aOvr) * YOvr + XOvr * Math.Sin(aOvr) + Math.Cos(aOvr) * YPVs2 - Math.Sin(aOvr) * XPVs2
+                            + YPg1 * Math.Cos(aPVs1 - aPVs2) - XPg1 * Math.Sin(aPVs1 - aPVs2) - XOvr * Math.Sin(aPVs1 + aOvr - aPVs2)
+                            + XPVs1 * Math.Sin(aPVs1 + aOvr - aPVs2) + YOvr * Math.Cos(aPVs1 + aOvr - aPVs2) - YPVs1 * Math.Cos(aPVs1 + aOvr - aPVs2);
+
+            double aPg2 = ((-aPVs2 + aPVs1 - aPg1) * 180) / Math.PI;
+
+
+            return new PointWT(XPg2, YPg2, aPg2);
+        }
+
+        static PointWT TransfromPoint(ICogTransform2D TransMatrix, PointWT point)
+        {
+            double tempX, tempY;
+            TransMatrix.MapPoint(point.X, point.Y, out tempX, out tempY);
+            return new PointWT(tempX, tempY, point.R);
+        }
+
+        static void CalOriginPoint(PointWT point9VS, PointWT point10VS, PointWT point9RB, PointWT point10RB, ref PointWT pointPOvr, ref PointWT pointPBase)
+        {
+            double Xv10 = point9VS.X;
+            double Yv10 = point9VS.Y;
+            double av10 = point9VS.R;
+
+            double Xv11 = point10VS.X;
+            double Yv11 = point10VS.Y;
+            double av11 = point10VS.R;
+
+            double Xr10 = point9RB.X;
+            double Yr10 = point9RB.Y;
+            double ar10 = point9RB.R;
+
+            double Xr11 = point10RB.X;
+            double Yr11 = point10RB.Y;
+            double ar11 = point10RB.R;
+
+
+            // Calculate Points Origin VR
+            double aOvr = 0;
+            double XOvr = (-Xv10 - Yr10 * Math.Sin(aOvr) + Xr10 * Math.Cos(aOvr) - Yv11 * Math.Sin(-av11 + av10) + Yr10 * Math.Sin(av11 - av10 + aOvr)
+                           + Xv10 * Math.Cos(-av11 + av10) + Xv11 * Math.Cos(-av11 + av10) + Yv10 * Math.Sin(-av11 + av10) - Xr10 * Math.Cos(av11 - av10 + aOvr)
+                           + Yr11 * Math.Sin(-av11 + aOvr + av10) + Xr11 * Math.Cos(aOvr) - Yr11 * Math.Sin(aOvr) - Xr11 * Math.Cos(-av11 + aOvr + av10) - Xv11)
+                            / (2 * Math.Cos(-av11 + av10) - 2);
+
+            double YOvr = (-Yv10 + Yr10 * Math.Cos(aOvr) + Xr10 * Math.Sin(aOvr) + Yv10 * Math.Cos(-av11 + av10)
+                            + Yv11 * Math.Cos(-av11 + av10) - Xv10 * Math.Sin(-av11 + av10)
+                            + Xv11 * Math.Sin(-av11 + av10) - Yr10 * Math.Cos(av11 - av10 + aOvr) - Xr10 * Math.Sin(av11 - av10 + aOvr)
+                            - Xr11 * Math.Sin(-av11 + aOvr + av10) + Yr11 * Math.Cos(aOvr) + Xr11 * Math.Sin(aOvr) - Yr11 * Math.Cos(-av11 + aOvr + av10) - Yv11)
+                            / (2 * Math.Cos(-av11 + av10) - 2);
+
+            // Calculate Points Origin PBase
+
+            double xBase = (-Math.Cos(-av11 + aOvr) * Xr11 + Math.Sin(-av11 + aOvr) * Yr11 + Xv11 * Math.Cos(av11)
+                            + Math.Sin(av11) * Yv11 + Math.Sin(-av10 + aOvr) * Yr10 - Math.Cos(-av10 + aOvr) * Xr10
+                            + Xv10 * Math.Cos(av10) + Math.Sin(av10) * Yv10 - Math.Cos(av11) * Xv10
+                            - Math.Sin(av10) * Yv11 - Xv11 * Math.Cos(av10) - Math.Sin(av11) * Yv10
+                            - Yr10 * Math.Sin(-av11 + aOvr) + Xr10 * Math.Cos(-av11 + aOvr)
+                            - Yr11 * Math.Sin(-av10 + aOvr) + Xr11 * Math.Cos(-av10 + aOvr)) / (2 * Math.Cos(-av11 + av10) - 2);
+
+
+            double yBase = (-Math.Sin(-av11 + aOvr) * Xr11 - Math.Cos(-av11 + aOvr) * Yr11
+                         + Math.Cos(av11) * Yv11 - Xv11 * Math.Sin(av11) - Math.Sin(-av10 + aOvr) * Xr10
+                         - Math.Cos(-av10 + aOvr) * Yr10 + Yr10 * Math.Cos(-av11 + aOvr) + Xr10 * Math.Sin(-av11 + aOvr)
+                         + Xr11 * Math.Sin(-av10 + aOvr) + Yr11 * Math.Cos(-av10 + aOvr) + Math.Cos(av10) * Yv10 - Xv10 * Math.Sin(av10)
+                         + Math.Sin(av10) * Xv11 + Math.Sin(av11) * Xv10 - Yv11 * Math.Cos(av10) - Math.Cos(av11) * Yv10) / (2 * Math.Cos(-av11 + av10) - 2);
+
+            double aBase = Math.Atan((-1 + Math.Cos(-av10 + ar10 + av11 - ar11)) / (Math.Sin(-av10 + ar10 + av11 - ar11)));
+
+
+            pointPOvr = new PointWT(XOvr, YOvr, aOvr);
+            pointPBase = new PointWT(xBase, yBase, aBase);
+
+
+
+        }
+
+    }
+
+
+    public struct PointWT
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double R { get; set; }
+
+
+        public PointWT(double X, double Y, double R)
+        {
+            this.X = X;
+            this.Y = Y;
+            this.R = R;
+        }
+
     }
 }

@@ -41,6 +41,8 @@ namespace Bending.Foam
             VisionToolDictionary = new CogDictionary();
 
 
+
+
             ImageFileTool.Ran += ImageFileTool_Ran;
             AcqFifoTool.Ran += AcqFifoTool_Ran;
             PMAlignTool.Ran += PMAlignTool_Ran;

@@ -194,6 +194,12 @@
     <Compile Include="Foam\frmPattern.Designer.cs">
       <DependentUpon>frmPattern.cs</DependentUpon>
     </Compile>
+    <Compile Include="Foam\frmPLC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Foam\frmPLC.Designer.cs">
+      <DependentUpon>frmPLC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Foam\frmTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Foam\frmPattern.resx">
       <DependentUpon>frmPattern.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Foam\frmPLC.resx">
+      <DependentUpon>frmPLC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Foam\frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>

@@ -18,7 +18,7 @@ namespace Bending
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PLC());
+            Application.Run(new frmPLC());
 
             // Giải phóng framGrabbers
             CogFrameGrabbers cogFrameGrabbers = new CogFrameGrabbers();
