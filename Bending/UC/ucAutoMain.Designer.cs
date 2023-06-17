@@ -4041,7 +4041,7 @@
             this.Controls.Add(this.pn1);
             this.Controls.Add(this.pnOKNG);
             this.Name = "ucAutoMain";
-            this.Size = new System.Drawing.Size(1884, 825);
+            this.Size = new System.Drawing.Size(1836, 825);
             this.pnOKNG.ResumeLayout(false);
             this.pnOKNG.PerformLayout();
             this.pnResult1.ResumeLayout(false);

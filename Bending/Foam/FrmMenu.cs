@@ -20,7 +20,7 @@ using System.Windows.Forms;
 
 namespace Bending
 {
-    public partial class Menu : Form
+    public  partial class Menu : Form
     {
 
         private static PerformanceCounter cpuCounter;
@@ -33,9 +33,9 @@ namespace Bending
         public static ucRecipe frmRecipe = new ucRecipe();
         public static ucSetting frmSetting = new ucSetting();
 
-
-
         
+
+
         private Button[] btnMenu;
         public Menu()
         {
@@ -55,7 +55,7 @@ namespace Bending
 
             Array.ForEach(btnMenu, btn => btn.Click += btnMenu_Click);
 
-            
+
 
         }
 
@@ -131,6 +131,9 @@ namespace Bending
 
 
         }
+
+
+
 
     }
     public static class prograssbarcolor

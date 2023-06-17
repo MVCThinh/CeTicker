@@ -134,15 +134,6 @@
       <HintPath>C:\Users\Acer\OneDrive\Desktop\VISION\ReferencedAssemblies\rsAlign\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="rs2DAlign">
-      <HintPath>C:\Users\Acer\OneDrive\Desktop\VISION\ReferencedAssemblies\rsAlign\rs2DAlign.dll</HintPath>
-    </Reference>
-    <Reference Include="rs2DCalibration">
-      <HintPath>C:\Users\Acer\OneDrive\Desktop\VISION\ReferencedAssemblies\rsAlign\rs2DCalibration.dll</HintPath>
-    </Reference>
-    <Reference Include="rsDL">
-      <HintPath>C:\Users\Acer\OneDrive\Desktop\VISION\ReferencedAssemblies\rsAlign\rsDL.dll</HintPath>
-    </Reference>
     <Reference Include="rsLinearConvert">
       <HintPath>C:\Users\Acer\OneDrive\Desktop\VISION\ReferencedAssemblies\rsAlign\rsLinearConvert.dll</HintPath>
     </Reference>
@@ -171,17 +162,13 @@
     <Compile Include="Data\Helpers\RWFile.cs" />
     <Compile Include="Data\Helpers\VisionPro.cs" />
     <Compile Include="Data\Models\CamSetting.cs" />
-    <Compile Include="Data\Models\PMAlignTool.cs" />
     <Compile Include="Data\Models\RobotSetting.cs" />
     <Compile Include="Data\Models\VisionSetting.cs" />
     <Compile Include="Data\Models\PLCSetting.cs" />
     <Compile Include="Data\Models\ToolSetting.cs" />
-    <Compile Include="Data\PLC\PLCLoad.cs" />
+    <Compile Include="Data\PLC\PLCHandle.cs" />
     <Compile Include="Data\Static\CalibControl.cs" />
-    <Compile Include="Data\Static\CONST.cs" />
     <Compile Include="Data\Helpers\csLog.cs" />
-    <Compile Include="Data\Static\DispChart.cs" />
-    <Compile Include="Data\Static\PanelID.cs" />
     <Compile Include="Foam\FrmMenu.cs">
       <SubType>Form</SubType>
     </Compile>

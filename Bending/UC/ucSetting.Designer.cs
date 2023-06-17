@@ -76,16 +76,6 @@
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pnConfigSetting = new System.Windows.Forms.Panel();
-            this.pnTool = new System.Windows.Forms.Panel();
-            this.tcToolSetting = new System.Windows.Forms.TabControl();
-            this.tpPMAlign = new System.Windows.Forms.TabPage();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.tpBlob = new System.Windows.Forms.TabPage();
             this.pnCamSet.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pnOffset.SuspendLayout();
@@ -95,9 +85,6 @@
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.pnConfigSetting.SuspendLayout();
-            this.pnTool.SuspendLayout();
-            this.tcToolSetting.SuspendLayout();
-            this.tpPMAlign.SuspendLayout();
             this.SuspendLayout();
             // 
             // label12
@@ -536,7 +523,7 @@
             this.btnConfigReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfigReset.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfigReset.ForeColor = System.Drawing.Color.White;
-            this.btnConfigReset.Location = new System.Drawing.Point(811, 737);
+            this.btnConfigReset.Location = new System.Drawing.Point(1735, 720);
             this.btnConfigReset.Name = "btnConfigReset";
             this.btnConfigReset.Size = new System.Drawing.Size(95, 64);
             this.btnConfigReset.TabIndex = 767;
@@ -551,7 +538,7 @@
             this.btnConfigSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfigSave.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfigSave.ForeColor = System.Drawing.Color.Red;
-            this.btnConfigSave.Location = new System.Drawing.Point(628, 737);
+            this.btnConfigSave.Location = new System.Drawing.Point(1532, 720);
             this.btnConfigSave.Name = "btnConfigSave";
             this.btnConfigSave.Size = new System.Drawing.Size(161, 64);
             this.btnConfigSave.TabIndex = 766;
@@ -675,131 +662,15 @@
             this.pnConfigSetting.Size = new System.Drawing.Size(955, 826);
             this.pnConfigSetting.TabIndex = 769;
             // 
-            // pnTool
-            // 
-            this.pnTool.Controls.Add(this.tcToolSetting);
-            this.pnTool.Controls.Add(this.btnConfigSave);
-            this.pnTool.Controls.Add(this.btnConfigReset);
-            this.pnTool.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnTool.Location = new System.Drawing.Point(957, 0);
-            this.pnTool.Name = "pnTool";
-            this.pnTool.Size = new System.Drawing.Size(927, 825);
-            this.pnTool.TabIndex = 770;
-            // 
-            // tcToolSetting
-            // 
-            this.tcToolSetting.Controls.Add(this.tpPMAlign);
-            this.tcToolSetting.Controls.Add(this.tpBlob);
-            this.tcToolSetting.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tcToolSetting.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcToolSetting.ItemSize = new System.Drawing.Size(80, 25);
-            this.tcToolSetting.Location = new System.Drawing.Point(0, 0);
-            this.tcToolSetting.Name = "tcToolSetting";
-            this.tcToolSetting.SelectedIndex = 0;
-            this.tcToolSetting.Size = new System.Drawing.Size(927, 728);
-            this.tcToolSetting.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tcToolSetting.TabIndex = 769;
-            // 
-            // tpPMAlign
-            // 
-            this.tpPMAlign.BackColor = System.Drawing.Color.Black;
-            this.tpPMAlign.Controls.Add(this.label17);
-            this.tpPMAlign.Controls.Add(this.textBox13);
-            this.tpPMAlign.Controls.Add(this.label18);
-            this.tpPMAlign.Controls.Add(this.textBox14);
-            this.tpPMAlign.Controls.Add(this.label19);
-            this.tpPMAlign.Controls.Add(this.textBox15);
-            this.tpPMAlign.Location = new System.Drawing.Point(4, 29);
-            this.tpPMAlign.Name = "tpPMAlign";
-            this.tpPMAlign.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPMAlign.Size = new System.Drawing.Size(919, 695);
-            this.tpPMAlign.TabIndex = 0;
-            this.tpPMAlign.Text = "PMAlign";
-            // 
-            // label17
-            // 
-            this.label17.BackColor = System.Drawing.Color.Black;
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label17.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.Linen;
-            this.label17.Location = new System.Drawing.Point(29, 92);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(85, 21);
-            this.label17.TabIndex = 333;
-            this.label17.Text = "Angle";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox13
-            // 
-            this.textBox13.BackColor = System.Drawing.Color.Linen;
-            this.textBox13.Location = new System.Drawing.Point(123, 92);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(90, 26);
-            this.textBox13.TabIndex = 334;
-            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label18
-            // 
-            this.label18.BackColor = System.Drawing.Color.Black;
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label18.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Linen;
-            this.label18.Location = new System.Drawing.Point(29, 58);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(85, 21);
-            this.label18.TabIndex = 331;
-            this.label18.Text = "Score Limit";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox14
-            // 
-            this.textBox14.BackColor = System.Drawing.Color.Linen;
-            this.textBox14.Location = new System.Drawing.Point(123, 58);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(90, 26);
-            this.textBox14.TabIndex = 332;
-            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label19
-            // 
-            this.label19.BackColor = System.Drawing.Color.Black;
-            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label19.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.Linen;
-            this.label19.Location = new System.Drawing.Point(29, 26);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(85, 21);
-            this.label19.TabIndex = 329;
-            this.label19.Text = "Threshold";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox15
-            // 
-            this.textBox15.BackColor = System.Drawing.Color.Linen;
-            this.textBox15.Location = new System.Drawing.Point(123, 26);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(90, 26);
-            this.textBox15.TabIndex = 330;
-            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tpBlob
-            // 
-            this.tpBlob.BackColor = System.Drawing.Color.Black;
-            this.tpBlob.Location = new System.Drawing.Point(4, 29);
-            this.tpBlob.Name = "tpBlob";
-            this.tpBlob.Padding = new System.Windows.Forms.Padding(3);
-            this.tpBlob.Size = new System.Drawing.Size(919, 695);
-            this.tpBlob.TabIndex = 1;
-            this.tpBlob.Text = "Blob";
-            // 
             // ucSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.pnTool);
             this.Controls.Add(this.pnConfigSetting);
+            this.Controls.Add(this.btnConfigSave);
+            this.Controls.Add(this.btnConfigReset);
             this.Name = "ucSetting";
             this.Size = new System.Drawing.Size(1884, 825);
             this.pnCamSet.ResumeLayout(false);
@@ -816,10 +687,6 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.pnConfigSetting.ResumeLayout(false);
-            this.pnTool.ResumeLayout(false);
-            this.tcToolSetting.ResumeLayout(false);
-            this.tpPMAlign.ResumeLayout(false);
-            this.tpPMAlign.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -874,15 +741,5 @@
         public System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label14;
         public System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Panel pnTool;
-        private System.Windows.Forms.TabControl tcToolSetting;
-        private System.Windows.Forms.TabPage tpPMAlign;
-        private System.Windows.Forms.TabPage tpBlob;
-        private System.Windows.Forms.Label label17;
-        public System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.Label label18;
-        public System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.Label label19;
-        public System.Windows.Forms.TextBox textBox15;
     }
 }

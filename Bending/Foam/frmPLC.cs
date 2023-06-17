@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -64,30 +65,48 @@ namespace Bending.Foam
 
 
 
+        
 
-        public int MaxProductPath(int[][] grid)
+
+        private async void Test()
         {
-            int m = grid.Length;
-            int n = grid[0].Length;
-            int mod = 1000000007;
+            Task<int> task = LongRunning();
+            int result = await task;
+            Task task1 = Task.Factory.StartNew(() => DoWork(1));
+            Task task2 = Task.Factory.StartNew(() => DoWork(2));
+            Task task3 = Task.Factory.StartNew(() => DoWork(3));
 
-            long[][] maxProduct = new long[m][];
-            long[][] minProduct = new long[m][];
+            Parallel.For(1, 20, RunTask);
 
-            for (int i = 0; i < m; i++)
-            {
-                maxProduct[i] = new long[n];
-                minProduct[i] = new long[n];
-            }
-
-            maxProduct[0][0] = minProduct[0][0] = grid[0][0];
-
-            // Tính toán tích lớn nhất và tích nhỏ nhất tại mỗi ô
-            for (int i = 1; i < m; i++)
-            {
-                maxProduct[i][0] = minProduct[i][0] = maxProduct[i - 1][0] * grid[i][0];
-            }
+            thread.Start();
+            thread.Join();  
         }
+
+        private void DoWork(int v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void RunTask(int i)
+        {
+            PintInfo($"Start {i,3}");
+            Task.Delay(1000).Wait();          // Task dừng 1s - rồi mới chạy tiếp
+            PintInfo($"Finish {i,3}");
+        }
+        public static void PintInfo(string info) =>
+            Console.WriteLine($"{info,10}    task:{Task.CurrentId,3}    " +
+                              $"thread: {Thread.CurrentThread.ManagedThreadId}");
+
+
+        private Thread thread = null;   
+        public static async Task<int> LongRunning()
+        {
+            
+
+            await Task.Delay(1000);
+            return 42;
+        }
+       
 
 
     }

@@ -35,6 +35,7 @@
             this.cdDisplay1 = new Cognex.VisionPro.Display.CogDisplay();
             this.cdDisplay2 = new Cognex.VisionPro.Display.CogDisplay();
             this.pnRunVision = new System.Windows.Forms.Panel();
+            this.cbox01 = new System.Windows.Forms.CheckBox();
             this.pnListModel = new System.Windows.Forms.Panel();
             this.btnRefreshList = new System.Windows.Forms.Button();
             this.btnLoadModel = new System.Windows.Forms.Button();
@@ -68,7 +69,6 @@
             this.btnNextImage = new System.Windows.Forms.Button();
             this.btnOpenFolder = new System.Windows.Forms.Button();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
-            this.cbox01 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDisplay2)).BeginInit();
             this.pnRunVision.SuspendLayout();
@@ -149,6 +149,16 @@
             this.pnRunVision.Name = "pnRunVision";
             this.pnRunVision.Size = new System.Drawing.Size(665, 823);
             this.pnRunVision.TabIndex = 315;
+            // 
+            // cbox01
+            // 
+            this.cbox01.AutoSize = true;
+            this.cbox01.Location = new System.Drawing.Point(496, 175);
+            this.cbox01.Name = "cbox01";
+            this.cbox01.Size = new System.Drawing.Size(80, 17);
+            this.cbox01.TabIndex = 336;
+            this.cbox01.Text = "checkBox1";
+            this.cbox01.UseVisualStyleBackColor = true;
             // 
             // pnListModel
             // 
@@ -554,16 +564,6 @@
             this.btnOpenFolder.Text = "Open Folder";
             this.btnOpenFolder.UseVisualStyleBackColor = false;
             this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
-            // 
-            // cbox01
-            // 
-            this.cbox01.AutoSize = true;
-            this.cbox01.Location = new System.Drawing.Point(496, 175);
-            this.cbox01.Name = "cbox01";
-            this.cbox01.Size = new System.Drawing.Size(80, 17);
-            this.cbox01.TabIndex = 336;
-            this.cbox01.Text = "checkBox1";
-            this.cbox01.UseVisualStyleBackColor = true;
             // 
             // ucRecipe
             // 
